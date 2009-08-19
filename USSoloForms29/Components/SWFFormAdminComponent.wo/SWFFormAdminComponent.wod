@@ -1,0 +1,114 @@
+Conditional1: WOConditional {
+	condition = isDisplayComponent;
+}
+
+Conditional10: WOConditional {
+	condition = selectedSearchArgumentField.isTextField;
+}
+
+Conditional11: WOConditional {
+	condition = selectedSearchArgumentField.isTextArea;
+}
+
+Conditional12: WOConditional {
+	condition = selectedSearchArgumentField.isCheckbox;
+}
+
+Conditional13: WOConditional {
+	condition = selectedSearchArgumentField.isRadioButtonList;
+}
+
+Conditional14: WOConditional {
+	condition = selectedSearchArgumentField.isPopUpMenu;
+}
+
+Conditional2: WOConditional {
+	condition = isDisplayComponent;
+}
+
+Conditional3: WOConditional {
+	condition = isDisplayComponent;
+}
+
+PopUpButton1: WOPopUpButton {
+	displayString = currentForm.name;
+	item = currentForm;
+	list = allObjects;
+	selection = selectedForm;
+	onchange = "this.form.submit();";
+}
+
+PopUpButton2: WOPopUpButton {
+	item = currentComponentKey;
+	list = componentKeys;
+	selection = selectedComponentKey;
+	onChange = "this.form.submit();";
+}
+
+PopUpButton3: WOPopUpButton {
+	item = currentSearchValue;
+	list = selectedSearchArgumentField.valueList;
+	selection = newSearchString;
+}
+
+PopUpButton4: WOPopUpButton {
+	displayString = currentSearchField.name;
+	item = currentSearchField;
+	list = selectedForm.sortedFields;
+	onChange = "this.form.submit();";
+	selection = selectedSearchArgumentField;
+	noSelectionString = "Veljið reit";
+}
+
+RadioButtonList1: WORadioButtonList {
+	escapeHTML = false;
+	item = currentSearchValue;
+	list = selectedSearchArgumentField.valueList;
+	selection = newSearchString;
+	suffix = "<BR>";
+}
+
+Repetition4: WORepetition {
+	item = currentSearchArgument;
+	list = searchArguments;
+}
+
+SWFCheckbox1: SWFCheckbox {
+	stringValue = newSearchString;
+}
+
+SWFFieldListPalette1: SWFFieldListPalette {
+	fieldString = currentComponent.customInfo.swfFieldList;
+	selectedForm = selectedForm;
+}
+
+SWFFieldListPalette2: SWFFieldListPalette {
+	fieldString = currentComponent.customInfo.swfSearchFieldList;
+	selectedForm = selectedForm;
+}
+
+String1: WOString {
+	value = currentSearchArgumentField.name;
+}
+
+String2: WOString {
+	value = currentSearchArgument.searchString;
+}
+
+SubmitButton1: WOSubmitButton {
+	action = addSearchArgument;
+	value = "+";
+}
+
+SubmitButton3: WOSubmitButton {
+	value = "-";
+	action = removeSearchArgument;
+}
+
+TextField1: WOTextField {
+	value = newSearchString;
+}
+
+TextField2: WOTextField {
+	value = newSearchString;
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<wodefinitions>
+	<wo class="SWFEditField" wocomponentcontent="false">
+
+		<binding name="selectedField"/>
+
+		<validation message="&apos;selectedField&apos; is a required binding">
+			<unbound name="selectedField"/>
+		</validation>
+	</wo>
+</wodefinitions>

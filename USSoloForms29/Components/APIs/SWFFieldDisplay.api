@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<wodefinitions>
+	<wo class="SWFFieldDisplay" wocomponentcontent="false">
+
+		<binding name="currentField"/>
+		<binding name="currentString"/>
+		<binding name="currentData"/>
+
+		<validation message="&apos;currentField&apos; is a required binding">
+			<unbound name="currentField"/>
+		</validation>
+
+		<validation message="&apos;currentString&apos; is a required binding">
+			<unbound name="currentString"/>
+		</validation>
+
+		<validation message="&apos;currentString&apos; must be bound to a settable value">
+			<unsettable name="currentString"/>
+		</validation>
+
+		<validation message="&apos;currentData&apos; must be bound to a settable value">
+			<unsettable name="currentData"/>
+		</validation>
+	</wo>
+</wodefinitions>

@@ -1,0 +1,58 @@
+IS_REQUIRED_CONDITIONAL: WOConditional {
+	condition = currentField.isRequired;
+}
+
+HAS_NOT_REGISTERED_COND: WOConditional {
+	condition = hasRegistered;
+	negate = true;
+}
+
+HAS_REGISTERED_COND: WOConditional {
+	condition = hasRegistered;
+}
+
+IS_NOT_IN_FORM_COND: WOConditional {
+	condition = context.isInForm;
+	negate = true;
+}
+
+IS_IN_FORM_COND: WOConditional {
+	condition = context.isInForm;
+}
+
+HAS_FORM_COND: WOConditional {
+	condition = selectedForm;
+}
+
+FORM: WOForm {
+	enctype = "multipart/form-data";
+}
+
+FIELD_REPETITION: WORepetition {
+	item = currentField;
+	list = selectedForm.sortedFields;
+}
+
+FIELD_DISPLAY: SWFFieldDisplay {
+	currentField = currentField;
+	currentString = currentString;
+	currentData = currentData;
+}
+
+FIELD_NAME_STRING: WOString {
+	value = currentField.name;
+}
+
+ERROR_STRING: WOString {
+	escapeHTML = false;
+	value = errorString;
+}
+
+REGISTRATION_MESSAGE_STRING: WOString {
+	value = selectedForm.registrationMessage;
+}
+
+SUBMIT_BUTTON: WOSubmitButton {
+	action = submitForm;
+	value = "Senda";
+}

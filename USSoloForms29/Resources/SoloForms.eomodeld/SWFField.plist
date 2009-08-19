@@ -1,0 +1,123 @@
+{
+    attributes = (
+        {
+            columnName = "ABOVE_TEXT"; 
+            name = aboveText; 
+            prototypeName = "string_1000000"; 
+        }, 
+        {columnName = "ADMIN_ONLY"; name = adminField; prototypeName = int; }, 
+        {
+            columnName = "DEFAULT_VALUE"; 
+            name = defaultValue; 
+            prototypeName = "string_1000"; 
+        }, 
+        {
+            columnName = "EXPLANATORY_TEXT"; 
+            name = explanatoryText; 
+            prototypeName = "string_1000"; 
+        }, 
+        {
+            allowsNull = N; 
+            columnName = "FIELD_ID"; 
+            name = fieldID; 
+            prototypeName = int; 
+        }, 
+        {columnName = "FIELD_SET_ID"; name = fieldSetID; prototypeName = int; }, 
+        {columnName = "FORM_ID"; name = formID; prototypeName = int; }, 
+        {columnName = NAME; name = name; prototypeName = "string_1000"; }, 
+        {
+            columnName = "NO_SELECTION_STRING"; 
+            name = noSelectionString; 
+            prototypeName = "string_1000"; 
+        }, 
+        {columnName = "PRIMARY_FIELD"; name = primaryField; prototypeName = int; }, 
+        {columnName = REQUIRED; name = required; prototypeName = int; }, 
+        {columnName = "FIELD_ROWS"; name = rows; prototypeName = int; }, 
+        {columnName = "FIELD_SIZE"; name = size; prototypeName = int; }, 
+        {columnName = "SORT_NUMBER"; name = sortNumber; prototypeName = int; }, 
+        {columnName = "FIELD_TYPE"; name = type; prototypeName = "string_1000"; }, 
+        {
+            columnName = "VALUELIST_STRING"; 
+            name = valuelistString; 
+            prototypeName = "string_1000"; 
+        }
+    ); 
+    attributesUsedForLocking = (
+        fieldID, 
+        name, 
+        formID, 
+        required, 
+        sortNumber, 
+        adminField, 
+        valuelistString, 
+        defaultValue, 
+        size, 
+        rows, 
+        noSelectionString, 
+        type, 
+        fieldSetID, 
+        aboveText, 
+        primaryField, 
+        explanatoryText
+    ); 
+    className = "is.us.soloweb.forms.data.SWFField"; 
+    classProperties = (
+        fieldID, 
+        name, 
+        registrationFields, 
+        formID, 
+        form, 
+        required, 
+        sortNumber, 
+        adminField, 
+        type, 
+        valuelistString, 
+        defaultValue, 
+        size, 
+        rows, 
+        noSelectionString, 
+        fieldSetID, 
+        fieldSet, 
+        aboveText, 
+        primaryField, 
+        explanatoryText, 
+        fixedSearches
+    ); 
+    externalName = "SWF_FIELD"; 
+    fetchSpecificationDictionary = {}; 
+    name = SWFField; 
+    primaryKeyAttributes = (fieldID); 
+    relationships = (
+        {
+            destination = SWFFieldSet; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = fieldSetID; sourceAttribute = fieldSetID; }); 
+            name = fieldSet; 
+        }, 
+        {
+            deleteRule = EODeleteRuleCascade; 
+            destination = SWFFixedSearch; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = fieldID; sourceAttribute = fieldID; }); 
+            name = fixedSearches; 
+        }, 
+        {
+            destination = SWFForm; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = formID; sourceAttribute = formID; }); 
+            name = form; 
+        }, 
+        {
+            deleteRule = EODeleteRuleCascade; 
+            destination = SWFRegistrationField; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = fieldID; sourceAttribute = fieldID; }); 
+            name = registrationFields; 
+            numberOfToManyFaultsToBatchFetch = 200; 
+        }
+    ); 
+}

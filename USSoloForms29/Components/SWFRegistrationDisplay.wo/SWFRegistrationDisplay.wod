@@ -1,0 +1,97 @@
+Conditional1: WOConditional {
+	condition = searchFieldList.count;
+}
+
+Conditional2: WOConditional {
+	condition = context.isInForm;
+	negate = true;
+}
+
+Conditional3: WOConditional {
+	condition = context.isInForm;
+}
+
+Conditional5: WOConditional {
+	condition = registrations.count;
+}
+
+Conditional6: WOConditional {
+	condition = currentRegistrationField.field.isCheckbox;
+	negate = true;
+}
+
+Conditional7: WOConditional {
+	condition = currentRegistrationField.field.isCheckbox;
+}
+
+Form1: WOForm {
+}
+
+KeyValueConditional1: WOKeyValueConditional {
+	key = "currentRegistrationField.value";
+	value = "TRUE";
+}
+
+KeyValueConditional2: WOKeyValueConditional {
+	key = "currentRegistrationField.value";
+	value = "FALSE";
+}
+
+Repetition1: WORepetition {
+	index = fieldIndex;
+	count = fieldList.count;
+}
+
+Repetition2: WORepetition {
+	item = currentRegistration;
+	list = registrations;
+	index = registrationIndex;
+}
+
+Repetition3: WORepetition {
+	item = currentField;
+	list = fieldList;
+}
+
+Repetition4: WORepetition {
+	item = aSearchField;
+	list = searchFieldList;
+}
+
+String1: WOString {
+	value = currentRegistrationField.value;
+	escapeHTML = false;
+}
+
+String2: WOString {
+	value = currentRegistration.date;
+	dateformat = "%d.%m.%Y";
+}
+
+String3: WOString {
+	value = currentField.name;
+	escapeHTML = false;
+}
+
+String4: WOString {
+	value = registrationIndexDisplay;
+}
+
+String5: WOString {
+	value = currentRegistration.registrationID;
+}
+
+String6: WOString {
+	value = aSearchField.name;
+}
+
+SubmitButton1: WOSubmitButton {
+	value = "Search";
+	action = search;
+}
+
+TextField1: WOTextField {
+	size = 40;
+	value = currentSearchValue;
+	dateformat = aSearchField.dateFormatString;
+}

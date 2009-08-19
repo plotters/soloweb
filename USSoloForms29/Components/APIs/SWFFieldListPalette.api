@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<wodefinitions>
+	<wo class="SWFFieldListPalette" wocomponentcontent="false">
+
+		<binding name="fieldString"/>
+		<binding name="selectedForm"/>
+
+		<validation message="&apos;fieldString&apos; is a required binding">
+			<unbound name="fieldString"/>
+		</validation>
+
+		<validation message="&apos;selectedForm&apos; is a required binding">
+			<unbound name="selectedForm"/>
+		</validation>
+	</wo>
+</wodefinitions>

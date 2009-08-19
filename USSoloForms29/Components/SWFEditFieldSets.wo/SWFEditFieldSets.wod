@@ -1,0 +1,76 @@
+Conditional1: WOConditional {
+	condition = selectedForm.sortedFieldSets.count;
+}
+
+Conditional2: WOConditional {
+	condition = currentFieldSet.isFirst;
+	negate = true;
+}
+
+Conditional3: WOConditional {
+	condition = currentFieldSet.isLast;
+	negate = true;
+}
+
+Conditional4: WOConditional {
+	condition = selectedForm.sortedFieldSets.count;
+	negate = true;
+}
+
+Conditional5: WOConditional {
+	condition = selectedForm.fieldsNotInFieldSet.count;
+}
+
+ImageButton1: WOImageButton {
+	action = fieldSetUp;
+	framework = "SoloWeb29";
+	filename = "arrow_up.gif"; 
+}
+
+ImageButton4: WOImageButton {
+	action = fieldSetDown;
+	framework = "SoloWeb29";
+	filename = "arrow_down.gif"; 
+}
+
+Repetition2: WORepetition {
+	item = currentFieldSet;
+	list = selectedForm.sortedFieldSets;
+}
+
+SWFEditFields1: SWFEditFields {
+	fieldContainer = currentFieldSet;
+	fields = currentFieldSet.sortedFields;
+}
+
+SWFEditFields2: SWFEditFields {
+	fieldContainer = selectedForm;
+	fields = selectedForm.sortedFields;
+}
+
+SWFEditFields3: SWFEditFields {
+	fieldContainer = selectedForm;
+	fields = selectedForm.fieldsNotInFieldSet;
+}
+
+SubmitButton1: WOSubmitButton {
+	action = addFieldSet;
+	value = "Add a field set";
+	style = "width: 200px;";
+}
+
+SubmitButton2: WOSubmitButton {
+	action = removeFieldSet;
+	onClick = "return confirm('Ertu viss?')";
+	value = "-";
+}
+
+SubmitButton3: WOSubmitButton {
+	action = saveChanges;
+	value = "Save";
+}
+
+TextField2: WOTextField {
+	size = 40;
+	value = currentFieldSet.name;
+}

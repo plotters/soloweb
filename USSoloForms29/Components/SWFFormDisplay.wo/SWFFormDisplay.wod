@@ -1,0 +1,16 @@
+OLD_FORM_COND: WOConditional {
+	condition = selectedForm.fieldSets.@count;
+	negate = true;
+}
+
+NEW_FORM_COND: WOConditional {
+	condition = selectedForm.fieldSets.@count;
+}
+
+NEW_FORM_DISPLAY: SWFNewFormDisplay {
+	selectedForm = selectedForm;
+}
+
+OLD_FORM_DISPLAY: SWFOldFormDisplay {
+	selectedForm = selectedForm;
+}

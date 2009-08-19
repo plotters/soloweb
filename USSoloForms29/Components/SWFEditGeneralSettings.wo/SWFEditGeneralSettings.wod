@@ -1,0 +1,41 @@
+String2: WOString {
+	value = selectedForm.formID;
+}
+
+SubmitButton1: WOSubmitButton {
+	action = saveChanges;
+	value = "Save";
+}
+
+TextField1: WOTextField {
+	size = 40;
+	value = selectedForm.name;
+}
+
+TextField3: WOText {
+	value = selectedForm.registrationMessage;
+	cols = 60;
+	rows = 5;
+}
+
+TextField4: WOText {
+	value = selectedForm.requiredFieldEmptyString;
+	cols = 60;
+	rows = 5;
+}
+
+TextField5: WOText {
+	value = selectedForm.notifyEmailAddresses;
+	cols = 60;
+	rows = 5;
+}
+
+TextField6: WOTextField {
+	size = 40;
+	value = selectedForm.fromEmailAddress;
+}
+
+MAX_REGISTRATOIONS_FIELD : WOTextField {
+	value = selectedForm.maxRegistrations;
+	numberformat = "0";
+}

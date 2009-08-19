@@ -1,0 +1,73 @@
+{
+    attributes = (
+        {columnName = "REG_DATE"; name = date; prototypeName = time; }, 
+        {columnName = "FORM_ID"; name = formID; prototypeName = int; }, 
+        {
+            allowsNull = N; 
+            columnName = "REGISTRATION_ID"; 
+            name = registrationID; 
+            prototypeName = int; 
+        }
+    ); 
+    attributesUsedForLocking = (registrationID, formID, date); 
+    className = "is.us.soloweb.forms.data.SWFRegistration"; 
+    classProperties = (registrationID, form, formID, registrationFields, date); 
+    externalName = "SWF_REG"; 
+    fetchSpecificationDictionary = {}; 
+    name = SWFRegistration; 
+    primaryKeyAttributes = (registrationID); 
+    relationships = (
+        {
+            destination = SWFForm; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = formID; sourceAttribute = formID; }); 
+            name = form; 
+        }, 
+        {
+            deleteRule = EODeleteRuleCascade; 
+            destination = SWFRegistrationField; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = registrationID; sourceAttribute = registrationID; }); 
+            name = registrationFields; 
+            numberOfToManyFaultsToBatchFetch = 1000; 
+        }, 
+        {
+            deleteRule = EODeleteRuleCascade; 
+            destination = SWFRegistrationField; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = registrationID; sourceAttribute = registrationID; }); 
+            name = registrationFields1; 
+            numberOfToManyFaultsToBatchFetch = 1000; 
+        }, 
+        {
+            deleteRule = EODeleteRuleCascade; 
+            destination = SWFRegistrationField; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = registrationID; sourceAttribute = registrationID; }); 
+            name = registrationFields2; 
+            numberOfToManyFaultsToBatchFetch = 1000; 
+        }, 
+        {
+            deleteRule = EODeleteRuleCascade; 
+            destination = SWFRegistrationField; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = registrationID; sourceAttribute = registrationID; }); 
+            name = registrationFields3; 
+            numberOfToManyFaultsToBatchFetch = 1000; 
+        }, 
+        {
+            deleteRule = EODeleteRuleCascade; 
+            destination = SWFRegistrationField; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = registrationID; sourceAttribute = registrationID; }); 
+            name = registrationFields4; 
+            numberOfToManyFaultsToBatchFetch = 1000; 
+        }
+    ); 
+}

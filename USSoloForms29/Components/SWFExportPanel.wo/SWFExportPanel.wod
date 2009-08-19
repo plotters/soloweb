@@ -1,0 +1,55 @@
+Conditional1: WOConditional {
+	condition = fieldList.count;
+}
+
+Form1: WOForm {
+	multipleSubmit = true;
+}
+
+Form2: WOForm {
+	target = "_blank";
+}
+
+PopUpButton1: WOPopUpButton {
+	displayString = currentField.name;
+	item = currentField;
+	list = fieldList;
+	selection = selectedField;
+}
+
+PopUpButton2: WOPopUpButton {
+	displayString = currentEncoding;
+	item = currentEncoding;
+	list = encodingList;
+	selection = selectedEncoding;
+}
+
+Repetition1: WORepetition {
+	item = currentField;
+	list = exportFields;
+}
+
+SWAdminComponentWrapper1: SWAdminComponentWrapper {
+}
+
+String1: WOString {
+	value = currentField.name;
+}
+
+String2: WOString {
+	value = registrations.count;
+}
+
+SubmitButton1: WOSubmitButton {
+	action = addToExportSet;
+	value = "Add";
+}
+
+SubmitButton2: WOSubmitButton {
+	action = removeField;
+	value = "-";
+}
+
+SubmitButton3: WOSubmitButton {
+	action = registrationListAsText;
+}

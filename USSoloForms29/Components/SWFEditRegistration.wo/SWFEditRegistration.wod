@@ -1,0 +1,71 @@
+Conditional1: WOConditional {
+	condition = currentField.isRequired;
+}
+
+Conditional13: WOConditional {
+	condition = currentField.aboveText.length;
+}
+
+Conditional2: WOConditional {
+	condition = currentField.name.length;
+}
+
+Form1: WOForm {
+	enctype = "mutipart/form-data";
+}
+
+GenericContainer1: WOGenericContainer {
+	elementName = "TD";
+	valign = "TOP";
+}
+
+Repetition2: WORepetition {
+	item = currentField;
+	list = selectedRegistration.form.sortedFields;
+}
+
+SWFFieldDisplay1: SWFFieldDisplay {
+	currentField = currentField;
+	currentString = currentString;
+	currentData = currentData;
+}
+
+SWPrivilegeConditional1: SWPrivilegeConditional {
+	identifier = "canEditValue";
+	record = currentField;
+}
+
+SWPrivilegeConditional2: SWPrivilegeConditional {
+	identifier = "canEditValue";
+	negate = true;
+	record = currentField;
+}
+
+String1: WOString {
+	value = currentField.name;
+}
+
+String11: WOString {
+	escapeHTML = false;
+	value = currentField.explanatoryTextWithBreaks;
+}
+
+String2: WOString {
+	value = currentStringWithBreaks;
+	escapeHTML = false;
+}
+
+String3: WOString {
+	value = selectedRegistration.registrationID;
+}
+
+String4: WOString {
+	escapeHTML = false;
+	value = currentField.aboveTextWithBreaks;
+}
+
+SubmitButton2: WOSubmitButton {
+	action = saveChanges;
+	value = "Save changes";
+	accesskey = "s";
+}

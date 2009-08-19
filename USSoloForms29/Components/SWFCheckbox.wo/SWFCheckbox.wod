@@ -1,0 +1,3 @@
+CheckBox1: WOCheckBox {
+	checked = checked;
+}

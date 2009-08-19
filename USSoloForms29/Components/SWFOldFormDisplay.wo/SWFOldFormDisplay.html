@@ -1,0 +1,33 @@
+<webobject name="HAS_FORM_COND">
+	<webobject name="IS_NOT_IN_FORM_COND">
+		<webobject name="HAS_NOT_REGISTERED_COND">
+			<div class="swform">
+				<font color="#ff0000"><b><webobject name="ERROR_STRING" /></b></font>
+				<webobject name="FORM">
+					<table cellspacing="0" cellpadding="2" border="0">
+						<webobject name="FIELD_REPETITION">
+							<tr>
+								<td align="right" valign="top"><webobject name="IS_REQUIRED_CONDITIONAL"><font color="#ff0000">*</font>&nbsp;</webobject><webobject name="FIELD_NAME_STRING" />:</td>
+								<td valign="top"><webobject name="FIELD_DISPLAY" /></td>
+							</tr>
+						</webobject>
+						<tr>
+							<td>&nbsp;</td>
+							<td><webobject name="SUBMIT_BUTTON" /></td>
+						</tr>
+					</table>
+				</webobject>
+			</div>
+		</webobject>
+		<webobject name="HAS_REGISTERED_COND">
+			<br />
+			<p align="center">
+				<div class="swregistrationmessage">
+					<webobject name="REGISTRATION_MESSAGE_STRING" />
+				</div>
+			</p>
+			<br />
+		</webobject>
+	</webobject>
+	<webobject name="IS_IN_FORM_COND"><p>Form eru ekki birt i viðhaldskerfi.</p></webobject>
+</webobject>

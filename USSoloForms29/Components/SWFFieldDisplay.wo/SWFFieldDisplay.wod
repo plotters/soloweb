@@ -1,0 +1,87 @@
+CheckBox1: WOCheckBox {
+	checked = currentCheckboxChecked;
+}
+
+Conditional1: WOConditional {
+	condition = currentField.isBinaryFile;
+}
+
+Conditional10: WOConditional {
+	condition = currentField.isCheckbox;
+}
+
+Conditional11: WOConditional {
+	condition = currentField.isRadioButtonList;
+}
+
+Conditional19: WOConditional {
+	condition = currentField.isCheckboxList;
+}
+
+Conditional2: WOConditional {
+	condition = currentData.length;
+}
+
+Conditional7: WOConditional {
+	condition = currentField.isTextField;
+}
+
+Conditional8: WOConditional {
+	condition = currentField.isTextArea;
+}
+
+Conditional9: WOConditional {
+	condition = currentField.isPopUpMenu;
+}
+
+FileUpload1: WOFileUpload {
+	data = currentData;
+	filePath = currentString;
+}
+
+Hyperlink1: WOHyperlink {
+	action = binaryResponseForCurrentField;
+}
+
+PopUpButton1: WOPopUpButton {
+	item = currentValue;
+	list = currentField.valueList;
+	noSelectionString = currentField.noSelectionString;
+	selection = currentString;
+}
+
+RadioButtonList1: WORadioButtonList {
+	escapeHTML = false;
+	item = currentValue;
+	list = currentField.valueList;
+	selection = currentString;
+	suffix = "<BR>";
+}
+
+Repetition3: WORepetition {
+	item = currentValue;
+	list = currentField.valueList;
+}
+
+SWFCheckbox1: SWFCheckbox {
+	stringValue = currentString;
+}
+
+String1: WOString {
+	value = currentString;
+}
+
+String13: WOString {
+	value = currentValue;
+}
+
+Text1: WOText {
+	cols = currentField.size;
+	rows = currentField.rows;
+	value = currentString;
+}
+
+TextField1: WOTextField {
+	size = currentField.size;
+	value = currentString;
+}

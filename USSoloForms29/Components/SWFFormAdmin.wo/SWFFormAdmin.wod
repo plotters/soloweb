@@ -1,0 +1,5 @@
+SWAssetManagement1: SWAssetManagement {
+	editingComponentName = "SWFEditForm";
+	entityName = "SWFForm";
+	folderEntityName = "SWFFormFolder";
+}
