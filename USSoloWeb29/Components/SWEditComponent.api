@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wodefinitions>
+	<wo class="SWEditComponent" wocomponentcontent="false">
+
+		<binding name="selectedObject"/>
+
+		<validation message="'currentComponent' is a required binding">
+			<unbound name="selectedObject"/>
+		</validation>
+	</wo>
+</wodefinitions>

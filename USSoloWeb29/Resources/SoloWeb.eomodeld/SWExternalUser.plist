@@ -1,0 +1,59 @@
+{
+    attributes = (
+        {
+            columnName = "EMAIL_ADDRES"; 
+            name = emailAddress; 
+            prototypeName = "string_1000"; 
+        }, 
+        {
+            columnName = "NOTIFY_ON_NEW_COMMENTS"; 
+            name = notifyOnNewComments; 
+            prototypeName = int; 
+        }, 
+        {
+            columnName = "TWITTER_USERNAME"; 
+            name = twitterUsername; 
+            prototypeName = "string_1000"; 
+        }, 
+        {columnName = URL; name = url; prototypeName = "string_1000"; }, 
+        {allowsNull = N; columnName = "USER_ID"; name = userID; prototypeName = int; }, 
+        {columnName = USERNAME; name = username; prototypeName = "string_1000"; }, 
+        {columnName = "USER_PICTURE"; name = userPicture; prototypeName = blob; }, 
+        {columnName = UUID; name = uuid; prototypeName = "string_1000"; }
+    ); 
+    attributesUsedForLocking = (
+        emailAddress, 
+        notifyOnNewComments, 
+        twitterUsername, 
+        url, 
+        userID, 
+        username, 
+        userPicture, 
+        uuid
+    ); 
+    className = "is.us.soloweb.data.SWExternalUser"; 
+    classProperties = (
+        comments, 
+        emailAddress, 
+        notifyOnNewComments, 
+        twitterUsername, 
+        url, 
+        userID, 
+        username, 
+        userPicture, 
+        uuid
+    ); 
+    externalName = "SW_EXT_USER"; 
+    fetchSpecificationDictionary = {}; 
+    name = SWExternalUser; 
+    primaryKeyAttributes = (userID); 
+    relationships = (
+        {
+            destination = SWComment; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = userID; sourceAttribute = userID; }); 
+            name = comments; 
+        }
+    ); 
+}

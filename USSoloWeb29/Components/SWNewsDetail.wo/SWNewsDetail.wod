@@ -1,0 +1,216 @@
+DONT_ENCODE_BREAKS_CONDITIONAL: WOConditional {
+	condition = selectedNewsItem.shouldEncodeBreaks;
+	negate = true;
+}
+
+ENCODE_BREAKS_CONDITIONAL: WOConditional {
+	condition = selectedNewsItem.shouldEncodeBreaks;
+}
+
+IMAGE: SWImage {
+	document = selectedNewsItem.document;
+	hspace = "5";
+	vspace = "5";
+	align = currentComponent.customInfo.imageAlignment;
+}
+
+SOCIAL_FACEBOOK_LINK : AjaxSocialNetworkLink {
+	name = "facebook";
+	alt = "Skrá á Facebook";
+	title = selectedNewsItem.name;
+	url = moreURLIncludingDomain;
+}
+
+SOCIAL_DIGG_LINK : AjaxSocialNetworkLink {
+	name = "digg";
+	alt = "Skrá á Digg";
+	title = selectedNewsItem.name;
+	url = moreURLIncludingDomain;
+}
+
+SOCIAL_GOOGLE_LINK : AjaxSocialNetworkLink {
+	name = "google";
+	alt = "Skrá á Google Bookmarks";
+	title = selectedNewsItem.name;
+	url = moreURLIncludingDomain;
+}
+
+SOCIAL_DELICIOUS_LINK : AjaxSocialNetworkLink {
+	name = "delicious";
+	alt = "Skrá á Delicious";
+	title = selectedNewsItem.name;
+	url = moreURLIncludingDomain;
+}
+
+NAME_STRING: WOString {
+	value = selectedNewsItem.name;
+}
+
+COMMENT_DATE_STRING: WOString {
+	dateformat = "%d.%m.%Y";
+	value = selectedNewsItem.date;
+}
+
+TIME_STRING: WOString {
+        dateformat = "%H:%M";
+        value = selectedNewsItem.date;
+}
+
+TEXT_STRING: WOString {
+	escapeHTML = false;
+	value = selectedNewsItem.text;
+}
+
+TEXT_WITH_BREAKS_STRING: WOString {
+	escapeHTML = false;
+	value = selectedNewsItem.textWithBreaks;
+}
+
+COMMENTS_CONDITIONAL: WOConditional {
+	condition = comments.count;
+}
+
+NO_COMMENTS_CONDITIONAL: WOConditional {
+	condition = comments.count;
+	negate = true;
+}
+
+DATE_STRING: WOString {
+	formatter = timestampFormatter;
+	value = currentComment.date;
+}
+
+FORM: WOForm {}
+
+COMMENT_LINK: WOGenericContainer {
+	elementName = "a";
+	omitTags = currentComment.noUrl;
+	href = currentComment.fixedUrl;
+	target = "_blank";
+}
+
+COMMENT_REPETITION: WORepetition {
+	list = comments;
+	item = currentComment;
+}
+
+CURRENT_NAME_STRING: WOString {
+	value = currentComment.name;
+	valueWhenEmpty = "(Ónafngreind rola)";
+}
+
+CURRENT_COMMENT_TEXT_STRING: WOString {
+	escapeHTML = false;
+	value = currentComment.textForDisplay;
+}
+
+SUBMIT_BUTTON: AjaxSubmitButton {
+	value = @ls.commentsSubmitButtonLabel;
+	action = publishComment;
+	class = "commentSubmitButton";
+	id = "commentSubmitButton";
+	updateContainerID = "updateContainer";
+	onClick = "this.disabled=true";
+	onComplete = "this.disabled=false";
+}
+
+COMMENT_TIME_STRING: WOString {
+	dateformat = "%H:%M";
+	value = currentComment.date;
+}
+
+TEXT_FIELD: WOText {
+	id = "comments";
+	rows = 5;
+	value = text;
+}
+
+NAME_FIELD: WOTextField {
+	id = "name";
+	value = userName;
+}
+
+URL_FIELD: WOTextField {
+	id = "url";
+	value = userUrl;
+}
+
+EMAIL_ADDRESS_FIELD: WOTextField {
+	id = "emailAddress";
+	value = userEmailAddress;
+}
+
+NOTIFY_CHECKBOX: WOCheckBox {
+	id = "notifyOnNewComments";
+	checked = userNotifyOnNewComments;
+	style = "width: auto";
+}
+
+SPAM_TEXT_FIELD : WOTextField {
+	value = hatesSpamString;
+	id = "spamStringField";
+	size = exepectedSpamAnswer.length;
+	style = "width: 30px";
+}
+
+ERROR_CONDITIONAL : WOConditional {
+	condition = errorMessage.length;
+}
+
+ERROR_STRING : WOString {
+	value = errorMessage;
+}
+
+UPDATE_CONTAINER : AjaxUpdateContainer {
+	id = "updateContainer";
+}
+
+COMMENT_DIV: AjaxHighlight {
+	class = "comment";
+	elementName = "div";
+	value = currentComment;
+}
+
+ALLOW_COMMENTS_CONDITIONAL: WOConditional {
+	condition = currentComponent.customInfo.allowComments;
+}
+
+LOC_COMMENTS_HEADER : WOString {
+	value = @ls.commentsHeader;
+}
+
+LOC_ADD_COMMENT_HEADER : WOString {
+	value = @ls.addCommentHeader;
+}
+
+LOC_COMMENTS_NAME : WOString {
+	value = @ls.commentsName;
+}
+
+LOC_COMMENTS_URL : WOString {
+	value = @ls.commentsURL;
+}
+
+LOC_COMMENTS_EMAIL_ADDRESS : WOString {
+	value = @ls.commentsEmailAddress;
+}
+
+LOC_COMMENTS_EMAIL_NOTIFICATION : WOString {
+	value = @ls.commentsEmailNotification;
+}
+
+LOC_COMMENTS_DO_YOU_HATE_SPAM : WOString {
+	value = @ls.commentsDoYouHateSpam;
+}
+
+LOC_COMMENTS_NO_COMMENTS : WOString {
+	value = @ls.commentsNoComments;
+}
+
+LOC_COMMENTS_TEXT : WOString {
+	value = @ls.commentsText;
+}
+
+SPAM_STRING : WOString {
+	value = exepectedSpamAnswer;
+}

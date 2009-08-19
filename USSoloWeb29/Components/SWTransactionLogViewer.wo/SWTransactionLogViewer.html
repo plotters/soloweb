@@ -1,0 +1,32 @@
+<webobject name="WRAPPER">
+		<webobject name="FORM">
+	<fieldset>
+		<legend>Hreyfingaskrá</legend>
+			<label>Dagsetning:</label> <webobject name="DATE_FIELD" /> <webobject name="SUBMIT_BUTTON" /><br />
+		</fieldset>
+		</webobject>
+		<webobject name="HAS_TRANSACTIONS_CONDITIONAL">
+      <table cellpadding="0" cellspacing="0">
+	      <tr>
+	      	<th>Tími</th>
+		      <th>Aðgerð</th>
+		      <th>Tegund</th>
+		      <th>Númer hlutar</th>
+		      <th>Notandi</th>
+		      <!--  th>Innra heiti hlutar</th-->
+		      <th>&nbsp;</th>
+	      </tr>
+	      <webobject name="USER_TRANSACTIONS_REPETITION">
+		      <tr>
+			      <td><webobject name="TRAN_DATE" /></td>
+			      <td><webobject name="TRAN_TYPE_STRING" /></td>
+			      <td><webobject name="TRAN_ENTITY_DESCRIPTION" /></td>
+			      <td><webobject name="TRAN_OBJECT_NAME" /></td>
+			      <td><webobject name="TRAN_USER_STRING" /></td>
+			      <!--td><webobject name="TRAN_ENTITY_NAME_STRING" /></td-->
+			      <td><webobject name="TRAN_OBJECT_LINK">Skoða breytingar...</webobject></td>
+		      </tr>
+	      </webobject>
+      </table>
+      </webobject>
+</webobject>

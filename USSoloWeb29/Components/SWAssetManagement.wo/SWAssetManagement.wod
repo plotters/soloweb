@@ -1,0 +1,209 @@
+WRAPPER: SWAdminComponentWrapper {}
+
+HAS_DOCUMENTS_CONDITIONAL: WOConditional {
+	condition = selectedFolder.sortedDocuments.count;
+}
+
+CREATE_ROOT_FOLDER_CONDITIONAL: WOConditional {
+	condition = session.solowebUser.isAdministrator;
+}
+
+CANCEL_CONDITIONAL: WOConditional {
+	condition = record;
+}
+
+HAS_RECORD_CONDITIONAL: WOConditional {
+	condition = record;
+}
+
+OBJECT_SELECTED_CONDITIONAL: WOConditional {
+	condition = selectedObject;
+}
+
+FORM: WOForm {
+	multipleSubmit = true;
+}
+
+TR_ELEMENT: WOGenericContainer {
+	elementName = "tr";
+	class = rowClass;
+}
+
+CREATE_SUBFOLDER_LINK: WOHyperlink {
+	action = createSubFolder;
+	class = "swcreateButton";
+}
+
+DELETE_ASSET_LINK: WOHyperlink {
+	action = deleteAsset;
+	onClick = session.@cs.deleteDocumentWarning;
+	class = "swdeleteButton"; 
+}
+
+CANCEL_LINK: WOHyperlink {
+	action = returnBack;
+}
+
+CREATE_ROOT_FOLDER_LINK: WOHyperlink {
+	action = createRootFolder;
+	class = "swcreateButton";
+}
+
+LINK_ASSET_HYPERLINK: WOHyperlink {
+	action = selectObjectAndReturn;
+}
+
+/*
+SELECT_ASSET_HYPERLINK: SWObjectHyperlink {
+	object = currentAsset;
+	disabled = isSelected;
+}
+*/
+
+SELECT_ASSET_HYPERLINK: WOHyperlink {
+	action = selectObject;
+	disabled = isSelected;
+}
+
+CREATE_ASSET_LINK: WOHyperlink {
+	action = createAsset;
+	class = "swcreateButton";
+}
+
+DELETE_FOLDER_LINK: WOHyperlink {
+	action = deleteSelectedFolder;
+	onClick = session.@cs.deleteDocumentFolderMessageString;
+	class = "swdeleteButton";
+}
+
+TAB_1_KEY_COND: WOKeyValueConditional {
+	key = "selectedTab";
+	value = documentsTabName;
+}
+
+KeyValueConditional2: WOKeyValueConditional {
+	key = "selectedTab";
+	value = privilegesTabName;
+}
+
+ASSET_REPETITION: WORepetition {
+	item = currentObject;
+	list = selectedFolder.sortedDocuments;
+}
+
+TRANSFER_FOLDER_LINK: SWTransferHyperlink {
+	componentToReturn = context.page;
+	record = selectedFolder;
+	transferComponentName = "SWTransferFolder";
+}
+
+TRANSFER_ASSET_LINK: SWTransferHyperlink {
+	componentToReturn = context.page;
+	record = currentObject;
+	transferComponentName = "SWTransferFolder";
+}
+
+SW_ASSIGN_PRIVILEGES: SWAssignPrivileges {
+	privilegePairs = privilegePairs;
+	record = selectedFolder;
+}
+
+FOLDER_LIST: SWFolderList {
+	entityName = folderEntityName;
+	selectedFolder = selectedFolder;
+	disabledFolder = selectedFolder;
+	actionName = "selectFolder";
+}
+
+TAB_PANEL: USTabPanel {
+	selectedTab = selectedTab;
+	submitActionName = "saveChanges";
+	tabs = tabs;
+}
+
+HEADER_DATE_STRING: WOString {
+	value = session.@ls.newsDateTableHeader;
+}
+
+TRANSFER_FOLDER_STRING: WOString {
+	value = session.@ls.transferDocumentFolder;
+}
+
+DELETE_FOLDER_STRING: WOString {
+	value = session.@ls.deleteDocumentFolder;
+}
+
+HEADER_NAME_STRING: WOString {
+	value = session.@ls.documentNameTableHeader;
+}
+
+HEADER_SIZE_STRING: WOString {
+	value = session.@ls.documentSizeTableHeader;
+}
+
+String14: WOString {
+	value = session.@ls.documentTotalSizeTableFooter;
+}
+
+FOLDER_ID_STRING: WOString {
+	value = selectedFolder.folderID;
+}
+
+CANCEL_STRING: WOString {
+	value = session.@ls.cancelDocumentSelection;
+}
+
+SIZE_STRING: WOString {
+	value = currentObject.size;
+}
+
+NAME_STRING: WOString {
+	value = shortName;
+	valueWhenEmpty = session.@ls.untitledObjectString;
+}
+
+FOLDER_SIZE_STRING: WOString {
+	value = selectedFolder.size;
+}
+
+DATE_STRING: WOString {
+	value = currentObject.date;
+	dateformat = "%d.%m.%Y";
+}
+
+CREATE_ROOT_FOLDER_STRING: WOString {
+	value = session.@ls.createDocumentFolderInRoot;
+}
+
+FOLDER_NAME_STRING: AjaxInPlaceEditor {
+	value = selectedFolder.name;
+	valueWhenEmpty = "Untitled folder";
+	elementName = "span";
+}
+
+CREATE_ASSET_STRING: WOString {
+	value = session.@ls.createNewDocument;
+}
+
+CREATE_SUBFOLDER_STRING: WOString {
+	value = session.@ls.createDocumentSubFolder;
+}
+
+EDIT_SWITCH_COMPONENT: WOSwitchComponent {
+	WOComponentName = editingComponentName;
+	selectedObject = selectedObject;
+}
+
+SELECTED_FOLDER_CONDITIONAL: WOConditional {
+	condition = selectedFolder;
+}
+
+SEARCH_FORM : WOForm {}
+
+SEARCH_FIELD : WOTextField {
+	value = searchString;
+}
+
+SEARCH_BUTTON : WOSubmitButton {
+	action = search;
+}

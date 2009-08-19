@@ -1,0 +1,41 @@
+WRAPPER: SWAdminComponentWrapper {}
+
+FORM : WOForm {}
+
+USER_REPETITION: WORepetition {
+	item = currentObject;
+	list = allUsers;
+}
+
+GROUP_REPETITION: WORepetition {
+	item = currentObject;
+	list = allGroups;
+}
+
+COMPONENT_CONTENT: WOComponentContent {}
+
+CREATE_GROUP_LINK: WOHyperlink {
+	action = createGroup;
+	class = "swcreateButton";
+}
+
+CREATE_USER_LINK: WOHyperlink {
+	action = createUser;
+	class = "swcreateButton";
+}
+
+CREATE_USER_STRING : WOString {
+	value = session.@ls.ugCreateUser;
+}
+
+CREATE_GROUP_STRING : WOString {
+	value = session.@ls.ugCreateGroup;
+}
+
+OBJECT_NAME_STRING : WOString {
+	value = currentObject.name;
+}
+
+SELECT_OBJECT_LINK : SWObjectHyperlink {
+	object = currentObject;
+}

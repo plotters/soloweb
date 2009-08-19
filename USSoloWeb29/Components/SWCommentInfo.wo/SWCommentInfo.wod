@@ -1,0 +1,19 @@
+COUNT_CONDITIONAL: WOConditional {
+	condition = allComments.count;
+}
+
+COUNT_STRING: WOString {
+	value = allComments.count;
+}
+
+NAME_STRING: WOString {
+	value = lastComment.name;
+}
+
+LOC_COMMENTS : WOString {
+	value = @ls.comments;
+}
+
+LOC_LAST_COMMENTER : WOString {
+	value = @ls.lastCommenter;
+}

@@ -1,0 +1,28 @@
+SW_COMPONENT
+- pictureID
++ documentID
+
+SW_DOCUMENT
+- filename
++ pictureID
+
+SW_DOCUMENT_TYPE
+- pictureID
++ documentID
+
+SW_NEWS_ITEM
+- pictureID
++ documentID
+- date
++ sw_date
+
+SW_PAGE
+pictureOneID	documentOneID
+pictureTwoID	documentTwoID
+
+SW_USER
+pictureID		documentID
+- comment
+
+SW_HIT
+DATE			HIT_DATE

@@ -1,0 +1,63 @@
+{
+    attributes = (
+        {
+            allowsNull = Y; 
+            columnName = ""; 
+            externalType = image; 
+            name = blob; 
+            valueClassName = NSData; 
+        }, 
+        {
+            adaptorValueConversionMethodName = archiveData; 
+            allowsNull = Y; 
+            columnName = ""; 
+            externalType = varchar; 
+            factoryMethodArgumentType = EOFactoryMethodArgumentIsNSString; 
+            name = dictionary; 
+            valueClassName = SWDictionary; 
+            valueFactoryMethodName = "objectWithArchiveData:"; 
+            width = 8000; 
+        }, 
+        {
+            allowsNull = Y; 
+            columnName = ""; 
+            externalType = int; 
+            name = int; 
+            valueClassName = NSNumber; 
+            valueType = i; 
+        }, 
+        {columnName = ""; name = pk; }, 
+        {
+            allowsNull = Y; 
+            columnName = ""; 
+            externalType = varchar; 
+            name = "string_1000"; 
+            valueClassName = NSString; 
+            width = 8000; 
+        }, 
+        {
+            allowsNull = Y; 
+            columnName = ""; 
+            externalType = text; 
+            name = "string_1000000"; 
+            valueClassName = NSString; 
+            width = 1000000; 
+        }, 
+        {
+            allowsNull = Y; 
+            columnName = ""; 
+            externalType = datetime; 
+            name = time; 
+            valueClassName = NSCalendarDate; 
+            valueType = T; 
+        }
+    ); 
+    attributesUsedForLocking = (blob, dictionary, int, pk, "string_1000", time); 
+    className = EOGenericRecord; 
+    classProperties = (blob, dictionary, int, "string_1000", "string_1000000", time); 
+    externalName = "EO_PROTOTYPES"; 
+    fetchSpecificationDictionary = {}; 
+    isAbstractEntity = Y; 
+    name = EOJDBCPrototypes; 
+    primaryKeyAttributes = (pk); 
+}

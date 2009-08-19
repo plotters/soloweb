@@ -1,0 +1,42 @@
+ASSET_FOLDER_TREE: AjaxUpdateContainer {
+	id = "assetFolderTree";
+	class = "assetFolderTree";
+}
+
+TOGGLE_SUBFOLDER_LINK: AjaxUpdateLink {
+	action = toggleDisplay;
+	disabled = hasNoSubFolders;
+	updateContainerID = "assetFolderTree";
+}
+
+SELECT_FOLDER_LINK: WOHyperlink {
+	action = selectFolder;
+	disabled = isDisabled;
+}
+
+TOGGLE_IMAGE: WOImage {
+	src = toggleString;
+	escapeHTML = false;
+	width = "9";
+}
+
+FOLDER_IMAGE: WOImage {
+	border = 0;
+	filename = "mappa.gif";
+}
+
+NESTED_LIST: USNestedList {
+	sublist = subFolders;
+	list = rootFolders;
+	item = currentFolder;
+	index = currentIndex;
+}
+ 
+String1: WOString {
+	value = currentFolder.name;
+	valueWhenEmpty = session.@ls.untitledObjectString;
+}
+
+ITEM_COUNT_STRING : WOString {
+	value = currentFolder.sortedDocuments.count;
+}

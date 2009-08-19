@@ -1,0 +1,152 @@
+WRAPPER : SWAdminUsersAndGroups {}
+
+CheckBox1: WOCheckBox {
+	checked = selectedObject.isAdministrator;
+}
+ 
+GenericContainer2: WOGenericContainer {
+	class = rowClass;
+	elementName = "TR";
+}
+
+DELETE_LINK: WOHyperlink {
+	action = deleteObject;
+	onclick = session.@cs.usrDeleteWarning;
+	class = "swdeleteButton";
+}
+
+REMOVE_FROM_GROUP_LINK: WOHyperlink {
+	action = removeGroupFromUser;
+	onclick = session.@cs.usrRemoveFromGroupWarning;
+}
+
+Hyperlink4: SWObjectHyperlink {
+	object = currentUserGroup;
+}
+
+Image1: WOImage {
+	filename = "group.gif";
+	framework = application.sw.frameworkBundleName;
+}
+
+PasswordField1: WOPasswordField {
+	value = selectedObject.password;
+	size = 30;
+}
+
+PopUpButton1: WOPopUpButton {
+	displayString = currentGroup.name;
+	item = currentGroup;
+	list = selectedObject.groupsNotIn;
+	selection = selectedGroup;
+	noSelectionString = session.@ls.usrSelectGroupString;
+}
+
+PopUpButton2: WOPopUpButton {
+	displayString = currentSite.name;
+	item = currentSite;
+	list = allSites;
+	noSelectionString = session.@ls.usrSelectSiteString;
+	selection = selectedObject.defaultSite;
+}
+
+Repetition3: WORepetition {
+	index = tableIndex;
+	item = currentUserGroup;
+	list = selectedObject.groups;
+}
+
+String1: WOString {
+	value = currentUserGroup.name;
+	valueWhenEmpty = session.@ls.untitledObjectString;
+}
+
+String10: WOString {
+	value = session.@ls.usrGroups;
+}
+
+DELETE_STRING: WOString {
+	value = session.@ls.usrDelete;
+}
+
+String2: WOString {
+	value = session.@ls.usrName;
+}
+
+String3: WOString {
+	value = session.@ls.usrUsername;
+}
+
+String4: WOString {
+	value = session.@ls.usrPassword;
+}
+
+String5: WOString {
+	value = session.@ls.usrPhone;
+}
+
+String6: WOString {
+	value = session.@ls.usrDefaultSite;
+}
+
+String7: WOString {
+	value = session.@ls.usrComment;
+}
+
+String8: WOString {
+	value = session.@ls.usrPicture;
+}
+
+String9: WOString {
+	value = session.@ls.usrUnlimited;
+}
+
+SubmitButton1: WOSubmitButton {
+	action = addGroupToUser;
+	value = session.@ls.usrAddUserToGroupButtonTitle;
+}
+
+SUBMIT_BUTTON: WOSubmitButton {
+	action = saveChanges;
+	value = session.@ls.usrSaveButtonTitle;
+}
+
+TextField1: WOTextField {
+	value = selectedObject.name;
+	size = 30;
+}
+
+TextField3: WOTextField {
+	value = selectedObject.username;
+	size = 30;
+}
+
+HAS_OBJECT_CONDITIONAL: WOConditional {
+	condition = selectedObject;
+}
+
+USER_PRIVILEGES_REPETITION : WORepetition {
+	item = currentPrivilege;
+	list = selectedObject.accessPrivileges;
+}
+
+GROUP_PRIVILEGES_REPETITION : WORepetition {
+	item = currentPrivilege;
+	list = selectedObject.groupPrivileges;
+}
+
+SW_OBJECT_HYPERLINK : SWObjectHyperlink {
+	object = currentPrivilege.record;
+}
+
+CURRENT_OBJECT_NAME_STRING : WOString {
+	value = currentPrivilege.record.toString;
+}
+
+CURRENT_GROUP_NAME : WOString {
+	value = currentPrivilege.group.name;
+}
+
+OBJECT_TYPE_STRING : WOString {
+	value = currentPrivilege.localizedDescriptionOfEntity;
+}

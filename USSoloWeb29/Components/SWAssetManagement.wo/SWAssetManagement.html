@@ -1,0 +1,77 @@
+<webobject name="WRAPPER">
+	<div id="swleftColumn">
+		<div class="swmenu">
+			<webobject name="CANCEL_CONDITIONAL"><webobject name="CANCEL_LINK"><webobject name="CANCEL_STRING" /></webobject></webobject>
+			<webobject name="CREATE_ROOT_FOLDER_CONDITIONAL"><webobject name="CREATE_ROOT_FOLDER_LINK"><webobject name="CREATE_ROOT_FOLDER_STRING" /></webobject></webobject>
+		</div>
+		
+		<webobject name="SEARCH_FORM">
+			<webobject name="SEARCH_FIELD" /><webobject name="SEARCH_BUTTON" />
+		</webobject>
+		<div id="swfilebrowser">
+			<webobject name="FOLDER_LIST" />
+		</div>
+	
+		<br style="clear: both" />
+
+		<webobject name="SELECTED_FOLDER_CONDITIONAL">
+			<div class="swMenu">
+				<webobject name="CREATE_ASSET_LINK"><webobject name="CREATE_ASSET_STRING" /></webobject>
+				<webobject name="CREATE_SUBFOLDER_LINK"><webobject name="CREATE_SUBFOLDER_STRING" /></webobject>
+				<webobject name="TRANSFER_FOLDER_LINK"><webobject name="TRANSFER_FOLDER_STRING" /></webobject>
+				<webobject name="DELETE_FOLDER_LINK"><webobject name="DELETE_FOLDER_STRING" /></webobject>
+			</div>
+
+			<div id="swobjectList">
+				<webobject name="FORM">
+				<webobject name="TAB_PANEL">
+				<webobject name="TAB_1_KEY_COND">
+				<b><webobject name="FOLDER_NAME_STRING" /></b> <i>(<webobject name="FOLDER_ID_STRING" />)</i><br />
+				
+				<br />
+				<webobject name="HAS_DOCUMENTS_CONDITIONAL">
+	
+				<table cellpadding="0" cellspacing="0">
+					<tr>
+						<webobject name="HAS_RECORD_CONDITIONAL"><th>&nbsp;</th></webobject>
+						<th><webobject name="HEADER_NAME_STRING" /></th>
+						<th><webobject name="HEADER_DATE_STRING" /></th>
+						<th><webobject name="HEADER_SIZE_STRING" /></th>
+						<th>&nbsp;</th>
+						<th>&nbsp;</th>
+					</tr>
+					<webobject name="ASSET_REPETITION">
+						<webobject name="TR_ELEMENT">
+							<webobject name="HAS_RECORD_CONDITIONAL"><td><webobject name="LINK_ASSET_HYPERLINK">[V]</webobject></td></webobject>
+							<td><webobject name="SELECT_ASSET_HYPERLINK"><webobject name="NAME_STRING" /></webobject></td>
+							<td><webobject name="DATE_STRING" /></td>
+							<td><webobject name="SIZE_STRING" /></td>
+							<td><webobject name="TRANSFER_ASSET_LINK">[F]</webobject></td>
+							<td><webobject name="DELETE_ASSET_LINK">[-]</webobject></td>
+						</webobject>
+					</webobject>
+					<tr>
+						<webobject name="HAS_RECORD_CONDITIONAL"><td>&nbsp;</td></webobject>
+						<td align="RIGHT"><b><webobject name="String14" />:</b></td>
+						<td>&nbsp;</td>
+						<td><b><webobject name="FOLDER_SIZE_STRING" />k</b></td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+				</table>
+			</webobject>
+		</webobject>
+		<webobject name="KeyValueConditional2">
+			<webobject name="SW_ASSIGN_PRIVILEGES" />
+		</webobject>
+	</webobject>
+</webobject>
+</div>
+</webobject>
+</div>
+  <webobject name="OBJECT_SELECTED_CONDITIONAL">
+  	<div id="swrightColumn">
+    <webobject name="EDIT_SWITCH_COMPONENT" />
+    </div>
+  </webobject>
+</webobject>

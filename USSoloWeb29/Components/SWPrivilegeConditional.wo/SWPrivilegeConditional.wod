@@ -1,0 +1,6 @@
+CONTENT: WOComponentContent {}
+
+CONDITIONAL: WOConditional {
+	condition = hasPrivilege;
+	negate = ^negate;
+}

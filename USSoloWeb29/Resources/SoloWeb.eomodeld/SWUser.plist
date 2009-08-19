@@ -1,0 +1,68 @@
+{
+    attributes = (
+        {columnName = "DEFAULT_SITE_ID"; name = defaultSiteID; prototypeName = int; }, 
+        {
+            columnName = "IS_ADMINISTRATOR"; 
+            name = isAdministrator; 
+            prototypeName = int; 
+        }, 
+        {columnName = NAME; name = name; prototypeName = "string_1000"; }, 
+        {columnName = PASSWORD; name = password; prototypeName = "string_1000"; }, 
+        {allowsNull = N; columnName = "USER_ID"; name = userID; prototypeName = int; }, 
+        {
+            columnName = "EMAIL_ADDRESS"; 
+            name = username; 
+            prototypeName = "string_1000"; 
+        }
+    ); 
+    attributesUsedForLocking = (defaultSiteID, isAdministrator, name, password, userID, username); 
+    className = "is.us.soloweb.data.SWUser"; 
+    classProperties = (
+        accessPrivileges, 
+        defaultSite, 
+        defaultSiteID, 
+        groups, 
+        isAdministrator, 
+        name, 
+        password, 
+        userID, 
+        username
+    ); 
+    externalName = "SW_USER"; 
+    fetchSpecificationDictionary = {}; 
+    name = SWUser; 
+    primaryKeyAttributes = (userID); 
+    relationships = (
+        {
+            deleteRule = EODeleteRuleCascade; 
+            destination = SWAccessPrivilege; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = userID; sourceAttribute = userID; }); 
+            name = accessPrivileges; 
+        }, 
+        {
+            destination = SWSite; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = siteID; sourceAttribute = defaultSiteID; }); 
+            name = defaultSite; 
+        }, 
+        {
+            definition = "sWGroupSWUsers.sWGroup"; 
+            name = groups; 
+            userInfo = {modificationDate = "2001-06-03 19:53:43 +0000"; }; 
+        }, 
+        {
+            deleteRule = EODeleteRuleCascade; 
+            destination = SWGroupSWUser; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = userID; sourceAttribute = userID; }); 
+            name = sWGroupSWUsers; 
+            propagatesPrimaryKey = Y; 
+            userInfo = {modificationDate = "2001-06-03 19:53:43 +0000"; }; 
+        }
+    ); 
+    userInfo = {modificationDate = "2001-06-03 19:53:43 +0000"; }; 
+}

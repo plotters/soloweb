@@ -1,0 +1,83 @@
+{
+    attributes = (
+        {
+            allowsNull = N; 
+            columnName = "COMPONENT_ID"; 
+            name = componentID; 
+            prototypeName = int; 
+        }, 
+        {
+            columnName = "CUSTOM_INFO"; 
+            name = customInfoString; 
+            prototypeName = "string_1000"; 
+        }, 
+        {columnName = "DOCUMENT_ID"; name = documentID; prototypeName = int; }, 
+        {columnName = "ENCODE_BREAKS"; name = encodeBreaks; prototypeName = int; }, 
+        {columnName = "PAGE_ID"; name = pageID; prototypeName = int; }, 
+        {columnName = "PICTURE_ID"; name = pictureID; prototypeName = int; }, 
+        {columnName = PUBLISHED; name = published; prototypeName = int; }, 
+        {columnName = "SORT_NUMBER"; name = sortNumber; prototypeName = int; }, 
+        {
+            columnName = "TEMPLATE_NAME"; 
+            name = templateName; 
+            prototypeName = "string_1000"; 
+        }, 
+        {columnName = "TEXT_ONE"; name = textOne; prototypeName = "string_1000"; }, 
+        {columnName = "TEXT_TWO"; name = textTwo; prototypeName = "string_1000000"; }, 
+        {columnName = "TIME_IN"; name = timeIn; prototypeName = time; }, 
+        {columnName = "TIME_OUT"; name = timeOut; prototypeName = time; }
+    ); 
+    attributesUsedForLocking = (
+        componentID, 
+        documentID, 
+        encodeBreaks, 
+        pageID, 
+        pictureID, 
+        published, 
+        sortNumber, 
+        templateName, 
+        textOne, 
+        timeIn, 
+        timeOut
+    ); 
+    className = "is.us.soloweb.data.SWComponent"; 
+    classProperties = (
+        componentID, 
+        customInfoString, 
+        document, 
+        documentID, 
+        encodeBreaks, 
+        page, 
+        pageID, 
+        pictureID, 
+        published, 
+        sortNumber, 
+        templateName, 
+        textOne, 
+        textTwo, 
+        timeIn, 
+        timeOut
+    ); 
+    externalName = "SW_COMPONENT"; 
+    fetchSpecificationDictionary = {}; 
+    name = SWComponent; 
+    primaryKeyAttributes = (componentID); 
+    relationships = (
+        {
+            destination = SWDocument; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = documentID; sourceAttribute = documentID; }); 
+            name = document; 
+        }, 
+        {
+            destination = SWPage; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = pageID; sourceAttribute = pageID; }); 
+            name = page; 
+            userInfo = {modificationDate = "2001-06-03 19:53:43 +0000"; }; 
+        }
+    ); 
+    userInfo = {modificationDate = "2001-06-03 19:53:43 +0000"; }; 
+}

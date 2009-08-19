@@ -1,0 +1,3 @@
+VERSION_STRING : WOString {
+	value = application.sw.solowebVersion;
+}

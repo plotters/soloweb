@@ -1,0 +1,115 @@
+AccessibleCheckBox3: WOCheckBox {
+	checked = selectedObject.accessible;
+}
+
+NameField: WOTextField {
+	value = selectedObject.name;
+	size = 30;
+}
+
+NamePrefixField: WOTextField {
+	value = selectedObject.namePrefix; 	
+	size = 30;
+}
+
+PasswordField3: WOTextField {
+	value = selectedObject.password; 	
+	size = 30;
+}
+
+PublishCheckbox3: WOCheckBox {
+	checked = selectedObject.published;
+}
+
+RedirectToField: WOTextField {
+	value = selectedObject.externalURL; 	
+	size = 30;
+}
+
+RedirectToField2: WOTextField {
+	size = 30;
+	value = selectedObject.look; 	
+}
+
+SWDateField5: USDateAndTimeField {
+	record = selectedObject;
+	key = "timeOut";
+}
+
+SWDateField6: USDateAndTimeField {
+	record = selectedObject;
+	key = "timeIn";
+}
+
+LOC_PAGENAME: WOString {
+	value = session.@ls.pageName;
+}
+
+String16: WOString {
+	value = session.@ls.pageDescription;
+}
+
+String2: WOString {
+	value = session.@ls.linkingName;
+}
+
+String29: WOString {
+	value = session.@ls.pageDisplayOnSite;
+}
+
+String3: WOString {
+	value = session.@ls.namePrefix;
+}
+
+String30: WOString {
+	value = session.@ls.pageTimeOut;
+}
+
+String31: WOString {
+	value = session.@ls.pageTimeIn;
+}
+
+String32: WOString {
+	value = session.@ls.pagePassword;
+}
+
+String33: WOString {
+	value = session.@ls.pagePublishingOptions;
+}
+
+String4: WOString {
+	value = session.@ls.redirectTo;
+}
+
+String5: WOString {
+	value = session.@ls.customLook;
+}
+
+LOC_GENERAL_HEADING: WOString {
+	value = session.@ls.pageGeneral;
+}
+
+String7: WOString {
+	value = session.@ls.pageAccessible;
+}
+
+String8: WOString {
+	value = session.@ls.pageKeywords;
+}
+
+SymbolField: WOTextField {
+	size = 30;
+	value = selectedObject.symbol;
+}
+
+Text3: WOText {
+	value = selectedObject.keywords;
+	rows = 10;
+	cols = 40;
+}
+
+Text4: WOText {
+	value = selectedObject.text;
+	rows = 10;
+	cols = 40;
+}

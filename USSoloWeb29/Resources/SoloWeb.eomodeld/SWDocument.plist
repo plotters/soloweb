@@ -1,0 +1,60 @@
+{
+    attributes = (
+        {columnName = "FILE_FOLDER_ID"; name = documentFolderID; prototypeName = int; }, 
+        {
+            allowsNull = N; 
+            columnName = "DOCUMENT_ID"; 
+            name = documentID; 
+            prototypeName = int; 
+        }, 
+        {columnName = "DOCUMENT_TYPE_ID"; name = documentTypeID; prototypeName = int; }, 
+        {columnName = EXTENSION; name = extension; prototypeName = "string_1000"; }, 
+        {columnName = "MIME_TYPE"; name = mimeType; prototypeName = "string_1000"; }, 
+        {columnName = NAME; name = name; prototypeName = "string_1000"; }, 
+        {columnName = "PICTURE_ID"; name = pictureID; prototypeName = int; }, 
+        {columnName = TEXT; name = text; prototypeName = "string_1000000"; }
+    ); 
+    attributesUsedForLocking = (
+        documentFolderID, 
+        documentID, 
+        documentTypeID, 
+        extension, 
+        mimeType, 
+        name, 
+        pictureID, 
+        text
+    ); 
+    className = "is.us.soloweb.data.SWDocument"; 
+    classProperties = (
+        documentFolderID, 
+        documentID, 
+        documentType, 
+        documentTypeID, 
+        extension, 
+        folder, 
+        mimeType, 
+        name, 
+        pictureID, 
+        text
+    ); 
+    externalName = "SW_DOCUMENT"; 
+    fetchSpecificationDictionary = {}; 
+    name = SWDocument; 
+    primaryKeyAttributes = (documentID); 
+    relationships = (
+        {
+            destination = SWDocumentType; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = documentTypeID; sourceAttribute = documentTypeID; }); 
+            name = documentType; 
+        }, 
+        {
+            destination = SWDocumentFolder; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = folderID; sourceAttribute = documentFolderID; }); 
+            name = folder; 
+        }
+    ); 
+}

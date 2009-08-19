@@ -1,0 +1,18 @@
+DETAILS_COLLAPSE: WOCollapsibleComponentContent {
+	closedLabel = "Click here for detailed error description...";
+	openedLabel = "Click to collapse";
+}
+
+LOGIN_LINK: WOHyperlink {
+	directActionName = "login";
+}
+
+ERROR_STRING: WOString {
+	escapeHTML = false;
+	value = errorMessage;
+}
+
+DETAIL_STRING: WOString {
+	escapeHTML = false;
+	value = errorDetails;
+}

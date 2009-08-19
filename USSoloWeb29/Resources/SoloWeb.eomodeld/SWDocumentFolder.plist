@@ -1,0 +1,57 @@
+{
+    attributes = (
+        {
+            allowsNull = N; 
+            columnName = "FILE_FOLDER_ID"; 
+            name = folderID; 
+            prototypeName = int; 
+        }, 
+        {
+            columnName = "INHERITS_PRIVILEGES"; 
+            name = inheritsPrivileges; 
+            prototypeName = int; 
+        }, 
+        {columnName = NAME; name = name; prototypeName = "string_1000"; }, 
+        {columnName = "PARENT_FOLDER_ID"; name = parentFolderID; prototypeName = int; }
+    ); 
+    attributesUsedForLocking = (folderID, inheritsPrivileges, name, parentFolderID); 
+    className = "is.us.soloweb.data.SWDocumentFolder"; 
+    classProperties = (
+        children, 
+        documents, 
+        folderID, 
+        inheritsPrivileges, 
+        name, 
+        parent, 
+        parentFolderID
+    ); 
+    externalName = "SW_FILE_FOLDER"; 
+    fetchSpecificationDictionary = {}; 
+    name = SWDocumentFolder; 
+    primaryKeyAttributes = (folderID); 
+    relationships = (
+        {
+            deleteRule = EODeleteRuleCascade; 
+            destination = SWDocumentFolder; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = parentFolderID; sourceAttribute = folderID; }); 
+            name = children; 
+        }, 
+        {
+            deleteRule = EODeleteRuleCascade; 
+            destination = SWDocument; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = documentFolderID; sourceAttribute = folderID; }); 
+            name = documents; 
+        }, 
+        {
+            destination = SWDocumentFolder; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = folderID; sourceAttribute = parentFolderID; }); 
+            name = parent; 
+        }
+    ); 
+}

@@ -1,0 +1,82 @@
+Administrative:
+* Set up the SoloWeb website.
+* Set up a Trac-system
+
+Misc: 
+* Locale Support in sites and pages.
+* A really simple setup procedure.
+* Declare a standardized interface for copying objects
+* Download document folders zipped.
+* "Dynamic documents" (generated for example via URL-fetching)
+* encodeBreaks should not be stored with data, it's a presentational thing. What we CAN store with data is an indication of file type, thus text/plain implies that we want to encode breaks.
+* Version control.
+* WebDAV.
+* Content rating.
+* Move stuff using drag and drop.
+* Import/export of data in xml-form.
+* Send page as email
+* Support for Derby. ( http://db.apache.org/derby/ )
+* Implement streaming downloads.
+* Implement meta data for documents.
+* Default edit templates for document types.
+* Default view templates for document types.
+
+Templates:
+* Standard CSS-classes in all components (prefixed with "sw")
+* Dynamic templates configured in database.
+* Pure CSS-/XHTML default-templates
+
+Feeds:
+* Improved RSS feeds
+
+Searching:
+* Lucene index.
+* Highlighting of search strings in results.
+* Search in asset database.
+* Synonyms in search.
+* Tagging/categorization of content, searchable.
+
+URLS:
+* Standardized URL scheme, use Feedr-style URL-generation
+* URL-rewriting, configurable
+
+Access controls:
+* Built in access restrictions based on IP-address.
+* Nicer implementation of password protected pages.
+* Ability to see all privileges granted to users and groups.
+* Access control for system settings (administrators only).
+* Consolidate all users in one place, external and internal.
+
+Traffic tracking:
+* Advanced user tracking using cookies.
+
+Workflow:
+* Implement basic workflow system.
+
+Editor:
+* Cleanup of messy Word and Excel HTML.
+* Allow HTML-editing in Windows without using FCK.
+
+WIKI-markup libraries:
+* http://www.radeox.org/
+* http://sourceforge.net/projects/markdownj/
+
+Localization:
+* Move localizable Strings in templates to a more sensible location
+* Actual multiple language support.
+
+Audit trail:
+* creation date
+* modification date
+
+In progress:
+* SoloWeb tags {sw:document id="100000" /} {sw:snippet id="Texti" /} {sw:macro id="bla"}{/sw:macro}
+* Streaming AJAX data upload.
+
+Statistics and user tracking:
+* Content hit count.
+
+Not sure if it's a good idea:
+* One folder entity/table
+* SoloForms-like handling of meta data instead of SWDictionary.
+* Users and groups as regular documents.

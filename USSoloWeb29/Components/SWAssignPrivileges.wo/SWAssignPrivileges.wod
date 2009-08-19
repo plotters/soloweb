@@ -1,0 +1,180 @@
+CheckBox1: WOCheckBox {
+	checked = currentAddPrivilege;
+}
+
+CheckBox11: WOCheckBox {
+	checked = notInherited;
+}
+
+CheckBox2: WOCheckBox {
+	checked = currentPrivilegeValue;
+}
+
+CheckBox6: WOCheckBox {
+	checked = record.inheritsPrivileges; // VALID
+}
+
+CheckBox7: WOCheckBox {
+	checked = currentPrivilege.notInherited;  // VALID
+}
+
+Conditional1: WOConditional {
+	condition = recordSupportsInheritance;
+}
+
+Conditional10: WOConditional {
+	condition = currentPrivilegeValue;
+	negate = true;
+}
+
+Conditional12: WOConditional {
+	condition = record.inheritsPrivileges; // VALID
+}
+
+Conditional13: WOConditional {
+	condition = currentPrivilege.isGroupPrivilege;
+}
+
+Conditional14: WOConditional {
+	condition = currentPrivilege.isUserPrivilege;
+}
+
+Conditional2: WOConditional {
+	condition = recordSupportsInheritance;
+}
+
+Conditional3: WOConditional {
+	condition = recordSupportsInheritance;
+}
+
+Conditional4: WOConditional {
+	condition = currentPrivilege.isGroupPrivilege;
+}
+
+Conditional5: WOConditional {
+	condition = currentPrivilege.isUserPrivilege;
+}
+
+Conditional6: WOConditional {
+	condition = recordSupportsInheritance;
+}
+
+Conditional7: WOConditional {
+	condition = recordSupportsInheritance;
+}
+
+Conditional8: WOConditional {
+	condition = recordSupportsInheritance;
+}
+
+Conditional9: WOConditional {
+	condition = currentPrivilegeValue;
+}
+
+GenericContainer1: WOGenericContainer {
+	class = rowClass;
+	elementName = "TR";
+}
+
+GROUP_IMAGE_2: WOImage {
+	filename = "group.gif";
+	framework = application.sw.frameworkBundleName;
+}
+
+GROUP_IMAGE: WOImage {
+	filename = "group.gif";
+	framework = application.sw.frameworkBundleName;
+}
+
+USER_IMAGE: WOImage {
+	filename = "user.gif";
+	framework = application.sw.frameworkBundleName;
+}
+
+USER_IMAGE_2: WOImage {
+	filename = "user.gif";
+	framework = application.sw.frameworkBundleName;
+}
+
+PopUpButton1: WOPopUpButton {
+	displayString = currentObject.name; // VALID
+	item = currentObject;
+	list = allUsersAndGroups;
+	selection = selectedObject;
+	noSelectionString = session.@ls.apSelectUserGroupString;
+	class = "accesspopup";
+}
+
+Repetition1: WORepetition {
+	item = currentFieldHeader;
+	list = fieldHeaders;
+}
+
+Repetition2: WORepetition {
+	item = currentPrivilege;
+	list = inheritedPrivileges;
+}
+
+Repetition3: WORepetition {
+	index = tableIndex;
+	item = currentPrivilege;
+	list = privileges;
+}
+
+Repetition4: WORepetition {
+	item = currentFieldName;
+	list = fieldNames;
+}
+
+Repetition5: WORepetition {
+	item = currentFieldName;
+	list = fieldNames;
+}
+
+Repetition6: WORepetition {
+	item = currentFieldName;
+	list = fieldNames;
+}
+
+String1: WOString {
+	value = currentFieldHeader;
+}
+
+String2: WOString {
+	value = session.@ls.apDontInheritHeading;
+}
+
+String3: WOString {
+	value = currentPrivilege.name;
+}
+
+String4: WOString {
+	value = currentPrivilege.name;
+	valueWhenEmpty = session.@ls.untitledObjectString;
+}
+
+String6: WOString {
+	value = session.@ls.apInheritPrivilegesFieldTitle;
+}
+
+String7: WOString {
+	value = session.@ls.apAddPrefix;
+}
+
+String8: WOString {
+	value = session.@ls.apUserGroupNameHeading;
+}
+
+SubmitButton1: WOSubmitButton {
+	action = addGroupOrUserToPage;
+	value = session.@ls.apAddPrivilegeButtonTitle;
+	class = "accessbutton";
+}
+
+SubmitButton2: WOSubmitButton {
+	action = removePrivilege;
+	value = " x ";
+	class = "accessbutton";
+	onClick = session.@cs.accessPrivilegeDeleteWarning;
+}
+

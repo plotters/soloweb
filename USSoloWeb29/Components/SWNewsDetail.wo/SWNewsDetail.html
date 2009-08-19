@@ -1,0 +1,78 @@
+<div class="sw_newsitem">
+	<h3 class="sw_newsheading"><webobject name="NAME_STRING" /></h3>
+	<h4 class="sw_newsdate"><webobject name="DATE_STRING" /></h4>
+	<webobject name="IMAGE" />
+	<div class="sw_newsitem_text">
+		<webobject name="DONT_ENCODE_BREAKS_CONDITIONAL"><webobject name="TEXT_STRING" /></webobject>
+		<webobject name="ENCODE_BREAKS_CONDITIONAL"><webobject name="TEXT_WITH_BREAKS_STRING" /></webobject>
+	</div>
+	<div class="social_media_links">
+		<webobject name = "SOCIAL_FACEBOOK_LINK" />
+		<webobject name = "SOCIAL_DIGG_LINK" />
+		<webobject name = "SOCIAL_GOOGLE_LINK" />
+		<webobject name = "SOCIAL_DELICIOUS_LINK" />
+	</div>
+</div>
+
+<webobject name="ALLOW_COMMENTS_CONDITIONAL">
+	<br style="clear:both" />
+	<h3><webobject name="LOC_COMMENTS_HEADER" /></h3>
+	<webobject name="UPDATE_CONTAINER">
+	
+	<webobject name="COMMENTS_CONDITIONAL">
+	<div class="conversation"><webobject name="COMMENT_REPETITION">
+		<webobject name="COMMENT_DIV">
+			<div class="commentPerson"><webobject name="COMMENT_LINK"><webobject name="CURRENT_NAME_STRING" /></webobject></div>
+			<div class="commentDate"><span class="commentTime"><webobject name="COMMENT_TIME_STRING" /></span> <webobject name="COMMENT_DATE_STRING" /></div>
+			<div class="commentText"><webobject name="CURRENT_COMMENT_TEXT_STRING" /><br style="clear: both;" /></div>
+		</webobject></webobject>
+	</div>
+	</webobject>
+	<webobject name="NO_COMMENTS_CONDITIONAL"><p><webobject name="LOC_COMMENTS_NO_COMMENTS" />.</p></webobject>
+
+	<div class="comments">
+		<h3><webobject name="LOC_ADD_COMMENT_HEADER" /></h3>
+		
+		<webobject name="FORM">
+		
+		<label for="name"><webobject name="LOC_COMMENTS_NAME" />:</label>
+		<webobject name="NAME_FIELD" /><br />
+		
+		<label for="url"><webobject name="LOC_COMMENTS_URL" />:</label>
+		<webobject name="URL_FIELD" /><br />
+		
+		<label for="emailAddress"><webobject name="LOC_COMMENTS_EMAIL_ADDRESS" />:</label>
+		<webobject name="EMAIL_ADDRESS_FIELD" /><br />
+		
+		<label for="notifyOnNewComments">&nbsp;</label>
+		<webobject name="NOTIFY_CHECKBOX" /> <webobject name="LOC_COMMENTS_EMAIL_NOTIFICATION" /><br />
+		
+		<label for="comments"><webobject name="LOC_COMMENTS_TEXT" />:</label>
+		<webobject name="TEXT_FIELD" /><br />
+		
+		<label for="spam"><webobject name="LOC_COMMENTS_DO_YOU_HATE_SPAM" /></label>
+		<webobject name="SPAM_TEXT_FIELD" /> <webobject name="ERROR_CONDITIONAL"><div id="commentsErrorMessage"> <webobject name="ERROR_STRING" /></div></webobject><br /> 
+		<script type = "text/javascript" language="javascript">
+		
+			var field = document.getElementById( 'spamStringField' );
+	
+			if( field )
+				field.value = "<webobject name="SPAM_STRING" />";
+		
+			var commentArea = document.getElementById( 'comments' );
+	
+			if( commentArea ) {
+				if( commentArea.value )
+					commentArea.value = commentArea.value.trim;
+			}
+	
+			insertSpamCheckString();
+			
+		</script>
+		<label for="commentSubmitButton">&nbsp;</label>
+		<webobject name="SUBMIT_BUTTON" />
+		</webobject>
+		<br style="clear: both"/>
+	</div>
+	</webobject>
+</webobject>

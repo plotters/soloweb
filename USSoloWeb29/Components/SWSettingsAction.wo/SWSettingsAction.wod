@@ -1,0 +1,10 @@
+FORM : WOForm {}
+
+HEADING: WOString {
+	value = session.@ls.aaActions;
+}
+
+FLUSH_CACHE_BUTTON: WOSubmitButton {
+	action = flushComponentCache;
+	value = session.@ls.aaFlushCDF;
+}

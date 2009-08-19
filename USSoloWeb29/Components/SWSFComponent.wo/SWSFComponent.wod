@@ -1,0 +1,23 @@
+DISPLAY_ICON_CONDITIONAL: WOConditional {
+	condition = currentComponent.customInfo.displayIcon;
+}
+
+LINK: SWHyperlink {
+	object = selectedDocument;
+}
+
+DOWNLOAD_TEXT_STRING: WOString {
+	value = @ls.defaultDownloadFileString;
+}
+
+DOC_NAME_STRING: WOString {
+	value = selectedDocument.name;
+}
+
+ICON: SWImage {
+	document = selectedDocument.documentType.document;
+}
+
+SIZE_STRING: WOString {
+	value = selectedDocument.sizeKB;
+}

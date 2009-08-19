@@ -1,0 +1,61 @@
+{
+    attributes = (
+        {
+            allowsNull = N; 
+            columnName = "NEWS_CATEGORY_ID"; 
+            name = folderID; 
+            prototypeName = int; 
+        }, 
+        {
+            columnName = "INHERITS_PRIVILEGES"; 
+            name = inheritsPrivileges; 
+            prototypeName = int; 
+        }, 
+        {columnName = NAME; name = name; prototypeName = "string_1000"; }, 
+        {
+            columnName = "PARENT_CATEGORY_ID"; 
+            name = parentFolderID; 
+            prototypeName = int; 
+        }
+    ); 
+    attributesUsedForLocking = (folderID, inheritsPrivileges, name, parentFolderID); 
+    className = "is.us.soloweb.data.SWNewsFolder"; 
+    classProperties = (
+        children, 
+        documents, 
+        folderID, 
+        inheritsPrivileges, 
+        name, 
+        parent, 
+        parentFolderID
+    ); 
+    externalName = "SW_NEWS_CATEGORY"; 
+    fetchSpecificationDictionary = {}; 
+    name = SWNewsFolder; 
+    primaryKeyAttributes = (folderID); 
+    relationships = (
+        {
+            destination = SWNewsFolder; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = parentFolderID; sourceAttribute = folderID; }); 
+            name = children; 
+        }, 
+        {
+            destination = SWNewsItem; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = folderID; sourceAttribute = folderID; }); 
+            name = documents; 
+            userInfo = {modificationDate = "2001-06-22 10:28:36 +0000"; }; 
+        }, 
+        {
+            destination = SWNewsFolder; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = folderID; sourceAttribute = parentFolderID; }); 
+            name = parent; 
+        }
+    ); 
+    userInfo = {modificationDate = "2001-06-22 10:28:36 +0000"; }; 
+}

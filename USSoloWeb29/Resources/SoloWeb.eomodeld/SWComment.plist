@@ -1,0 +1,72 @@
+{
+    attributes = (
+        {
+            allowsNull = N; 
+            columnName = "COMMENT_ID"; 
+            name = commentID; 
+            prototypeName = int; 
+        }, 
+        {columnName = "COMMENT_DATE"; name = date; prototypeName = time; }, 
+        {
+            columnName = "EMAIL_ADDRESS"; 
+            name = emailAddress; 
+            prototypeName = "string_1000"; 
+        }, 
+        {columnName = "IP_ADDRESS"; name = ipAddress; prototypeName = "string_1000"; }, 
+        {columnName = NAME; name = name; prototypeName = "string_1000"; }, 
+        {columnName = "NEWS_ITEM_ID"; name = newsItemID; prototypeName = int; }, 
+        {
+            columnName = "NOTIFY_ON_NEW_COMMENTS"; 
+            name = notifyOnNewComments; 
+            prototypeName = int; 
+        }, 
+        {columnName = TEXT; name = text; prototypeName = "string_1000000"; }, 
+        {columnName = URL; name = url; prototypeName = "string_1000"; }, 
+        {columnName = "USER_AGENT"; name = userAgent; prototypeName = "string_1000"; }, 
+        {columnName = "USER_ID"; name = userID; prototypeName = int; }, 
+        {columnName = "USER_PICTURE"; name = userPicture; prototypeName = blob; }
+    ); 
+    attributesUsedForLocking = (
+        commentID, 
+        date, 
+        emailAddress, 
+        ipAddress, 
+        name, 
+        newsItemID, 
+        notifyOnNewComments, 
+        text, 
+        url, 
+        userAgent, 
+        userID, 
+        userPicture
+    ); 
+    className = "is.us.soloweb.data.SWComment"; 
+    classProperties = (
+        commentID, 
+        date, 
+        emailAddress, 
+        ipAddress, 
+        name, 
+        newsItemID, 
+        notifyOnNewComments, 
+        text, 
+        url, 
+        user, 
+        userAgent, 
+        userID, 
+        userPicture
+    ); 
+    externalName = "SW_COMMENT"; 
+    fetchSpecificationDictionary = {}; 
+    name = SWComment; 
+    primaryKeyAttributes = (commentID); 
+    relationships = (
+        {
+            destination = SWExternalUser; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = userID; sourceAttribute = userID; }); 
+            name = user; 
+        }
+    ); 
+}

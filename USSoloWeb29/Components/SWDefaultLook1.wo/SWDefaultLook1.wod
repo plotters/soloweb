@@ -1,0 +1,43 @@
+ComponentContent1: WOComponentContent {
+}
+
+Conditional1: WOConditional {
+	condition = selectedPage.siteForThisPage.customInfo.SWDefaultLookAddress;
+}
+
+GenericElement1: WOGenericElement {
+	content = selectedPage.keywords;
+	elementName = "META";
+	name = "keywords";
+}
+
+GenericElement2: WOGenericElement {
+	content = selectedPage.text;
+	elementName = "META";
+	name = "description";
+}
+
+Hyperlink1: WOHyperlink {
+	?id = selectedPage.topLevelPage.pageID;
+	accesskey = "H";
+	directActionName = "dp";
+	title = "Forsíða";
+}
+
+SWNavigation1: SWNavigation {
+	list = selectedPage.topLevelPage.sortedAndApprovedSubPages;
+	selectedPage = selectedPage;
+}
+
+String1: WOString {
+	value = selectedPage.nameWithPrefix;
+}
+
+String2: WOString {
+	value = selectedPage.siteForThisPage.name;
+}
+
+String3: WOString {
+	escapeHTML = false;
+	value = selectedPage.siteForThisPage.customInfo.SWDefaultLookAddress;
+}

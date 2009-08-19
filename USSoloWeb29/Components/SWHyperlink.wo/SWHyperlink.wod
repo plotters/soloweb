@@ -1,0 +1,10 @@
+LINK : WOHyperlink {
+	href = url;
+	id = ^id;
+	disabled = ^disabled;
+	class = ^class;
+	title = ^title;
+	accesskey = ^accesskey;
+}
+
+CONTENT : WOComponentContent {}

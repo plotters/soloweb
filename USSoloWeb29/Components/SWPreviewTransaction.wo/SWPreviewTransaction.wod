@@ -1,0 +1,28 @@
+WRAPPER : SWAdminComponentWrapper {}
+
+BEFORE_KEY_REPETITION : WORepetition {
+	item = currentKey;
+	list = selectedObject.beforeDictionary.allKeys;
+}
+
+CURRENT_KEY_STRING : WOString {
+	value = currentKey;
+}
+
+CURRENT_BEFORE_VALUE_STRING : WOString {
+	value = currentBeforeValue;
+}
+
+AFTER_KEY_REPETITION : WORepetition {
+	item = currentKey;
+	list = selectedObject.afterDictionary.allKeys;
+}
+
+CURRENT_AFTER_VALUE_STRING : WOString {
+	value = currentAfterValue;
+}
+
+VALUE_TD : WOGenericContainer {
+	elementName = "td";
+	bgcolor = bgColor;
+}

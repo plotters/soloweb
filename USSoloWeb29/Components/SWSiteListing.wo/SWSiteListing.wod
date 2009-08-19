@@ -1,0 +1,58 @@
+FORM: WOForm {}
+
+SITE_SELECTED_CONDITIONAL: WOConditional {
+	condition = session.selectedSite;
+}
+
+SHOW_SITE_POPUP_CONDITIONAL: WOConditional {
+	condition = showSitePopUp;
+}
+
+PAGE_NAME_STRING: WOString {
+    value = currentPage.name;
+    valueWhenEmpty = session.@ls.untitledObjectString;
+}
+ 
+SELECT_SITE_LINK: WOHyperlink {
+	action = selectSite;
+	disabled = siteIsDisabled;
+	style = "position: absolute; top: 45px; left: 350px";
+}
+
+SELECT_PAGE_LINK: WOHyperlink {
+	action = selectPage;
+	class = currentClass;
+	disabled = pageIsDisabled;
+}
+
+TOGGLE_LINK: AjaxUpdateLink {
+	action = toggleBranch;
+	updateContainerID = "treeStuff";
+	disabled = currentPage.hasNoSubPages;
+}
+
+LIST_CONTAINER: AjaxUpdateContainer {
+	elementName = "div";
+	id = "treeStuff";
+}
+
+TOGGLE_IMAGE: WOImage {
+	src = toggleString;
+	width = "9";
+}
+
+NESTED_LIST: USNestedList {
+    list = session.selectedSite.frontPageInArray;
+    item = currentPage;
+    index = currentIndex;
+    sublist = theSubPages;
+}
+
+SITE_POPUP: WOPopUpButton {
+	displayString = currentSite.name;
+	item = currentSite;
+	list = session.solowebUser.sites;
+	onChange = "this.form.submit()";
+	selection = session.selectedSite;
+	noSelectionString = session.@ls.siteListSitesString;
+}

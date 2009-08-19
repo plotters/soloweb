@@ -1,0 +1,127 @@
+FORM: WOForm {
+	multipleSubmit = true;
+}
+
+NAME_FIELD: WOTextField {
+	value = selectedObject.name;
+	size = 50;
+}
+
+SUB_HEADING_FIELD: WOTextField {
+	value = selectedObject.subheading;
+	size = 50;
+}
+
+PUBLISH_CHECKBOX: WOCheckBox {
+	checked = selectedObject.published;
+}
+
+ENCODE_BREAKS_CHECKBOX: WOCheckBox {
+	checked = selectedObject.encodeBreaks;
+}
+
+DATE_2: USDateAndTimeField {
+	record = selectedObject;
+	key = "timeIn";
+}
+
+DATE_3: USDateAndTimeField {
+	record = selectedObject;
+	key = "timeOut";
+}
+
+DATE_1: USDateAndTimeField {
+	record = selectedObject;
+	key = "date";
+}
+
+PICTURE_LINK: SWDocumentHyperlink {
+	componentToReturn = context.page;
+	fieldName = "document";
+	record = selectedObject;
+}
+
+TEXT_FIELD: USHTMLEditor {
+	value = selectedObject.text;
+}
+
+String1: WOString {
+	value = selectedObject.name;
+}
+
+PUBLISHED_STRING: WOString {
+	value = session.@ls.newsPublishedFieldTitle;
+}
+
+ENCODEBREAKS_STRING: WOString {
+	value = session.@ls.newsEncodeBreaksFieldTitle;
+}
+
+TEXT_STRING: WOString {
+	value = session.@ls.newsMainTextHeading;
+}
+
+String2: WOString {
+	value = selectedObject.newsItemID;
+}
+
+EXCERPT_STRING: WOString {
+	value = session.@ls.newsExcerptHeading;
+}
+
+PICTURE_STRING: WOString {
+	value = session.@ls.newsPictureHeading;
+}
+
+HEADLINE_STRING: WOString {
+	value = session.@ls.newsHeadlineFieldTitle;
+}
+
+DATE_STRING: WOString {
+	value = session.@ls.newsDateFieldTitle;
+}
+
+TIME_IN_STRING: WOString {
+	value = session.@ls.newsTimeInFieldTitle;
+}
+
+TIME_OUT_STRING: WOString {
+	value = session.@ls.newsTimeOutFieldTitle;
+}
+
+EXCERPT_FIELD: WOText {
+	value = selectedObject.excerpt;
+	class = "swlargetext";
+}
+
+SUBMIT_BUTTON: WOSubmitButton {
+	action = saveChanges;
+	value = session.@ls.newsSaveChangesButtonTitle;
+	accesskey = "s";
+}
+
+CREATION_DATE_STRING : WOString {
+	value = selectedObject.creationDate;
+	dateformat = "%d.%m.%Y, %H:%M";
+}
+
+CREATED_BY_STRING : WOString {
+	value = selectedObject.createdBy.name;
+}
+
+MODIFICATION_DATE_STRING : WOString {
+	value = selectedObject.modificationDate;
+	dateformat = "%d.%m.%Y, %H:%M";
+}
+
+MODIFIED_BY_STRING : WOString {
+	value = selectedObject.modifiedBy.name;
+}
+
+CREATED_BY_HYPERLINK : SWObjectHyperlink {
+	object = selectedObject.createdBy;
+}
+
+MODIFIED_BY_HYPERLINK : SWObjectHyperlink {
+	object = selectedObject.modifiedBy;
+}

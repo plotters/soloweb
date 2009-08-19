@@ -1,0 +1,42 @@
+CONTENT: WOComponentContent {}
+
+HAS_DESCRIPTION_CONDITIONAL : WOConditional {
+	condition = selectedPage.text.length;
+}
+
+HAS_KEYWORDS_CONDITIONAL : WOConditional {
+	condition = selectedPage.keywords.length;
+}
+
+META_KEYWORDS: WOGenericElement {
+	elementName = "meta";
+	name = "keywords";
+	content = selectedPage.keywords;
+}
+
+META_DESCRIPTION: WOGenericElement {
+	elementName = "meta";
+	name = "description";
+	content = selectedPage.text;
+}
+
+FRONT_PAGE_LINK: SWHyperlink {
+	object = selectedPage.topLevelPage;
+}
+
+NAVIGATION: SWNavigation {
+	list = selectedPage.topLevelPage.sortedAndApprovedSubPages;
+	selectedPage = selectedPage;
+}
+
+PAGE_NAME: WOString {
+	value = selectedPage.nameWithPrefix;
+}
+
+SITE_NAME: WOString {
+	value = selectedPage.siteForThisPage.name;
+}
+
+VERSION_STRING : WOString {
+	value = application.sw.solowebVersion;
+}

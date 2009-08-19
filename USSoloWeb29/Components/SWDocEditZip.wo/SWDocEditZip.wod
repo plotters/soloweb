@@ -1,0 +1,5 @@
+WRAPPER : SWAdminComponentWrapper {}
+
+LINK : WOHyperlink {
+	action = expandZipFile;
+}

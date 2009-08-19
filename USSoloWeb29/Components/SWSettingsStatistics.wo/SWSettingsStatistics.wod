@@ -1,0 +1,80 @@
+Conditional1: WOConditional {
+	condition = application.sw.solowebSessions.count;
+}
+
+Conditional2: WOConditional {
+	condition = application.sw.solowebSessions.count;
+	negate = true;
+}
+
+Repetition1: WORepetition {
+	item = currentSession;
+	list = application.sw.solowebSessions;
+}
+
+String1: WOString {
+	value = application.sw.numberOfServedPagesSinceStartup;
+	numberformat = "0";
+}
+
+String10: WOString {
+	value = session.@ls.aaEstimatedFreeMem;
+}
+
+String11: WOString {
+	value = session.@ls.aaApplicationStartedAt;
+}
+
+PAGES_SERVED_LABEL: WOString {
+	value = session.@ls.aaNumberOfPagesServed;
+}
+
+String13: WOString {
+	value = session.@ls.aaServerTime;
+}
+
+String2: WOString {
+	value = now;
+	dateformat = "%d.%m.%Y, %H:%M:%S";
+}
+
+String3: WOString {
+	formatter = europeanNumberFormatter;
+	value = totalMemory;
+}
+
+String4: WOString {
+	value = freeMemory;
+	formatter = europeanNumberFormatter;
+}
+
+String5: WOString {
+	value = application.sw.startupTime;
+	dateformat = "%d.%m.%Y, %H:%M:%S";
+}
+
+String7: WOString {
+	value = currentSession.solowebUser.name;
+}
+
+String8: WOString {
+	dateformat = "%H:%M, %d.%m.%y";
+	value = currentSession.startTime;
+}
+
+String9: WOString {
+	value = session.@ls.aaTotalMemUse;
+}
+
+HITS_FROM_STARTUP_LABEL : WOString {
+	value = session.@ls.aaNumberOfRequests;
+}
+
+HITS_FROM_STARTUP_VALUE : WOString {
+	value = application.sw.numberOfRequestsSinceStartup;
+}
+
+BYTES_FROM_STARTUP_VALUE : WOString {
+	value = application.sw.numberOfServedBytesSinceStartup;
+	numberformat = "#,##0";
+}

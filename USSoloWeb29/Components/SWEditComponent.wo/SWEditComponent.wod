@@ -1,0 +1,59 @@
+WRAPPER : SWAdminComponentWrapper {}
+
+FORM: WOForm {}
+
+SUBMIT_BUTTON : WOSubmitButton {
+	action = saveChangesAndReturn;
+	value = "Vista";
+}
+
+PUBLISHED_CHECKOX: WOCheckBox {
+	checked = selectedObject.published;
+}
+
+TAB_PANEL_SELECTION: WOKeyValueConditional {
+    key = "tabPanelSelection";
+    value = currentType;
+}
+
+REPETITION: WORepetition {
+	item = currentType;
+	list = types;
+}
+
+FROM_DATE_FIELD: USDateAndTimeField {
+	record = selectedObject;
+	key = "timeIn";
+}
+
+TO_DATE_FIELD: USDateAndTimeField {
+	record = selectedObject;
+	key = "timeOut";
+}
+
+String2: WOString {
+	value = session.@ls.componentPublished;
+}
+
+String3: WOString {
+	value = session.@ls.componentTimeIn;
+}
+
+String4: WOString {
+	value = session.@ls.componentTimeOut;
+}
+
+EDIT_COMPONENT: WOSwitchComponent {
+	WOComponentName = componentName;
+	currentComponent = selectedObject;
+}
+
+TAB_PANEL: USTabPanel {
+    tabs = types;
+    selectedTab = tabPanelSelection;
+    submitActionName = "saveChanges";
+}
+
+ID_STRING : WOString {
+	value = selectedObject.componentID;
+}

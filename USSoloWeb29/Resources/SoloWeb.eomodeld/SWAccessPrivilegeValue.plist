@@ -1,0 +1,38 @@
+{
+    attributes = (
+        {
+            columnName = "ACCESS_PRIVILEGE_ID"; 
+            name = accessPrivilegeID; 
+            prototypeName = int; 
+        }, 
+        {
+            allowsNull = N; 
+            columnName = "ACCESS_PRIVILEGE_VALUE_ID"; 
+            name = accessPrivilegeValueID; 
+            prototypeName = int; 
+        }, 
+        {columnName = IDENTIFIER; name = identifier; prototypeName = "string_1000"; }, 
+        {columnName = VALUE; name = value; prototypeName = int; }
+    ); 
+    attributesUsedForLocking = (accessPrivilegeID, accessPrivilegeValueID, identifier, value); 
+    className = "is.us.soloweb.data.SWAccessPrivilegeValue"; 
+    classProperties = (accessPrivilege, accessPrivilegeID, accessPrivilegeValueID, identifier, value); 
+    externalName = "SW_ACCESS_PRIVILEGE_VALUE"; 
+    fetchSpecificationDictionary = {}; 
+    name = SWAccessPrivilegeValue; 
+    primaryKeyAttributes = (accessPrivilegeValueID); 
+    relationships = (
+        {
+            destination = SWAccessPrivilege; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = (
+                {
+                    destinationAttribute = accessPrivilegeID; 
+                    sourceAttribute = accessPrivilegeID; 
+                }
+            ); 
+            name = accessPrivilege; 
+        }
+    ); 
+}

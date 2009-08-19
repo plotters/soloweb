@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="Sources"/>
+	<classpathentry kind="src" path="Tests"/>
+	<classpathentry exported="true" kind="con" path="WOFramework/ERExtensions"/>
+	<classpathentry exported="true" kind="con" path="WOFramework/Ajax"/>
+	<classpathentry exported="true" kind="con" path="WOFramework/ERJars"/>
+	<classpathentry exported="true" kind="con" path="WOFramework/ERJavaMail"/>
+	<classpathentry exported="true" kind="con" path="WOFramework/JavaWOExtensions"/>
+	<classpathentry exported="true" kind="con" path="WOFramework/JavaEOAccess"/>
+	<classpathentry exported="true" kind="con" path="WOFramework/JavaEOControl"/>
+	<classpathentry exported="true" kind="con" path="WOFramework/JavaFoundation"/>
+	<classpathentry exported="true" kind="con" path="WOFramework/JavaJDBCAdaptor"/>
+	<classpathentry exported="true" kind="con" path="WOFramework/JavaWebObjects"/>
+	<classpathentry exported="true" kind="con" path="WOFramework/JavaXML"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="WOFramework/WOLips"/>
+	<classpathentry kind="con" path="WOFramework/USJars"/>
+	<classpathentry kind="con" path="WOFramework/USWebObjects"/>
+	<classpathentry kind="con" path="WOFramework/USJava"/>
+	<classpathentry exported="true" kind="lib" path="Libraries/org.eclipse.mylyn.wikitext.confluence.core_1.1.1.v20090722-0200-e3x.jar"/>
+	<classpathentry exported="true" kind="lib" path="Libraries/org.eclipse.mylyn.wikitext.core_1.1.1.v20090722-0200-e3x.jar"/>
+	<classpathentry exported="true" kind="lib" path="Libraries/org.eclipse.mylyn.wikitext.mediawiki.core_1.1.1.v20090722-0200-e3x.jar"/>
+	<classpathentry exported="true" kind="lib" path="Libraries/org.eclipse.mylyn.wikitext.textile.core_1.1.1.v20090722-0200-e3x.jar"/>
+	<classpathentry exported="true" kind="lib" path="Libraries/org.eclipse.mylyn.wikitext.tracwiki.core_1.1.1.v20090722-0200-e3x.jar"/>
+	<classpathentry exported="true" kind="lib" path="Libraries/org.eclipse.mylyn.wikitext.twiki.core_1.1.1.v20090722-0200-e3x.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

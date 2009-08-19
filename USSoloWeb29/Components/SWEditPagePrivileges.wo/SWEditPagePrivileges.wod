@@ -1,0 +1,4 @@
+ASSIGN_PRIVILEGES: SWAssignPrivileges {
+	record = selectedObject;
+	privilegePairs = privilegePairs;
+}

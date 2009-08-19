@@ -1,0 +1,32 @@
+HEADING_CONDITIONAL: WOConditional {
+	condition = currentComponent.textOne.length;
+}
+
+DONT_ENCODE_BREAKS_CONDITIONAL: WOConditional {
+	condition = currentComponent.encodeBreaks;
+	negate = true;
+}
+
+ENCODE_BREAKS_CONDITIONAL: WOConditional {
+	condition = currentComponent.encodeBreaks;
+}
+
+IMAGE: SWImage {
+	document = currentComponent.document;
+	align = "right";
+}
+
+HEADING_STRING: WOString {
+	value = currentComponent.textOne;
+	escapeHTML = false;
+}
+
+TEXT_WITH_BREAKS: WOString {
+	value = currentComponent.textTwoWithBreaks;
+	escapeHTML = false;
+}
+
+TEXT_WITHOUT_BREAKS: WOString {
+	value = currentComponent.textTwo;
+	escapeHTML = false;
+}

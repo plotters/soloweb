@@ -1,0 +1,89 @@
+WRAPPER : SWAdminUsersAndGroups {}
+
+GenericContainer2: WOGenericContainer {
+	elementName = "TR";
+	class = rowClass;
+}
+
+Hyperlink1: SWObjectHyperlink {
+	object = currentGroupUser;
+}
+
+Hyperlink2: WOHyperlink {
+	action = removeUserFromGroup;
+	onclick = session.@cs.grpRemoveUserFromGroupWarning;
+}
+
+DELETE_LINK: WOHyperlink {
+	action = deleteObject;
+	onclick = session.@cs.deleteGroupWarning;
+	class = "swdeleteButton";
+}
+
+Image1: WOImage {
+	filename = "user.gif";
+	framework = application.sw.frameworkBundleName;
+}
+
+PopUpButton1: WOPopUpButton {
+	displayString = currentUser.name;
+	item = currentUser;
+	list = selectedObject.usersNotInGroup;
+	selection = selectedUser;
+	noSelectionString = session.@ls.grpSelectUser;
+}
+
+Repetition3: WORepetition {
+	index = tableIndex;
+	item = currentGroupUser;
+	list = selectedObject.users;
+}
+
+String1: WOString {
+	value = session.@ls.grpName;
+}
+
+String2: WOString {
+	value = currentGroupUser.name;
+	valueWhenEmpty = session.@ls.untitledObjectString;
+}
+
+String3: WOString {
+	value = session.@ls.grpUsers;
+}
+
+DELETE_STRING: WOString {
+	value = session.@ls.grpDeleteGroup;
+}
+
+SubmitButton3: WOSubmitButton {
+	action = addUserToGroup;
+	value = session.@ls.grpAddUserToGroupButtonTitle;
+}
+
+SAVE_CHANGES_BUTTON: WOSubmitButton {
+	action = saveChanges;
+	value = session.@ls.grpSaveButtonTitle;
+}
+
+TextField1: WOTextField {
+	size = 30;
+	value = selectedObject.name;
+}
+
+PRIVILEGES_REPETITION : WORepetition {
+	item = currentPrivilege;
+	list = selectedObject.accessPrivileges;
+}
+
+SW_OBJECT_HYPERLINK : SWObjectHyperlink {
+	object = currentPrivilege.record;
+}
+
+CURRENT_OBJECT_NAME_STRING : WOString {
+	value = currentPrivilege.record.toString;
+}
+
+OBJECT_TYPE_STRING : WOString {
+	value = currentPrivilege.localizedDescriptionOfEntity;
+}

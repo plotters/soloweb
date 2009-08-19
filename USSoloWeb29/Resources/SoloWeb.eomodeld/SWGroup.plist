@@ -1,0 +1,44 @@
+{
+    attributes = (
+        {
+            allowsNull = N; 
+            columnName = "GROUP_ID"; 
+            name = groupID; 
+            prototypeName = int; 
+        }, 
+        {columnName = NAME; name = name; prototypeName = "string_1000"; }
+    ); 
+    attributesUsedForLocking = (groupID, name); 
+    className = "is.us.soloweb.data.SWGroup"; 
+    classProperties = (accessPrivileges, groupID, name, users); 
+    externalName = "SW_GROUP"; 
+    fetchSpecificationDictionary = {}; 
+    name = SWGroup; 
+    primaryKeyAttributes = (groupID); 
+    relationships = (
+        {
+            deleteRule = EODeleteRuleCascade; 
+            destination = SWAccessPrivilege; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = groupID; sourceAttribute = groupID; }); 
+            name = accessPrivileges; 
+        }, 
+        {
+            deleteRule = EODeleteRuleCascade; 
+            destination = SWGroupSWUser; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = groupID; sourceAttribute = groupID; }); 
+            name = sWGroupSWUsers; 
+            propagatesPrimaryKey = Y; 
+            userInfo = {modificationDate = "2001-06-03 19:53:43 +0000"; }; 
+        }, 
+        {
+            definition = "sWGroupSWUsers.sWUser"; 
+            name = users; 
+            userInfo = {modificationDate = "2001-06-03 19:53:43 +0000"; }; 
+        }
+    ); 
+    userInfo = {modificationDate = "2001-06-03 19:53:43 +0000"; }; 
+}

@@ -1,0 +1,15 @@
+IMAGE: WOGenericElement {
+	alt = document.name;
+	src = url;
+	vspace = ^vspace;
+	align = ^align;
+	hspace = ^hspace;
+	elementName = "img";
+	height = ^height;
+	width = ^width;
+	border = ^border;
+}
+
+HAS_IMAGE_CONDITIONAL : WOConditional {
+	condition = document.data.length;
+}

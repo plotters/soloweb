@@ -1,0 +1,189 @@
+Meðhöndla allt í kerfinu sem skrá. Þ.e. frétt, comment á frétt, notandi, vefsíða, mynd á vefsíðu, rss feed, o.sfrv. er hvert og eitt sér skrá.
+	- Þetta einfaldar t.d. réttindamál og viðbætur á nýjum "skráartegundum", t.d. blog er þá bara skráð sem ný skráartegund og sjálfgefinn lesari/ritill hengdur á hana.
+	- Hægt er að gefa notendum réttindi á aðra notendur, þ.e. breyta öðrum notendum. Þetta myndi virka á sama hátt og þegar notanda eru gefin t.d. skrif réttindi á ákveðna mynda möppu.
+
+Hver skrá hefur eftirfarandi sértæk einkenni:
+	- Id long autonumber [1, 2, ...]
+	- Path String // full path from root to file, including file name e.g. /image_repository/albums/wet_and_wild/buckangel_and_me_o.O.jpg
+	-	- Note, protocall name, web address and port are not part of the path, e.g. http://www.karlmenn.is:8080	- PathMD5 char[32] md5 sum of Path, md5 limits us to maximum 4.294.967.296 unique files per filesystem
+Note, file name does not have to end with its extension since the file type is registered in its own column, its only a matter of preference.
+
+Create a index table, alongside the filesystem table, wich includes the following columns:
+	- id long
+	- parent long
+	- depth int
+Each file has a tuple, in the index table, for each of its parents excluding root.
+E.g. 
+/
+|_ staff
+	|_ executives
+	|	|_ John_Major.html
+	|	|_ John_Minor.html
+	|_ middle_management
+	|	|_ Dingle_Berry.html
+	|_ board_of_directors
+	|	|_ Steve_Hasselhoff.html 
+	|_ grunts
+
+The above filetree contains the following files, note that root has default id of 0(zero):
+Id	| Parent	| type  	| Path
+-------------------------------------------------------------------------
+1	| 0		| dir		| /staff/
+2	| 1		| dir		| /staff/executives/
+3	| 2		| html	| /staff/executives/John_Major
+4	| 2		| html	| /staff/executives/John_Minor
+5	| 1		| dir		| /staff/middle_management
+6	| 5		| html	| /staff/middle_management/Dingle_Berry
+7	| 1		| dir		| /staff/board_of_directors/
+8	| 7		| html	| /staff/board_of_directors/Steve_Hasselhoff.html 
+9	| 1		| dir		| /staff/grunts
+
+The index table would contain the following:
+fileID 	| parent	| depth
+--------------------------------
+1		| 0		| 0
+2		| 1		| 1
+2		| 0		| 1
+3		| 2		| 2
+3		| 1		| 2
+3		| 0		| 2
+4		| 2		| 2
+4		| 1		| 2
+4		| 0		| 2
+5		| 1		| 1
+5		| 0		| 1
+6		| 5		| 2
+6		| 1		| 2
+6		| 0		| 2
+7		| 1		| 1
+7		| 0		| 1
+8		| 7		| 2
+8		| 1		| 2
+8		| 0		| 2
+9		| 1		| 1
+9		| 0		| 1
+
+The access table could contain the following:
+fileID	| userID	| priv [restricted=0, read=1, write=2, ...?]
+----------------------------------------------------------------------
+1		| 1		| 1
+7		| 1		| 2
+1		| 2		| 0
+7		| 2		| 1
+8		| 2		| 2
+
+
+The most common functions and the underlying sql calls:
+selectTreeForUser( $userID ) 			:  // Returns the folders, with the smallest index.depth, the user can view
+canUserOperateFile( $userID, $priv ) 	:  // Returns true/false if the user has access[read, write, ...] to the file
+
+Sample file operations:
+create( $parentID ) 		: // 
+delete($fileID)			: // modifies the parent id in the filesystem table, updates index with the new parent tuples
+copy($fileID, $destID)	: // 
+move($fileID, $destID)	: // 
+getChildren($fileID)		: // select a.* from filesys a, index b where b.parent=$fileID and a.id=b.fileID
+getParents($fileID)		: // select a.* from filesys a, index b where b.fileID=$fileID and a.id=b.parent
+
+
+Á allt þetta sql einhversstaðar þannig að ég nenni ekki að finna up hjólið aftur.
+
+
+
+
+
+--------------------------
+
+
+
+
+Example tree:
+/root [id:0]
+|_file A [id:1]
+|      |_file B [id:2]
+|             |_file C [id:3]
+|_file D [id:4]
+
+vfs(note, root is not a tuple)
+id 	| parent| name	| depth
+0	| 0	| root	| 0
+1	| 0	| file A| 1
+2	| 1	| file B| 2
+3	| 2	| file C| 3
+4	| 0	| file D| 1
+
+vfs_index
+id	| parent
+1	| 0
+2	| 1
+2	| 0
+3	| 2
+3	| 1
+3	| 0
+4	| 0
+
+Create($parentid)
+Set $fileid = select newid from vfs_autonumber;
+Insert into vfs values($fileid, ...);
+Insert into vfs_index(id, parent) values(select $fileid, parent from vfs_index where id=$parentid);
+Insert into vfs_index(id, parent) values($fileid, $parentid);
+
+
+Delete($fileid)
+Delete from vfs where id=$fileid;
+Delete from vfs_index where id=$fileid;
+
+Copy($fileid, $newparentid)
+Set $newfileid = select newid from vfs_autonumber;
+Set $vfsTuple = select * from vfs where id=$fileid;
+Set $vfsTuple[id] = $newfileid;
+Insert into vfs values($vfsTuple);
+Insert into vfs_index(id, parent) values(select $newfileid, parent from vfs_index where id=$newparentid);
+Insert into vfs_index(id, parent) values($newfileid, $newparentid);
+
+Move($fileid, $newparentid)
+Delete from vfs_index where id = $fileid;
+Insert into vfs_index(id, parent) values(select $fileid, parent from vfs_index where id=$newparentid);
+Insert into vfs_index(id, parent) values($fileid, $newparentid);
+
+allSyblings($fileid)
+Select * from vfs parent=(select parent from vfs where id=$fileid);
+
+allParents($fileid)
+Select a.* from vfs a, vfs_index b where b.id = $fileid and a.id=b.parent;
+
+allChildren($fileid)
+Select a.* from vfs a, vfs_index b where b.parent = $fileid and a.id=b.id;
+
+
+Example of use with user/group access:
+If a file does not have access set for particular user or group then the access inherits from the closest parent.
+
+Sample access_table where {none=0, read=1, write=2}:
+fileid	| type	| ugid	| access
+1	| user	| 1	| read
+2	| user	| 1	| write
+0	| group	| 1	| none
+0	| user	| 1	| read
+
+Sample users_in_groups_table
+group	| user
+1	| 1
+1	| 2
+2	| 1
+
+user A[1] has read access on “root [0]”
+user A[1] has write access on “file B [2]”
+
+fileAccess($fileid, $userid)
+Select max(a.depth), b.fileid, b.type, b.access from vfs a, access_table b 
+where b.id in ( $fileid, allParents($fileid))
+and b.ugid in ($userid, (select group from users_in_groups_table where userid=$userid)) 
+and a.id=b.id group by b.fileid, b.access;
+
+Can userA read “file B [id:2]”: fileAccess(2, 1) => {{1, 1, user, read}} => true
+Can userA write “file C [id:3]”: fileAccess(3, 1) => {{2, 2, user, write}} => true
+Can userA read “file D [id:4]”: fileAccess(0, 1) => 
+{{0, 0, group, none}, {0, 0, user, read}} => true/false based on access inheritance rules.
+
+Note! This should perhaps be split up in two seperate access tables and fileAccess operations for user and groups for better transparency in access inheritance.
