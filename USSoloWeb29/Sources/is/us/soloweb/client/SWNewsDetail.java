@@ -153,7 +153,10 @@ public class SWNewsDetail extends SoloNewsNewsList {
 		AjaxHighlight.highlight( c );
 
 		NSMutableArray<String> emailAddressesToNotify = new NSMutableArray<String>();
-		emailAddressesToNotify.addObject( SWSettings.webmasterEmail() );
+
+		if( USStringUtilities.stringHasValue( SWSettings.webmasterEmail() ) ) {
+			emailAddressesToNotify.addObject( SWSettings.webmasterEmail() );
+		}
 
 		for( SWComment nextComment : comments() ) {
 			String nextEmailAddress = nextComment.emailAddress();
