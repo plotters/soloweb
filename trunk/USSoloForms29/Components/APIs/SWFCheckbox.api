@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<wodefinitions>
+	<wo class="SWFCheckbox" wocomponentcontent="false">
+
+		<binding name="stringValue"/>
+
+		<validation message="&apos;stringValue&apos; is a required binding">
+			<unbound name="stringValue"/>
+		</validation>
+	</wo>
+</wodefinitions>

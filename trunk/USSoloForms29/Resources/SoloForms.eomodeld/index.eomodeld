@@ -1,0 +1,54 @@
+{
+    EOModelVersion = "2.1"; 
+    adaptorName = JDBC; 
+    connectionDictionary = {
+        URL = "jdbc:oracle:thin:@lora.us.is:1521:usora1"; 
+        driver = ""; 
+        password = "solo.raun"; 
+        plugin = ""; 
+        username = soloweb; 
+    }; 
+    entities = (
+        {className = "is.us.soloweb.forms.data.SWFField"; name = SWFField; }, 
+        {className = "is.us.soloweb.forms.data.SWFFieldSet"; name = SWFFieldSet; }, 
+        {
+            className = "is.us.soloweb.forms.data.SWFFixedSearch"; 
+            name = SWFFixedSearch; 
+        }, 
+        {className = "is.us.soloweb.forms.data.SWFForm"; name = SWFForm; }, 
+        {className = "is.us.soloweb.forms.data.SWFFormFolder"; name = SWFFormFolder; }, 
+        {
+            className = "is.us.soloweb.forms.data.SWFRegistration"; 
+            name = SWFRegistration; 
+        }, 
+        {
+            className = "is.us.soloweb.forms.data.SWFRegistrationField"; 
+            name = SWFRegistrationField; 
+        }
+    ); 
+    internalInfo = {
+        "_schemaSynchronizationOptions" = {
+            EOSchemaSynchronizationForeignKeyConstraintsKey = NO; 
+            EOSchemaSynchronizationPrimaryKeyConstraintsKey = NO; 
+            EOSchemaSynchronizationPrimaryKeySupportKey = NO; 
+        }; 
+    }; 
+    userInfo = {
+        "_EntityModeler" = {
+            activeDatabaseConfigName = Oracle; 
+            databaseConfigs = {
+                Oracle = {
+                    adaptorName = JDBC; 
+                    connectionDictionary = {
+                        URL = "jdbc:oracle:thin:@lora.us.is:1521:usora1"; 
+                        driver = ""; 
+                        password = "solo.raun"; 
+                        plugin = ""; 
+                        username = soloweb; 
+                    }; 
+                    prototypeEntityName = EOOraclePrototypes; 
+                }; 
+            }; 
+        }; 
+    }; 
+}

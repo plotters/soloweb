@@ -1,0 +1,37 @@
+Conditional1: WOConditional {
+	condition = fieldList.count;
+}
+
+Conditional2: WOConditional {
+	condition = fieldsToAddToList.count;
+}
+
+Conditional3: WOConditional {
+	condition = fieldsToAddToList.count;
+}
+
+PopUpButton3: WOPopUpButton {
+	displayString = currentField.name;
+	item = currentField;
+	list = fieldsToAddToList;
+	selection = selectedField;
+}
+
+Repetition1: WORepetition {
+	item = currentField;
+	list = fieldList;
+}
+
+String1: WOString {
+	value = currentField.name;
+}
+
+SubmitButton1: WOSubmitButton {
+	action = removeFieldfromList;
+	value = "-";
+}
+
+SubmitButton2: WOSubmitButton {
+	action = addFieldToList;
+	value = "Add";
+}

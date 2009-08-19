@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Layouts</key>
+	<dict>
+		<key>Default</key>
+		<dict>
+			<key>EntityOption</key>
+			<string>All</string>
+			<key>RelationshipOption</key>
+			<string>None</string>
+			<key>ViewPositions</key>
+			<dict>
+				<key>SWFField</key>
+				<array>
+					<string>429.000000</string>
+					<string>379.000000</string>
+					<string>176.000000</string>
+					<string>366.000000</string>
+				</array>
+				<key>SWFFieldSet</key>
+				<array>
+					<string>728.000000</string>
+					<string>500.000000</string>
+					<string>144.000000</string>
+					<string>132.000000</string>
+				</array>
+				<key>SWFForm</key>
+				<array>
+					<string>134.000000</string>
+					<string>291.000000</string>
+					<string>241.000000</string>
+					<string>258.000000</string>
+				</array>
+				<key>SWFFormFolder</key>
+				<array>
+					<string>-96.000000</string>
+					<string>273.000000</string>
+					<string>174.000000</string>
+					<string>150.000000</string>
+				</array>
+				<key>SWFRegistration</key>
+				<array>
+					<string>429.000000</string>
+					<string>113.000000</string>
+					<string>176.000000</string>
+					<string>114.000000</string>
+				</array>
+				<key>SWFRegistrationField</key>
+				<array>
+					<string>429.000000</string>
+					<string>237.000000</string>
+					<string>182.000000</string>
+					<string>132.000000</string>
+				</array>
+			</dict>
+			<key>orthoLines</key>
+			<string>Y</string>
+		</dict>
+	</dict>
+	<key>Version</key>
+	<string>1</string>
+</dict>
+</plist>

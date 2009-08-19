@@ -1,0 +1,42 @@
+Conditional1: WOConditional {
+	condition = selectedForm.fixedSearches.count;
+}
+
+PopUpButton1: WOPopUpButton {
+	displayString = currentUserOrGroup.name;
+	item = currentUserOrGroup;
+	list = allUsersAndGroups;
+	selection = selectedUserOrGroup;
+}
+
+PopUpButton2: WOPopUpButton {
+	displayString = currentField.name;
+	item = currentField;
+	list = selectedForm.sortedFields;
+	selection = currentFixedSearch.field;
+}
+
+Repetition1: WORepetition {
+	item = currentFixedSearch;
+	list = selectedForm.fixedSearches;
+}
+
+SubmitButton1: WOSubmitButton {
+	action = addArgument;
+	value = "Add a fixed search argument";
+}
+
+SubmitButton2: WOSubmitButton {
+	action = saveChanges;
+	value = "Save";
+}
+
+SubmitButton3: WOSubmitButton {
+	action = removeFixedSearch;
+	value = "-";
+}
+
+TextField1: WOTextField {
+	size = 40;
+	value = currentFixedSearch.value;
+}

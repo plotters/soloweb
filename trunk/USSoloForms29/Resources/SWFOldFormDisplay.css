@@ -1,0 +1,14 @@
+.swregistrationmessage {
+	border: 2px solid black;
+	background-color: #eeeeee;
+	text-align: center;
+	font-size: large;
+	padding: 20px;
+	margin: 20px;
+}
+
+.swform {
+	padding: 20px;
+	margin: 20px;
+	border: 1px solid gray;
+}

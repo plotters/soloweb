@@ -1,0 +1,63 @@
+{
+    attributes = (
+        {columnName = "FIELD_ID"; name = fieldID; prototypeName = int; }, 
+        {
+            allowsNull = N; 
+            columnName = "FIXED_SEARCH_ID"; 
+            name = fixedSearchID; 
+            prototypeName = int; 
+        }, 
+        {columnName = "FORM_ID"; name = formID; prototypeName = int; }, 
+        {columnName = "GROUP_ID"; name = groupID; prototypeName = int; }, 
+        {columnName = "USER_ID"; name = userID; prototypeName = int; }, 
+        {columnName = VALUE; name = value; prototypeName = "string_1000"; }
+    ); 
+    attributesUsedForLocking = (fixedSearchID, value, userID, groupID, fieldID, formID); 
+    className = "is.us.soloweb.forms.data.SWFFixedSearch"; 
+    classProperties = (
+        fixedSearchID, 
+        value, 
+        userID, 
+        groupID, 
+        fieldID, 
+        field, 
+        user, 
+        group, 
+        formID, 
+        form
+    ); 
+    externalName = "SWF_FIXED_SEARCH"; 
+    fetchSpecificationDictionary = {}; 
+    name = SWFFixedSearch; 
+    primaryKeyAttributes = (fixedSearchID); 
+    relationships = (
+        {
+            destination = SWFField; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = fieldID; sourceAttribute = fieldID; }); 
+            name = field; 
+        }, 
+        {
+            destination = SWFForm; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = formID; sourceAttribute = formID; }); 
+            name = form; 
+        }, 
+        {
+            destination = SWGroup; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = groupID; sourceAttribute = groupID; }); 
+            name = group; 
+        }, 
+        {
+            destination = SWUser; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = userID; sourceAttribute = userID; }); 
+            name = user; 
+        }
+    ); 
+}

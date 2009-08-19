@@ -1,0 +1,52 @@
+{
+    attributes = (
+        {
+            allowsNull = Y; 
+            columnName = "BINARY_VALUE"; 
+            name = binaryValue; 
+            prototypeName = blob; 
+        }, 
+        {columnName = "FIELD_ID"; name = fieldID; prototypeName = int; }, 
+        {columnName = "MIME_TYPE"; name = mimeType; prototypeName = "string_1000"; }, 
+        {
+            allowsNull = N; 
+            columnName = "REGISTRATION_FIELD_ID"; 
+            name = registrationFieldID; 
+            prototypeName = int; 
+        }, 
+        {columnName = "REGISTRATION_ID"; name = registrationID; prototypeName = int; }, 
+        {columnName = "FIELD_VALUE"; name = value; prototypeName = "string_1000"; }
+    ); 
+    attributesUsedForLocking = (registrationFieldID, fieldID, registrationID, value, mimeType); 
+    className = "is.us.soloweb.forms.data.SWFRegistrationField"; 
+    classProperties = (
+        registrationFieldID, 
+        fieldID, 
+        value, 
+        registrationID, 
+        field, 
+        registration, 
+        binaryValue, 
+        mimeType
+    ); 
+    externalName = "SWF_REG_FIELD"; 
+    fetchSpecificationDictionary = {}; 
+    name = SWFRegistrationField; 
+    primaryKeyAttributes = (registrationFieldID); 
+    relationships = (
+        {
+            destination = SWFField; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = fieldID; sourceAttribute = fieldID; }); 
+            name = field; 
+        }, 
+        {
+            destination = SWFRegistration; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = registrationID; sourceAttribute = registrationID; }); 
+            name = registration; 
+        }
+    ); 
+}

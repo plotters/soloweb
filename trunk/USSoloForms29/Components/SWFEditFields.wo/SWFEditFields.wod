@@ -1,0 +1,71 @@
+CheckBox1: WOCheckBox {
+	checked = currentField.adminField;
+}
+
+CheckBox2: WOCheckBox {
+	checked = currentField.required;
+}
+
+CheckBox4: WOCheckBox {
+	checked = currentField.primaryField;
+}
+
+Conditional1: WOConditional {
+	condition = fields;
+}
+
+Conditional2: WOConditional {
+	condition = currentField.isFirst;
+	negate = true;
+}
+
+Conditional3: WOConditional {
+	condition = currentField.isLast;
+	negate = true;
+}
+
+ImageButton1: WOImageButton {
+	action = fieldDown;
+	framework = "SoloWeb29";
+	filename = "arrow_down.gif";
+}
+
+ImageButton2: WOImageButton {
+	action = fieldUp;
+	framework = "SoloWeb29";
+	filename = "arrow_up.gif"; 
+}
+
+PopUpButton1: WOPopUpButton {
+	displayString = currentFieldType;
+	item = currentFieldType;
+	list = fieldTypes;
+	selection = selectedFieldType;
+}
+
+Repetition2: WORepetition {
+	item = currentField;
+	list = fields;
+}
+
+SubmitButton2: WOSubmitButton {
+	value = "Properties";
+	action = editField;
+}
+
+SubmitButton3: WOSubmitButton {
+	action = addField;
+	value = "Add a field";
+	style = "width: 200px;";
+}
+
+SubmitButton4: WOSubmitButton {
+	action = removeField;
+	value = "-";
+	onClick = "return confirm('Ertu viss?')";
+}
+
+TextField2: WOTextField {
+	size = 25;
+	value = currentField.name;
+}

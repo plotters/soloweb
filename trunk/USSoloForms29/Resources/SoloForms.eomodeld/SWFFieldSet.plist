@@ -1,0 +1,36 @@
+{
+    attributes = (
+        {
+            allowsNull = N; 
+            columnName = "FIELD_SET_ID"; 
+            name = fieldSetID; 
+            prototypeName = int; 
+        }, 
+        {columnName = "FORM_ID"; name = formID; prototypeName = int; }, 
+        {columnName = NAME; name = name; prototypeName = "string_1000000"; }, 
+        {columnName = "SORT_NUMBER"; name = sortNumber; prototypeName = int; }
+    ); 
+    attributesUsedForLocking = (fieldSetID, sortNumber, name, formID); 
+    className = "is.us.soloweb.forms.data.SWFFieldSet"; 
+    classProperties = (fieldSetID, sortNumber, name, fields, formID, form); 
+    externalName = "SWF_FIELD_SET"; 
+    fetchSpecificationDictionary = {}; 
+    name = SWFFieldSet; 
+    primaryKeyAttributes = (fieldSetID); 
+    relationships = (
+        {
+            destination = SWFField; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = fieldSetID; sourceAttribute = fieldSetID; }); 
+            name = fields; 
+        }, 
+        {
+            destination = SWFForm; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = formID; sourceAttribute = formID; }); 
+            name = form; 
+        }
+    ); 
+}

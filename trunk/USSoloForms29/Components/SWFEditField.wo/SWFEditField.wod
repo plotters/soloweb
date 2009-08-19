@@ -1,0 +1,164 @@
+Conditional1: WOConditional {
+	condition = selectedField.isTextField;
+}
+
+Conditional2: WOConditional {
+	condition = selectedField.isTextArea;
+}
+
+Conditional3: WOConditional {
+	condition = selectedField.isCheckbox;
+}
+
+Conditional4: WOConditional {
+	condition = selectedField.isRadioButtonList;
+}
+
+Conditional5: WOConditional {
+	condition = selectedField.isPopUpMenu;
+}
+
+Conditional6: WOConditional {
+	condition = selectedField.isCheckboxList;
+}
+
+Form1: WOForm {
+}
+
+Form2: WOForm {
+	multipleSubmit = true;
+}
+
+SWAdminComponentWrapper1: SWAdminComponentWrapper {
+	backgroundColor = "#eeeeee";
+}
+
+SWAssignPrivileges21: SWAssignPrivileges {
+	record = selectedField;
+	privilegePairs = privilegePairs;
+}
+
+SWFCheckbox1: SWFCheckbox {
+	stringValue = selectedField.defaultValue;
+}
+
+SubmitButton1: WOSubmitButton {
+	action = saveChanges;
+	value = "Save";
+}
+
+Text1: WOText {
+	value = selectedField.valuelistString;
+	cols = 40;
+	rows = 10;
+}
+
+Text10: WOText {
+	value = selectedField.explanatoryText;
+	cols = 40;
+	rows = 10;
+}
+
+Text11: WOText {
+	value = selectedField.explanatoryText;
+	cols = 40;
+	rows = 10;
+}
+
+Text12: WOText {
+	value = selectedField.aboveText;
+	cols = 40;
+	rows = 10;
+}
+
+Text13: WOText {
+	value = selectedField.valuelistString;
+	cols = 40;
+	rows = 10;
+}
+
+Text14: WOText {
+	value = selectedField.defaultValue;
+	cols = 40;
+	rows = 10;
+}
+
+Text2: WOText {
+	value = selectedField.valuelistString;
+	cols = 40;
+	rows = 10;
+}
+
+Text3: WOText {
+	value = selectedField.aboveText;
+	cols = 40;
+	rows = 10;
+}
+
+Text4: WOText {
+	value = selectedField.aboveText;
+	cols = 40;
+	rows = 10;
+}
+
+Text5: WOText {
+	value = selectedField.aboveText;
+	cols = 40;
+	rows = 10;
+}
+
+Text6: WOText {
+	value = selectedField.aboveText;
+	cols = 40;
+	rows = 10;
+}
+
+Text7: WOText {
+	value = selectedField.explanatoryText;
+	cols = 40;
+	rows = 10;
+}
+
+Text8: WOText {
+	value = selectedField.explanatoryText;
+	cols = 40;
+	rows = 10;
+}
+
+Text9: WOText {
+	value = selectedField.explanatoryText;
+	cols = 40;
+	rows = 10;
+}
+
+TextField1: WOTextField {
+	value = selectedField.defaultValue;
+}
+
+TextField2: WOTextField {
+	value = selectedField.size;
+}
+
+TextField3: WOTextField {
+	value = selectedField.size;
+}
+
+TextField4: WOTextField {
+	value = selectedField.defaultValue;
+}
+
+TextField6: WOTextField {
+	value = selectedField.rows;
+}
+
+TextField7: WOTextField {
+	value = selectedField.defaultValue;
+}
+
+TextField8: WOTextField {
+	value = selectedField.noSelectionString;
+}
+
+TextField9: WOTextField {
+	value = selectedField.defaultValue;
+}

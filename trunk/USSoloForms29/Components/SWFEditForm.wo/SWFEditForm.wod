@@ -1,0 +1,44 @@
+FORM: WOForm {
+	multipleSubmit = true;
+}
+
+TAB_PANEL: USTabPanel {
+	selectedTab = selectedTab;
+	tabs = tabs;
+}
+
+KeyValueConditional1: WOKeyValueConditional {
+	key = "selectedTab";
+	value = "General";
+}
+
+KeyValueConditional2: WOKeyValueConditional {
+	key = "selectedTab";
+	value = "Registrations";
+}
+
+KeyValueConditional3: WOKeyValueConditional {
+	key = "selectedTab";
+	value = "Fields";
+}
+
+KeyValueConditional4: WOKeyValueConditional {
+	key = "selectedTab";
+	value = "Fixed search arguments";
+}
+
+GENERAL: SWFEditGeneralSettings {
+	selectedForm = selectedObject;
+}
+
+REGISTRATIONS: SWFRegistrationList {
+	selectedForm = selectedObject;
+}
+
+FIELD_SETS: SWFEditFieldSets {
+	selectedForm = selectedObject;
+}
+
+FIXED_SEARCH: SWFConditionalAccess {
+	selectedForm = selectedObject;
+}

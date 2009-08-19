@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<wodefinitions>
+	<wo class="SWFEditFields" wocomponentcontent="false">
+
+		<binding name="fieldContainer"/>
+		<binding name="fields"/>
+
+		<validation message="&apos;fieldContainer&apos; is a required binding">
+			<unbound name="fieldContainer"/>
+		</validation>
+
+		<validation message="&apos;fields&apos; is a required binding">
+			<unbound name="fields"/>
+		</validation>
+	</wo>
+</wodefinitions>

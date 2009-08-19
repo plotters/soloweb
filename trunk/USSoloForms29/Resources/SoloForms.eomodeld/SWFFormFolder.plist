@@ -1,0 +1,57 @@
+{
+    attributes = (
+        {
+            allowsNull = N; 
+            columnName = "FORM_FOLDER_ID"; 
+            name = folderID; 
+            prototypeName = int; 
+        }, 
+        {
+            columnName = "INHERITS_PRIVILEGES"; 
+            name = inheritsPrivileges; 
+            prototypeName = int; 
+        }, 
+        {columnName = NAME; name = name; prototypeName = "string_1000"; }, 
+        {columnName = "PARENT_FOLDER_ID"; name = parentFolderID; prototypeName = int; }
+    ); 
+    attributesUsedForLocking = (inheritsPrivileges, parentFolderID, name, folderID); 
+    className = "is.us.soloweb.forms.data.SWFFormFolder"; 
+    classProperties = (
+        inheritsPrivileges, 
+        name, 
+        parentFolderID, 
+        children, 
+        documents, 
+        parent, 
+        folderID
+    ); 
+    externalName = "SWF_FORM_FOL"; 
+    fetchSpecificationDictionary = {}; 
+    name = SWFFormFolder; 
+    primaryKeyAttributes = (folderID); 
+    relationships = (
+        {
+            deleteRule = EODeleteRuleCascade; 
+            destination = SWFFormFolder; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = parentFolderID; sourceAttribute = folderID; }); 
+            name = children; 
+        }, 
+        {
+            deleteRule = EODeleteRuleCascade; 
+            destination = SWFForm; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = formFolderID; sourceAttribute = folderID; }); 
+            name = documents; 
+        }, 
+        {
+            destination = SWFFormFolder; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = folderID; sourceAttribute = parentFolderID; }); 
+            name = parent; 
+        }
+    ); 
+}

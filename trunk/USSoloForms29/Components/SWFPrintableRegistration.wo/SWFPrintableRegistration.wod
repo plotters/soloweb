@@ -1,0 +1,53 @@
+Conditional27: WOConditional {
+	condition = currentField.name.length;
+}
+
+Conditional28: WOConditional {
+	condition = currentField.aboveText.length;
+}
+
+GenericContainer2: WOGenericContainer {
+	colspan = colspan;
+	elementName = "TD";
+	valign = "TOP";
+}
+
+Repetition1: WORepetition {
+	item = currentField;
+	list = fieldList;
+}
+
+String1: WOString {
+	value = selectedRegistration.form.name;
+}
+
+String10: WOString {
+	value = currentString;
+	escapeHTML = false;
+}
+
+String12: WOString {
+	escapeHTML = false;
+	value = currentField.explanatoryTextWithBreaks;
+}
+
+String2: WOString {
+	value = selectedRegistration.registrationID;
+}
+
+String3: WOString {
+	value = selectedRegistration.registrationID;
+}
+
+String4: WOString {
+	value = selectedRegistration.form.name;
+}
+
+String8: WOString {
+	value = currentField.name;
+}
+
+String9: WOString {
+	escapeHTML = false;
+	value = currentField.aboveTextWithBreaks;
+}

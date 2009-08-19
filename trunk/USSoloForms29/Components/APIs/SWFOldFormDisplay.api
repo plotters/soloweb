@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<wodefinitions>
+	<wo class="SWFOldFormDisplay" wocomponentcontent="false">
+
+		<binding name="selectedForm"/>
+
+		<validation message="&apos;selectedForm&apos; is a required binding">
+			<unbound name="selectedForm"/>
+		</validation>
+	</wo>
+</wodefinitions>

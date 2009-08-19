@@ -1,0 +1,267 @@
+Conditional1: WOConditional {
+	condition = allowRemovalOfArgument;
+}
+
+Conditional10: WOConditional {
+	condition = currentSearchArgument.field.field.isTextField;
+}
+
+Conditional11: WOConditional {
+	condition = currentSearchArgument.field.field.isTextArea;
+}
+
+Conditional12: WOConditional {
+	condition = currentSearchArgument.field.field.isCheckbox;
+}
+
+Conditional13: WOConditional {
+	condition = currentSearchArgument.field.field.isRadioButtonList;
+}
+
+Conditional14: WOConditional {
+	condition = currentSearchArgument.field.field.isPopUpMenu;
+}
+
+Conditional15: WOConditional {
+	condition = currentSearchArgument.field.keyPath;
+}
+
+Conditional16: SWPrivilegeConditional {
+	record = currentRegistration.form.folder;
+	identifier = "readOnlyUser";
+}
+
+Conditional17: SWPrivilegeConditional {
+	record = selectedForm.folder;
+	identifier = "readOnlyUser";
+}
+
+Conditional18: WOConditional {
+	condition = currentRegistrationField.isBinaryFile;
+}
+
+Conditional19: WOConditional {
+	condition = searchArguments.count;
+}
+
+Conditional2: WOConditional {
+	condition = allowRemovalOfArgument;
+	negate = true;
+}
+
+Conditional20: WOConditional {
+	condition = searchArguments.count;
+	negate = true;
+}
+
+Conditional21: WOConditional {
+	condition = currentRegistrationField.binaryFileSize;
+}
+
+Conditional22: WOConditional {
+	condition = currentRegistrationField.isBinaryFile;
+	negate = true;
+}
+
+Conditional3: WOConditional {
+	condition = allowRemovalOfArgument;
+}
+
+Conditional4: WOConditional {
+	condition = allowRemovalOfArgument;
+	negate = true;
+}
+
+Conditional5: WOConditional {
+	condition = registrationList.count;
+}
+
+Conditional6: WOConditional {
+	condition = currentRegistrationField.field.isCheckbox;
+	negate = true;
+}
+
+Conditional7: WOConditional {
+	condition = currentRegistrationField.field.isCheckbox;
+}
+
+Conditional8: WOConditional {
+	condition = allowRemovalOfArgument;
+}
+
+Conditional9: WOConditional {
+	condition = canAddMoreArguments;
+}
+
+Hyperlink1: WOHyperlink {
+	action = exportRegistrations;
+	target = "_blank";
+}
+
+Hyperlink2: WOHyperlink {
+	action = showPrintableVersion;
+	target = "_blank";
+}
+
+Hyperlink3: WOHyperlink {
+	action = sortByDate;
+}
+
+Hyperlink4: WOHyperlink {
+	action = sortByNumber;
+}
+
+Hyperlink5: WOHyperlink {
+	action = sortByField;
+}
+
+Hyperlink6: WOHyperlink {
+	action = showEditableVersion;
+	target = "_blank";
+}
+
+Hyperlink7: WOHyperlink {
+	action = downloadFile;
+}
+
+KeyValueConditional1: WOKeyValueConditional {
+	key = "currentRegistrationField.value";
+	value = "TRUE";
+}
+
+PopUpButton1: WOPopUpButton {
+	displayString = currentSearchField.name;
+	item = currentSearchField;
+	list = searchFieldList;
+	onChange = "this.form.submit();";
+	selection = currentSearchArgument.field;
+	noSelectionString = "Select an argument...";
+}
+
+PopUpButton2: WOPopUpButton {
+	item = currentSearchValue;
+	list = currentSearchArgument.field.field.valueList;
+	selection = currentSearchArgument.searchString;
+}
+
+RadioButtonList1: WORadioButtonList {
+	escapeHTML = false;
+	item = currentSearchValue;
+	list = currentSearchArgument.field.field.valueList;
+	selection = currentSearchArgument.searchString;
+	suffix = "<BR>";
+}
+
+Repetition1: WORepetition {
+	index = fieldIndex;
+	count = selectedForm.sortedPrimaryFields.count;
+}
+
+Repetition2: WORepetition {
+	item = currentRegistration;
+	list = registrationList;
+	index = registrationIndex;
+}
+
+Repetition3: WORepetition {
+	item = currentField;
+	list = selectedForm.sortedPrimaryFields;
+	index = fieldIndex;
+}
+
+Repetition4: WORepetition {
+	item = currentSearchArgument;
+	list = searchArguments;
+}
+
+SWFCheckbox1: SWFCheckbox {
+	stringValue = currentSearchArgument.searchString;
+}
+
+String1: WOString {
+	value = currentRegistrationField.valueWithBreaks;
+	escapeHTML = false;
+}
+
+String2: WOString {
+	value = currentRegistration.date;
+	dateformat = "%d.%m.%Y";
+}
+
+String3: WOString {
+	value = currentField.name;
+	escapeHTML = false;
+}
+
+String4: WOString {
+	value = registrationIndexDisplay;
+}
+
+String5: WOString {
+	value = currentRegistration.registrationID;
+}
+
+String6: WOString {
+	value = currentSearchArgument.field.field.name;
+}
+
+String7: WOString {
+	value = currentSearchArgument.searchString;
+}
+
+String8: WOString {
+	numberformat = "0";
+	value = currentRegistrationField.binaryFileSize;
+}
+
+String9: WOString {
+	value = currentRegistrationField.value;
+	valueWhenEmpty = "(Untitled)";
+}
+
+SubmitButton1: WOSubmitButton {
+	action = search;
+	value = "Search";
+}
+
+SubmitButton2: WOSubmitButton {
+	action = addSearchArgument;
+	value = "Add search argument";
+	style = "width: 200px;";
+}
+
+SubmitButton3: WOSubmitButton {
+	value = "-";
+	action = removeSearchArgument;
+}
+
+SubmitButton4: WOSubmitButton {
+	action = deleteRegistration;
+	onClick = "return  confirm('Are you sure you want do delete your registration?')";
+	value = "-";
+}
+
+SubmitButton5: WOSubmitButton {
+	action = search;
+	value = "Show all records";
+	style = "width: 200px;";
+}
+
+SubmitButton6: WOSubmitButton {
+	action = createRecord;
+	value = "Create a record";
+	style = "width: 200px;";
+}
+
+TextField1: WOTextField {
+	value = currentSearchArgument.searchString;
+}
+
+TextField2: WOTextField {
+	value = currentSearchArgument.searchString;
+}
+
+TextField3: WOTextField {
+	dateformat = currentSearchArgument.field.dateFormatString;
+	value = currentSearchArgument.searchString;
+}

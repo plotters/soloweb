@@ -1,0 +1,116 @@
+{
+    attributes = (
+        {columnName = "DONT_STORE_DATA"; name = dontStoreData; prototypeName = int; }, 
+        {columnName = "FORM_FOLDER_ID"; name = formFolderID; prototypeName = int; }, 
+        {allowsNull = N; columnName = "FORM_ID"; name = formID; prototypeName = int; }, 
+        {
+            columnName = "FROM_EMAIL_ADDRESS"; 
+            name = fromEmailAddress; 
+            prototypeName = "string_1000"; 
+        }, 
+        {
+            columnName = "MAX_REGISTRATIONS"; 
+            name = maxRegistrations; 
+            prototypeName = int; 
+            userInfo = {"_EntityModeler" = {generateSource = NO; }; }; 
+        }, 
+        {columnName = NAME; name = name; prototypeName = "string_1000"; }, 
+        {
+            columnName = "NOTIFY_EMAIL_ADDRESSES"; 
+            name = notifyEmailAddresses; 
+            prototypeName = "string_1000"; 
+        }, 
+        {
+            columnName = "REGISTRATION_MESSAGE"; 
+            name = registrationMessage; 
+            prototypeName = "string_1000"; 
+        }, 
+        {
+            columnName = "REQUIRED_FIELD_EMPTY_STRING"; 
+            name = requiredFieldEmptyString; 
+            prototypeName = "string_1000"; 
+        }, 
+        {
+            columnName = "USERS_CAN_DELETE_REGISTRATIONS"; 
+            name = usersCanDeleteRegistrations; 
+            prototypeName = int; 
+        }
+    ); 
+    attributesUsedForLocking = (
+        formID, 
+        name, 
+        registrationMessage, 
+        usersCanDeleteRegistrations, 
+        requiredFieldEmptyString, 
+        formFolderID, 
+        dontStoreData, 
+        notifyEmailAddresses, 
+        fromEmailAddress, 
+        maxRegistrations
+    ); 
+    className = "is.us.soloweb.forms.data.SWFForm"; 
+    classProperties = (
+        formID, 
+        name, 
+        fields, 
+        registrations, 
+        registrationMessage, 
+        usersCanDeleteRegistrations, 
+        requiredFieldEmptyString, 
+        formFolderID, 
+        folder, 
+        dontStoreData, 
+        notifyEmailAddresses, 
+        fromEmailAddress, 
+        fieldSets, 
+        fixedSearches, 
+        maxRegistrations
+    ); 
+    externalName = "SWF_FORM"; 
+    fetchSpecificationDictionary = {}; 
+    name = SWFForm; 
+    primaryKeyAttributes = (formID); 
+    relationships = (
+        {
+            deleteRule = EODeleteRuleCascade; 
+            destination = SWFFieldSet; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = formID; sourceAttribute = formID; }); 
+            name = fieldSets; 
+        }, 
+        {
+            deleteRule = EODeleteRuleCascade; 
+            destination = SWFField; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = formID; sourceAttribute = formID; }); 
+            name = fields; 
+            numberOfToManyFaultsToBatchFetch = 200; 
+        }, 
+        {
+            deleteRule = EODeleteRuleCascade; 
+            destination = SWFFixedSearch; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = formID; sourceAttribute = formID; }); 
+            name = fixedSearches; 
+        }, 
+        {
+            destination = SWFFormFolder; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = folderID; sourceAttribute = formFolderID; }); 
+            name = folder; 
+        }, 
+        {
+            deleteRule = EODeleteRuleCascade; 
+            destination = SWFRegistration; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = formID; sourceAttribute = formID; }); 
+            name = registrations; 
+            numberOfToManyFaultsToBatchFetch = 200; 
+        }
+    ); 
+}
