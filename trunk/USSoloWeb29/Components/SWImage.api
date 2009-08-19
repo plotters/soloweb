@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wodefinitions>
+	<wo class="SWImage" wocomponentcontent="false">
+
+		
+
+		
+	<binding name="document"/>
+        <validation message="'document' is a required binding">
+            <unbound name="document"/>
+        </validation>
+    </wo>
+</wodefinitions>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<wodefinitions>
+	<wo class="SWHelpHyperlink" wocomponentcontent="false">
+
+		<binding name="topic"/>
+
+		<validation message="&apos;topic&apos; is a required binding">
+			<unbound name="topic"/>
+		</validation>
+	</wo>
+</wodefinitions>

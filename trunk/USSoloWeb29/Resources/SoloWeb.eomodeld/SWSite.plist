@@ -1,0 +1,58 @@
+{
+    attributes = (
+        {
+            columnName = "CUSTOM_INFO"; 
+            name = customInfoString; 
+            prototypeName = "string_1000"; 
+        }, 
+        {columnName = LANGUAGE; name = language; prototypeName = "string_1000"; }, 
+        {columnName = LOOK; name = look; prototypeName = "string_1000"; }, 
+        {columnName = NAME; name = name; prototypeName = "string_1000"; }, 
+        {
+            columnName = "NO_PAGE_ERROR_PAGE"; 
+            name = noPageFoundErrorPageLinkingName; 
+            prototypeName = "string_1000"; 
+        }, 
+        {columnName = "PAGE_ID"; name = pageID; prototypeName = int; }, 
+        {columnName = QUAL; name = qual; prototypeName = "string_1000"; }, 
+        {allowsNull = N; columnName = "SITE_ID"; name = siteID; prototypeName = int; }
+    ); 
+    attributesUsedForLocking = (
+        customInfoString, 
+        language, 
+        look, 
+        name, 
+        noPageFoundErrorPageLinkingName, 
+        pageID, 
+        qual, 
+        siteID
+    ); 
+    className = "is.us.soloweb.data.SWSite"; 
+    classProperties = (
+        customInfoString, 
+        frontpage, 
+        language, 
+        look, 
+        name, 
+        noPageFoundErrorPageLinkingName, 
+        pageID, 
+        qual, 
+        siteID
+    ); 
+    externalName = "SW_SITE"; 
+    fetchSpecificationDictionary = {}; 
+    name = SWSite; 
+    primaryKeyAttributes = (siteID); 
+    relationships = (
+        {
+            deleteRule = EODeleteRuleCascade; 
+            destination = SWPage; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = pageID; sourceAttribute = pageID; }); 
+            name = frontpage; 
+            userInfo = {modificationDate = "2001-06-03 19:53:43 +0000"; }; 
+        }
+    ); 
+    userInfo = {modificationDate = "2001-06-03 19:53:43 +0000"; }; 
+}

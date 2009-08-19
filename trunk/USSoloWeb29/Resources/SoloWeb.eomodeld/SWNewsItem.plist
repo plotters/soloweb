@@ -1,0 +1,111 @@
+{
+    attributes = (
+        {columnName = "CREATED_BY_ID"; name = createdByID; prototypeName = int; }, 
+        {columnName = "CREATION_DATE"; name = creationDate; prototypeName = time; }, 
+        {columnName = "SW_DATE"; name = date; prototypeName = time; }, 
+        {columnName = "DOCUMENT_ID"; name = documentID; prototypeName = int; }, 
+        {columnName = "ENCODE_BREAKS"; name = encodeBreaks; prototypeName = int; }, 
+        {columnName = EXCERPT; name = excerpt; prototypeName = "string_1000"; }, 
+        {columnName = "NEWS_CATEGORY_ID"; name = folderID; prototypeName = int; }, 
+        {
+            columnName = "MODIFICATION_DATE"; 
+            name = modificationDate; 
+            prototypeName = time; 
+        }, 
+        {columnName = "MODIFIED_BY_ID"; name = modifiedByID; prototypeName = int; }, 
+        {columnName = HEADING; name = name; prototypeName = "string_1000"; }, 
+        {
+            allowsNull = N; 
+            columnName = "NEWS_ITEM_ID"; 
+            name = newsItemID; 
+            prototypeName = int; 
+        }, 
+        {columnName = "PICTURE_ID"; name = pictureID; prototypeName = int; }, 
+        {columnName = PUBLISHED; name = published; prototypeName = int; }, 
+        {
+            columnName = "SUB_HEADING"; 
+            name = subheading; 
+            prototypeName = "string_1000"; 
+        }, 
+        {columnName = TEXT; name = text; prototypeName = "string_1000000"; }, 
+        {columnName = "TIME_IN"; name = timeIn; prototypeName = time; }, 
+        {columnName = "TIME_OUT"; name = timeOut; prototypeName = time; }
+    ); 
+    attributesUsedForLocking = (
+        createdByID, 
+        creationDate, 
+        date, 
+        documentID, 
+        encodeBreaks, 
+        excerpt, 
+        folderID, 
+        modificationDate, 
+        modifiedByID, 
+        name, 
+        newsItemID, 
+        pictureID, 
+        published, 
+        subheading, 
+        timeIn, 
+        timeOut
+    ); 
+    className = "is.us.soloweb.data.SWNewsItem"; 
+    classProperties = (
+        createdBy, 
+        createdByID, 
+        creationDate, 
+        date, 
+        document, 
+        documentID, 
+        encodeBreaks, 
+        excerpt, 
+        folder, 
+        folderID, 
+        modificationDate, 
+        modifiedBy, 
+        modifiedByID, 
+        name, 
+        newsItemID, 
+        pictureID, 
+        published, 
+        subheading, 
+        text, 
+        timeIn, 
+        timeOut
+    ); 
+    externalName = "SW_NEWS_ITEM"; 
+    fetchSpecificationDictionary = {}; 
+    name = SWNewsItem; 
+    primaryKeyAttributes = (newsItemID); 
+    relationships = (
+        {
+            destination = SWUser; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = userID; sourceAttribute = createdByID; }); 
+            name = createdBy; 
+        }, 
+        {
+            destination = SWDocument; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = documentID; sourceAttribute = documentID; }); 
+            name = document; 
+        }, 
+        {
+            destination = SWNewsFolder; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = folderID; sourceAttribute = folderID; }); 
+            name = folder; 
+        }, 
+        {
+            destination = SWUser; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = userID; sourceAttribute = modifiedByID; }); 
+            name = modifiedBy; 
+        }
+    ); 
+    userInfo = {modificationDate = "2001-06-22 10:28:36 +0000"; }; 
+}

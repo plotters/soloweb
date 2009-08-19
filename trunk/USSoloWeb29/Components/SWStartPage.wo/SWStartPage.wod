@@ -1,0 +1,27 @@
+WRAPPER: SWAdminComponentWrapper {}
+
+REPETITION : WORepetition {
+	item = currentObject;
+	list = recentlyChanged;
+}
+
+NAME_STRING : WOString {
+	value = currentObject.name;
+}
+
+SELECT_LINK : SWObjectHyperlink {
+	object = currentObject;
+}
+
+USER_STRING : WOString {
+	value = currentObject.modifiedBy.name;
+}
+
+DATE_STRING : WOString {
+	value = currentObject.modificationDate;
+	dateformat = "%d.%m.%Y, %H:%M";
+}
+
+FOLDER_STRING : WOString {
+	value = currentObject.folder.name;
+}

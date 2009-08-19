@@ -1,0 +1,38 @@
+<webobject name="WRAPPER">
+	<div class="swmenu">
+		<webobject name="DELETE_LINK"><webobject name="DELETE_STRING" /></webobject>
+	</div>
+	<div id="swobjectEdit">
+	<label><webobject name = "String1" />: </label> <webobject name = "TextField1" /><br />
+	<label><webobject name = "String3" />: </label> <webobject name = "PopUpButton1" /> <webobject name = "SubmitButton3" />
+	
+	      <table cellspacing = "0" cellpadding = "2" class = "genericTable" border = "0">
+	        <webobject name = "Repetition3">
+	          <webobject name = "GenericContainer2">
+	            <td width = "16"><webobject name = "Image1" /></td>
+	            <td width = "280">
+	              <webobject name = "Hyperlink1"><webobject name = "String2" /></webobject>
+	            </td>
+	            <td width = "10">
+	              <webobject name = "Hyperlink2">X</webobject>
+	            </td>
+	          </webobject>
+	        </webobject>
+	      </table>
+	      
+	      <h2>Aðgangsheimildir</h2>
+			      <table>
+				      <tr>
+					      <th>Tegund</th>
+					      <th>Hlutur</th>
+				      </tr>
+				      <webobject name="PRIVILEGES_REPETITION">
+					      <tr>
+						      <td><webobject name="OBJECT_TYPE_STRING" /></td>
+						      <td><webobject name="SW_OBJECT_HYPERLINK"><webobject name="CURRENT_OBJECT_NAME_STRING" /></webobject></td>
+					      </tr>
+				      </webobject>
+			      </table>
+	    <webobject name = "SAVE_CHANGES_BUTTON" />
+	</div>
+</webobject>

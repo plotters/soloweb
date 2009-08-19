@@ -1,0 +1,99 @@
+WRAPPER: SWAdminComponentWrapper {}
+
+TREE: SWSiteTree {}
+
+IS_TOP_LEVEL_CONDITIONAL: WOConditional {
+	condition = selectedObject.isTopLevel;
+	negate = true;
+}
+
+CAN_DELETE_PAGE_CONDITIONAL: SWPrivilegeConditional {
+	identifier = "canDeletePage";
+	record = selectedObject;
+}
+
+PREVIEW_LINK: WOHyperlink {
+	target = "_blank";
+	directActionName = "dp";
+	?id = selectedObject.pageID;
+	accesskey = "1";
+}
+
+CREATE_PAGE_LINK: WOHyperlink {
+	action = createSubPage;
+	class = "swcreateButton";
+}
+
+DELETE_PAGE_LINK: WOHyperlink {
+	action = deletePage;
+	class = "swdeleteButton";
+	onClick = "return confirm('Ertu viss?')"; //session.@ls.deletePageWarning;
+}
+
+TRANSFER_PAGE_CONDITIONAL: SWPrivilegeConditional {
+	identifier = "canManagePage";
+	record = selectedObject;
+}
+
+FORM: WOForm {
+	multipleSubmit = true;
+}
+
+PAGE_NAME_STRING: WOString {
+	value = selectedObject.name;
+}
+
+PAGE_SELECTED_CONDITIONAL: WOConditional {
+	condition = selectedObject;
+}
+
+TRANSFER_LINK: SWTransferHyperlink {
+	componentToReturn = context.page;
+	record = selectedObject;
+	transferComponentName = "SWTransferPage";
+}
+
+PAGE_ID_STRING: WOString {
+	value = selectedObject.pageID;
+}
+
+CREATE_PAGE_STRING: WOString {
+	value = session.@ls.createSubPage;
+}
+
+DELETE_PAGE_STRING: WOString {
+	value = session.@ls.deletePage;
+}
+
+TRANSFER_STRING: WOString {
+	value = session.@ls.movePage;
+}
+
+PREVIEW_STRING: WOString {
+	value = session.@ls.previewPage;
+}
+
+SUBMIT_BUTTON: WOSubmitButton {
+	action = saveChanges;
+	value = session.@ls.savePageChangesButtonTitle;
+	accesskey = "s";
+}
+
+EDIT_COMPONENT: WOSwitchComponent {
+	WOComponentName = selectedComponentName;
+	selectedObject = selectedObject;
+}
+
+TAB_PANEL: USTabPanel {
+	selectedTab = selectedTab;
+	tabs = tabs;
+	submitActionName = "saveChanges";
+}
+
+MOVE_LINK: WOHyperlink {
+	action = movePage;
+}
+
+HAS_SUBPAGES_CONDITIONAL : WOConditional {
+	condition = selectedObject.hasSubPages;
+}

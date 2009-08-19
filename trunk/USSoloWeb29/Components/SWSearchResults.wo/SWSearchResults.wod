@@ -1,0 +1,63 @@
+Conditional1: WOConditional {
+	condition = currentPage.text;
+}
+
+Conditional2: WOConditional {
+	condition = results.@count;
+}
+
+Conditional3: WOConditional {
+	condition = results.@count;
+	negate = true;
+}
+
+Conditional4: WOConditional {
+	condition = oneResult;
+	negate = true;
+}
+
+Conditional5: WOConditional {
+	condition = oneResult;
+}
+
+Hyperlink1: WOHyperlink {
+	?id = currentPage.pageID;
+	directActionName = "dp";
+}
+
+Repetition1: WORepetition {
+	item = currentPage;
+	list = results;
+}
+
+SWBreadcrumbTrail1: SWNavigation {
+	selectedPage = currentPage;
+	list = currentPage.everyParentPage;
+}
+
+String1: WOString {
+	value = searchString;
+}
+
+String2: WOString {
+	value = currentPage.name;
+}
+
+String3: WOString {
+	value = results.count;
+}
+
+String4: WOString {
+	value = currentPage.text;
+	escapeHTML = false;
+}
+
+String5: WOString {
+	value = searchString;
+}
+
+SwitchComponent1: WOSwitchComponent {
+	WOComponentName = lookName;
+	selectedPage = selectedPage;
+}
+

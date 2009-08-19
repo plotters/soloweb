@@ -1,0 +1,63 @@
+<webobject name="WRAPPER">
+	<webobject name="HAS_OBJECT_CONDITIONAL">
+		<div class="swmenu">
+			<webobject name="DELETE_LINK"><webobject name="DELETE_STRING" /></webobject>
+		</div>
+		
+		<div id="swobjectEdit">
+			<fieldset>
+				<legend>Notandi</legend>
+			<label><webobject name="String2" />: </label><webobject name="TextField1" /><br />
+			<label><webobject name="String3" />: </label><webobject name="TextField3" /><br />
+			<label><webobject name="String4" />: </label><webobject name="PasswordField1" /><br />
+			<label><webobject name="String6" />: </label><webobject name="PopUpButton2" /><br />
+		
+			<label><webobject name="String9" />: </label><webobject name="CheckBox1" /><br />
+			
+			<webobject name="String10" />
+			      <webobject name="PopUpButton1" />
+			      <webobject name="SubmitButton1" />
+			      <table cellspacing="0" cellpadding="2" class="genericTable" border="0">
+			        <webobject name="Repetition3">
+			          <webobject name="GenericContainer2">
+			            <td width="16">
+			              <webobject name="Image1" />
+			            </td>
+			            <td width="280">
+			              <webobject name="Hyperlink4"><webobject name="String1" /></webobject>
+			            </td>
+			            <td width="10">
+			              <webobject name="REMOVE_FROM_GROUP_LINK">X</webobject>
+			            </td>
+			          </webobject>
+			        </webobject>
+			      </table>
+			      
+			      <h2>Aðgangsheimildir</h2>
+			      <table>
+				      <tr>
+					      <th>Tegund</th>
+					      <th>Hlutur</th>
+					      <th>Úr hópi</th>
+				      </tr>
+				      <webobject name="USER_PRIVILEGES_REPETITION">
+					      <tr>
+						      <td><webobject name="OBJECT_TYPE_STRING" /></td>
+						      <td><webobject name="SW_OBJECT_HYPERLINK"><webobject name="CURRENT_OBJECT_NAME_STRING" /></webobject></td>
+						      <td><em style="color: gray">Úthlutað beint til notanda</em></td>
+					      </tr>
+				      </webobject>
+				      <webobject name="GROUP_PRIVILEGES_REPETITION">
+					      <tr>
+					      	<td><webobject name="OBJECT_TYPE_STRING" /></td>
+						      <td><webobject name="SW_OBJECT_HYPERLINK"><webobject name="CURRENT_OBJECT_NAME_STRING" /></webobject></td>
+						      <td><webobject name="CURRENT_GROUP_NAME" /></td>
+					      </tr>
+				      </webobject>
+			      </table>
+
+			      <webobject name="SUBMIT_BUTTON" />
+			</fieldset>
+		</div>
+	</webobject>
+</webobject>

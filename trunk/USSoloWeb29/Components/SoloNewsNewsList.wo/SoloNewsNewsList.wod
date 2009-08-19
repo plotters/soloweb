@@ -1,0 +1,89 @@
+DISPLAY_DETAIL_CONDITIONAL: WOConditional {
+	condition = displayDetail;
+	negate = true;
+}
+
+DO_NOT_ENCODE_BREAKS_CONDITIONAL: WOConditional {
+	condition = currentNewsItem.shouldEncodeBreaks;
+	negate = true;
+}
+
+ENCODE_BREAKS_CONDITIONAL: WOConditional {
+	condition = currentNewsItem.shouldEncodeBreaks;
+}
+
+HAS_DETAIL_ITEM_CONDITIONAL: WOConditional {
+	condition = displayDetail;
+}
+
+SHOW_IMAGE_CONDITIONAL: WOConditional {
+	condition = currentComponent.customInfo.showPicture;
+}
+
+DISPLAY_EXCERPT_CONDITIONAL: WOConditional {
+	condition = displayExcerpt;
+}
+
+DISPLAY_TEXT_CONDITIONAL: WOConditional {
+	condition = displayText;
+}
+
+DISPLAY_LINK_ONLY_CONDITIONAL: WOConditional {
+	condition = displayLinkOnly;
+}
+
+REPETITION: WORepetition { 
+	item = currentNewsItem;
+	list = newslist;
+}
+
+MORE_LINK: WOHyperlink {
+	href = moreURL;
+	class = "sw_newsitem_more_link";
+}
+
+IMAGE: SWImage {
+	document = currentNewsItem.document;
+	align = currentComponent.customInfo.imageAlignment;
+}
+
+DETAIL_COMPONENT: SWNewsDetail {
+	selectedNewsItem = selectedNewsItem;
+	currentComponent = currentComponent;
+}
+
+SHOW_MORE_LINK_TEXT: WOString {
+	value = @ls.defaultNewsShowMoreString;
+}
+
+NAME_STRING: WOString {
+	value = currentNewsItem.name;
+}
+
+EXCERPT_WITH_BREAKS_STRING: WOString {
+	value = currentNewsItem.excerptWithBreaks;
+	escapeHTML = false;
+}
+
+TEXT_WITHOUT_BREAKS_STRING: WOString {
+	value = currentNewsItem.text;
+	escapeHTML = false;
+}
+
+TEXT_WITH_BREAKS_STRING: WOString {
+	value = currentNewsItem.textWithBreaks;
+	escapeHTML = false;
+}
+
+DATE_STRING: WOString {
+	value = currentNewsItem.date;
+	dateformat = "%d.%m.%Y";
+}
+
+ALLOW_COMMENTS_CONDITIONAL: WOConditional {
+	condition = currentComponent.customInfo.allowComments;
+}
+
+COMMENT_INFO: SWCommentInfo {
+	selectedNewsItem = currentNewsItem;
+}

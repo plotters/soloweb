@@ -1,0 +1,7 @@
+CONTENT: WOComponentContent {
+}
+
+LINK: WOHyperlink {
+	action = transfer;
+	class = "swtransferButton";
+}

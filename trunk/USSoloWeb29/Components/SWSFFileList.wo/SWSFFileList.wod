@@ -1,0 +1,25 @@
+HAS_DOCUMENT_CONDITIONAL: WOConditional {
+	condition = documents.count;
+}
+
+LINK: SWHyperlink {
+	object = currentDocument;
+}
+
+REPETITION: WORepetition {
+	item = currentDocument;
+	list = documents;
+}
+
+DOCUMENT_NAME_STRING: WOString {
+	value = currentDocument.name;
+	escapeHTML = false;
+}
+
+ICON: SWImage {
+	document = currentDocument.documentType.document;
+}
+
+SIZE_STRING: WOString {
+	value = currentDocument.sizeKB;
+}

@@ -1,0 +1,21 @@
+WRAPPER: SWAdminComponentWrapper {
+	hideMenu = true;
+}
+
+Hyperlink1: WOHyperlink {
+	directActionName = "login";
+	target = "_top";
+}
+
+String1: WOString {
+	value = session.@ls.loggedOutStringOne;
+}
+
+String2: WOString {
+	value = session.@ls.loggedOutStringTwo;
+}
+
+String3: WOString {
+	value = session.@ls.loggedOutStringThree;
+}
+

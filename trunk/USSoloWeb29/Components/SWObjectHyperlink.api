@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wodefinitions>
+    <wo class="SWObjectHyperlink" wocomponentcontent="false">    <binding name="object"/>
+        <validation message="'object' is a required binding.">
+            <unbound name="object"/>
+        </validation>
+        <binding name="disabled"/>
+    </wo>
+</wodefinitions>

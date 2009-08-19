@@ -1,0 +1,52 @@
+String1: WOString {
+	value = session.@ls.siteNameFieldTitle;
+}
+
+String2: WOString {
+	value = session.@ls.siteLookFieldTitle;
+}
+
+String3: WOString {
+	value = session.@ls.siteLanguageFieldTitle;
+}
+
+String4: WOString {
+	value = session.@ls.site404PageFieldTitle;
+}
+
+String5: WOString {
+	value = session.@ls.siteDomainsFieldTitle;
+}
+
+SubmitButton2: WOSubmitButton {
+	action = saveChanges;
+	value = session.@ls.siteSaveButtonTitle;
+	accesskey = "s";
+}
+
+QUAL_FIELD: WOText {
+	value = selectedObject.qual;
+	rows = 10;
+}
+
+NAME_FIELD: WOTextField {
+	value = selectedObject.name;
+}
+
+LOOK_FIELD: WOTextField {
+	value = selectedObject.look;
+}
+
+LANG_FIELD: WOString {
+	value = selectedObject.language;
+}
+
+FIELD_404: WOTextField {
+	value = selectedObject.noPageFoundErrorPageLinkingName;
+}
+
+LOCALE_POPUP : WOPopUpButton {
+	list = availableLocales;
+	item = currentLocaleName;
+	selection = selectedObject.language;
+}

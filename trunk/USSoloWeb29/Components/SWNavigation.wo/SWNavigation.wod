@@ -1,0 +1,32 @@
+SELECTED_CONDITIONAL: WOConditional {
+	condition = subPageIsSelected;
+}
+
+HAS_ELEMENTS_CONDITIONAL: WOConditional {
+	condition = list.count;
+}
+
+SHOW_HIERARCHY: WOConditional {
+	condition = ^noHierarchy;
+	negate = true;
+}
+
+LINK: SWHyperlink {
+	object = currentPage;
+	class = currentClass;
+}
+
+REPETITION: WORepetition {
+	item = currentPage;
+	list = list;
+	index = currentIndex;
+}
+
+SUB_NAVIGATION: SWNavigation {
+	list = currentPage.sortedAndApprovedSubPages;
+	selectedPage = selectedPage;
+}
+
+PAGE_NAME_STRING: WOString {
+	value = currentPage.name;
+}

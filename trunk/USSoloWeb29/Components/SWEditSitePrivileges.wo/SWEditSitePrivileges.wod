@@ -1,0 +1,4 @@
+EDIT_PRIVILEGES: SWAssignPrivileges {
+	privilegePairs = privilegePairs;
+	record = selectedObject;
+}

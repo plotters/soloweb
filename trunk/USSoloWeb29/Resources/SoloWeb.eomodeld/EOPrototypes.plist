@@ -1,0 +1,60 @@
+{
+    attributes = (
+        {
+            allowsNull = Y; 
+            columnName = ""; 
+            externalType = BLOB; 
+            name = blob; 
+            userInfo = {"_EntityModeler" = {generateSource = NO; }; }; 
+            valueClassName = NSData; 
+        }, 
+        {
+            allowsNull = Y; 
+            columnName = ""; 
+            externalType = NUMBER; 
+            name = int; 
+            userInfo = {"_EntityModeler" = {generateSource = NO; }; }; 
+            valueClassName = NSNumber; 
+            valueType = i; 
+        }, 
+        {
+            columnName = pk; 
+            name = pk; 
+            userInfo = {"_EntityModeler" = {generateSource = NO; }; }; 
+        }, 
+        {
+            allowsNull = Y; 
+            columnName = ""; 
+            externalType = VARCHAR2; 
+            name = "string_1000"; 
+            userInfo = {"_EntityModeler" = {generateSource = NO; }; }; 
+            valueClassName = NSString; 
+            width = 2000; 
+        }, 
+        {
+            allowsNull = Y; 
+            columnName = ""; 
+            externalType = CLOB; 
+            name = "string_1000000"; 
+            userInfo = {"_EntityModeler" = {generateSource = NO; }; }; 
+            valueClassName = NSString; 
+        }, 
+        {
+            allowsNull = Y; 
+            columnName = ""; 
+            externalType = DATE; 
+            name = time; 
+            userInfo = {"_EntityModeler" = {generateSource = NO; }; }; 
+            valueClassName = NSCalendarDate; 
+            valueType = T; 
+        }
+    ); 
+    attributesUsedForLocking = (blob, int, pk, "string_1000", time); 
+    className = EOGenericRecord; 
+    classProperties = (blob, int, "string_1000", "string_1000000", time); 
+    externalName = "EO_PROTOTYPES"; 
+    fetchSpecificationDictionary = {}; 
+    isAbstractEntity = Y; 
+    name = EOPrototypes; 
+    primaryKeyAttributes = (pk); 
+}

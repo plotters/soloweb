@@ -1,0 +1,55 @@
+WRAPPER : SWAdminComponentWrapper {}
+
+FORM: WOForm {}
+
+DATE_FIELD : WOTextField {
+	value = date;
+	dateformat = "%d.%m.%Y";
+}
+
+SUBMIT_BUTTON : WOSubmitButton {
+	action = search;
+	value = "Leita";
+}
+
+USER_TRANSACTIONS_REPETITION : WORepetition {
+	item = currentTransaction;
+	list = transactions;
+}
+
+TRAN_DATE : WOString {
+	value = currentTransaction.date;
+	dateformat = "%d.%m.%Y, %H:%M";
+}
+
+TRAN_ENTITY_DESCRIPTION : WOString {
+	value = currentTransaction.localizedDescriptionOfEntity;
+}
+
+TRAN_OBJECT_LINK : WOHyperlink {
+	action = inpsectTransaction;
+}
+
+TRAN_OBJECT_NAME : WOString {
+	value = currentTransaction.objectID;
+}
+
+TRAN_TYPE_STRING : WOString {
+	value = currentTransaction.localizedDescriptionOfAction;
+}
+
+TRAN_USER_STRING : WOString {
+	value = currentTransaction.user.name;
+}
+
+TRAN_ENTITY_NAME_STRING : WOString {
+	value = currentTransaction.entityNameString;
+}
+
+HAS_TRANSACTIONS_CONDITIONAL : WOConditional {
+	condition = transactions.count;
+}
+
+RECORD_LINK : SWObjectHyperlink {
+	object = currentTransaction.record;
+}

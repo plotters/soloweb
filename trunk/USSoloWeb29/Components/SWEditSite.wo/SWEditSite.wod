@@ -1,0 +1,24 @@
+WRAPPER: SWAdminComponentWrapper {}
+
+FORM: WOForm {}
+
+TREE: SWSiteTree {}
+
+TAB_PANEL: USTabPanel {
+	selectedTab = selectedTab;
+	tabs = tabs;
+	submitActionName = "saveChanges";
+}
+
+SWITCH_COMPONENT: WOSwitchComponent {
+	WOComponentName = selectedEditingComponentName;
+	selectedObject = selectedObject;
+}
+
+DELETE_LINK : WOHyperlink {
+	action = deleteSite;
+}
+
+DELETE_STRING: WOString {
+	value = session.@ls.siteDelete;
+}

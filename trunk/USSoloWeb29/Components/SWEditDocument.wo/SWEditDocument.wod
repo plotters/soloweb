@@ -1,0 +1,65 @@
+FILE_UPLOAD: WOFileUpload {
+	data = data;
+	filePath = filename;
+}
+
+FORM: WOForm {
+	enctype = "multipart/form-data";
+}
+
+URL_FIELD: WOTextField {
+	value = urlToFetchDataFrom;
+	size = 60;
+}
+
+NAME_FIELD: WOTextField {
+	value = selectedObject.name;
+	size = 60;
+}
+
+TYPE_POPUP: WOPopUpButton {
+	displayString = currentDocumentType.name;
+	item = currentDocumentType;
+	list = documentTypes;
+	noSelectionString = session.@ls.pictureUploadNoTypeSpecified;
+	selection = selectedObject.documentType;
+}
+
+DOC_ID_STRING: WOString {
+	value = selectedObject.assetID;
+}
+
+DOC_NAME_STRING: WOString {
+	value = selectedObject.name;
+}
+
+NAME_LABEL: WOString {
+	value = session.@ls.pictureUploadName;
+}
+
+TYPE_LABEL: WOString {
+	value = session.@ls.pictureUploadType;
+}
+
+URL_LABEL: WOString {
+	value = session.@ls.pictureUploadURL;
+}
+
+FILE_LABEL: WOString {
+	value = session.@ls.pictureUploadSelectFromDisk;
+}
+
+SUBMIT_BUTTON: WOSubmitButton {
+	action = saveChanges;
+	value = session.@ls.pictureUploadSaveButtonTitle;
+	accesskey = "s";
+}
+
+EDIT_LINK : WOHyperlink {
+	action = edit;
+	target = "_blank";
+}
+
+PREVIEW_LINK : WOHyperlink {
+	href = documentURL;
+}

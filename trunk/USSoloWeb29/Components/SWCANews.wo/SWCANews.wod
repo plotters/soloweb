@@ -1,0 +1,178 @@
+CheckBox1: WOCheckBox {
+	checked = currentComponent.customInfo.showPicture;
+}
+
+ALLOW_COMMENTS: WOCheckBox {
+	checked = currentComponent.customInfo.allowComments;
+}
+
+PopUpButton1: WOPopUpButton {
+	list = sortOrderings;
+	selection = currentComponent.customInfo.sortOrder;
+}
+
+PopUpButton3: WOPopUpButton {
+	list = sortKeys;
+	selection = currentComponent.customInfo.sortKey;
+}
+
+PopUpButton4: WOPopUpButton {
+	displayString = currentFolder.nameIncludingHierarchy;
+	item = currentFolder;
+	list = allCategories;
+	noSelectionString = "Select a folder...";
+	selection = selectedFolder;
+}
+
+PopUpButton5: WOPopUpButton {
+	list = componentKeys;
+	selection = selectedComponentKey;
+}
+
+PopUpButton6: WOPopUpButton {
+	list = imageAlignment;
+
+	selection = currentComponent.customInfo.imageAlignment;
+}
+
+RadioButton1: WORadioButton {
+	name = "viewMode";
+	selection = currentComponent.customInfo.viewMode;
+	value = 3;
+}
+
+RadioButton2: WORadioButton {
+	name = "viewMode";
+	selection = currentComponent.customInfo.viewMode;
+	value = 2;
+}
+
+RadioButton3: WORadioButton {
+	name = "viewMode";
+	selection = currentComponent.customInfo.viewMode;
+	value = 1;
+}
+
+String1: WOString {
+	value = session.@ls.newsComponentHeading;
+}
+
+String10: WOString {
+	value = session.@ls.newsComponentSortOrderFieldTitle;
+}
+
+String11: WOString {
+	value = session.@ls.newsComponentDisplayOptions;
+}
+
+String12: WOString {
+	value = session.@ls.newsComponentShowPicture;
+}
+
+String13: WOString {
+	value = session.@ls.newsComponentPictureAlignment;
+}
+
+String14: WOString {
+	value = session.@ls.newsComponentShowSettings;
+}
+
+String15: WOString {
+	value = session.@ls.newsComponentDetailPageLinkingName;
+}
+
+String16: WOString {
+	value = session.@ls.newsComponentDetailPageNumber;
+}
+
+String17: WOString {
+	value = session.@ls.newsComponentShowMoreFieldTitle;
+}
+
+String18: WOString {
+	value = session.@ls.newsComponentGoBackTextFieldTitle;
+}
+
+String19: WOString {
+	value = session.@ls.newsComponentShowHeadingOnly;
+}
+
+String2: WOString {
+	value = session.@ls.newsComponentPublishingOptions;
+}
+
+String20: WOString {
+	value = session.@ls.newsComponentShowHeadingAndExcerpt;
+}
+
+String21: WOString {
+	value = session.@ls.newsComponentShowHeadingAndFullText;
+}
+
+String3: WOString {
+	value = session.@ls.newsComponentDisplayStyle;
+}
+
+String4: WOString {
+	value = session.@ls.newsComponentCategory;
+}
+
+String5: WOString {
+	value = session.@ls.newsComponentMaxItems;
+}
+
+String6: WOString {
+	value = session.@ls.newsComponentSkipItems;
+}
+
+String7: WOString {
+	value = session.@ls.newsComponentMaxDays;
+}
+
+String8: WOString {
+	value = session.@ls.newsComponentSkipDays;
+}
+
+String9: WOString {
+	value = session.@ls.newsComponentSortFieldTitle;
+}
+
+TextField1: WOTextField {
+	value = currentComponent.customInfo.daysToExclude;
+	size = 2;
+}
+
+SHOW_MORE_TEXT_FIELD: WOTextField {
+	value = currentComponent.customInfo.showMoreText;
+	size = 20;
+}
+
+TextField3: WOTextField {
+	value = currentComponent.customInfo.itemsToSkip;
+	size = 2;
+}
+
+TextField4: WOTextField {
+	value = currentComponent.customInfo.itemsToShow;
+	size = 2;
+}
+
+TextField5: WOTextField {
+	value = currentComponent.customInfo.daysToInclude;
+	size = 2;
+}
+
+GO_BACK_TEXT_FIELD: WOTextField {
+	value = currentComponent.customInfo.goBackText;
+	size = 20;
+}
+
+DETAIL_PAGE_ID_FIELD: WOTextField {
+	value = currentComponent.customInfo.detailPageID;
+	size = 20;
+}
+
+DETAIL_PAGE_NAME_FIELD: WOTextField {
+	value = currentComponent.customInfo.detailPageName;
+	size = 20;
+}

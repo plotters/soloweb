@@ -1,0 +1,87 @@
+ADMIN_CONDITIONAL: WOConditional {
+	condition = session.solowebUser.isAdministrator;
+}
+
+EDIT_PAGE_LINK: WOHyperlink {
+	pageName = "SWEditPage";
+}
+
+EDIT_PAGE_STRING: WOString {
+	value = session.@ls.smSiteTree;
+}
+
+NEWS_LINK: WOHyperlink {
+	action = newsDB;
+}
+
+NEWS_STRING: WOString {
+	value = session.@ls.smNews;
+}
+
+DOCUMENTS_LINK: WOHyperlink {
+	action = documentDB;
+}
+
+MY_SETTINGS_LINK: WOHyperlink {
+	pageName = "SWMySettings";
+}
+
+PLUGIN_LINK: WOHyperlink {
+	pageName = currentSystem;
+}
+
+LOGOUT_LINK: WOHyperlink {
+	action = logout;
+	onClick = session.@cs.smLogoutMessage;
+}
+
+USERS_AND_GROUPS_LINK: WOHyperlink {
+	pageName = "SWAdminUsersAndGroups";
+}
+
+PLUGIN_REPETITION: WORepetition {
+	item = currentKey;
+	list = theSystems;
+}
+
+PLUGIN_NAME: WOString {
+	value = currentKey;
+}
+
+DOCUMENTS_STRING: WOString {
+	value = session.@ls.smDocuments;
+}
+
+USERS_AND_GROUPS_STRING: WOString {
+	value = session.@ls.smUsersAndGroups;
+}
+
+MY_SETTINGS_STRING: WOString {
+	value = session.@ls.smMySettings;
+}
+
+LOGOUT_STRING: WOString {
+	value = session.@ls.smLogOut;
+}
+
+SYSTEM_LINK : WOHyperlink {
+	pageName = "SWSettingsPanel";
+}
+
+VERSION_STRING : WOString {
+	value = application.sw.solowebVersion;
+}
+
+SEARCH_FORM : WOForm {
+	action = search;
+	style = "margin: 0px; padding: 0px;";
+}
+
+SEARCH_FIELD : WOTextField {
+	value = searchString;
+	style = "float: right; padding: 2px; border: 1px solid gray; margin: 6px; color: gray;";
+}
+
+TRANSACTIONS_LINK : WOHyperlink {
+	pageName = "SWTransactionLogViewer";
+}

@@ -1,0 +1,32 @@
+WRAPPER: SWAdminComponentWrapper {}
+
+FORM: WOForm {}
+
+PASSWORD_FIELD: WOPasswordField {
+	value = session.solowebUser.password;
+}
+
+DEFAULT_SITE_POPUP: WOPopUpButton {
+	displayString = currentSite.name;
+	item = currentSite;
+	list = session.solowebUser.sites;
+	noSelectionString = "No site selected...";
+	selection = session.solowebUser.defaultSite;
+}
+
+HEADING_STRING: WOString {
+	value = session.@ls.mySettingsHeader;
+}
+
+PASSWORD_LABEL: WOString {
+	value = session.@ls.msPassword;
+}
+
+DEFAULT_SITE_LABEL: WOString {
+	value = session.@ls.msDefaultSite;
+}
+
+SUBMIT_BUTTON: WOSubmitButton {
+	action = saveChanges;
+	value = session.@ls.msSaveButtonTitle;
+}

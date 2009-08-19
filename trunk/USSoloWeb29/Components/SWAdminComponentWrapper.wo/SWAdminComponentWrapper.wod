@@ -1,0 +1,12 @@
+CONTENT: WOComponentContent {}
+
+MAIN_MENU : SWMainMenu {}
+
+VERSION_STRING : WOString {
+	value = application.sw.solowebVersion; 
+}
+
+HIDE_MENU_CONDITIONAL : WOConditional {
+	condition = ^hideMenu;
+	negate = true;
+}

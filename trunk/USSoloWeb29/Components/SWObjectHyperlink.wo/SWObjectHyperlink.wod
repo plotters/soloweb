@@ -1,0 +1,8 @@
+LINK : WOHyperlink {
+	action = selectObject;
+	disabled = ^disabled;
+}
+
+DISPLAY_NAME_STRING : WOString {
+	value = object.name;
+}

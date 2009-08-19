@@ -1,0 +1,21 @@
+SELECT_LINK: WOHyperlink {
+	action = selectDocument;
+}
+
+NAME_STRING : WOString {
+	value = selectedDocument.name;
+	valueWhenEmpty = "Ónefnt skjal";
+}
+
+HAS_DOCUMENT_CONDITIONAL : WOConditional {
+	condition = selectedDocument;
+}
+
+UPDATE_CONTAINER : AjaxUpdateContainer {
+	id = uniqueIdentifier;
+}
+
+REMOVE_LINK : AjaxUpdateLink {
+	action = nullifyDocument;
+	updateContainerID = uniqueIdentifier;
+}

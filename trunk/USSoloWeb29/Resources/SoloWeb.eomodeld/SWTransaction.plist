@@ -1,0 +1,50 @@
+{
+    attributes = (
+        {columnName = "ACTION_STRING"; name = action; prototypeName = "string_1000"; }, 
+        {columnName = "AFTER_STRING"; name = after; prototypeName = "string_1000000"; }, 
+        {
+            columnName = "BFORE_STRING"; 
+            name = before; 
+            prototypeName = "string_1000000"; 
+        }, 
+        {columnName = "DATE_FIELD"; name = date; prototypeName = time; }, 
+        {
+            columnName = "ENTTY_NAME"; 
+            name = entityNameString; 
+            prototypeName = "string_1000"; 
+        }, 
+        {columnName = "OBJECT_ID"; name = objectID; prototypeName = int; }, 
+        {
+            allowsNull = N; 
+            columnName = "TRANSACTION_ID"; 
+            name = transactionID; 
+            prototypeName = int; 
+        }, 
+        {columnName = "USER_ID"; name = userID; prototypeName = int; }
+    ); 
+    attributesUsedForLocking = (
+        action, 
+        after, 
+        before, 
+        date, 
+        entityNameString, 
+        objectID, 
+        transactionID, 
+        userID
+    ); 
+    className = "is.us.soloweb.data.SWTransaction"; 
+    classProperties = (
+        action, 
+        after, 
+        before, 
+        date, 
+        entityNameString, 
+        objectID, 
+        transactionID, 
+        userID
+    ); 
+    externalName = "SW_TRANSACTION"; 
+    fetchSpecificationDictionary = {}; 
+    name = SWTransaction; 
+    primaryKeyAttributes = (transactionID); 
+}

@@ -1,0 +1,17 @@
+WRAPPER : SWAdminComponentWrapper {}
+
+PAGE_SORTER : AjaxSortableList {
+	item = currentPage;
+	list = pageArray;
+	action = reorder;
+	id = "sortableList";
+	listItemIDKeyPath = "pageID";
+}
+
+NAME_STRING : WOString {
+	value =  currentPage.name;
+}
+
+RETURN_LINK : WOHyperlink {
+	action = returnToPreviousPage;
+}

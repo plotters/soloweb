@@ -1,0 +1,18 @@
+NEW_SITE_HYPERLINK: WOHyperlink {
+	action = newSite;
+	class = "swcreateButton";
+}
+
+SITE_LISTING: SWSiteListing {
+	pageAction = "selectPage";
+	selectedPage = currentPage;
+	showArrows = true;
+}
+
+NEW_SITE_STRING: WOString {
+	value = session.@ls.newSiteString;
+}
+
+CREATE_ROOT_FOLDER_CONDITIONAL: WOConditional {
+	condition = session.solowebUser.isAdministrator;
+}

@@ -1,0 +1,73 @@
+{
+    EOModelVersion = "2.1"; 
+    adaptorName = JDBC; 
+    connectionDictionary = {URL = ""; password = ""; plugin = ""; username = ""; }; 
+    entities = (
+        {className = EOGenericRecord; name = EOFrontBasePrototypes; }, 
+        {className = EOGenericRecord; name = EOMSSQL2000Prototypes; }, 
+        {className = EOGenericRecord; name = EOOraclePrototypes; }, 
+        {className = EOGenericRecord; name = EOPostgresqlPrototypes; }, 
+        {className = EOGenericRecord; name = EOPrototypes; }, 
+        {
+            className = "is.us.soloweb.data.SWAccessPrivilege"; 
+            name = SWAccessPrivilege; 
+        }, 
+        {
+            className = "is.us.soloweb.data.SWAccessPrivilegeValue"; 
+            name = SWAccessPrivilegeValue; 
+        }, 
+        {className = "is.us.soloweb.data.SWComment"; name = SWComment; }, 
+        {className = "is.us.soloweb.data.SWComponent"; name = SWComponent; }, 
+        {className = "is.us.soloweb.data.SWDocument"; name = SWDocument; }, 
+        {className = "is.us.soloweb.data.SWDocumentFolder"; name = SWDocumentFolder; }, 
+        {className = "is.us.soloweb.data.SWDocumentType"; name = SWDocumentType; }, 
+        {className = "is.us.soloweb.data.SWExternalUser"; name = SWExternalUser; }, 
+        {className = "is.us.soloweb.data.SWGroup"; name = SWGroup; }, 
+        {className = EOGenericRecord; name = SWGroupSWUser; }, 
+        {className = "is.us.soloweb.data.SWNewsFolder"; name = SWNewsFolder; }, 
+        {className = "is.us.soloweb.data.SWNewsItem"; name = SWNewsItem; }, 
+        {className = "is.us.soloweb.data.SWPage"; name = SWPage; }, 
+        {className = "is.us.soloweb.data.SWSite"; name = SWSite; }, 
+        {className = "is.us.soloweb.data.SWTransaction"; name = SWTransaction; }, 
+        {className = "is.us.soloweb.data.SWUser"; name = SWUser; }
+    ); 
+    internalInfo = {
+        "_schemaSynchronizationOptions" = {
+            EOSchemaSynchronizationForeignKeyConstraintsKey = NO; 
+            EOSchemaSynchronizationPrimaryKeyConstraintsKey = NO; 
+            EOSchemaSynchronizationPrimaryKeySupportKey = NO; 
+        }; 
+    }; 
+    userInfo = {
+        "_EntityModeler" = {
+            activeDatabaseConfigName = Oracle; 
+            databaseConfigs = {
+                FrontBase = {
+                    adaptorName = JDBC; 
+                    connectionDictionary = {URL = ""; }; 
+                    prototypeEntityName = EOFrontBasePrototypes; 
+                }; 
+                Oracle = {
+                    adaptorName = JDBC; 
+                    connectionDictionary = {URL = ""; password = ""; plugin = ""; username = ""; }; 
+                    prototypeEntityName = EOOraclePrototypes; 
+                }; 
+                OracleTest = {
+                    adaptorName = JDBC; 
+                    connectionDictionary = {URL = ""; password = ""; plugin = ""; username = ""; }; 
+                    prototypeEntityName = EOOraclePrototypes; 
+                }; 
+                Postgresql = {
+                    adaptorName = JDBC; 
+                    connectionDictionary = {URL = ""; driver = ""; password = ""; username = ""; }; 
+                    prototypeEntityName = EOPostgresqlPrototypes; 
+                }; 
+            }; 
+        }; 
+        history = {
+            created = "2000-03-28 20:15:06 -0800 by hugi"; 
+            lastSaved = "2000-03-28 20:15:06 -0800 by hugi"; 
+        }; 
+        modificationDate = "2001-06-03 19:53:44 +0000"; 
+    }; 
+}

@@ -1,0 +1,51 @@
+{
+    attributes = (
+        {
+            allowsNull = Y; 
+            columnName = ""; 
+            externalType = BLOB; 
+            name = blob;  
+            valueClassName = NSData; 
+        }, 
+        {
+            allowsNull = Y; 
+            columnName = ""; 
+            externalType = NUMBER; 
+            name = int; 
+            valueClassName = NSNumber; 
+            valueType = i; 
+        }, 
+        {columnName = ""; name = pk; }, 
+        {
+            allowsNull = Y; 
+            columnName = ""; 
+            externalType = VARCHAR2; 
+            name = "string_1000"; 
+            valueClassName = NSString; 
+            width = 4000; 
+        }, 
+        {
+            allowsNull = Y; 
+            columnName = ""; 
+            externalType = CLOB; 
+            name = "string_1000000"; 
+            valueClassName = NSString; 
+        }, 
+        {
+            allowsNull = Y; 
+            columnName = ""; 
+            externalType = DATE; 
+            name = time; 
+            valueClassName = NSCalendarDate; 
+            valueType = T; 
+        }
+    ); 
+    attributesUsedForLocking = (blob, int, pk, "string_1000", time); 
+    className = EOGenericRecord; 
+    classProperties = (blob, int, "string_1000", "string_1000000", time); 
+    externalName = "EO_PROTOTYPES"; 
+    fetchSpecificationDictionary = {}; 
+    isAbstractEntity = Y; 
+    name = EOOraclePrototypes; 
+    primaryKeyAttributes = (pk); 
+}

@@ -1,0 +1,32 @@
+{
+    attributes = (
+        {columnName = "DOCUMENT_ID"; name = documentID; prototypeName = int; }, 
+        {
+            allowsNull = N; 
+            columnName = "DOCUMENT_TYPE_ID"; 
+            name = documentTypeID; 
+            prototypeName = int; 
+        }, 
+        {columnName = EXTENSION; name = extension; prototypeName = "string_1000"; }, 
+        {columnName = "MIME_TYPE"; name = mimeType; prototypeName = "string_1000"; }, 
+        {columnName = NAME; name = name; prototypeName = "string_1000"; }, 
+        {columnName = "PICTURE_ID"; name = pictureID; prototypeName = int; }
+    ); 
+    attributesUsedForLocking = (documentID, documentTypeID, extension, mimeType, name, pictureID); 
+    className = "is.us.soloweb.data.SWDocumentType"; 
+    classProperties = (document, documentID, documentTypeID, extension, mimeType, name, pictureID); 
+    externalName = "SW_DOCUMENT_TYPE"; 
+    fetchSpecificationDictionary = {}; 
+    name = SWDocumentType; 
+    primaryKeyAttributes = (documentTypeID); 
+    relationships = (
+        {
+            destination = SWDocument; 
+            internalInfo = {"_nameInObjectStore" = icon; }; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = documentID; sourceAttribute = documentID; }); 
+            name = document; 
+        }
+    ); 
+}

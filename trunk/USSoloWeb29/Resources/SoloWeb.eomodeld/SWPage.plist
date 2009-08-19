@@ -1,0 +1,152 @@
+{
+    attributes = (
+        {columnName = ACCESSIBLE; name = accessible; prototypeName = int; }, 
+        {
+            columnName = "CUSTOM_INFO"; 
+            name = customInfoString; 
+            prototypeName = "string_1000"; 
+        }, 
+        {columnName = "DOCUMENT_ONE_ID"; name = documentOneID; prototypeName = int; }, 
+        {columnName = "DOCUMENT_TWO_ID"; name = documentTwoID; prototypeName = int; }, 
+        {
+            columnName = "EXTERNAL_URL"; 
+            name = externalURL; 
+            prototypeName = "string_1000"; 
+        }, 
+        {
+            columnName = "INHERITS_PRIVILEGES"; 
+            name = inheritsPrivileges; 
+            prototypeName = int; 
+        }, 
+        {columnName = KEYWORDS; name = keywords; prototypeName = "string_1000"; }, 
+        {columnName = LANGUAGE; name = language; prototypeName = "string_1000"; }, 
+        {columnName = LOOK; name = look; prototypeName = "string_1000"; }, 
+        {columnName = NAME; name = name; prototypeName = "string_1000"; }, 
+        {
+            columnName = "NAME_PREFIX"; 
+            name = namePrefix; 
+            prototypeName = "string_1000"; 
+        }, 
+        {allowsNull = N; columnName = "PAGE_ID"; name = pageID; prototypeName = int; }, 
+        {columnName = "PARENT_PAGE_ID"; name = parentPageID; prototypeName = int; }, 
+        {columnName = PASSWORD; name = password; prototypeName = "string_1000"; }, 
+        {columnName = "PICTURE_ONE_ID"; name = pictureOneID; prototypeName = int; }, 
+        {columnName = "PICTURE_TWO_ID"; name = pictureTwoID; prototypeName = int; }, 
+        {columnName = PUBLISHED; name = published; prototypeName = int; }, 
+        {columnName = "SORT_NUMBER"; name = sortNumber; prototypeName = int; }, 
+        {columnName = SYMBOL; name = symbol; prototypeName = "string_1000"; }, 
+        {columnName = TEXT; name = text; prototypeName = "string_1000"; }, 
+        {columnName = "TIME_IN"; name = timeIn; prototypeName = time; }, 
+        {columnName = "TIME_OUT"; name = timeOut; prototypeName = time; }
+    ); 
+    attributesUsedForLocking = (
+        accessible, 
+        documentOneID, 
+        documentTwoID, 
+        externalURL, 
+        inheritsPrivileges, 
+        keywords, 
+        language, 
+        look, 
+        name, 
+        namePrefix, 
+        pageID, 
+        parentPageID, 
+        password, 
+        pictureOneID, 
+        pictureTwoID, 
+        published, 
+        sortNumber, 
+        symbol, 
+        text, 
+        timeIn, 
+        timeOut
+    ); 
+    className = "is.us.soloweb.data.SWPage"; 
+    classProperties = (
+        accessible, 
+        components, 
+        customInfoString, 
+        documentOne, 
+        documentOneID, 
+        documentTwo, 
+        documentTwoID, 
+        externalURL, 
+        inheritsPrivileges, 
+        keywords, 
+        language, 
+        look, 
+        name, 
+        namePrefix, 
+        pageID, 
+        parentPage, 
+        parentPageID, 
+        password, 
+        pictureOneID, 
+        pictureTwoID, 
+        published, 
+        site, 
+        sortNumber, 
+        subPages, 
+        symbol, 
+        text, 
+        timeIn, 
+        timeOut
+    ); 
+    externalName = "SW_PAGE"; 
+    fetchSpecificationDictionary = {}; 
+    name = SWPage; 
+    primaryKeyAttributes = (pageID); 
+    relationships = (
+        {
+            deleteRule = EODeleteRuleCascade; 
+            destination = SWComponent; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = pageID; sourceAttribute = pageID; }); 
+            name = components; 
+            userInfo = {modificationDate = "2001-06-03 19:53:43 +0000"; }; 
+        }, 
+        {
+            destination = SWDocument; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = documentID; sourceAttribute = documentOneID; }); 
+            name = documentOne; 
+        }, 
+        {
+            destination = SWDocument; 
+            internalInfo = {"_nameInObjectStore" = sWDocument; }; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = documentID; sourceAttribute = documentTwoID; }); 
+            name = documentTwo; 
+        }, 
+        {
+            destination = SWPage; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = pageID; sourceAttribute = parentPageID; }); 
+            name = parentPage; 
+            userInfo = {modificationDate = "2001-06-03 19:53:43 +0000"; }; 
+        }, 
+        {
+            destination = SWSite; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = pageID; sourceAttribute = pageID; }); 
+            name = site; 
+            userInfo = {modificationDate = "2001-06-03 19:53:43 +0000"; }; 
+        }, 
+        {
+            deleteRule = EODeleteRuleCascade; 
+            destination = SWPage; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = parentPageID; sourceAttribute = pageID; }); 
+            name = subPages; 
+            userInfo = {modificationDate = "2001-06-03 19:53:43 +0000"; }; 
+        }
+    ); 
+    userInfo = {modificationDate = "2001-06-03 19:53:43 +0000"; }; 
+}
