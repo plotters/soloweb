@@ -31,8 +31,8 @@ public class SWComment extends _SWComment {
 	public String textForDisplay() {
 		String s = text();
 
-		s = USStringUtilities.replace( s, "<", "&lt;" );
-		s = USStringUtilities.replace( s, "<", "&gt;" );
+		//		s = USStringUtilities.replace( s, "<", "&lt;" );
+		//		s = USStringUtilities.replace( s, ">", "&gt;" );
 		s = USStringUtilities.convertBreakString( s );
 
 		//		MarkdownProcessor markdown_processor = new MarkdownProcessor();
