@@ -215,6 +215,6 @@ public class SoloNewsNewsList extends SWGenericComponent {
 			return new NSTimestampFormatter( "%A %e. %B %Y", new DateFormatSymbols( locale ) );
 		}
 
-		return null;
+		return new NSTimestampFormatter( "%d.%m.%Y" );
 	}
 }
