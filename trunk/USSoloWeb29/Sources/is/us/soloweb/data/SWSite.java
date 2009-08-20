@@ -3,6 +3,7 @@ package is.us.soloweb.data;
 import is.us.soloweb.interfaces.*;
 import is.us.soloweb.util.SWC;
 import is.us.util.*;
+import is.us.wo.util.USC;
 
 import java.util.Locale;
 
@@ -36,11 +37,11 @@ public class SWSite extends _SWSite implements SWCustomInfo, SWInspectable {
 	public NSArray<String> domains() {
 		NSMutableArray<String> list = new NSMutableArray<String>();
 
-		if( qual() == null ) {
+		if( !USStringUtilities.stringHasValue( qual() ) ) {
 			return NSArray.emptyArray();
 		}
 
-		for( String next : qual().split( "\n" ) ) {
+		for( String next : qual().split( USC.LF ) ) {
 			String domain = next.trim();
 			if( domain.length() > 2 ) {
 				domain = next.substring( 1, domain.length() - 1 );
