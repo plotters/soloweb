@@ -51,11 +51,6 @@ COMMENT_DATE_STRING: WOString {
 	value = currentComment.date;
 }
 
-TIME_STRING: WOString {
-        dateformat = "%H:%M";
-        value = selectedNewsItem.date;
-}
-
 TEXT_STRING: WOString {
 	escapeHTML = false;
 	value = selectedNewsItem.text;
