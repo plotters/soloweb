@@ -15,7 +15,7 @@ import com.webobjects.foundation.*;
 public class SWFFieldSet extends _SWFFieldSet implements SWFFieldContainer {
 
 	public void changeSortOrder( int offset ) {
-		NSMutableArray fieldSets = (NSMutableArray)form().sortedFieldSets();
+		NSMutableArray<SWFFieldSet> fieldSets = form().sortedFieldSets().mutableClone();
 
 		//Check where the component is in the array, remove it and insert it at +offset
 		int i = fieldSets.indexOfObject( this );
@@ -23,10 +23,10 @@ public class SWFFieldSet extends _SWFFieldSet implements SWFFieldContainer {
 		fieldSets.insertObjectAtIndex( this, i + offset );
 
 		// Go through all components and resort
-		Enumeration e = fieldSets.objectEnumerator();
+		Enumeration<SWFFieldSet> e = fieldSets.objectEnumerator();
 
 		while( e.hasMoreElements() ) {
-			SWFFieldSet aFieldSet = (SWFFieldSet)e.nextElement();
+			SWFFieldSet aFieldSet = e.nextElement();
 			aFieldSet.setSortNumber( new Integer( fieldSets.indexOfObject( aFieldSet ) ) );
 		}
 	}
@@ -39,9 +39,9 @@ public class SWFFieldSet extends _SWFFieldSet implements SWFFieldContainer {
 		return (sortNumber().intValue() == (form().fieldSets().count() - 1));
 	}
 
-	public NSArray sortedFields() {
+	public NSArray<SWFField> sortedFields() {
 		EOSortOrdering s = new EOSortOrdering( "sortNumber", EOSortOrdering.CompareAscending );
-		return EOSortOrdering.sortedArrayUsingKeyOrderArray( fields(), new NSArray( s ) );
+		return EOSortOrdering.sortedArrayUsingKeyOrderArray( fields(), new NSArray<EOSortOrdering>( s ) );
 	}
 
 	public SWFField addField() {

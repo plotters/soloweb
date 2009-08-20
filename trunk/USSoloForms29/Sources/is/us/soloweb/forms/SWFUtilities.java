@@ -56,9 +56,9 @@ public class SWFUtilities {
 	public static SWFRegistrationField registrationField( EOEditingContext ec, SWFField field, SWFRegistration registration ) {
 		EOQualifier q1 = new EOKeyValueQualifier( "registration", EOQualifier.QualifierOperatorEqual, registration );
 		EOQualifier q2 = new EOKeyValueQualifier( "field", EOQualifier.QualifierOperatorEqual, field );
-		EOQualifier q3 = new EOAndQualifier( new NSArray( new Object[] { q1, q2 } ) );
+		EOQualifier q3 = new EOAndQualifier( new NSArray<EOQualifier>( new EOQualifier[] { q1, q2 } ) );
 		EOFetchSpecification fs = new EOFetchSpecification( "SWFRegistrationField", q3, null );
-		NSArray a = ec.objectsWithFetchSpecification( fs );
+		NSArray<SWFRegistrationField> a = ec.objectsWithFetchSpecification( fs );
 		return USArrayUtilities.arrayHasObjects( a ) ? (SWFRegistrationField)a.objectAtIndex( 0 ) : null;
 	}
 
@@ -144,10 +144,10 @@ public class SWFUtilities {
 		ec.insertObject( registration );
 
 		if( stringValues != null ) {
-			Enumeration e = stringValues.keyEnumerator();
+			Enumeration<SWFField> e = stringValues.keyEnumerator();
 
 			while( e.hasMoreElements() ) {
-				SWFField field = (SWFField)e.nextElement();
+				SWFField field = e.nextElement();
 				String value = (String)stringValues.objectForKey( field );
 				SWFUtilities.setStringValueForFieldAndRegistration( value, field, registration );
 			}
@@ -156,10 +156,10 @@ public class SWFUtilities {
 		ec.saveChanges();
 
 		if( binaryValues != null ) {
-			Enumeration e = binaryValues.keyEnumerator();
+			Enumeration<SWFField> e = binaryValues.keyEnumerator();
 
 			while( e.hasMoreElements() ) {
-				SWFField field = (SWFField)e.nextElement();
+				SWFField field = e.nextElement();
 				NSData value = (NSData)binaryValues.objectForKey( field );
 				SWFUtilities.setBinaryValueForFieldAndRegistration( value, field, registration );
 			}
@@ -205,10 +205,10 @@ public class SWFUtilities {
 	/**
 	 * 
 	 */
-	public static NSArray searchRegistrations( EOEditingContext ec, SWFForm form, NSArray searchArguments ) {
+	public static NSArray<SWFRegistration> searchRegistrations( EOEditingContext ec, SWFForm form, NSArray searchArguments ) {
 
 		Enumeration e = searchArguments.objectEnumerator();
-		NSMutableArray qualArr = new NSMutableArray();
+		NSMutableArray<EOQualifier> qualArr = new NSMutableArray<EOQualifier>();
 		int i = 0;
 
 		while( e.hasMoreElements() ) {

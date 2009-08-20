@@ -48,7 +48,7 @@ public class SWFRegistrationList extends ERXComponent {
 	}
 
 	public NSMutableArray argumentsFromFixedSearch() {
-		NSArray a = SWFUtilities.fixedSearchesForUserAndForm( ec, ((SWSession)session()).solowebUser(), selectedForm );
+		NSArray<SWFFixedSearch> a = SWFUtilities.fixedSearchesForUserAndForm( ec, ((SWSession)session()).solowebUser(), selectedForm );
 
 		if( USArrayUtilities.arrayHasObjects( a ) ) {
 			Enumeration<SWFFixedSearch> e = a.objectEnumerator();
@@ -114,7 +114,7 @@ public class SWFRegistrationList extends ERXComponent {
 	}
 	*/
 	public SWFRegistrationField currentRegistrationField() {
-		SWFField f = (SWFField)selectedForm.sortedPrimaryFields().objectAtIndex( fieldIndex );
+		SWFField f = selectedForm.sortedPrimaryFields().objectAtIndex( fieldIndex );
 		return (SWFRegistrationField)_cacheDictionary.valueForKey( "" + f.fieldID() + currentRegistration.registrationID() );
 	}
 

@@ -37,6 +37,10 @@ public class SWFField extends _SWFField implements SWInspectable {
 		return USStringUtilities.convertBreakString( name() );
 	}
 
+	/**
+	 * When the field is initially created, we set it's type to a text field.
+	 */
+	@Override
 	public void awakeFromInsertion( EOEditingContext ec ) {
 		super.awakeFromInsertion( ec );
 		setType( SWFUtilities.TYPE_TEXT_FIELD );
@@ -46,7 +50,7 @@ public class SWFField extends _SWFField implements SWInspectable {
 		return !(required() == null || required().intValue() == 0);
 	}
 
-	public NSArray valueList() {
+	public NSArray<String> valueList() {
 		return USUtilities.stringToArrayOfTrimmedStrings( valuelistString() );
 	}
 
@@ -79,11 +83,12 @@ public class SWFField extends _SWFField implements SWInspectable {
 	}
 
 	public void changeSortOrder( int offset ) {
-		NSMutableArray fields = null;
+		NSMutableArray<SWFField> fields = null;
+
 		if( fieldSet() != null )
-			fields = (NSMutableArray)fieldSet().sortedFields();
+			fields = fieldSet().sortedFields().mutableClone();
 		else
-			fields = (NSMutableArray)form().sortedFields();
+			fields = form().sortedFields().mutableClone();
 
 		//Check where the component is in the array, remove it and insert it at +offset
 		int i = fields.indexOfObject( this );
@@ -91,10 +96,10 @@ public class SWFField extends _SWFField implements SWInspectable {
 		fields.insertObjectAtIndex( this, i + offset );
 
 		// Go through all components and resort
-		Enumeration e = fields.objectEnumerator();
+		Enumeration<SWFField> e = fields.objectEnumerator();
 
 		while( e.hasMoreElements() ) {
-			SWFField aField = (SWFField)e.nextElement();
+			SWFField aField = e.nextElement();
 			aField.setSortNumber( new Integer( fields.indexOfObject( aField ) ) );
 		}
 	}
