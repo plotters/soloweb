@@ -31,6 +31,25 @@ public class SWSite extends _SWSite implements SWCustomInfo, SWInspectable {
 	}
 
 	/**
+	 * @return an array containing all domains this site handles.
+	 */
+	public NSArray<String> domains() {
+		NSMutableArray<String> list = new NSMutableArray<String>();
+
+		if( qual() == null ) {
+			return NSArray.emptyArray();
+		}
+
+		for( String next : qual().split( "\n" ) ) {
+			String domain = next.trim();
+			domain = next.substring( 1, domain.length() - 1 );
+			list.add( domain );
+		}
+
+		return list;
+	}
+
+	/**
 	 * Sets the string containing the domain names this Site applies to
 	 * Makes sure that the site name ends with the sitename delimiter.
 	 *
