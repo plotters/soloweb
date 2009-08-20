@@ -14,13 +14,13 @@ import com.webobjects.foundation.*;
 
 public class SWFExportPanel extends SWFAdminComponent {
 
-	private NSArray _registrations;
+	private NSArray<SWFRegistration> _registrations;
 	private SWFForm _form;
 
 	public SWFField currentField;
 	public SWFField selectedField;
-	public NSMutableArray exportFields = new NSMutableArray();
-	public NSArray<String> encodingList = new NSArray( new String[] { "ISO-8859-1", "UTF-8", "UTF-16" } );
+	public NSMutableArray<SWFField> exportFields = new NSMutableArray<SWFField>();
+	public NSArray<String> encodingList = new NSArray<String>( new String[] { "ISO-8859-1", "UTF-8", "UTF-16" } );
 
 	public String currentEncoding;
 	public String selectedEncoding;
@@ -34,11 +34,11 @@ public class SWFExportPanel extends SWFAdminComponent {
 		super( context );
 	}
 
-	public void setRegistrations( NSArray list ) {
+	public void setRegistrations( NSArray<SWFRegistration> list ) {
 		_registrations = list;
 	}
 
-	public NSArray registrations() {
+	public NSArray<SWFRegistration> registrations() {
 		return _registrations;
 	}
 
@@ -52,19 +52,19 @@ public class SWFExportPanel extends SWFAdminComponent {
 
 	public WOActionResults registrationListAsText() {
 
-		Enumeration e = registrations().objectEnumerator();
+		Enumeration<SWFRegistration> e = registrations().objectEnumerator();
 		StringBuffer b = new StringBuffer();
 
 		while( e.hasMoreElements() ) {
-			SWFRegistration nextRegistration = (SWFRegistration)e.nextElement();
+			SWFRegistration nextRegistration = e.nextElement();
 			b.append( nextRegistration.registrationID() );
 			b.append( FIELD_SEPARATOR );
 			b.append( formatDate( nextRegistration.date() ) );
 
-			Enumeration e2 = exportFields.objectEnumerator();
+			Enumeration<SWFField> e2 = exportFields.objectEnumerator();
 
 			while( e2.hasMoreElements() ) {
-				SWFField nextField = (SWFField)e2.nextElement();
+				SWFField nextField = e2.nextElement();
 				String value = SWFUtilities.valueForFieldAndRegistration( ec(), nextField, nextRegistration );
 				value = USStringUtilities.replace( value, "\r\n", "\n" );
 				value = USStringUtilities.replace( value, "\r", "\n" );
@@ -99,8 +99,8 @@ public class SWFExportPanel extends SWFAdminComponent {
 		return formatter.format( ts );
 	}
 
-	public NSArray fieldList() {
-		NSMutableArray a = form().sortedFields().mutableClone();
+	public NSArray<SWFField> fieldList() {
+		NSMutableArray<SWFField> a = form().sortedFields().mutableClone();
 		a.removeObjectsInArray( exportFields );
 		return a;
 	}

@@ -25,20 +25,21 @@ public class SWFRegistration extends _SWFRegistration {
 
 	public NSArray<SWFRegistrationField> sortedRegistrationFields() {
 		EOSortOrdering s = new EOSortOrdering( "field.sortNumber", EOSortOrdering.CompareAscending );
-		return EOSortOrdering.sortedArrayUsingKeyOrderArray( registrationFields(), new NSArray( s ) );
+		return EOSortOrdering.sortedArrayUsingKeyOrderArray( registrationFields(), new NSArray<EOSortOrdering>( s ) );
 	}
 
-	public NSArray sortedPrimaryRegistrationFields() {
+	public NSArray<SWFRegistrationField> sortedPrimaryRegistrationFields() {
 		EOQualifier q = new EOKeyValueQualifier( "field.primaryField", EOQualifier.QualifierOperatorEqual, new Integer( 1 ) );
 		return EOQualifier.filteredArrayWithQualifier( sortedRegistrationFields(), q );
 	}
 
-	public NSArray sortedRegistrationFieldsExcludingAdminFields() {
-		Enumeration e = sortedRegistrationFields().objectEnumerator();
-		NSMutableArray fieldArray = new NSMutableArray();
+	public NSArray<SWFRegistrationField> sortedRegistrationFieldsExcludingAdminFields() {
+		Enumeration<SWFRegistrationField> e = sortedRegistrationFields().objectEnumerator();
+		NSMutableArray<SWFRegistrationField> fieldArray = new NSMutableArray<SWFRegistrationField>();
 
 		while( e.hasMoreElements() ) {
-			SWFRegistrationField nextField = (SWFRegistrationField)e.nextElement();
+			SWFRegistrationField nextField = e.nextElement();
+
 			if( nextField.field() != null )
 				if( !USUtilities.numberIsTrue( nextField.field().adminField() ) )
 					fieldArray.addObject( nextField );
@@ -74,11 +75,11 @@ public class SWFRegistration extends _SWFRegistration {
 				cc = addresses.subarrayWithRange( new NSRange( 1, addresses.count() - 1 ) );
 			}
 
-			NSMutableArray tmpFiles = new NSMutableArray();
-			Enumeration e = binaryFieldsWithValues().objectEnumerator();
+			NSMutableArray<String> tmpFiles = new NSMutableArray<String>();
+			Enumeration<SWFRegistrationField> e = binaryFieldsWithValues().objectEnumerator();
 
 			while( e.hasMoreElements() ) {
-				SWFRegistrationField rf = (SWFRegistrationField)e.nextElement();
+				SWFRegistrationField rf = e.nextElement();
 				try {
 					File f = new File( ((String)SWSettings.settingForKey( "documentLocationOnDisk" )) + rf.value() );
 					USDataUtilities.writeBytesToFile( rf.binaryValue().bytes(), f );
@@ -91,10 +92,11 @@ public class SWFRegistration extends _SWFRegistration {
 
 			USMailSender.composeEmailWithAlternateTextAndAttachments( from, to, cc, null, "SoloForm: " + subject, registrationAsPlainText(), registrationAsHTML(), tmpFiles );
 
-			e = tmpFiles.objectEnumerator();
+			Enumeration<String> e2 = tmpFiles.objectEnumerator();
 
-			while( e.hasMoreElements() ) {
-				String s = (String)e.nextElement();
+			while( e2.hasMoreElements() ) {
+				String s = e2.nextElement();
+
 				try {
 					File f = new File( s );
 					f.delete();
@@ -106,7 +108,7 @@ public class SWFRegistration extends _SWFRegistration {
 		}
 	}
 
-	private NSArray binaryFieldsWithValues() {
+	private NSArray<SWFRegistrationField> binaryFieldsWithValues() {
 		EOQualifier q = new EOKeyValueQualifier( "binaryValue", EOQualifier.QualifierOperatorNotEqual, null );
 		return EOQualifier.filteredArrayWithQualifier( registrationFields(), q );
 	}
@@ -128,11 +130,11 @@ public class SWFRegistration extends _SWFRegistration {
 	}
 
 	private String registrationAsPlainText() {
-		Enumeration e = sortedRegistrationFields().objectEnumerator();
+		Enumeration<SWFRegistrationField> e = sortedRegistrationFields().objectEnumerator();
 		StringBuffer b = new StringBuffer();
 
 		while( e.hasMoreElements() ) {
-			SWFRegistrationField next = (SWFRegistrationField)e.nextElement();
+			SWFRegistrationField next = e.nextElement();
 			b.append( next.field().name() );
 			b.append( ": " );
 			b.append( next.value() );
@@ -143,11 +145,11 @@ public class SWFRegistration extends _SWFRegistration {
 	}
 
 	private String registrationAsHTML() {
-		Enumeration e = sortedRegistrationFields().objectEnumerator();
+		Enumeration<SWFRegistrationField> e = sortedRegistrationFields().objectEnumerator();
 		StringBuffer b = new StringBuffer();
 
 		while( e.hasMoreElements() ) {
-			SWFRegistrationField next = (SWFRegistrationField)e.nextElement();
+			SWFRegistrationField next = e.nextElement();
 			b.append( "<p>" );
 			b.append( "<b>" );
 			b.append( next.field().name() );
@@ -176,7 +178,7 @@ public class SWFRegistration extends _SWFRegistration {
 	}
 
 	public Object valueForFieldNumber( String number ) {
-		SWFField field = (SWFField)form().sortedPrimaryFields().objectAtIndex( new Integer( number ).intValue() );
+		SWFField field = form().sortedPrimaryFields().objectAtIndex( new Integer( number ).intValue() );
 		return SWFUtilities.valueForFieldAndRegistration( editingContext(), field, this );
 	}
 }

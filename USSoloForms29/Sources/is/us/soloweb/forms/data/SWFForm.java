@@ -16,34 +16,38 @@ import com.webobjects.foundation.*;
 
 public class SWFForm extends _SWFForm implements SWAsset, SWFFieldContainer, SWInspectable {
 
-	public NSArray sortedFields() {
-		NSMutableArray sortOrderings = new NSMutableArray();
+	public NSArray<SWFField> sortedFields() {
+		NSMutableArray<EOSortOrdering> sortOrderings = new NSMutableArray<EOSortOrdering>();
+
 		if( USArrayUtilities.arrayHasObjects( fieldSets() ) ) {
 			sortOrderings.addObject( new EOSortOrdering( "fieldSet.sortNumber", EOSortOrdering.CompareAscending ) );
 		}
+
 		sortOrderings.addObject( new EOSortOrdering( "sortNumber", EOSortOrdering.CompareAscending ) );
 		return EOSortOrdering.sortedArrayUsingKeyOrderArray( fields(), sortOrderings );
 	}
 
-	public NSArray sortedFieldsExcludingAdminFields() {
-		Enumeration e = sortedFields().objectEnumerator();
-		NSMutableArray fieldArray = new NSMutableArray();
+	public NSArray<SWFField> sortedFieldsExcludingAdminFields() {
+		Enumeration<SWFField> e = sortedFields().objectEnumerator();
+		NSMutableArray<SWFField> fieldArray = new NSMutableArray<SWFField>();
 
 		while( e.hasMoreElements() ) {
-			SWFField nextField = (SWFField)e.nextElement();
-			if( !USUtilities.numberIsTrue( nextField.adminField() ) )
+			SWFField nextField = e.nextElement();
+
+			if( !USUtilities.numberIsTrue( nextField.adminField() ) ) {
 				fieldArray.addObject( nextField );
+			}
 		}
 
 		return fieldArray;
 	}
 
-	public NSArray fieldsNotInFieldSet() {
+	public NSArray<SWFField> fieldsNotInFieldSet() {
 		EOQualifier q = new EOKeyValueQualifier( "fieldSet", EOQualifier.QualifierOperatorEqual, null );
 		return EOQualifier.filteredArrayWithQualifier( fields(), q );
 	}
 
-	public NSArray sortedRegistrations() {
+	public NSArray<SWFRegistration> sortedRegistrations() {
 		EOSortOrdering s = new EOSortOrdering( "sortedRegistrationFields.value", EOSortOrdering.CompareCaseInsensitiveAscending );
 		return EOSortOrdering.sortedArrayUsingKeyOrderArray( registrations(), new NSArray( s ) );
 	}
@@ -56,10 +60,11 @@ public class SWFForm extends _SWFForm implements SWAsset, SWFFieldContainer, SWI
 		EOQualifier q = new EOKeyValueQualifier( "formID", EOQualifier.QualifierOperatorEqual, number );
 		EOFetchSpecification fs = new EOFetchSpecification( "SWFForm", q, null );
 
-		NSArray a = ec.objectsWithFetchSpecification( fs );
+		NSArray<SWFForm> a = ec.objectsWithFetchSpecification( fs );
 
-		if( a != null && a.count() > 0 )
-			return (SWFForm)a.objectAtIndex( 0 );
+		if( USArrayUtilities.arrayHasObjects( a ) ) {
+			return a.objectAtIndex( 0 );
+		}
 
 		return null;
 	}
@@ -77,10 +82,10 @@ public class SWFForm extends _SWFForm implements SWAsset, SWFFieldContainer, SWI
 		this.addObjectToBothSidesOfRelationshipWithKey( f, "fieldSets" );
 
 		if( USArrayUtilities.arrayHasObjects( fields() ) && fieldSets().count() == 1 ) {
-			Enumeration e = fields().objectEnumerator();
+			Enumeration<SWFField> e = fields().objectEnumerator();
 
 			while( e.hasMoreElements() ) {
-				SWFField nextField = (SWFField)e.nextElement();
+				SWFField nextField = e.nextElement();
 				f.addObjectToBothSidesOfRelationshipWithKey( nextField, "fields" );
 			}
 		}
@@ -93,7 +98,7 @@ public class SWFForm extends _SWFForm implements SWAsset, SWFFieldContainer, SWI
 		editingContext().deleteObject( aFieldSet );
 	}
 
-	public NSArray registrationsMatchingString( String searchString ) {
+	public NSArray<SWFRegistration> registrationsMatchingString( String searchString ) {
 		EOQualifier q = new EOKeyValueQualifier( "registrationFields.value", EOQualifier.QualifierOperatorLike, "*" + searchString + "*" );
 		EOQualifier q2 = new EOKeyValueQualifier( "form", EOQualifier.QualifierOperatorEqual, this );
 		EOQualifier q3 = new EOAndQualifier( new NSArray( new Object[] { q, q2 } ) );
@@ -101,33 +106,33 @@ public class SWFForm extends _SWFForm implements SWAsset, SWFFieldContainer, SWI
 		EOSortOrdering s = new EOSortOrdering( "date", EOSortOrdering.CompareCaseInsensitiveAscending );
 
 		EOFetchSpecification fs = new EOFetchSpecification( "SWFRegistration", q3, new NSArray( s ) );
-		NSArray a = editingContext().objectsWithFetchSpecification( fs );
+		NSArray<SWFRegistration> a = editingContext().objectsWithFetchSpecification( fs );
 
 		if( USArrayUtilities.arrayHasObjects( a ) ) {
-			NSSet set = new NSSet( a );
+			NSSet<SWFRegistration> set = new NSSet<SWFRegistration>( a );
 			return set.allObjects();
 		}
 
-		return NSArray.EmptyArray;
+		return NSArray.emptyArray();
 	}
 
-	public NSArray requiredFields() {
+	public NSArray<SWFField> requiredFields() {
 		EOQualifier q = new EOKeyValueQualifier( "required", EOQualifier.QualifierOperatorEqual, new Integer( 1 ) );
 		return EOQualifier.filteredArrayWithQualifier( fields(), q );
 	}
 
-	public NSArray emailAddresses() {
+	public NSArray<String> emailAddresses() {
 		return USUtilities.stringToArrayOfTrimmedStrings( notifyEmailAddresses() );
 	}
 
-	public NSArray sortedPrimaryFields() {
+	public NSArray<SWFField> sortedPrimaryFields() {
 		EOQualifier q = new EOKeyValueQualifier( "primaryField", EOQualifier.QualifierOperatorEqual, new Integer( 1 ) );
 		return EOQualifier.filteredArrayWithQualifier( sortedFields(), q );
 	}
 
-	public NSArray sortedFieldSets() {
+	public NSArray<SWFFieldSet> sortedFieldSets() {
 		EOSortOrdering s = new EOSortOrdering( "sortNumber", EOSortOrdering.CompareAscending );
-		return EOSortOrdering.sortedArrayUsingKeyOrderArray( fieldSets(), new NSArray( s ) );
+		return EOSortOrdering.sortedArrayUsingKeyOrderArray( fieldSets(), new NSArray<EOSortOrdering>( s ) );
 	}
 
 	public SWFolder containingFolder() {

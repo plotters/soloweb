@@ -13,7 +13,7 @@ import com.webobjects.foundation.NSArray;
 
 public class SWFFormFolder extends _SWFFormFolder implements SWFolder<SWFFormFolder>, SWInspectable {
 
-	public NSArray sortedDocuments() {
+	public NSArray<SWFForm> sortedDocuments() {
 		return SWFolderUtilities.sortedDocuments( this );
 	}
 
@@ -22,11 +22,11 @@ public class SWFFormFolder extends _SWFFormFolder implements SWFolder<SWFFormFol
 		this.addObjectToBothSidesOfRelationshipWithKey( newOwner, PARENT_KEY );
 	}
 
-	public NSArray sortedRootFolders( EOEditingContext ec ) {
+	public NSArray<SWFFormFolder> sortedRootFolders( EOEditingContext ec ) {
 		return SWFolderUtilities.sortedRootFolders( ec, this );
 	}
 
-	public NSArray sortedSubFolders() {
+	public NSArray<SWFFormFolder> sortedSubFolders() {
 		return SWFolderUtilities.sortedSubFolders( this );
 	}
 
@@ -42,7 +42,7 @@ public class SWFFormFolder extends _SWFFormFolder implements SWFolder<SWFFormFol
 		return parent();
 	}
 
-	public NSArray itemSordOrderings() {
+	public NSArray<EOSortOrdering> itemSordOrderings() {
 		return SWFForm.NAME.ascs();
 	}
 }
