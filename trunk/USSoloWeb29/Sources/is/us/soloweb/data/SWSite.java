@@ -42,8 +42,10 @@ public class SWSite extends _SWSite implements SWCustomInfo, SWInspectable {
 
 		for( String next : qual().split( "\n" ) ) {
 			String domain = next.trim();
-			domain = next.substring( 1, domain.length() - 1 );
-			list.add( domain );
+			if( domain.length() > 2 ) {
+				domain = next.substring( 1, domain.length() - 1 );
+				list.add( domain );
+			}
 		}
 
 		return list;
