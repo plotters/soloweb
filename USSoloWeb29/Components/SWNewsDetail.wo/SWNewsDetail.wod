@@ -47,8 +47,8 @@ NAME_STRING: WOString {
 }
 
 COMMENT_DATE_STRING: WOString {
-	dateformat = "%d.%m.%Y";
-	value = selectedNewsItem.date;
+	formatter = timestampFormatter;
+	value = currentComment.date;
 }
 
 TIME_STRING: WOString {
@@ -76,8 +76,8 @@ NO_COMMENTS_CONDITIONAL: WOConditional {
 }
 
 DATE_STRING: WOString {
+	value = selectedNewsItem.date;
 	formatter = timestampFormatter;
-	value = currentComment.date;
 }
 
 FORM: WOForm {}

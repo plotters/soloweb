@@ -77,7 +77,7 @@ TEXT_WITH_BREAKS_STRING: WOString {
 
 DATE_STRING: WOString {
 	value = currentNewsItem.date;
-	dateformat = "%d.%m.%Y";
+	formatter = timestampFormatter;
 }
 
 ALLOW_COMMENTS_CONDITIONAL: WOConditional {
