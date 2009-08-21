@@ -7,21 +7,25 @@ import is.us.util.*;
 import is.us.wo.util.USHTTPUtilities;
 
 import com.webobjects.appserver.*;
-import com.webobjects.eocontrol.*;
 import com.webobjects.foundation.*;
 
 import er.ajax.AjaxHighlight;
 
 /**
- * The default detail view for an SWNewsitem.
+ * The default detail view for an SWNewsitem, including comment publishing.
  *
  * @author Hugi Þórðarson
- * @version 2.9.2b4
+ * @version 2.9.6
  * @since 2.7
  */
 
 public class SWNewsDetail extends SoloNewsNewsList {
 
+	/**
+	 * Contains IP-addresses that attempted to publish a comment,
+	 * but failed to pass the spam check. Spambots.
+	 * 
+	 */
 	public static final NSMutableArray<String> REJECTED_IP_ADDRESSES = new NSMutableArray<String>();
 
 	/**
@@ -59,20 +63,16 @@ public class SWNewsDetail extends SoloNewsNewsList {
 		return false;
 	}
 
+	/**
+	 * Currently selected news item.
+	 */
 	@Override
 	public SWNewsItem selectedNewsItem() {
 		return (SWNewsItem)valueForBinding( "selectedNewsItem" );
 	}
 
 	/**
-	 * FIXME: Move to consolidated URL-generation. 
-	 */
-	public String moreURL() {
-		return SWURLGeneration.moreURLForNewsItem( context(), selectedNewsItem().newsItemID(), selectedPage(), detailPageName(), detailPageID() );
-	}
-
-	/**
-	 * Current user 
+	 * Current user.
 	 */
 	private SWExternalUser user() {
 		if( _user == null ) {
@@ -95,27 +95,16 @@ public class SWNewsDetail extends SoloNewsNewsList {
 	}
 
 	/**
-	 * Here we're fetching the comments for the selected newsitem.
-	 */
-	public NSArray<SWComment> comments() {
-		EOQualifier q = SWComment.NEWS_ITEM_ID.eq( selectedNewsItem().newsItemID() );
-		EOFetchSpecification fs = new EOFetchSpecification( SWComment.ENTITY_NAME, q, SWComment.DATE.ascs() );
-		return ec().objectsWithFetchSpecification( fs );
-	}
-
-	/**
 	 * Now let's publish that comment...
 	 */
 	public WOActionResults publishComment() {
 		String referer = USHTTPUtilities.referer( context().request() );
 		String userAgent = USHTTPUtilities.userAgent( context().request() );
 		String ipAddress = USHTTPUtilities.ipAddressFromRequest( context().request() );
-		String uuid = SWExternalUserUtilities.readUserIDFromRequest( context().request() );
+		String userID = SWExternalUserUtilities.readUserIDFromRequest( context().request() );
 
 		if( !exepectedSpamAnswer.equalsIgnoreCase( hatesSpamString ) ) {
-			if( USStringUtilities.stringHasValue( ipAddress ) )
-				REJECTED_IP_ADDRESSES.addObject( ipAddress );
-
+			addRejectedIPAddress( ipAddress );
 			return error( "Í þessum reit verður að standa " + SWC.QUOTE + exepectedSpamAnswer + SWC.QUOTE );
 		}
 
@@ -145,7 +134,7 @@ public class SWNewsDetail extends SoloNewsNewsList {
 			user().setEmailAddress( userEmailAddress );
 			user().setNotifyOnNewComments( userNotifyOnNewComments );
 			user().addToComments( c );
-			user().setUuid( uuid );
+			user().setUuid( userID );
 		}
 
 		ec().saveChanges();
@@ -154,11 +143,10 @@ public class SWNewsDetail extends SoloNewsNewsList {
 
 		NSMutableArray<String> emailAddressesToNotify = new NSMutableArray<String>();
 
-		if( USStringUtilities.stringHasValue( SWSettings.webmasterEmail() ) ) {
+		if( USStringUtilities.stringHasValue( SWSettings.webmasterEmail() ) )
 			emailAddressesToNotify.addObject( SWSettings.webmasterEmail() );
-		}
 
-		for( SWComment nextComment : comments() ) {
+		for( SWComment nextComment : selectedNewsItem().comments() ) {
 			String nextEmailAddress = nextComment.emailAddress();
 
 			if( USUtilities.booleanFromObject( nextComment.notifyOnNewComments() ) && USStringUtilities.stringHasValue( nextEmailAddress ) && !emailAddressesToNotify.containsObject( nextEmailAddress ) && !nextEmailAddress.equals( userEmailAddress ) )
@@ -174,6 +162,17 @@ public class SWNewsDetail extends SoloNewsNewsList {
 		setErrorMessage( null );
 
 		return null;
+	}
+
+	/**
+	 * Marks an IP address rejected by the spam check.
+	 * 
+	 * @param ipAddress The rejected address
+	 */
+	private void addRejectedIPAddress( String ipAddress ) {
+		if( USStringUtilities.stringHasValue( ipAddress ) ) {
+			REJECTED_IP_ADDRESSES.addObject( ipAddress );
+		}
 	}
 
 	/**

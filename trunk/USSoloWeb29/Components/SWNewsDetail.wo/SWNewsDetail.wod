@@ -62,11 +62,11 @@ TEXT_WITH_BREAKS_STRING: WOString {
 }
 
 COMMENTS_CONDITIONAL: WOConditional {
-	condition = comments.count;
+	condition = selectedNewsItem.comments.count;
 }
 
 NO_COMMENTS_CONDITIONAL: WOConditional {
-	condition = comments.count;
+	condition = selectedNewsItem.comments.count; 
 	negate = true;
 }
 
@@ -85,7 +85,7 @@ COMMENT_LINK: WOGenericContainer {
 }
 
 COMMENT_REPETITION: WORepetition {
-	list = comments;
+	list = selectedNewsItem.comments;
 	item = currentComment;
 }
 
