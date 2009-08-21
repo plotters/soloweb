@@ -37,12 +37,8 @@ public class SWNewsDetail extends SoloNewsNewsList {
 	public Integer userNotifyOnNewComments = user().notifyOnNewComments();
 	public String text;
 	public String hatesSpamString;
-	public String exepectedSpamAnswer = localizedApplicationStringForKey( "commentsExpectedSpamAnswer" );
-
-	/**
-	 * Error message displayed to the user.
-	 */
-	private String _errorMessage;
+	public String expectedSpamAnswer = localizedString( "commentsExpectedSpamAnswer" );
+	public String errorMessage;
 
 	/**
 	 * The comment currently being iterated over in the list.
@@ -86,14 +82,6 @@ public class SWNewsDetail extends SoloNewsNewsList {
 		return _user;
 	}
 
-	public String errorMessage() {
-		return _errorMessage;
-	}
-
-	public void setErrorMessage( String newErrorMessage ) {
-		_errorMessage = newErrorMessage;
-	}
-
 	/**
 	 * Now let's publish that comment...
 	 */
@@ -103,13 +91,13 @@ public class SWNewsDetail extends SoloNewsNewsList {
 		String ipAddress = USHTTPUtilities.ipAddressFromRequest( context().request() );
 		String userID = SWExternalUserUtilities.readUserIDFromRequest( context().request() );
 
-		if( !exepectedSpamAnswer.equalsIgnoreCase( hatesSpamString ) ) {
+		if( !expectedSpamAnswer.equalsIgnoreCase( hatesSpamString ) ) {
 			addRejectedIPAddress( ipAddress );
-			return error( "Í þessum reit verður að standa " + SWC.QUOTE + exepectedSpamAnswer + SWC.QUOTE );
+			return error( "commentsWrongSpamAnswerError", expectedSpamAnswer );
 		}
 
 		if( !USStringUtilities.stringHasValueTrimmed( text ) ) {
-			return error( "Texti athugasemdar má ekki vera tómur" );
+			return error( "commentsNoTextError", null );
 		}
 
 		SWComment c = new SWComment();
@@ -141,7 +129,7 @@ public class SWNewsDetail extends SoloNewsNewsList {
 
 		AjaxHighlight.highlight( c );
 
-		NSMutableArray<String> emailAddressesToNotify = new NSMutableArray<String>();
+		NSMutableSet<String> emailAddressesToNotify = new NSMutableSet<String>();
 
 		if( USStringUtilities.stringHasValue( SWSettings.webmasterEmail() ) )
 			emailAddressesToNotify.addObject( SWSettings.webmasterEmail() );
@@ -149,17 +137,17 @@ public class SWNewsDetail extends SoloNewsNewsList {
 		for( SWComment nextComment : selectedNewsItem().comments() ) {
 			String nextEmailAddress = nextComment.emailAddress();
 
-			if( USUtilities.booleanFromObject( nextComment.notifyOnNewComments() ) && USStringUtilities.stringHasValue( nextEmailAddress ) && !emailAddressesToNotify.containsObject( nextEmailAddress ) && !nextEmailAddress.equals( userEmailAddress ) )
+			if( USUtilities.booleanFromObject( nextComment.notifyOnNewComments() ) && USStringUtilities.stringHasValue( nextEmailAddress ) && !nextEmailAddress.equals( userEmailAddress ) )
 				emailAddressesToNotify.addObject( nextEmailAddress );
 		}
 
 		String emailSubject = "[" + USHTTPUtilities.host( context().request() ) + "] - " + SWC.SPACE + SWC.QUOTE + selectedNewsItem().name() + SWC.QUOTE;
 		String emailContent = c.commentFormattedForEmail( referer );
 
-		USMailSender.sendInMultipleEmails( SWSettings.webmasterEmail(), emailAddressesToNotify, emailSubject, emailContent, null );
+		USMailSender.sendInMultipleEmails( SWSettings.webmasterEmail(), emailAddressesToNotify.allObjects(), emailSubject, emailContent, null );
 
 		text = null;
-		setErrorMessage( null );
+		errorMessage = null;
 
 		return null;
 	}
@@ -178,8 +166,8 @@ public class SWNewsDetail extends SoloNewsNewsList {
 	/**
 	 * This action is invoked if an error occurs during the publishing process. 
 	 */
-	public WOActionResults error( String newErrorMessage ) {
-		setErrorMessage( newErrorMessage );
+	public WOActionResults error( String errorKey, Object... vars ) {
+		errorMessage = USStringUtilities.stringWithFormat( localizedString( errorKey ), vars );
 		return null;
 	}
 }
