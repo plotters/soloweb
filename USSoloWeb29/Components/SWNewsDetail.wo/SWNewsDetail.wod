@@ -144,7 +144,7 @@ NOTIFY_CHECKBOX: WOCheckBox {
 SPAM_TEXT_FIELD : WOTextField {
 	value = hatesSpamString;
 	id = "spamStringField";
-	size = exepectedSpamAnswer.length;
+	size = expectedSpamAnswer.length;
 	style = "width: 30px";
 }
 
@@ -207,5 +207,5 @@ LOC_COMMENTS_TEXT : WOString {
 }
 
 SPAM_STRING : WOString {
-	value = exepectedSpamAnswer;
+	value = expectedSpamAnswer;
 }
