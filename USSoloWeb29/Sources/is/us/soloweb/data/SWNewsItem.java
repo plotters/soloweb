@@ -5,7 +5,7 @@ import is.us.soloweb.util.SWTimedContentUtilities;
 import is.us.util.*;
 
 import com.webobjects.eocontrol.*;
-import com.webobjects.foundation.NSTimestamp;
+import com.webobjects.foundation.*;
 
 /**
  * An SWNewsItem represents a newsitem in the SoloWeb system
@@ -69,6 +69,15 @@ public class SWNewsItem extends _SWNewsItem implements SWTimedContent, SWAsset<S
 	 */
 	public boolean isTimeValid() {
 		return SWTimedContentUtilities.validateDisplayTime( this );
+	}
+
+	/**
+	 * @return All comments for the selected newsitem.
+	 */
+	public NSArray<SWComment> comments() {
+		EOQualifier q = SWComment.NEWS_ITEM_ID.eq( newsItemID() );
+		EOFetchSpecification fs = new EOFetchSpecification( SWComment.ENTITY_NAME, q, SWComment.DATE.ascs() );
+		return editingContext().objectsWithFetchSpecification( fs );
 	}
 
 	public Number assetID() {
