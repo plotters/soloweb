@@ -170,4 +170,9 @@ public class SWNewsDetail extends SoloNewsNewsList {
 		errorMessage = USStringUtilities.stringWithFormat( localizedString( errorKey ), vars );
 		return null;
 	}
+
+	@Override
+	public String moreURL() {
+		return SWURLGeneration.moreURLForNewsItem( context(), selectedNewsItem().newsItemID(), selectedPage(), detailPageName(), detailPageID() );
+	}
 }
