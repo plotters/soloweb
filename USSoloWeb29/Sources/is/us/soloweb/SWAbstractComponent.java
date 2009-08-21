@@ -30,7 +30,7 @@ public abstract class SWAbstractComponent extends ERXComponent {
 	public Object valueForKeyPath( String keypath ) {
 
 		if( keypath.startsWith( LOC_KEYPATH ) )
-			return localizedApplicationStringForKey( keypath.substring( 4, keypath.length() ) );
+			return localizedString( keypath.substring( 4, keypath.length() ) );
 
 		return super.valueForKeyPath( keypath );
 	}
@@ -38,7 +38,7 @@ public abstract class SWAbstractComponent extends ERXComponent {
 	public Object valueForKey( String keypath ) {
 
 		if( keypath.startsWith( LOC_KEYPATH ) )
-			return localizedApplicationStringForKey( keypath.substring( 4, keypath.length() ) );
+			return localizedString( keypath.substring( 4, keypath.length() ) );
 
 		return super.valueForKey( keypath );
 	}
@@ -50,7 +50,12 @@ public abstract class SWAbstractComponent extends ERXComponent {
 		return ICELANDIC;
 	}
 
-	public String localizedApplicationStringForKey( String key ) {
+	/**
+	 * 
+	 * @param key
+	 * @return
+	 */
+	public String localizedString( String key ) {
 		String language = (String)context().request().userInfoForKey( LANGUAGE );
 
 		if( language == null )
