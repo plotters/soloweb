@@ -69,8 +69,9 @@ public abstract class SWGenericTemplate extends SWAbstractComponent {
 	 * Returns the selected page.
 	 */
 	public SWPage selectedPage() {
-		if( _selectedPage == null )
+		if( _selectedPage == null ) {
 			_selectedPage = SWPageUtilities.pageFromRequest( ec(), context().request() );
+		}
 
 		return _selectedPage;
 	}
