@@ -33,7 +33,8 @@ public class SWComment extends _SWComment {
 
 		s = USStringUtilities.replace( s, "<", "--&lt;--" );
 		s = USStringUtilities.replace( s, ">", "--&gt;--" );
-		//		s = USStringUtilities.convertBreakString( s );
+		s = USStringUtilities.convertBreakString( s );
+		s = USStringUtilities.activateHyperlinksInString( s );
 
 		//		MarkdownProcessor markdown_processor = new MarkdownProcessor();
 		//		s = markdown_processor.markdown( text() );
