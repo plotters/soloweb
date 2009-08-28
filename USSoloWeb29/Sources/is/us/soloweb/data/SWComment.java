@@ -3,9 +3,6 @@ package is.us.soloweb.data;
 import is.us.soloweb.util.SWC;
 import is.us.util.USStringUtilities;
 
-import org.eclipse.mylyn.wikitext.core.parser.MarkupParser;
-import org.eclipse.mylyn.wikitext.textile.core.TextileLanguage;
-
 /**
  * A comment in a SoloWeb system.
  * 
@@ -41,12 +38,12 @@ public class SWComment extends _SWComment {
 		//		MarkdownProcessor markdown_processor = new MarkdownProcessor();
 		//		s = markdown_processor.markdown( text() );
 
-		TextileLanguage language = new TextileLanguage();
-		MarkupParser parser = new MarkupParser( language );
-		s = parser.parseToHtml( s );
-
-		s = USStringUtilities.replace( s, "--&amp;lt;--", "&lt;" );
-		s = USStringUtilities.replace( s, "--&amp;gt;--", "&gt;" );
+		//		TextileLanguage language = new TextileLanguage();
+		//		MarkupParser parser = new MarkupParser( language );
+		//		s = parser.parseToHtml( s );
+		//
+		//		s = USStringUtilities.replace( s, "--&amp;lt;--", "&lt;" );
+		//		s = USStringUtilities.replace( s, "--&amp;gt;--", "&gt;" );
 
 		return s;
 	}
