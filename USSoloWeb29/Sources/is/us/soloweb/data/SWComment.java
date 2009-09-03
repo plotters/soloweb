@@ -31,17 +31,20 @@ public class SWComment extends _SWComment {
 	public String textForDisplay() {
 		String s = text();
 
-		s = USStringUtilities.replace( s, "<", "--&lt;--" );
-		s = USStringUtilities.replace( s, ">", "--&gt;--" );
+		//		s = USStringUtilities.replace( s, "<", "&lt;" );
+		//		s = USStringUtilities.replace( s, ">", "&gt;" );
 		s = USStringUtilities.convertBreakString( s );
-		s = USStringUtilities.activateHyperlinksInString( s );
+		//		s = USStringUtilities.activateHyperlinksInString( s );
 
 		//		MarkdownProcessor markdown_processor = new MarkdownProcessor();
 		//		s = markdown_processor.markdown( text() );
 
-		//		TextileLanguage language = new TextileLanguage();
+		//		MarkupLanguage language = new ConfluenceLanguage();
+		//		MarkupLanguage language = new MediaWikiLanguage();
+		//		MarkupLanguage language = new TextileLanguage();
 		//		MarkupParser parser = new MarkupParser( language );
 		//		s = parser.parseToHtml( s );
+
 		//
 		//		s = USStringUtilities.replace( s, "--&amp;lt;--", "&lt;" );
 		//		s = USStringUtilities.replace( s, "--&amp;gt;--", "&gt;" );
