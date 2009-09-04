@@ -47,6 +47,7 @@
         emailAddress, 
         ipAddress, 
         name, 
+        newsitem, 
         newsItemID, 
         notifyOnNewComments, 
         text, 
@@ -61,6 +62,13 @@
     name = SWComment; 
     primaryKeyAttributes = (commentID); 
     relationships = (
+        {
+            destination = SWNewsItem; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = newsItemID; sourceAttribute = newsItemID; }); 
+            name = newsitem; 
+        }, 
         {
             destination = SWExternalUser; 
             isToMany = N; 
