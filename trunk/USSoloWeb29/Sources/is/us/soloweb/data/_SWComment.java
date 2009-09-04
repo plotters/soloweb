@@ -29,6 +29,7 @@ public abstract class _SWComment extends  ERXGenericRecord {
   public static final ERXKey<Integer> USER_ID = new ERXKey<Integer>("userID");
   public static final ERXKey<NSData> USER_PICTURE = new ERXKey<NSData>("userPicture");
   // Relationship Keys
+  public static final ERXKey<is.us.soloweb.data.SWNewsItem> NEWSITEM = new ERXKey<is.us.soloweb.data.SWNewsItem>("newsitem");
   public static final ERXKey<is.us.soloweb.data.SWExternalUser> USER = new ERXKey<is.us.soloweb.data.SWExternalUser>("user");
 
   // Attributes
@@ -45,6 +46,7 @@ public abstract class _SWComment extends  ERXGenericRecord {
   public static final String USER_ID_KEY = USER_ID.key();
   public static final String USER_PICTURE_KEY = USER_PICTURE.key();
   // Relationships
+  public static final String NEWSITEM_KEY = NEWSITEM.key();
   public static final String USER_KEY = USER.key();
 
   private static Logger LOG = Logger.getLogger(_SWComment.class);
@@ -189,6 +191,31 @@ public abstract class _SWComment extends  ERXGenericRecord {
     takeStoredValueForKey(value, "userPicture");
   }
 
+  public is.us.soloweb.data.SWNewsItem newsitem() {
+    return (is.us.soloweb.data.SWNewsItem)storedValueForKey("newsitem");
+  }
+  
+  public void setNewsitem(is.us.soloweb.data.SWNewsItem value) {
+    takeStoredValueForKey(value, "newsitem");
+  }
+
+  public void setNewsitemRelationship(is.us.soloweb.data.SWNewsItem value) {
+    if (_SWComment.LOG.isDebugEnabled()) {
+      _SWComment.LOG.debug("updating newsitem from " + newsitem() + " to " + value);
+    }
+    if (er.extensions.eof.ERXGenericRecord.InverseRelationshipUpdater.updateInverseRelationships()) {
+    	setNewsitem(value);
+    }
+    else if (value == null) {
+    	is.us.soloweb.data.SWNewsItem oldValue = newsitem();
+    	if (oldValue != null) {
+    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, "newsitem");
+      }
+    } else {
+    	addObjectToBothSidesOfRelationshipWithKey(value, "newsitem");
+    }
+  }
+  
   public is.us.soloweb.data.SWExternalUser user() {
     return (is.us.soloweb.data.SWExternalUser)storedValueForKey("user");
   }

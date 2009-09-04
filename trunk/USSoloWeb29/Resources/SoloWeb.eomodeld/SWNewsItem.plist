@@ -51,6 +51,7 @@
     ); 
     className = "is.us.soloweb.data.SWNewsItem"; 
     classProperties = (
+        comments, 
         createdBy, 
         createdByID, 
         creationDate, 
@@ -78,6 +79,13 @@
     name = SWNewsItem; 
     primaryKeyAttributes = (newsItemID); 
     relationships = (
+        {
+            destination = SWComment; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = newsItemID; sourceAttribute = newsItemID; }); 
+            name = comments; 
+        }, 
         {
             destination = SWUser; 
             isToMany = N; 

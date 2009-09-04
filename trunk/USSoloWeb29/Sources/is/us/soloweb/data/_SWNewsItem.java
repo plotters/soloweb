@@ -34,6 +34,7 @@ public abstract class _SWNewsItem extends  ERXGenericRecord {
   public static final ERXKey<NSTimestamp> TIME_IN = new ERXKey<NSTimestamp>("timeIn");
   public static final ERXKey<NSTimestamp> TIME_OUT = new ERXKey<NSTimestamp>("timeOut");
   // Relationship Keys
+  public static final ERXKey<is.us.soloweb.data.SWComment> COMMENTS = new ERXKey<is.us.soloweb.data.SWComment>("comments");
   public static final ERXKey<is.us.soloweb.data.SWUser> CREATED_BY = new ERXKey<is.us.soloweb.data.SWUser>("createdBy");
   public static final ERXKey<is.us.soloweb.data.SWDocument> DOCUMENT = new ERXKey<is.us.soloweb.data.SWDocument>("document");
   public static final ERXKey<is.us.soloweb.data.SWNewsFolder> FOLDER = new ERXKey<is.us.soloweb.data.SWNewsFolder>("folder");
@@ -58,6 +59,7 @@ public abstract class _SWNewsItem extends  ERXGenericRecord {
   public static final String TIME_IN_KEY = TIME_IN.key();
   public static final String TIME_OUT_KEY = TIME_OUT.key();
   // Relationships
+  public static final String COMMENTS_KEY = COMMENTS.key();
   public static final String CREATED_BY_KEY = CREATED_BY.key();
   public static final String DOCUMENT_KEY = DOCUMENT.key();
   public static final String FOLDER_KEY = FOLDER.key();
@@ -360,6 +362,100 @@ public abstract class _SWNewsItem extends  ERXGenericRecord {
     }
   }
   
+  public NSArray<is.us.soloweb.data.SWComment> comments() {
+    return (NSArray<is.us.soloweb.data.SWComment>)storedValueForKey("comments");
+  }
+
+  public NSArray<is.us.soloweb.data.SWComment> comments(EOQualifier qualifier) {
+    return comments(qualifier, null, false);
+  }
+
+  public NSArray<is.us.soloweb.data.SWComment> comments(EOQualifier qualifier, boolean fetch) {
+    return comments(qualifier, null, fetch);
+  }
+
+  public NSArray<is.us.soloweb.data.SWComment> comments(EOQualifier qualifier, NSArray<EOSortOrdering> sortOrderings, boolean fetch) {
+    NSArray<is.us.soloweb.data.SWComment> results;
+    if (fetch) {
+      EOQualifier fullQualifier;
+      EOQualifier inverseQualifier = new EOKeyValueQualifier(is.us.soloweb.data.SWComment.NEWSITEM_KEY, EOQualifier.QualifierOperatorEqual, this);
+    	
+      if (qualifier == null) {
+        fullQualifier = inverseQualifier;
+      }
+      else {
+        NSMutableArray qualifiers = new NSMutableArray();
+        qualifiers.addObject(qualifier);
+        qualifiers.addObject(inverseQualifier);
+        fullQualifier = new EOAndQualifier(qualifiers);
+      }
+
+      results = is.us.soloweb.data.SWComment.fetchSWComments(editingContext(), fullQualifier, sortOrderings);
+    }
+    else {
+      results = comments();
+      if (qualifier != null) {
+        results = (NSArray<is.us.soloweb.data.SWComment>)EOQualifier.filteredArrayWithQualifier(results, qualifier);
+      }
+      if (sortOrderings != null) {
+        results = (NSArray<is.us.soloweb.data.SWComment>)EOSortOrdering.sortedArrayUsingKeyOrderArray(results, sortOrderings);
+      }
+    }
+    return results;
+  }
+  
+  public void addToComments(is.us.soloweb.data.SWComment object) {
+    includeObjectIntoPropertyWithKey(object, "comments");
+  }
+
+  public void removeFromComments(is.us.soloweb.data.SWComment object) {
+    excludeObjectFromPropertyWithKey(object, "comments");
+  }
+
+  public void addToCommentsRelationship(is.us.soloweb.data.SWComment object) {
+    if (_SWNewsItem.LOG.isDebugEnabled()) {
+      _SWNewsItem.LOG.debug("adding " + object + " to comments relationship");
+    }
+    if (er.extensions.eof.ERXGenericRecord.InverseRelationshipUpdater.updateInverseRelationships()) {
+    	addToComments(object);
+    }
+    else {
+    	addObjectToBothSidesOfRelationshipWithKey(object, "comments");
+    }
+  }
+
+  public void removeFromCommentsRelationship(is.us.soloweb.data.SWComment object) {
+    if (_SWNewsItem.LOG.isDebugEnabled()) {
+      _SWNewsItem.LOG.debug("removing " + object + " from comments relationship");
+    }
+    if (er.extensions.eof.ERXGenericRecord.InverseRelationshipUpdater.updateInverseRelationships()) {
+    	removeFromComments(object);
+    }
+    else {
+    	removeObjectFromBothSidesOfRelationshipWithKey(object, "comments");
+    }
+  }
+
+  public is.us.soloweb.data.SWComment createCommentsRelationship() {
+    EOClassDescription eoClassDesc = EOClassDescription.classDescriptionForEntityName("SWComment");
+    EOEnterpriseObject eo = eoClassDesc.createInstanceWithEditingContext(editingContext(), null);
+    editingContext().insertObject(eo);
+    addObjectToBothSidesOfRelationshipWithKey(eo, "comments");
+    return (is.us.soloweb.data.SWComment) eo;
+  }
+
+  public void deleteCommentsRelationship(is.us.soloweb.data.SWComment object) {
+    removeObjectFromBothSidesOfRelationshipWithKey(object, "comments");
+    editingContext().deleteObject(object);
+  }
+
+  public void deleteAllCommentsRelationships() {
+    Enumeration objects = comments().immutableClone().objectEnumerator();
+    while (objects.hasMoreElements()) {
+      deleteCommentsRelationship((is.us.soloweb.data.SWComment)objects.nextElement());
+    }
+  }
+
 
   public static SWNewsItem createSWNewsItem(EOEditingContext editingContext, Integer newsItemID
 ) {
