@@ -9,12 +9,9 @@ import java.util.HashMap;
 import org.slf4j.*;
 
 import com.webobjects.appserver.*;
-import com.webobjects.eoaccess.*;
-import com.webobjects.eocontrol.*;
 import com.webobjects.foundation.*;
 
 import er.extensions.appserver.ERXMessageEncoding;
-import er.extensions.eof.ERXEC;
 
 /**
  * A singleton class to contain the setup of a SoloWeb system
@@ -256,31 +253,5 @@ public class SoloWeb {
 
 	public void incrementNumberOfServedBytesSinceStartup( int bytes ) {
 		_numberOfServedBytesSinceStartup += bytes;
-	}
-
-	/**
-	 * Terminates all outstanding database connections, and connects all models in the
-	 * default EOModelGroup to the specified database.
-	 */
-	public static void reconnectToDatabase() {
-		EOObjectStoreCoordinator osc = new EOObjectStoreCoordinator();
-		EOObjectStoreCoordinator.setDefaultCoordinator( osc );
-		EOEditingContext ec = ERXEC.newEditingContext( osc );
-
-		for( EOModel model : EOModelGroup.defaultGroup().models() ) {
-			EODatabaseContext dc = EODatabaseContext.registeredDatabaseContextForModel( model, ec );
-			EOAdaptor ad = dc.adaptorContext().adaptor();
-
-			for( EOAdaptorContext a : (NSArray<EOAdaptorContext>)ad.contexts() ) {
-				for( EOAdaptorChannel c : (NSArray<EOAdaptorChannel>)a.channels() ) {
-					c.closeChannel();
-				}
-			}
-
-			NSMutableDictionary connDict = new NSMutableDictionary( ad.connectionDictionary() );
-			connDict.addEntriesFromDictionary( (NSMutableDictionary)SWSettings.settingForKey( SWSettings.CONN_DICT ) );
-			ad.setConnectionDictionary( connDict );
-			ad.assertConnectionDictionaryIsValid();
-		}
 	}
 }

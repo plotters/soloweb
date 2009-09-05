@@ -120,7 +120,7 @@ public class SWSettingsDatabase extends SWSettingsPanel {
 	* Invokes reconnect() and returns SWLoggedOut
 	 */
 	public WOActionResults switchConnection() {
-		SoloWeb.reconnectToDatabase();
+		SWSQLUtilities.reconnectToDatabase();
 		session().terminate();
 		return pageWithName( "SWLoggedOut" );
 	}
@@ -130,7 +130,7 @@ public class SWSettingsDatabase extends SWSettingsPanel {
 	 */
 	public WOActionResults executeSQL() {
 
-		SoloWeb.reconnectToDatabase();
+		SWSQLUtilities.reconnectToDatabase();
 
 		Enumeration b = plugins.objectEnumerator();
 		SWPluginItem pi;
@@ -149,11 +149,11 @@ public class SWSettingsDatabase extends SWSettingsPanel {
 				aModel = EOModelGroup.defaultGroup().modelNamed( aModelName );
 
 				if( pi.dropSchema() && pi.constructSchema() )
-					sqlString = SWSQLCreationUtilities.sqlForModel( aModel, "YES" );
+					sqlString = SWSQLUtilities.sqlForModel( aModel, "YES" );
 				else if( !pi.dropSchema() && pi.constructSchema() )
-					sqlString = SWSQLCreationUtilities.sqlForModel( aModel, "NO" );
+					sqlString = SWSQLUtilities.sqlForModel( aModel, "NO" );
 				else if( pi.dropSchema() && !pi.constructSchema() )
-					sqlString = SWSQLCreationUtilities.sqlToDropTablesForModel( aModel );
+					sqlString = SWSQLUtilities.sqlToDropTablesForModel( aModel );
 				else if( !pi.dropSchema() && !pi.constructSchema() )
 					sqlString = null;
 

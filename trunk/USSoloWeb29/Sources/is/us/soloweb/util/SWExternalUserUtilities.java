@@ -26,7 +26,6 @@ public class SWExternalUserUtilities {
 	 */
 	private static final String USER_ID_COOKIE_NAME = "userID";
 	private static final String USER_ID_COOKIE_PATH = "/";
-	//	private static final String USER_ID_COOKIE_DOMAIN = ".karlmenn.is";
 	private static final int USER_ID_COOKIE_LIFETIME_IN_MONTHS = 3;
 	private static final int USER_ID_COOKIE_LIFETIME_IN_SECONDS = USER_ID_COOKIE_LIFETIME_IN_MONTHS * 60 * 60 * 24 * 30;
 

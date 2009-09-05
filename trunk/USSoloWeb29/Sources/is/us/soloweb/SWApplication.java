@@ -67,19 +67,13 @@ public abstract class SWApplication extends ERXApplication {
 		SWExternalUserUtilities.writeUserIDToResponse( userUUID, response, domain );
 
 		USHTTPUtilities.resetCookieHeaderInResponse( response );
+
 		/*
 				if( SWSettings.useTidy( request ) && USHTTPUtilities.contentTypeHTML( response ) ) {
 					USHTTPUtilities.tidyResponse( response );
 				}
 		*/
-		//		logger.debug( "req_uri: " + request.uri() );
-		//		logger.debug( "req_ip: " + USHTTPUtilities.ipAddressFromRequest( request ) );
-		//		logger.debug( "req_useragent: " + USHTTPUtilities.userAgent( request ) );
-		//		logger.debug( "resp_h_string: " + response.headers() );
-		//		logger.debug( "resp_h_content-encoding: " + USHTTPUtilities.contentEncoding( response ) );
-		//		logger.debug( "resp_h_content-type: " + USHTTPUtilities.contentType( response ) );
-		//		logger.debug( "resp_h_content-length: " + USHTTPUtilities.contentLength( response ) );
-		//		logger.debug( "real_content_length: " + response.content().length() );
+
 		return response;
 	}
 

@@ -1,4 +1,4 @@
-Conditional1: WOConditional {
+HAS_SESSIONS_CONDITIONAL: WOConditional {
 	condition = application.sw.solowebSessions.count;
 }
 
@@ -7,74 +7,78 @@ Conditional2: WOConditional {
 	negate = true;
 }
 
-Repetition1: WORepetition {
+SESSION_REPETITION: WORepetition {
 	item = currentSession;
 	list = application.sw.solowebSessions;
 }
 
-String1: WOString {
+PAGE_SERVED: WOString {
 	value = application.sw.numberOfServedPagesSinceStartup;
 	numberformat = "0";
 }
 
-String10: WOString {
+LS_FREE_MEMORY: WOString {
 	value = session.@ls.aaEstimatedFreeMem;
 }
 
-String11: WOString {
+LS_APPLICATION_STARTED: WOString {
 	value = session.@ls.aaApplicationStartedAt;
 }
 
-PAGES_SERVED_LABEL: WOString {
+LS_PAGES_SERVED: WOString {
 	value = session.@ls.aaNumberOfPagesServed;
 }
 
-String13: WOString {
+LS_NOW: WOString {
 	value = session.@ls.aaServerTime;
 }
 
-String2: WOString {
+NOW_STRING: WOString {
 	value = now;
 	dateformat = "%d.%m.%Y, %H:%M:%S";
 }
 
-String3: WOString {
-	formatter = europeanNumberFormatter;
+TOTAL_MEMORY: WOString {
 	value = totalMemory;
+	numberformat = "0";
 }
 
-String4: WOString {
+FREE_MEMORY: WOString {
 	value = freeMemory;
-	formatter = europeanNumberFormatter;
+	numberformat = "0";
 }
 
-String5: WOString {
+APPLICATION_STARTED: WOString {
 	value = application.sw.startupTime;
 	dateformat = "%d.%m.%Y, %H:%M:%S";
 }
 
-String7: WOString {
+SESSION_USER: WOString {
 	value = currentSession.solowebUser.name;
 }
 
-String8: WOString {
-	dateformat = "%H:%M, %d.%m.%y";
+SESSION_STARTTIME: WOString {
 	value = currentSession.startTime;
+	dateformat = "%H:%M, %d.%m.%y";
 }
 
-String9: WOString {
+LS_TOTAL_MEMORY: WOString {
 	value = session.@ls.aaTotalMemUse;
 }
 
-HITS_FROM_STARTUP_LABEL : WOString {
+LS_HITS_SERVED : WOString {
 	value = session.@ls.aaNumberOfRequests;
 }
 
-HITS_FROM_STARTUP_VALUE : WOString {
+LS_BYTES_SERVED : WOString {
+	value = session.@ls.aaNumberOfRequests;
+}
+
+HITS_SERVED : WOString {
 	value = application.sw.numberOfRequestsSinceStartup;
 }
 
-BYTES_FROM_STARTUP_VALUE : WOString {
+BYTES_SERVED : WOString {
 	value = application.sw.numberOfServedBytesSinceStartup;
-	numberformat = "#,##0";
+	numberformat = "0";
 }

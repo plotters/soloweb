@@ -3,7 +3,7 @@ package is.us.soloweb.settings;
 import is.us.soloweb.SWSession;
 
 import com.webobjects.appserver.*;
-import com.webobjects.foundation.*;
+import com.webobjects.foundation.NSTimestamp;
 
 /**
  * @author Hugi Þórðarson
@@ -28,14 +28,6 @@ public class SWSettingsStatistics extends SWSettingsPanel {
 		Number n = (Number)WOApplication.application().statisticsStore().memoryUsage().valueForKey( "Free Memory" );
 		int i = n.intValue();
 		return i / 1024 / 1024;
-	}
-
-	public NSNumberFormatter europeanNumberFormatter() {
-		NSNumberFormatter numberFormatter = new NSNumberFormatter( "0.00" );
-		numberFormatter.setHasThousandSeparators( true );
-		numberFormatter.setThousandSeparator( "." );
-		numberFormatter.setDecimalSeparator( "," );
-		return numberFormatter;
 	}
 
 	public NSTimestamp now() {

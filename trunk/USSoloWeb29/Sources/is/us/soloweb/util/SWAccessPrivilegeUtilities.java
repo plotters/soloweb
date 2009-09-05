@@ -59,8 +59,9 @@ public class SWAccessPrivilegeUtilities extends Object {
 
 		EOEnterpriseObject parent = record.inheritsPrivilegesFrom();
 
-		if( parent == null )
+		if( parent == null ) {
 			return NSArray.emptyArray();
+		}
 
 		NSMutableArray<SWAccessPrivilege> allParentPrivileges = privilegesIncludingInheritedPrivilegesForObject( parent ).mutableClone();
 		Enumeration<SWAccessPrivilege> e = allParentPrivileges.objectEnumerator();

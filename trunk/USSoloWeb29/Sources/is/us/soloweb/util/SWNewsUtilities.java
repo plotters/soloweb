@@ -140,5 +140,4 @@ public class SWNewsUtilities extends Object {
 
 		return fetchedNewsItems;
 	}
-
 }

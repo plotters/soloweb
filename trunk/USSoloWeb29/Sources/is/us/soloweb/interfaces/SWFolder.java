@@ -10,7 +10,6 @@ import com.webobjects.foundation.NSArray;
  *
  * @author Hugi Þórðarson
  * @version 2.9.2b6
- * @param <T>
  * @since 2.7
  */
 
@@ -47,7 +46,7 @@ public interface SWFolder<E> extends EOEnterpriseObject, USHierarchy, SWTransfer
 	public NSArray<? extends SWAsset> sortedDocuments();
 
 	/**
-	 * Calculates the file size of files in the folder. 
+	 * @return The total size of objects in the folder. 
 	 */
 	public int size();
 
