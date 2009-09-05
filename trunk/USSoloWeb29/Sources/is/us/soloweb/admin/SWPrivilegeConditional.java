@@ -34,7 +34,7 @@ public class SWPrivilegeConditional extends SWAdminComponent {
 
 	public boolean hasPrivilege() {
 
-		if( !SWSettings.booleanForKey( SWSettings.ENABLE_PRIVILEGES ) )
+		if( !SWSettings.privilegesEnabled() )
 			return true;
 
 		if( record() != null && identifier() != null ) {

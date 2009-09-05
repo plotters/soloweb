@@ -22,11 +22,11 @@ import com.webobjects.foundation.*;
  * @since 2.5
  */
 
-public class SWDictionary extends NSMutableDictionary {
+public class SWDictionary<E, T> extends NSMutableDictionary {
 
 	private static final Logger logger = LoggerFactory.getLogger( SWDictionary.class );
 
-	private NSDictionary propertiesDict;
+	private NSDictionary<E, T> propertiesDict;
 	private File file;
 	private EOEnterpriseObject owningObject;
 

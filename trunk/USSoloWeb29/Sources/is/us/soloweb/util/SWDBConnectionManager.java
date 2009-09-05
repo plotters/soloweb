@@ -63,7 +63,7 @@ public class SWDBConnectionManager {
 		 * FIXME: This is required to switch DB types, but functionality is not guaranteed.
 		 */
 		if( theModel.name().equals( SWC.SOLOWEB_EOMODEL_NAME ) ) {
-			String databaseType = (String)SWSettings.settingForKey( "adaptorName" );
+			String databaseType = SWSettings.adaptorName();
 			logger.debug( "Database type is: " + databaseType );
 
 			EOEntity orginalTypes = theModel.entityNamed( "EOPrototypes" );

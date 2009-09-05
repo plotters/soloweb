@@ -25,7 +25,7 @@ public class SoloWeb {
 	private NSMutableArray<String> _pluginModels = new NSMutableArray<String>( new String[] { SWC.SOLOWEB_EOMODEL_NAME } );
 	private NSTimestamp _startupTime;
 	private int _numberOfServedPagesSinceStartup;
-	private int _numberOfRequestsSinceStartup;
+	private int _numberOfServedRequestsSinceStartup;
 	private int _numberOfServedBytesSinceStartup;
 
 	private NSMutableDictionary<String, String> _activeSettingsTabs;
@@ -113,8 +113,8 @@ public class SoloWeb {
 		try {
 			SWPluginHandler.defaultInstance().loadRegisteredPlugins();
 			app.setSMTPHost( SWSettings.defaultMailServer() );
-			int sessionTimeOutInSeconds = new Integer( (String)SWSettings.settingForKeyWithDefaultValue( SWSettings.SESSION_TIME_OUT, "30" ) ).intValue() * 60;
-			app.setSessionTimeOut( new Integer( sessionTimeOutInSeconds ) );
+			int sessionTimeOutInSeconds = new Integer( SWSettings.sessionTimeOut() ) * 60;
+			app.setSessionTimeOut( sessionTimeOutInSeconds );
 			logger.info( "*** SoloWeb ready at " + new NSTimestamp() );
 		}
 		catch( Exception e ) {
@@ -223,7 +223,7 @@ public class SoloWeb {
 		return SWNoPageFoundErrorComponent.class.getSimpleName();
 	}
 
-	public NSDictionary solowebSettings() {
+	public NSDictionary<String, String> solowebSettings() {
 		return SWSettings.allSettings();
 	}
 
@@ -236,7 +236,7 @@ public class SoloWeb {
 	}
 
 	public int numberOfRequestsSinceStartup() {
-		return _numberOfRequestsSinceStartup;
+		return _numberOfServedRequestsSinceStartup;
 	}
 
 	public int numberOfServedBytesSinceStartup() {
@@ -248,7 +248,7 @@ public class SoloWeb {
 	}
 
 	public void incrementNumberOfRequestsSinceStartup() {
-		_numberOfRequestsSinceStartup++;
+		_numberOfServedRequestsSinceStartup++;
 	}
 
 	public void incrementNumberOfServedBytesSinceStartup( int bytes ) {
