@@ -294,30 +294,4 @@ public abstract class SWDirectAction extends ERXDirectAction {
 
 		return new WOResponse();
 	}
-
-	/**
-	 * For migrating old style SWDocumentTypes to the right places.
-	 */
-	public WOActionResults convertAction() {
-		NSArray<SWDocument> docs = SWDocument.fetchAllSWDocuments( ec() );
-
-		for( SWDocument doc : docs ) {
-			SWDocumentType docType = SWDocumentType.fetchSWDocumentType( ec(), SWDocumentType.DOCUMENT_TYPE_ID.eq( doc.documentTypeID() ) );
-
-			if( docType != null ) {
-				doc.setExtension( docType.extension() );
-				doc.setMimeType( docType.mimeType() );
-				System.out.println( doc.name() + " ; " + docType.extension() + " ; " + docType.mimeType() );
-			}
-			else {
-				System.out.println( doc.name() + " ; NO TYPE" );
-			}
-		}
-
-		System.out.println( "Saving...." );
-		ec().saveChanges();
-		System.out.println( "Done!" );
-
-		return null;
-	}
 }

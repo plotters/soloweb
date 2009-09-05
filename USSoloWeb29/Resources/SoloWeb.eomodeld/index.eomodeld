@@ -20,7 +20,6 @@
         {className = "is.us.soloweb.data.SWComponent"; name = SWComponent; }, 
         {className = "is.us.soloweb.data.SWDocument"; name = SWDocument; }, 
         {className = "is.us.soloweb.data.SWDocumentFolder"; name = SWDocumentFolder; }, 
-        {className = "is.us.soloweb.data.SWDocumentType"; name = SWDocumentType; }, 
         {className = "is.us.soloweb.data.SWExternalUser"; name = SWExternalUser; }, 
         {className = "is.us.soloweb.data.SWGroup"; name = SWGroup; }, 
         {className = EOGenericRecord; name = SWGroupSWUser; }, 
