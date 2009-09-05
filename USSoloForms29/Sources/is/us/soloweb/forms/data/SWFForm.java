@@ -177,7 +177,12 @@ public class SWFForm extends _SWFForm implements SWAsset, SWFFieldContainer, SWI
 	public void setDate( NSTimestamp date ) {}
 
 	// FIXME:Auto-generated method stub
-	public int size() {
+	public long size() {
+		return 0;
+	}
+
+	// FIXME:Auto-generated method stub
+	public double sizeKB() {
 		return 0;
 	}
 
