@@ -15,7 +15,6 @@ public class SWDBConnectionManager {
 
 	private static final Logger logger = LoggerFactory.getLogger( SWDBConnectionManager.class );
 
-	private static final String CONN_DICT = "connDict";
 	private static final String HANDLE_MODEL_ADDED_NOTIFICATION_NAME = "handleModelAddedNotification";
 
 	private static SWDBConnectionManager _singleton;
@@ -54,7 +53,7 @@ public class SWDBConnectionManager {
 
 		if( SoloWeb.sw().activeModels().containsObject( theModel.name() ) ) {
 			logger.debug( "SoloWeb will reconfigure the connection for EOModel:  " + theModel.name() );
-			NSDictionary<String, Object> settingsConnectionDictionary = (NSDictionary<String, Object>)SWSettings.settingForKey( CONN_DICT );
+			NSDictionary<String, Object> settingsConnectionDictionary = SWSettings.connectionDictionary();
 			theModel.setConnectionDictionary( settingsConnectionDictionary );
 		}
 		else {

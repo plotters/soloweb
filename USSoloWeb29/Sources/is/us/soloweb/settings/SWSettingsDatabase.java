@@ -198,6 +198,6 @@ public class SWSettingsDatabase extends SWSettingsPanel {
 	* Indicates if a connection dictionary has been created.
 	 */
 	public boolean connectionDictionary() {
-		return SWSettings.settingForKey( SWSettings.CONN_DICT ) != null;
+		return SWSettings.connectionDictionary() != null;
 	}
 }
