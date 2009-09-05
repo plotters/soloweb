@@ -18,8 +18,9 @@ SELECT_DOCUMENT: SWDocumentHyperlink {
 	record = self;
 }
 
-ICON_IMAGE: SWImage {
-	document = selectedDocument.documentType.document;
+ICON_IMAGE: WOImage {
+	filename = selectedDocument.icon;
+	framework = application.sw.frameworkBundleName;
 }
 
 DOCUMENT_NAME_STRING: WOString {
