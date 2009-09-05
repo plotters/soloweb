@@ -13,7 +13,7 @@ import com.webobjects.foundation.*;
 
 public class SWDBConnectionManager {
 
-	final Logger logger = LoggerFactory.getLogger( SWDBConnectionManager.class );
+	private static final Logger logger = LoggerFactory.getLogger( SWDBConnectionManager.class );
 
 	private static final String CONN_DICT = "connDict";
 	private static final String HANDLE_MODEL_ADDED_NOTIFICATION_NAME = "handleModelAddedNotification";

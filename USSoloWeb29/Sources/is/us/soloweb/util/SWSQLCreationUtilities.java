@@ -9,8 +9,6 @@ import com.webobjects.foundation.NSMutableDictionary;
  * @author Hugi Þórðarson
  * @version 2.8
  * @since 2.4
- * 
- * FIXME: Doesn't work. Use ERXMigration once WO 5.4.2 is available.
  */
 
 public class SWSQLCreationUtilities {

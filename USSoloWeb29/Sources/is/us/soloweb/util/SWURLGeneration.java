@@ -91,7 +91,7 @@ public class SWURLGeneration {
 	}
 
 	/**
-	 * FIXME: Move to consolidated URL-generation. 
+	 *  
 	 */
 	public static String moreURLForNewsItem( WOContext context, Integer newsItemID, SWPage selectedPage, String detailPageName, String detailPageID ) {
 

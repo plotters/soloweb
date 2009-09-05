@@ -33,7 +33,7 @@ public class SWRSSComponent extends ERXComponent {
 	 * Set the document's content type to XML.
 	 */
 	public void appendToResponse( WOResponse r, WOContext c ) {
-		r.setHeader( SWMimeTypes.XML, USHTTPUtilities.HEADER_CONTENT_TYPE );
+		r.setHeader( "text/xml", USHTTPUtilities.HEADER_CONTENT_TYPE );
 		super.appendToResponse( r, c );
 	}
 
