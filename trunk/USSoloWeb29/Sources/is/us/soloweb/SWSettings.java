@@ -6,7 +6,7 @@ import is.us.util.*;
 import java.io.File;
 
 import com.webobjects.appserver.WORequest;
-import com.webobjects.foundation.NSKeyValueCoding;
+import com.webobjects.foundation.*;
 
 /**
  * SWSettings allows the programmer to create persistent settings and access them in a simple fashion
@@ -135,10 +135,7 @@ public class SWSettings extends Object implements NSKeyValueCoding {
 	 * Location of Lucene index on disk.
 	 */
 	public static String indexLocationOnDisk() {
-		String location = (String)SWSettings.settingForKey( SWSettings.INDEX_LOCATION_ON_DISK );
-		if( location == null )
-			location = SWSettings.INDEX_LOCATION_ON_DISK;
-		return location;
+		return (String)SWSettings.settingForKey( SWSettings.INDEX_LOCATION_ON_DISK );
 	}
 
 	/**
@@ -228,23 +225,44 @@ public class SWSettings extends Object implements NSKeyValueCoding {
 	}
 
 	/**
-	 * The default admin username for SoloWeb. 
+	 * @return The default admin username for SoloWeb. 
 	 */
 	public static String defaultUsername() {
 		return (String)SWSettings.settingForKeyWithDefaultValue( SWSettings.DEFAULT_USERNAME, DEFAULT_USERNAME_AND_PASSWORD );
 	}
 
 	/**
-	 * The default admin password for SoloWeb. 
+	 * @return The default admin password for SoloWeb. 
 	 */
 	public static String defaultPassword() {
 		return (String)SWSettings.settingForKeyWithDefaultValue( SWSettings.DEFAULT_PASSWORD, DEFAULT_USERNAME_AND_PASSWORD );
 	}
 
 	/**
-	 * The default admin password for SoloWeb. 
+	 * @return The default admin password for SoloWeb. 
 	 */
 	public static String webmasterEmail() {
 		return (String)SWSettings.settingForKeyWithDefaultValue( SWSettings.WEBMASTER_EMAIL, null );
+	}
+
+	/**
+	 * @return The SMTP Server used to send mail from SoloWeb. 
+	 */
+	public static String defaultMailServer() {
+		return (String)SWSettings.settingForKeyWithDefaultValue( SWSettings.DEFAULT_MAIL_SERVER, null );
+	}
+
+	/**
+	 * @return The default admin password for SoloWeb. 
+	 */
+	public static String documentLocationOnDisk() {
+		return (String)SWSettings.settingForKeyWithDefaultValue( SWSettings.DOCUMENT_LOCATION_ON_DISK, null );
+	}
+
+	/**
+	 * @return the connection dictionary of the system.
+	 */
+	public static NSDictionary<String, Object> connectionDictionary() {
+		return (NSDictionary<String, Object>)SWSettings.settingForKey( CONN_DICT );
 	}
 }

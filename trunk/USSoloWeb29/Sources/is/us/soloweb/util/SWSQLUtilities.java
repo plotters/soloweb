@@ -83,8 +83,8 @@ public class SWSQLUtilities {
 				}
 			}
 
-			NSMutableDictionary connDict = new NSMutableDictionary( ad.connectionDictionary() );
-			connDict.addEntriesFromDictionary( (NSMutableDictionary)SWSettings.settingForKey( SWSettings.CONN_DICT ) );
+			NSMutableDictionary<String, Object> connDict = new NSMutableDictionary<String, Object>( ad.connectionDictionary() );
+			connDict.addEntriesFromDictionary( SWSettings.connectionDictionary() );
 			ad.setConnectionDictionary( connDict );
 			ad.assertConnectionDictionaryIsValid();
 		}

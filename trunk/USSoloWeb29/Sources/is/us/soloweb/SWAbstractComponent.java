@@ -58,8 +58,9 @@ public abstract class SWAbstractComponent extends ERXComponent {
 	public String localizedString( String key ) {
 		String language = (String)context().request().userInfoForKey( LANGUAGE );
 
-		if( language == null )
+		if( language == null ) {
 			language = defaultLanguage();
+		}
 
 		NSArray<String> languages = new NSArray<String>( language );
 		String returnString = WOApplication.application().resourceManager().stringForKey( key, SWC.STRINGS_FILE_NAME, SWC.LOCALIZED_STRING_NOT_FOUND, SWC.FRAMEWORK_NAME, languages );

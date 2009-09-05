@@ -26,7 +26,7 @@ public class SWDocument extends _SWDocument implements SWAsset<SWDocumentFolder>
 
 	private static final Logger logger = LoggerFactory.getLogger( SWDocument.class );
 
-	private String _documentLocationOnDisk = ((String)SWSettings.settingForKey( SWSettings.DOCUMENT_LOCATION_ON_DISK ));
+	private String _documentLocationOnDisk = SWSettings.documentLocationOnDisk();
 	private NSData _temporaryData = null;
 
 	public SWDocument() {

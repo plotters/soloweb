@@ -43,7 +43,7 @@ public abstract class SWDirectAction extends ERXDirectAction {
 	}
 
 	/**
-	 * The default editingContext
+	 * The default editingContext.
 	 */
 	protected EOEditingContext ec() {
 		if( _ec == null ) {
@@ -93,15 +93,12 @@ public abstract class SWDirectAction extends ERXDirectAction {
 
 	/**
 	 * The search action performs a search of the SoloWeb site, and returns an SWSearchResults-page, displaying the results. You can pass in a branchID to narrow the search.
-	 * Arguments:
 	 * 
-	 * <ul>
-	 * <li> <b>searchString</b><br />The String to search for
-	 * <li> <b>branchID</b><br />The branch to search (see docs for SWContentSearch for further information)
-	 * </ul>
+	 * @urlparam searchString The String to search for
+	 * @urlparam branchID The branch to search (see docs for SWContentSearch for further information)
 	 */
 	public WOActionResults searchAction() {
-		String indexLocationOndisk = (String)SWSettings.settingForKey( SWSettings.INDEX_LOCATION_ON_DISK );
+		String indexLocationOndisk = SWSettings.indexLocationOnDisk();
 
 		SWPage thePage = SWPageUtilities.pageFromRequest( ec(), request() );
 
@@ -113,12 +110,7 @@ public abstract class SWDirectAction extends ERXDirectAction {
 			branchID = Integer.parseInt( branchID() );
 		}
 
-		//		if( KMStringUtilities.stringHasValue( indexLocationOndisk ) ) {
-		//nextPage.results = new SWLuceneSearch( ec(), searchString(), branchID ).search();
-		//		}
-		//		else {
 		nextPage.results = new SWContentSearch( ec(), searchString(), branchID ).search();
-		//		}
 
 		return nextPage;
 	}
