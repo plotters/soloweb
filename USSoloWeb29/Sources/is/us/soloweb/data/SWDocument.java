@@ -39,24 +39,25 @@ public class SWDocument extends _SWDocument implements SWAsset<SWDocumentFolder>
 	}
 
 	/**
-	 * The full path to the document on disk
+	 * @return The full path to the document on disk
 	 * 
-	 * Try not to use this method, since we usually try to rely on just the data objects.
-	 * Data might possibly be stored in the DB in the future.
+	 * Warning: Data storage should be implementation agnostic, so use data() where possible. 
 	 */
 	private String path() {
 		return _documentLocationOnDisk + documentID();
 	}
 
 	/**
-	 * The file on disk
+	 * @return The file on disk
+	 * 
+	 * Warning: Data storage will become implementation agnostic, so use data() where possible.
 	 */
 	private File file() {
 		return new File( path() );
 	}
 
 	/**
-	 * The document's binary data
+	 * @return The document's data
 	 */
 	public NSData data() {
 		if( documentID() == null )
@@ -94,9 +95,9 @@ public class SWDocument extends _SWDocument implements SWAsset<SWDocumentFolder>
 	}
 
 	/**
-	 * The Document size in bytes.
+	 * @return The asset's size in bytes.
 	 */
-	public int size() {
+	public long size() {
 		File f = file();
 
 		if( f.exists() )
@@ -109,14 +110,14 @@ public class SWDocument extends _SWDocument implements SWAsset<SWDocumentFolder>
 	}
 
 	/**
-	 * The Document size in bytes.
+	 * @return The asset's size in kibibytes.
 	 */
-	public int sizeKB() {
-		return size() / 1024;
+	public double sizeKB() {
+		return size() / 1024d;
 	}
 
 	/**
-	 * Returns the document matching the specified ID
+	 * @return The document matching the specified ID
 	 *
 	 * @param ec The EOEditingContext to fetch into
 	 * @param id The ID of the document to fetch
@@ -126,7 +127,7 @@ public class SWDocument extends _SWDocument implements SWAsset<SWDocumentFolder>
 	}
 
 	/**
-	 * Returns a universally acceptable (downloadable) name for the document.
+	 * @return A universally acceptable (downloadable) name for the document.
 	 */
 	public String nameForDownload() {
 		return USHTTPUtilities.makeFilenameURLFriendly( name(), extension() );
@@ -137,14 +138,11 @@ public class SWDocument extends _SWDocument implements SWAsset<SWDocumentFolder>
 	 */
 	public void deleteAsset() {
 
-		try {
+		if( file() != null ) {
 			file().delete();
 		}
-		catch( Exception e ) {
-			e.printStackTrace();
-		}
 
-		removeObjectFromBothSidesOfRelationshipWithKey( folder(), "folder" );
+		removeObjectFromBothSidesOfRelationshipWithKey( folder(), FOLDER_KEY );
 		editingContext().deleteObject( this );
 	}
 
@@ -152,8 +150,8 @@ public class SWDocument extends _SWDocument implements SWAsset<SWDocumentFolder>
 	 * Implementation of SWTransferable
 	 */
 	public void transferOwnership( EOEnterpriseObject newOwner ) {
-		removeObjectFromBothSidesOfRelationshipWithKey( folder(), "folder" );
-		addObjectToBothSidesOfRelationshipWithKey( newOwner, "folder" );
+		removeObjectFromBothSidesOfRelationshipWithKey( folder(), FOLDER_KEY );
+		addObjectToBothSidesOfRelationshipWithKey( newOwner, FOLDER_KEY );
 	}
 
 	/**
@@ -244,7 +242,7 @@ public class SWDocument extends _SWDocument implements SWAsset<SWDocumentFolder>
 	}
 
 	/**
-	 * If there is no stored extension, we try to fetch it from the document's name.
+	 * @return The file's extension. If there is no stored extension, we fetch it from the document's name.
 	 */
 	@Override
 	public String extension() {

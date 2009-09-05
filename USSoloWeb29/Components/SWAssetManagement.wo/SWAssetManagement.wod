@@ -154,7 +154,7 @@ CANCEL_STRING: WOString {
 }
 
 SIZE_STRING: WOString {
-	value = currentObject.size;
+	value = currentObject.sizeKB;
 }
 
 NAME_STRING: WOString {

@@ -93,10 +93,21 @@ public class SWNewsItem extends _SWNewsItem implements SWTimedContent, SWAsset<S
 		setDate( new NSTimestamp() );
 	}
 
-	public int size() {
-		if( text() == null )
+	/**
+	 * @return The asset's size in bytes.
+	 */
+	public long size() {
+		if( text() == null ) {
 			return 0;
+		}
 
 		return text().length();
+	}
+
+	/**
+	 * @return The asset's size in kibibytes.
+	 */
+	public double sizeKB() {
+		return size() / 1024d;
 	}
 }

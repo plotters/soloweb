@@ -1,7 +1,12 @@
 package is.us.soloweb.util;
 
+import is.us.soloweb.SWSettings;
+
 import com.webobjects.eoaccess.*;
-import com.webobjects.foundation.NSMutableDictionary;
+import com.webobjects.eocontrol.*;
+import com.webobjects.foundation.*;
+
+import er.extensions.eof.ERXEC;
 
 /**
  * SWSQLCreation generates SQL to create and drop database schema for specified EOModels in SoloWeb.
@@ -11,7 +16,7 @@ import com.webobjects.foundation.NSMutableDictionary;
  * @since 2.4
  */
 
-public class SWSQLCreationUtilities {
+public class SWSQLUtilities {
 
 	private static final String NO = "NO";
 	private static final String YES = "YES";
@@ -57,5 +62,31 @@ public class SWSQLCreationUtilities {
 		d.setObjectForKey( NO, EOSchemaGeneration.DropDatabaseKey );
 
 		return sf.schemaCreationScriptForEntities( aModel.entities(), d );
+	}
+
+	/**
+	 * Terminates all outstanding database connections, and connects all models in the
+	 * default EOModelGroup to the specified database.
+	 */
+	public static void reconnectToDatabase() {
+		EOObjectStoreCoordinator osc = new EOObjectStoreCoordinator();
+		EOObjectStoreCoordinator.setDefaultCoordinator( osc );
+		EOEditingContext ec = ERXEC.newEditingContext( osc );
+
+		for( EOModel model : EOModelGroup.defaultGroup().models() ) {
+			EODatabaseContext dc = EODatabaseContext.registeredDatabaseContextForModel( model, ec );
+			EOAdaptor ad = dc.adaptorContext().adaptor();
+
+			for( EOAdaptorContext a : (NSArray<EOAdaptorContext>)ad.contexts() ) {
+				for( EOAdaptorChannel c : (NSArray<EOAdaptorChannel>)a.channels() ) {
+					c.closeChannel();
+				}
+			}
+
+			NSMutableDictionary connDict = new NSMutableDictionary( ad.connectionDictionary() );
+			connDict.addEntriesFromDictionary( (NSMutableDictionary)SWSettings.settingForKey( SWSettings.CONN_DICT ) );
+			ad.setConnectionDictionary( connDict );
+			ad.assertConnectionDictionaryIsValid();
+		}
 	}
 }

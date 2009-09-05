@@ -21,7 +21,9 @@ public interface SWAsset<E extends SWFolder> extends SWTransferable, EOEnterpris
 
 	public void setDate( NSTimestamp date );
 
-	public int size();
+	public long size();
+
+	public double sizeKB();
 
 	public E folder();
 
