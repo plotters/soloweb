@@ -62,7 +62,7 @@ public class SWAssetManagement extends SWAdminComponent {
 			NSMutableArray<String> tabs = new NSMutableArray<String>();
 			tabs.addObject( documentsTabName );
 
-			if( SWSettings.booleanForKey( SWSettings.ENABLE_PRIVILEGES ) && user().hasPrivilegeFor( selectedFolder(), SWC.PRIVILEGE_CAN_MANAGE_USERS ) )
+			if( SWSettings.privilegesEnabled() && user().hasPrivilegeFor( selectedFolder(), SWC.PRIVILEGE_CAN_MANAGE_USERS ) )
 				tabs.addObject( privilegesTabName );
 
 			_tabs = tabs.immutableClone();

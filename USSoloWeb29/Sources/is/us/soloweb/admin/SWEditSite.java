@@ -28,7 +28,7 @@ public class SWEditSite extends SWInspectionComponent<SWSite> {
 		NSMutableDictionary<String, String> activeSiteEditingComponents = new NSMutableDictionary<String, String>( SoloWeb.sw().activeSiteEditingComponents() );
 		activeSiteEditingComponents.setObjectForKey( SWEditSiteGeneralInfo.class.getSimpleName(), SWLoc.string( "eSiteTabGeneral", session() ) );
 
-		if( SWSettings.booleanForKey( SWSettings.ENABLE_PRIVILEGES ) )
+		if( SWSettings.privilegesEnabled() )
 			activeSiteEditingComponents.setObjectForKey( SWEditSitePrivileges.class.getSimpleName(), SWLoc.string( "eSiteTabAccessPrivileges", session() ) );
 
 		return activeSiteEditingComponents;

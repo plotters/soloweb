@@ -130,7 +130,7 @@ public abstract class SWDirectAction extends ERXDirectAction {
 		}
 
 		if( errorPageLinkingName == null ) {
-			errorPageLinkingName = (String)SWSettings.settingForKey( SWSettings.NO_PAGE_FOUND_ERROR_PAGE_LINKING_NAME );
+			errorPageLinkingName = SWSettings.noPageFoundErrorPageLinkingName();
 		}
 
 		if( errorPageLinkingName != null ) {

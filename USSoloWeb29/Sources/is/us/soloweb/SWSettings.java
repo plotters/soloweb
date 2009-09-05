@@ -18,7 +18,7 @@ import com.webobjects.foundation.*;
 
 public class SWSettings extends Object implements NSKeyValueCoding {
 
-	private static SWDictionary settingsDictionary;
+	private static SWDictionary<String, Object> settingsDictionary;
 
 	/**
 	 * Constants.
@@ -28,21 +28,19 @@ public class SWSettings extends Object implements NSKeyValueCoding {
 	/**
 	 * Settings available.
 	 */
-	public static final String SESSION_TIME_OUT = "sessionTimeOut";
-	public static final String ENABLE_PRIVILEGES = "enablePrivileges";
-	public static final String NO_PAGE_FOUND_ERROR_PAGE_LINKING_NAME = "noPageFoundErrorPageLinkingName";
-	public static final String INDEX_LOCATION_ON_DISK = "indexLocationOndisk";
-	public static final String DEFAULT_MAIL_SERVER = "defaultMailServer";
-	public static final String WEBMASTER_EMAIL = "webmasterEmail";
-	public static final String ADAPTOR_NAME = "adaptorName";
-	public static final String ALL_USER_GROUP_ID = "allUserGroupID";
-	public static final String RSS_PAGE = "rssPage";
-	public static final String RSS_DOMAIN = "rssDomain";
-	public static final String DEFAULT_PASSWORD = "defaultPassword";
-	public static final String DEFAULT_USERNAME = "defaultUsername";
-	public static final String DOCUMENT_LOCATION_ON_DISK = "documentLocationOnDisk";
 	public static final String CONN_DICT = "connDict";
-	public static final String ONLY_SHOW_GROUP_PRIVILEGES = "onlyShowGroupPrivileges";
+	public static final String ALL_USER_GROUP_ID = "allUserGroupID";
+	private static final String SESSION_TIME_OUT = "sessionTimeOut";
+	private static final String ENABLE_PRIVILEGES = "enablePrivileges";
+	private static final String NO_PAGE_FOUND_ERROR_PAGE_LINKING_NAME = "noPageFoundErrorPageLinkingName";
+	private static final String INDEX_LOCATION_ON_DISK = "indexLocationOndisk";
+	private static final String DEFAULT_MAIL_SERVER = "defaultMailServer";
+	private static final String WEBMASTER_EMAIL = "webmasterEmail";
+	private static final String ADAPTOR_NAME = "adaptorName";
+	private static final String DEFAULT_PASSWORD = "defaultPassword";
+	private static final String DEFAULT_USERNAME = "defaultUsername";
+	private static final String DOCUMENT_LOCATION_ON_DISK = "documentLocationOnDisk";
+	private static final String ONLY_SHOW_GROUP_PRIVILEGES = "onlyShowGroupPrivileges";
 
 	/**
 	 * Initializes SWSettings
@@ -52,20 +50,20 @@ public class SWSettings extends Object implements NSKeyValueCoding {
 			throw new Error( USStringUtilities.stringWithFormat( "No settings file specified. Make sure the property {} is set", SWProperties.SETTINGS_LOCATION_PROPERTY ) );
 		}
 
-		setSettingsDictionary( new SWDictionary( new File( storageLocation() ) ) );
+		setSettingsDictionary( new SWDictionary<String, Object>( new File( storageLocation() ) ) );
 	}
 
 	/**
 	 * Sets the dictionary of SWSettings to the specified dictionary
 	 */
-	public static void setSettingsDictionary( SWDictionary newDict ) {
+	public static void setSettingsDictionary( SWDictionary<String, Object> newDict ) {
 		settingsDictionary = newDict;
 	}
 
 	/**
 	 * Returns the entire settingsDictionary
 	 */
-	public static SWDictionary allSettings() {
+	public static SWDictionary<String, Object> allSettings() {
 		return settingsDictionary;
 	}
 
@@ -77,17 +75,10 @@ public class SWSettings extends Object implements NSKeyValueCoding {
 	}
 
 	/**
-	 * Returns the specified setting
-	 */
-	public static String stringForKey( String aKey ) {
-		return (String)settingsDictionary.valueForKey( aKey );
-	}
-
-	/**
 	 * Returns the specified setting, returning the default value if no setting is found
 	 */
 	public static Object settingForKeyWithDefaultValue( String aKey, Object defaultValue ) {
-		Object obj = settingsDictionary.valueForKey( aKey );
+		Object obj = settingForKey( aKey );
 
 		if( obj == null )
 			return defaultValue;
@@ -129,13 +120,6 @@ public class SWSettings extends Object implements NSKeyValueCoding {
 	 */
 	private static String storageLocation() {
 		return System.getProperty( SWProperties.SETTINGS_LOCATION_PROPERTY );
-	}
-
-	/**
-	 * Location of Lucene index on disk.
-	 */
-	public static String indexLocationOnDisk() {
-		return (String)SWSettings.settingForKey( SWSettings.INDEX_LOCATION_ON_DISK );
 	}
 
 	/**
@@ -213,12 +197,22 @@ public class SWSettings extends Object implements NSKeyValueCoding {
 		return shouldGenerateFriendlyURLs;
 	}
 
+	/**
+	 * Location of Lucene index on disk.
+	 */
+	public static String indexLocationOnDisk() {
+		return (String)settingForKey( SWSettings.INDEX_LOCATION_ON_DISK );
+	}
+
+	/**
+	 * @return A boolean indicating if privileges can be granted to groups only.
+	 */
 	public static boolean onlyAllowGrantingOfPrivilegesToGroups() {
 		return booleanForKey( ONLY_SHOW_GROUP_PRIVILEGES );
 	}
 
 	/**
-	 * The ID of the group that contains all users. 
+	 * @return The ID of the group that contains all users. 
 	 */
 	public static Integer allUsersGroupID() {
 		return integerForKey( ALL_USER_GROUP_ID );
@@ -260,9 +254,30 @@ public class SWSettings extends Object implements NSKeyValueCoding {
 	}
 
 	/**
-	 * @return the connection dictionary of the system.
+	 * @return The connection dictionary of the system.
 	 */
 	public static NSDictionary<String, Object> connectionDictionary() {
 		return (NSDictionary<String, Object>)SWSettings.settingForKey( CONN_DICT );
+	}
+
+	/**
+	 * @return The name of the SWPage to return in case no page is found (404)
+	 */
+	public static String noPageFoundErrorPageLinkingName() {
+		return (String)SWSettings.settingForKey( NO_PAGE_FOUND_ERROR_PAGE_LINKING_NAME );
+	}
+
+	/**
+	 * @return The default session timeout. 
+	 */
+	public static String sessionTimeOut() {
+		return (String)SWSettings.settingForKeyWithDefaultValue( SESSION_TIME_OUT, 30 );
+	}
+
+	/**
+	 * @return The name of the adaptor used to connect to the database.
+	 */
+	public static String adaptorName() {
+		return (String)SWSettings.settingForKey( ADAPTOR_NAME );
 	}
 }
