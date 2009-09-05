@@ -110,20 +110,18 @@ public class SWContentSearch {
 
 	/**
 	 * Returns the components found by searching
-	 * 
-	 * FIXME: Shouldn't case insensitive searching work with Oracle now?
 	 */
 	private NSArray<SWComponent> components() {
 
 		// FrontBase:
-		// NSArray searchKeyPaths = new NSArray( new Object[] { "textOne", "textTwo", "page.name", "page.text", "page.keywords" } );
+		NSArray searchKeyPaths = new NSArray( new Object[] { "textOne", "textTwo", "page.name", "page.text", "page.keywords" } );
 
 		// ORACLE og MSSQL:				
-		NSArray<String> searchKeyPaths = new NSArray<String>( new String[] { "page.name", "page.text", "page.keywords" } );
+		//		NSArray<String> searchKeyPaths = new NSArray<String>( new String[] { "page.name", "page.text", "page.keywords" } );
 
 		EOQualifier textQualifier = stringContainedInAttributes( _searchString, searchKeyPaths );
 		EOQualifier publishedQualifier = new EOKeyValueQualifier( "published", EOQualifier.QualifierOperatorEqual, SWC.TRUE_INTEGER );
-		EOAndQualifier andQual = new EOAndQualifier( new NSArray( new Object[] { textQualifier, publishedQualifier } ) );
+		EOQualifier andQual = new EOAndQualifier( new NSArray<EOQualifier>( new EOQualifier[] { textQualifier, publishedQualifier } ) );
 
 		EOFetchSpecification fs = new EOFetchSpecification( SWComponent.ENTITY_NAME, andQual, null );
 
@@ -198,11 +196,13 @@ public class SWContentSearch {
 	 */
 	public NSArray<SWPage> search() {
 
-		if( !USStringUtilities.stringHasValue( _searchString ) )
+		if( !USStringUtilities.stringHasValue( _searchString ) ) {
 			return null;
+		}
 
-		if( branchID() != null )
+		if( branchID() != null ) {
 			return searchBranch( branchID() );
+		}
 
 		return results();
 	}

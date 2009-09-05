@@ -2,8 +2,6 @@ package is.us.soloweb.admin;
 
 import is.us.soloweb.SoloWeb;
 import is.us.soloweb.data.*;
-import is.us.soloweb.interfaces.SWInspectable;
-import is.us.soloweb.search.SWGenericSearch;
 
 import com.webobjects.appserver.*;
 import com.webobjects.foundation.*;
@@ -75,7 +73,6 @@ public class SWMainMenu extends SWAdminComponent {
 	}
 
 	public WOActionResults search() {
-		NSArray<? extends SWInspectable> searchResults = SWGenericSearch.search( ec(), searchString );
 		return null;
 	}
 }

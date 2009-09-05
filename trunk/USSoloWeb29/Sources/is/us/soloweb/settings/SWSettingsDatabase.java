@@ -29,7 +29,7 @@ public class SWSettingsDatabase extends SWSettingsPanel {
 	/**
 	* A list of all plugins registered with the SoloWeb system
 	 */
-	public NSMutableArray<SWPlugin> plugins;
+	public NSMutableArray<SWPluginItem> plugins;
 
 	/**
 	* The plugin currently being iterated over in the list of plugins in the SQL-schema generation menu.
@@ -43,13 +43,13 @@ public class SWSettingsDatabase extends SWSettingsPanel {
 
 	/**
 	* The selected plugins to construct DB schema for
-	 */
+	 *
 	public NSMutableArray pluginsToConstruct = new NSMutableArray();
-
+	*/
 	/**
 	    * The selected plugins to drop DB schema for
 	 */
-	public NSMutableArray pluginsToDrop = new NSMutableArray();
+	public NSMutableArray<SWPluginItem> pluginsToDrop = new NSMutableArray<SWPluginItem>();
 
 	public SWSettingsDatabase( WOContext context ) {
 		super( context );
@@ -58,22 +58,22 @@ public class SWSettingsDatabase extends SWSettingsPanel {
 	/**
 	* Initializes the plugins array to a list of all plugins registered with the SoloWeb system and their EOModels.
 	 */
-	public NSArray plugins() {
+	public NSArray<SWPluginItem> plugins() {
 		if( plugins == null ) {
 
-			NSMutableArray anArray = new NSMutableArray();
+			NSMutableArray<SWPluginItem> anArray = new NSMutableArray<SWPluginItem>();
 
 			SWPluginItem pi2 = new SWPluginItem();
 			pi2.setName( "SoloWeb" );
 			pi2.setVersion( SWC.SOLOWEB_VERSION );
-			pi2.setModels( new NSArray( "SoloWeb" ) );
+			pi2.setModels( new NSArray<String>( "SoloWeb" ) );
 			anArray.addObject( pi2 );
 
-			Enumeration e = SWPluginHandler.registeredPlugins().objectEnumerator();
-			SWPlugin aPlugin;
+			Enumeration<SWPlugin> e = SWPluginHandler.registeredPlugins().objectEnumerator();
 
 			while( e.hasMoreElements() ) {
-				aPlugin = (SWPlugin)e.nextElement();
+				SWPlugin aPlugin = e.nextElement();
+
 				if( aPlugin.models() != null ) {
 					SWPluginItem pi = new SWPluginItem();
 					pi.setName( aPlugin.name() );
@@ -82,6 +82,7 @@ public class SWSettingsDatabase extends SWSettingsPanel {
 					anArray.addObject( pi );
 				}
 			}
+
 			plugins = anArray;
 		}
 
