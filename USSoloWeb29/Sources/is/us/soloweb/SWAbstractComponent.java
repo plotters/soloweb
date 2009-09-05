@@ -3,9 +3,11 @@ package is.us.soloweb;
 import is.us.soloweb.util.SWC;
 
 import com.webobjects.appserver.*;
+import com.webobjects.eocontrol.EOEditingContext;
 import com.webobjects.foundation.NSArray;
 
 import er.extensions.components.ERXComponent;
+import er.extensions.eof.ERXEC;
 
 /**
  * Common functionality for all WOComponens in SoloWeb.
@@ -14,6 +16,8 @@ import er.extensions.components.ERXComponent;
  */
 
 public abstract class SWAbstractComponent extends ERXComponent {
+
+	private EOEditingContext _ec;
 
 	private static final String ICELANDIC = "Icelandic";
 	private static final String LANGUAGE = "language";
@@ -25,6 +29,17 @@ public abstract class SWAbstractComponent extends ERXComponent {
 
 	public SWAbstractComponent( WOContext context ) {
 		super( context );
+	}
+
+	/**
+	 * The editingContext
+	 */
+	protected EOEditingContext ec() {
+		if( _ec == null ) {
+			_ec = ERXEC.newEditingContext();
+		}
+
+		return _ec;
 	}
 
 	public Object valueForKeyPath( String keypath ) {

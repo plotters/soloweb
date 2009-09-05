@@ -145,7 +145,6 @@ public class SWSettings extends Object implements NSKeyValueCoding {
 		boolean disabled = SWC.FALSE_STRING.equals( r.stringFormValueForKey( SWProperties.USE_GZIP ) );
 		boolean enabled = SWC.TRUE_STRING.equals( r.stringFormValueForKey( SWProperties.USE_GZIP ) );
 		boolean result = (propertyValue || enabled) && !disabled;
-
 		return result;
 	}
 
@@ -157,7 +156,6 @@ public class SWSettings extends Object implements NSKeyValueCoding {
 		boolean disabled = SWC.FALSE_STRING.equals( r.stringFormValueForKey( SWProperties.USE_TIDY ) );
 		boolean enabled = SWC.TRUE_STRING.equals( r.stringFormValueForKey( SWProperties.USE_TIDY ) );
 		boolean result = (propertyValue || enabled) && !disabled;
-
 		return result;
 	}
 
@@ -169,7 +167,6 @@ public class SWSettings extends Object implements NSKeyValueCoding {
 		boolean disabled = SWC.FALSE_STRING.equals( r.stringFormValueForKey( SWProperties.USE_MACROS ) );
 		boolean enabled = SWC.TRUE_STRING.equals( r.stringFormValueForKey( SWProperties.USE_MACROS ) );
 		boolean result = (propertyValue || enabled) && !disabled;
-
 		return result;
 	}
 
@@ -181,7 +178,6 @@ public class SWSettings extends Object implements NSKeyValueCoding {
 		boolean disabled = SWC.FALSE_STRING.equals( r.stringFormValueForKey( SWProperties.LOG_HITS ) );
 		boolean enabled = SWC.TRUE_STRING.equals( r.stringFormValueForKey( SWProperties.LOG_HITS ) );
 		boolean result = (propertyValue || enabled) && !disabled;
-
 		return result;
 	}
 
@@ -193,7 +189,6 @@ public class SWSettings extends Object implements NSKeyValueCoding {
 		boolean urlFriendlyDisabled = SWC.FALSE_STRING.equals( r.stringFormValueForKey( SWProperties.GENERATE_FRIENDLY_URLS ) );
 		boolean urlFriendlyEnabled = SWC.TRUE_STRING.equals( r.stringFormValueForKey( SWProperties.GENERATE_FRIENDLY_URLS ) );
 		boolean shouldGenerateFriendlyURLs = (urlFriendlyServer || urlFriendlyEnabled) && !urlFriendlyDisabled;
-
 		return shouldGenerateFriendlyURLs;
 	}
 

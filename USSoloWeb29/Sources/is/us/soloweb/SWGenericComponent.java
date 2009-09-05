@@ -4,9 +4,6 @@ import is.us.soloweb.data.*;
 import is.us.soloweb.util.*;
 
 import com.webobjects.appserver.WOContext;
-import com.webobjects.eocontrol.EOEditingContext;
-
-import er.extensions.eof.ERXEC;
 
 /**
  * SWGenericComponent is the common ancestor of all page components displayed on
@@ -19,21 +16,8 @@ import er.extensions.eof.ERXEC;
 
 public abstract class SWGenericComponent extends SWAbstractComponent {
 
-	private EOEditingContext _ec;
-
 	public SWGenericComponent( WOContext context ) {
 		super( context );
-	}
-
-	/**
-	 * The editingContext
-	 */
-	protected EOEditingContext ec() {
-		if( _ec == null ) {
-			_ec = ERXEC.newEditingContext();
-		}
-
-		return _ec;
 	}
 
 	public SWComponent currentComponent() {
