@@ -37,7 +37,6 @@ public class SWSettingsPanel extends SWAdminComponent {
 		NSMutableDictionary<String, String> activeSettingsTabs = new NSMutableDictionary<String, String>( SoloWeb.sw().activeSettingsTabs() );
 		activeSettingsTabs.setObjectForKey( SWSettingsGeneral.class.getSimpleName(), SWLoc.string( "settingsTabGeneral", session() ) );
 		activeSettingsTabs.setObjectForKey( SWSettingsDatabase.class.getSimpleName(), SWLoc.string( "settingsTabDatabase", session() ) );
-		activeSettingsTabs.setObjectForKey( SWSettingsDocuments.class.getSimpleName(), SWLoc.string( "settingsTabDocuments", session() ) );
 		activeSettingsTabs.setObjectForKey( SWSettingsAction.class.getSimpleName(), SWLoc.string( "settingsTabAdministration", session() ) );
 		activeSettingsTabs.setObjectForKey( SWSettingsAccessControl.class.getSimpleName(), SWLoc.string( "settingsTabAccessControls", session() ) );
 		activeSettingsTabs.setObjectForKey( SWSettingsStatistics.class.getSimpleName(), SWLoc.string( "settingsTabStatistics", session() ) );

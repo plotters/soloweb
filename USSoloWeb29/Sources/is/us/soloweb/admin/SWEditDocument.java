@@ -1,12 +1,12 @@
 package is.us.soloweb.admin;
 
-import is.us.soloweb.data.*;
+import is.us.soloweb.data.SWDocument;
 import is.us.soloweb.interfaces.SWInspectionComponent;
 import is.us.soloweb.util.SWURLGeneration;
 import is.us.util.*;
 
 import com.webobjects.appserver.*;
-import com.webobjects.foundation.*;
+import com.webobjects.foundation.NSData;
 
 /**
  * For editing of documents.
@@ -38,17 +38,8 @@ public class SWEditDocument extends SWInspectionComponent<SWDocument> {
 	 */
 	public String urlToFetchDataFrom;
 
-	/**
-	 * The document type currently being iterated through in the list
-	 */
-	public SWDocumentType currentDocumentType;
-
 	public SWEditDocument( WOContext context ) {
 		super( context );
-	}
-
-	public NSArray<SWDocumentType> documentTypes() {
-		return SWDocumentType.allDocumentTypes( ec() );
 	}
 
 	/**
@@ -74,7 +65,6 @@ public class SWEditDocument extends SWInspectionComponent<SWDocument> {
 
 		if( finalData != null ) {
 			selectedObject().setData( finalData );
-			selectedObject().setDocumentType( SWDocumentType.documentTypeFromPath( ec(), finalName ) );
 
 			if( !USStringUtilities.stringHasValue( selectedObject().name() ) && USStringUtilities.stringHasValue( finalName ) )
 				selectedObject().setName( USStringUtilities.fileNameFromPath( finalName ) );

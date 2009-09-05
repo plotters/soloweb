@@ -14,8 +14,10 @@ DOC_NAME_STRING: WOString {
 	value = selectedDocument.name;
 }
 
-ICON: SWImage {
-	document = selectedDocument.documentType.document;
+ICON: WOImage {
+	filename = selectedDocument.icon;
+	framework = application.sw.frameworkBundleName;
+	mimeType = "image/png";
 }
 
 SIZE_STRING: WOString {

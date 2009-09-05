@@ -154,6 +154,9 @@ public class SWSiteListing extends SWAdminComponent {
 	 * It's active only if the current user is an administrator.
 	 */
 	public boolean siteIsDisabled() {
+		if( user() == null )
+			return false;
+
 		return !USUtilities.numberIsTrue( user().isAdministrator() );
 	}
 
@@ -182,6 +185,9 @@ public class SWSiteListing extends SWAdminComponent {
 	 * Indicates if the site pop up menu should be shown. 
 	 */
 	public boolean showSitePopUp() {
+		if( user() == null )
+			return false;
+
 		return user().sites().count() > 1;
 	}
 }

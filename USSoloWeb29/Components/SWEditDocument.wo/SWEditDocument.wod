@@ -17,14 +17,6 @@ NAME_FIELD: WOTextField {
 	size = 60;
 }
 
-TYPE_POPUP: WOPopUpButton {
-	displayString = currentDocumentType.name;
-	item = currentDocumentType;
-	list = documentTypes;
-	noSelectionString = session.@ls.pictureUploadNoTypeSpecified;
-	selection = selectedObject.documentType;
-}
-
 DOC_ID_STRING: WOString {
 	value = selectedObject.assetID;
 }
