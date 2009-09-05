@@ -22,7 +22,7 @@ import com.webobjects.foundation.*;
  * @since 2.5
  */
 
-public class SWDictionary<E, T> extends NSMutableDictionary {
+public class SWDictionary<E, T> extends NSMutableDictionary<E, T> {
 
 	private static final Logger logger = LoggerFactory.getLogger( SWDictionary.class );
 
@@ -42,7 +42,7 @@ public class SWDictionary<E, T> extends NSMutableDictionary {
 	 * Initializes an empty SWDictionary
 	 */
 	public SWDictionary() {
-		setPropertiesDict( new NSDictionary() );
+		setPropertiesDict( new NSDictionary<E, T>() );
 	}
 
 	/**
@@ -55,7 +55,7 @@ public class SWDictionary<E, T> extends NSMutableDictionary {
 		setFile( newFile );
 
 		if( !newFile.exists() ) {
-			setPropertiesDict( new NSDictionary() );
+			setPropertiesDict( new NSDictionary<E, T>() );
 		}
 
 		read();
@@ -94,7 +94,7 @@ public class SWDictionary<E, T> extends NSMutableDictionary {
 	/**
 	 * Returns the SWDictionary's contents as an NSDictionary
 	 */
-	private NSDictionary propertiesDict() {
+	private NSDictionary<E, T> propertiesDict() {
 		return propertiesDict;
 	}
 
@@ -103,7 +103,7 @@ public class SWDictionary<E, T> extends NSMutableDictionary {
 	 *
 	 * @param newDictionary The NSDictionary to read from
 	 */
-	private void setPropertiesDict( NSDictionary newDictionary ) {
+	private void setPropertiesDict( NSDictionary<E, T> newDictionary ) {
 		propertiesDict = newDictionary;
 		write();
 	}
@@ -141,8 +141,8 @@ public class SWDictionary<E, T> extends NSMutableDictionary {
 	 *
 	 * @param aKey The key
 	 */
-	public Object objectForKey( Object aKey ) {
-		return valueForKey( (String)aKey );
+	public Object objectForKey( String aKey ) {
+		return valueForKey( aKey );
 	}
 
 	/**
@@ -158,11 +158,11 @@ public class SWDictionary<E, T> extends NSMutableDictionary {
 	private void read() {
 		try {
 			String s = USStringUtilities.readStringFromFileUsingEncoding( file(), SWC.ENCODING_UTF_8 );
-			NSDictionary aDict = (NSDictionary)NSPropertyListSerialization.propertyListFromString( s );
+			NSDictionary<E, T> aDict = (NSDictionary)NSPropertyListSerialization.propertyListFromString( s );
 			setPropertiesDict( aDict );
 		}
 		catch( Exception e ) {
-			setPropertiesDict( new NSDictionary() );
+			setPropertiesDict( new NSDictionary<E, T>() );
 		}
 	}
 
@@ -221,9 +221,9 @@ public class SWDictionary<E, T> extends NSMutableDictionary {
 	 *
 	 * @param aKey The key reference to the object to remove
 	 */
-	public Object removeObjectForKey( Object aKey ) {
-		Object anObject = propertiesDict().objectForKey( aKey );
-		NSMutableDictionary aDict = new NSMutableDictionary( propertiesDict() );
+	public T removeObjectForKey( Object aKey ) {
+		T anObject = propertiesDict().objectForKey( aKey );
+		NSMutableDictionary<E, T> aDict = new NSMutableDictionary( propertiesDict() );
 		aDict.removeObjectForKey( aKey );
 		setPropertiesDict( aDict );
 

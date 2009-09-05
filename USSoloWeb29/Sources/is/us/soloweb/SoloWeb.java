@@ -223,7 +223,7 @@ public class SoloWeb {
 		return SWNoPageFoundErrorComponent.class.getSimpleName();
 	}
 
-	public NSDictionary<String, String> solowebSettings() {
+	public NSDictionary<String, Object> solowebSettings() {
 		return SWSettings.allSettings();
 	}
 
