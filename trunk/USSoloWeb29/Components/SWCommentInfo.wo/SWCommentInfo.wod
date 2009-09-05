@@ -1,9 +1,9 @@
 COUNT_CONDITIONAL: WOConditional {
-	condition = allComments.count;
+	condition = selectedNewsItem.comments.count;
 }
 
 COUNT_STRING: WOString {
-	value = allComments.count;
+	value = selectedNewsItem.comments.count;
 }
 
 NAME_STRING: WOString {

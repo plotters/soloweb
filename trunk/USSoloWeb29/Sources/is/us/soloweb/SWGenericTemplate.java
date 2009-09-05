@@ -5,9 +5,6 @@ import is.us.soloweb.looks.SWStandardSiteLook;
 import is.us.soloweb.util.*;
 
 import com.webobjects.appserver.WOContext;
-import com.webobjects.eocontrol.EOEditingContext;
-
-import er.extensions.eof.ERXEC;
 
 /**
  * SWGenericTemplate is the common ancestor of all Templates created in SoloWeb. In version 2.5, there is only on subclass, SWStandardTemplate, the default tempalte used to display components.
@@ -25,21 +22,8 @@ public abstract class SWGenericTemplate extends SWAbstractComponent {
 	private SWPage _selectedPage;
 	private SWComponent _currentComponent;
 
-	private EOEditingContext _ec;
-
 	public SWGenericTemplate( WOContext context ) {
 		super( context );
-	}
-
-	/**
-	 * The editingContext
-	 */
-	private EOEditingContext ec() {
-		if( _ec == null ) {
-			_ec = ERXEC.newEditingContext();
-		}
-
-		return _ec;
 	}
 
 	/**

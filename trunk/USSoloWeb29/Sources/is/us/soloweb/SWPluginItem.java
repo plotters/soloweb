@@ -3,7 +3,7 @@ package is.us.soloweb;
 import com.webobjects.foundation.NSArray;
 
 /**
-* A simple class that stores the name of a plugin, it's EOModels, and if schema should be dropped
+ * A simple class that stores the name of a plugin, it's EOModels, and if schema should be dropped
  * or constructed for the current plugin. Just used in SWManageSettings.
  *
  * @author Hugi Þórðarson
@@ -14,12 +14,12 @@ import com.webobjects.foundation.NSArray;
 public class SWPluginItem {
 
 	/**
-	* The plugin's name
+	 * The plugin's name
 	 */
 	private String _name;
 
 	/**
-	* The plugin's EOModels
+	 * The plugin's EOModels
 	 */
 	private NSArray<String> _models;
 
@@ -29,7 +29,6 @@ public class SWPluginItem {
 	private boolean _dropSchema;
 
 	/**
-	 * 
 	 * Specifies if schema should be constructed for this model
 	 */
 	private boolean _constructSchema;
@@ -39,6 +38,9 @@ public class SWPluginItem {
 	 */
 	private String _version;
 
+	/**
+	 * @return The Plugin's name
+	 */
 	public String name() {
 		return _name;
 	}
