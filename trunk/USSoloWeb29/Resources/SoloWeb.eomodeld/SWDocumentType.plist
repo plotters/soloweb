@@ -14,19 +14,9 @@
     ); 
     attributesUsedForLocking = (documentID, documentTypeID, extension, mimeType, name, pictureID); 
     className = "is.us.soloweb.data.SWDocumentType"; 
-    classProperties = (document, documentID, documentTypeID, extension, mimeType, name, pictureID); 
+    classProperties = (documentID, documentTypeID, extension, mimeType, name, pictureID); 
     externalName = "SW_DOCUMENT_TYPE"; 
     fetchSpecificationDictionary = {}; 
     name = SWDocumentType; 
     primaryKeyAttributes = (documentTypeID); 
-    relationships = (
-        {
-            destination = SWDocument; 
-            internalInfo = {"_nameInObjectStore" = icon; }; 
-            isToMany = N; 
-            joinSemantic = EOInnerJoin; 
-            joins = ({destinationAttribute = documentID; sourceAttribute = documentID; }); 
-            name = document; 
-        }
-    ); 
 }

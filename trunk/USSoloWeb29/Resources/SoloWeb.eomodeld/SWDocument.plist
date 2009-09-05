@@ -28,7 +28,6 @@
     classProperties = (
         documentFolderID, 
         documentID, 
-        documentType, 
         documentTypeID, 
         extension, 
         folder, 
@@ -42,13 +41,6 @@
     name = SWDocument; 
     primaryKeyAttributes = (documentID); 
     relationships = (
-        {
-            destination = SWDocumentType; 
-            isToMany = N; 
-            joinSemantic = EOInnerJoin; 
-            joins = ({destinationAttribute = documentTypeID; sourceAttribute = documentTypeID; }); 
-            name = documentType; 
-        }, 
         {
             destination = SWDocumentFolder; 
             isToMany = N; 

@@ -25,7 +25,6 @@ public abstract class _SWDocument extends  ERXGenericRecord {
   public static final ERXKey<Integer> PICTURE_ID = new ERXKey<Integer>("pictureID");
   public static final ERXKey<String> TEXT = new ERXKey<String>("text");
   // Relationship Keys
-  public static final ERXKey<is.us.soloweb.data.SWDocumentType> DOCUMENT_TYPE = new ERXKey<is.us.soloweb.data.SWDocumentType>("documentType");
   public static final ERXKey<is.us.soloweb.data.SWDocumentFolder> FOLDER = new ERXKey<is.us.soloweb.data.SWDocumentFolder>("folder");
 
   // Attributes
@@ -38,7 +37,6 @@ public abstract class _SWDocument extends  ERXGenericRecord {
   public static final String PICTURE_ID_KEY = PICTURE_ID.key();
   public static final String TEXT_KEY = TEXT.key();
   // Relationships
-  public static final String DOCUMENT_TYPE_KEY = DOCUMENT_TYPE.key();
   public static final String FOLDER_KEY = FOLDER.key();
 
   private static Logger LOG = Logger.getLogger(_SWDocument.class);
@@ -139,31 +137,6 @@ public abstract class _SWDocument extends  ERXGenericRecord {
     takeStoredValueForKey(value, "text");
   }
 
-  public is.us.soloweb.data.SWDocumentType documentType() {
-    return (is.us.soloweb.data.SWDocumentType)storedValueForKey("documentType");
-  }
-  
-  public void setDocumentType(is.us.soloweb.data.SWDocumentType value) {
-    takeStoredValueForKey(value, "documentType");
-  }
-
-  public void setDocumentTypeRelationship(is.us.soloweb.data.SWDocumentType value) {
-    if (_SWDocument.LOG.isDebugEnabled()) {
-      _SWDocument.LOG.debug("updating documentType from " + documentType() + " to " + value);
-    }
-    if (er.extensions.eof.ERXGenericRecord.InverseRelationshipUpdater.updateInverseRelationships()) {
-    	setDocumentType(value);
-    }
-    else if (value == null) {
-    	is.us.soloweb.data.SWDocumentType oldValue = documentType();
-    	if (oldValue != null) {
-    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, "documentType");
-      }
-    } else {
-    	addObjectToBothSidesOfRelationshipWithKey(value, "documentType");
-    }
-  }
-  
   public is.us.soloweb.data.SWDocumentFolder folder() {
     return (is.us.soloweb.data.SWDocumentFolder)storedValueForKey("folder");
   }

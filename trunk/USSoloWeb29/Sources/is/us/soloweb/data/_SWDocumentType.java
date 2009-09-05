@@ -23,7 +23,6 @@ public abstract class _SWDocumentType extends  ERXGenericRecord {
   public static final ERXKey<String> NAME = new ERXKey<String>("name");
   public static final ERXKey<Integer> PICTURE_ID = new ERXKey<Integer>("pictureID");
   // Relationship Keys
-  public static final ERXKey<is.us.soloweb.data.SWDocument> DOCUMENT = new ERXKey<is.us.soloweb.data.SWDocument>("document");
 
   // Attributes
   public static final String DOCUMENT_ID_KEY = DOCUMENT_ID.key();
@@ -33,7 +32,6 @@ public abstract class _SWDocumentType extends  ERXGenericRecord {
   public static final String NAME_KEY = NAME.key();
   public static final String PICTURE_ID_KEY = PICTURE_ID.key();
   // Relationships
-  public static final String DOCUMENT_KEY = DOCUMENT.key();
 
   private static Logger LOG = Logger.getLogger(_SWDocumentType.class);
 
@@ -111,31 +109,6 @@ public abstract class _SWDocumentType extends  ERXGenericRecord {
     takeStoredValueForKey(value, "pictureID");
   }
 
-  public is.us.soloweb.data.SWDocument document() {
-    return (is.us.soloweb.data.SWDocument)storedValueForKey("document");
-  }
-  
-  public void setDocument(is.us.soloweb.data.SWDocument value) {
-    takeStoredValueForKey(value, "document");
-  }
-
-  public void setDocumentRelationship(is.us.soloweb.data.SWDocument value) {
-    if (_SWDocumentType.LOG.isDebugEnabled()) {
-      _SWDocumentType.LOG.debug("updating document from " + document() + " to " + value);
-    }
-    if (er.extensions.eof.ERXGenericRecord.InverseRelationshipUpdater.updateInverseRelationships()) {
-    	setDocument(value);
-    }
-    else if (value == null) {
-    	is.us.soloweb.data.SWDocument oldValue = document();
-    	if (oldValue != null) {
-    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, "document");
-      }
-    } else {
-    	addObjectToBothSidesOfRelationshipWithKey(value, "document");
-    }
-  }
-  
 
   public static SWDocumentType createSWDocumentType(EOEditingContext editingContext, Integer documentTypeID
 ) {

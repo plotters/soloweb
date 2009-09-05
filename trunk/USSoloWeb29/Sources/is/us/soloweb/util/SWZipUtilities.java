@@ -97,7 +97,6 @@ public class SWZipUtilities {
 
 		newAsset.setName( newName );
 		newAsset.setData( data );
-		newAsset.setDocumentType( SWDocumentType.documentTypeFromPath( ec, path ) );
 
 		newAsset.setFolder( (SWDocumentFolder)directory );
 	}

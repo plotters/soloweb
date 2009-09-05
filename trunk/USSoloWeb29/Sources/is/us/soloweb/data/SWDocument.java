@@ -234,26 +234,26 @@ public class SWDocument extends _SWDocument implements SWAsset<SWDocumentFolder>
 	}
 
 	/**
-	 * Returns the document's mimeType.
-	 * 
-	 * FIXME: Refactor and eliminate SWDocumentType.
+	 * @return The name of the icon file for this document.
 	 */
-	public String mimeType() {
-		if( documentType() != null )
-			return documentType().mimeType();
+	public String icon() {
+		if( extension() != null )
+			return "ext/" + extension() + ".png";
 
 		return null;
 	}
 
 	/**
-	 * Returns the document's mimeType.
-	 * 
-	 * FIXME: Refactor and eliminate SWDocumentType.
+	 * If there is no stored extension, we try to fetch it from the document's name.
 	 */
+	@Override
 	public String extension() {
-		if( documentType() != null )
-			return documentType().extension();
+		String storedExtension = super.extension();
 
-		return null;
+		if( storedExtension == null ) {
+			return NSPathUtilities.pathExtension( name() );
+		}
+
+		return storedExtension;
 	}
 }
