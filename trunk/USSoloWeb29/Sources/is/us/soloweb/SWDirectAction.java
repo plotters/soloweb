@@ -10,7 +10,6 @@ import is.us.util.*;
 import is.us.wo.util.USHTTPUtilities;
 
 import com.webobjects.appserver.*;
-import com.webobjects.eoaccess.EOUtilities;
 import com.webobjects.eocontrol.EOEditingContext;
 import com.webobjects.foundation.NSArray;
 
@@ -98,8 +97,6 @@ public abstract class SWDirectAction extends ERXDirectAction {
 	 * @urlparam branchID The branch to search (see docs for SWContentSearch for further information)
 	 */
 	public WOActionResults searchAction() {
-		String indexLocationOndisk = SWSettings.indexLocationOnDisk();
-
 		SWPage thePage = SWPageUtilities.pageFromRequest( ec(), request() );
 
 		SWSearchResults nextPage = (SWSearchResults)displayPageWithTemplate( thePage, SWSearchResults.class );
@@ -117,8 +114,6 @@ public abstract class SWDirectAction extends ERXDirectAction {
 
 	/**
 	 * Returns a most unfriendly error message to the user.
-	 * 
-	 * TODO: Implement in a better way.
 	 */
 	private WOActionResults handleError() {
 		String errorPageLinkingName = null;
@@ -149,8 +144,6 @@ public abstract class SWDirectAction extends ERXDirectAction {
 
 	/**
 	 * When a user enters a password into the password field of a password protected page, this method checks if he has entered the correct password and if so, adds the page to his list of password pages he's allowed to see (an NSArray in his Session object).
-	 * 
-	 * TODO: Implement in a better way.
 	 */
 	public WOActionResults passwordAction() {
 		SWPage aPage = SWPageUtilities.pageFromRequest( ec(), request() );
@@ -185,7 +178,6 @@ public abstract class SWDirectAction extends ERXDirectAction {
 
 		template.setSelectedPage( page );
 
-		// FIXME: see if we can change this more generically
 		request().setUserInfoForKey( page.primaryLanguage(), "language" );
 
 		if( page.locale() != null ) {
@@ -217,7 +209,7 @@ public abstract class SWDirectAction extends ERXDirectAction {
 	 * If no site is found matching the host name, this method is used.
 	 */
 	private SWSite randomSite() {
-		NSArray<SWSite> a = EOUtilities.objectsForEntityNamed( ec(), SWSite.ENTITY_NAME );
+		NSArray<SWSite> a = SWSite.fetchAllSWSites( ec() );
 
 		if( USArrayUtilities.arrayHasObjects( a ) )
 			return a.objectAtIndex( 0 );
@@ -250,7 +242,7 @@ public abstract class SWDirectAction extends ERXDirectAction {
 	}
 
 	/**
-	 * FIXME: Implement full RSS 2.0 and ATOM feeds. 
+	 * TODO: Implement full RSS 2.0 and ATOM feeds. 
 	 */
 	public WOActionResults rssAction() {
 		SWRSSComponent nextPage = pageWithName( SWRSSComponent.class );
@@ -270,7 +262,7 @@ public abstract class SWDirectAction extends ERXDirectAction {
 	}
 
 	/**
-	 * FIXME: Remove once all data has been moved to new SWDocument structure.
+	 * TODO: Remove once all data has been moved to new SWDocument structure.
 	 */
 	public WOActionResults oldImageAction() {
 		String idString = request().stringFormValueForKey( "pictureID" );

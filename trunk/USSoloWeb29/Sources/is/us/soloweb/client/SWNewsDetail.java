@@ -24,7 +24,6 @@ public class SWNewsDetail extends SoloNewsNewsList {
 	/**
 	 * Contains IP-addresses that attempted to publish a comment,
 	 * but failed to pass the spam check. Spambots.
-	 * 
 	 */
 	public static final NSMutableArray<String> REJECTED_IP_ADDRESSES = new NSMutableArray<String>();
 
@@ -109,7 +108,7 @@ public class SWNewsDetail extends SoloNewsNewsList {
 		c.setEmailAddress( userEmailAddress );
 		c.setNotifyOnNewComments( userNotifyOnNewComments );
 		c.setText( text );
-		c.setNewsItemID( selectedNewsItem().newsItemID() );
+		c.setNewsitem( selectedNewsItem().localInstanceIn( ec() ) );
 		c.setIpAddress( ipAddress );
 		c.setUserAgent( userAgent );
 
