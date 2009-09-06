@@ -58,8 +58,6 @@ public class SoloWeb {
 
 	/**
 	 * Types of objects this system can manage.
-	 * 
-	 * FIXME: This should be implemented in a more extensible way.
 	 */
 	public HashMap<String, String> localizedNames() {
 		HashMap<String, String> h = new HashMap<String, String>();

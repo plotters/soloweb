@@ -42,7 +42,7 @@ public class SWPlugin {
 	}
 
 	public NSArray<String> components() {
-		return (_components != null) ? _components : NSArray.EmptyArray;
+		return (_components != null) ? _components : NSArray.<String> emptyArray();
 	}
 
 	public void setModels( NSArray<String> newModels ) {
@@ -50,7 +50,7 @@ public class SWPlugin {
 	}
 
 	public NSArray<String> models() {
-		return (_models != null) ? _models : NSArray.EmptyArray;
+		return (_models != null) ? _models : NSArray.<String> emptyArray();
 	}
 
 	public void setMainAdminComponent( String newMainAdminComponent ) {
