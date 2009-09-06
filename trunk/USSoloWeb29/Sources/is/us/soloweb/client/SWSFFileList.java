@@ -27,6 +27,16 @@ public class SWSFFileList extends SWSFComponent {
 	}
 
 	@Override
+	public boolean synchronizesVariablesWithBindings() {
+		return false;
+	}
+
+	@Override
+	public boolean isStateless() {
+		return true;
+	}
+
+	@Override
 	protected boolean useDefaultComponentCSS() {
 		return true;
 	}
