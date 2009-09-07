@@ -6,10 +6,6 @@ String2: WOString {
 	value = session.@ls.siteLookFieldTitle;
 }
 
-String3: WOString {
-	value = session.@ls.siteLanguageFieldTitle;
-}
-
 String4: WOString {
 	value = session.@ls.site404PageFieldTitle;
 }
@@ -35,10 +31,6 @@ NAME_FIELD: WOTextField {
 
 LOOK_FIELD: WOTextField {
 	value = selectedObject.look;
-}
-
-LANG_FIELD: WOString {
-	value = selectedObject.language;
 }
 
 FIELD_404: WOTextField {
