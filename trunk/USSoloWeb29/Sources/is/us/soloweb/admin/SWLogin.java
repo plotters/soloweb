@@ -27,6 +27,7 @@ public class SWLogin extends ERXComponent {
 	private static final int COOKIE_LIFETIME_IN_SECONDS = 2592000;
 	private static final String COOKIE_SW_USERNAME = "SW_USER_NAME";
 	private static final String COOKIE_SW_LANGUAGE = "SW_LANGUAGE";
+	private static final String COOKIE_SW_LOGIN = "SW_LOGIN";
 
 	/**
 	 * The username entered
@@ -47,11 +48,26 @@ public class SWLogin extends ERXComponent {
 	 * The language currently displayed in the language pop-up menu
 	 */
 	public String currentLanguage;
-	public NSArray<String> availableLanguages = SWC.AVAILABLE_LANGUAGES;
+
+	/**
+	 * Indicates if the user should be automatically logged in on next request.
+	 */
+	public boolean rememberMe;
+
+	/**
+	 * The Editing context to use.
+	 */
 	private EOEditingContext ec = session().defaultEditingContext();
 
 	public SWLogin( WOContext context ) {
 		super( context );
+	}
+
+	/**
+	 * @return The languages you can use SoloWeb in.
+	 */
+	public NSArray<String> languages() {
+		return SWC.AVAILABLE_LANGUAGES;
 	}
 
 	/**
@@ -95,6 +111,11 @@ public class SWLogin extends ERXComponent {
 		SWStartPage nextPage = pageWithName( SWStartPage.class );
 		nextPage.context().response().addCookie( usernameCookie() );
 		nextPage.context().response().addCookie( languageCookie() );
+
+		if( rememberMe ) {
+			nextPage.context().response().addCookie( loginCookie() );
+		}
+
 		return nextPage;
 	}
 
@@ -146,6 +167,13 @@ public class SWLogin extends ERXComponent {
 	 */
 	private WOCookie languageCookie() {
 		return new WOCookie( COOKIE_SW_LANGUAGE, selectedLanguage(), "/", "." + USHTTPUtilities.domain( context().request() ), COOKIE_LIFETIME_IN_SECONDS, false );
+	}
+
+	/**
+	 * Creates and returns the language cookie
+	 */
+	private WOCookie loginCookie() {
+		return new WOCookie( COOKIE_SW_LOGIN, username(), "/", "." + USHTTPUtilities.domain( context().request() ), COOKIE_LIFETIME_IN_SECONDS, false );
 	}
 
 	/**
