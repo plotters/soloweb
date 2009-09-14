@@ -27,3 +27,13 @@ SUBMIT_BUTTON: WOSubmitButton {
 	action = login;
 	value = "Tengjast";
 }
+
+REMEMBER_ME : WOCheckBox {
+	checked = rememberMe;
+}
+
+LANGUAGE_POPUP : WOPopUpButton {
+	item = currentLanguage;
+	list = languages;
+	selection = selectedLanguage;
+}
