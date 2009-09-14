@@ -1,16 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <wodefinitions>
 	<wo class="SWNavigation" wocomponentcontent="false">
 
 		<binding name="list"/>
 		<binding name="selectedPage"/>
-		<binding name="noHierarchy" defaults="Boolean"/>
+		<binding defaults="Boolean" name="noHierarchy"/>
 
-		<validation message="&apos;list&apos; is a required binding">
-			<unbound name="list"/>
-		</validation>
+		
 
-		<validation message="&apos;selectedPage&apos; is a required binding">
+		<validation message="'selectedPage' is a required binding">
 			<unbound name="selectedPage"/>
 		</validation>
 	</wo>
