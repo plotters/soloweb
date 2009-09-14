@@ -7,8 +7,9 @@ import com.webobjects.appserver.WOContext;
 import com.webobjects.foundation.NSArray;
 
 /**
+ * Setings panel for the access controls.
+ * 
  * @author Hugi Þórðarson
- * @version 2.9.2b4
  */
 
 public class SWSettingsAccessControl extends SWSettingsPanel {
@@ -29,8 +30,8 @@ public class SWSettingsAccessControl extends SWSettingsPanel {
 
 	public void setSelectedGroup( SWGroup g ) {
 		if( g == null )
-			selectedDictionary().takeValueForKey( null, SWSettings.ALL_USER_GROUP_ID );
+			settings().takeValueForKey( null, SWSettings.ALL_USER_GROUP_ID );
 		else
-			selectedDictionary().takeValueForKey( g.groupID(), SWSettings.ALL_USER_GROUP_ID );
+			settings().takeValueForKey( g.groupID(), SWSettings.ALL_USER_GROUP_ID );
 	}
 }

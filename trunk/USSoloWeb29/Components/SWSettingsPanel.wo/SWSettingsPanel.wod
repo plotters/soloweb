@@ -1,12 +1,12 @@
 WRAPPER: SWAdminComponentWrapper {}
 
 SwitchComponent1: WOSwitchComponent {
-	WOComponentName = selectedSettingsComponent;
+	WOComponentName = selectedComponent;
 }
 
 REPETITION : WORepetition {
-	item = currentSettingName;
-	list = tabs;
+	item = currentTab;
+	list = tabs.allKeys;
 }
 
 CURRENT_LINK : WOHyperlink {
@@ -14,5 +14,5 @@ CURRENT_LINK : WOHyperlink {
 }
 
 SETTING_NAME : WOString {
-	value = currentSettingName;
+	value = currentTab;
 }

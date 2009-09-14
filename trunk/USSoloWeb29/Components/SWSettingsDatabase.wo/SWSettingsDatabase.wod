@@ -24,12 +24,12 @@ GenerateDBButton4: WOSubmitButton {
 }
 
 KeyValueConditional1: WOKeyValueConditional {
-	key = "selectedTab";
+	key = "dbSelectedTab";
 	value = connectionsTabName;
 }
 
 KeyValueConditional2: WOKeyValueConditional {
-	key = "selectedTab";
+	key = "dbSelectedTab";
 	value = switchTabName;
 }
 
@@ -37,7 +37,7 @@ PopUpButton1: WOPopUpButton {
 	displayString = currentDatabase;
 	item = currentDatabase;
 	list = databases;
-	selection = selectedDictionary.adaptorName;
+	selection = settings.adaptorName;
 }
 
 Repetition1: WORepetition {
@@ -51,12 +51,12 @@ Repetition2: WORepetition {
 }
  
 SWDictionaryEditor1: USPlistEditorDictionary {
-	selectedDictionary = selectedDictionary.connDict;
+	selectedDictionary = settings.connDict;
 }
 
 SWTabPanel1: USTabPanel {
-	selectedTab = selectedTab;
-	tabs = tabs;
+	selectedTab = dbSelectedTab;
+	tabs = dbTabs;
 }
 
 String1: WOString {
