@@ -1,11 +1,11 @@
 FORM : WOForm {}
 
 CheckBox1: WOCheckBox {
-	checked = selectedDictionary.enablePrivileges;
+	checked = settings.enablePrivileges;
 }
 
 CheckBox2: WOCheckBox {
-	checked = selectedDictionary.onlyShowGroupPrivileges;
+	checked = settings.onlyShowGroupPrivileges;
 }
 
 PopUpButton1: WOPopUpButton {

@@ -6,7 +6,6 @@ import com.webobjects.appserver.*;
  * Various actions that can be performed in the administrative interface.
  * 
  * @author Hugi Þórðarson
- * @version 2.9.2b4
  */
 
 public class SWSettingsAction extends SWSettingsPanel {

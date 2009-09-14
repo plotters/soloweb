@@ -1,5 +1,3 @@
-FORM : WOForm {}
-
 String10: WOString {
 	value = session.@ls.gsSessionTimeOut;
 }
@@ -12,28 +10,12 @@ String13: WOString {
 	value = session.@ls.gsIndexLocation;
 }
 
-String18: WOString {
-	value = session.@ls.gsSystemFrontPageLinkingName;
-}
-
 DOCUMENT_LOCATION_ON_DISK_STRING: WOString {
 	value = session.@ls.gsLocationOfDocuments;
 }
 
-String6: WOString {
-	value = session.@ls.gsAdminUsername;
-}
-
-String7: WOString {
-	value = session.@ls.gsAdminPassword;
-}
-
 String8: WOString {
 	value = session.@ls.gsDefaultSMTPServer;
-}
-
-String9: WOString {
-	value = session.@ls.gsEmailAddress;
 }
 
 SubmitButton4: WOSubmitButton {
@@ -42,37 +24,26 @@ SubmitButton4: WOSubmitButton {
 }
 
 TextField1: WOTextField {
-	value = selectedDictionary.sessionTimeOut;
-}
-
-TextField13: WOTextField {
-	value = selectedDictionary.webmasterEmail;
+	value = settings.sessionTimeOut;
+	size = "40";
 }
 
 TextField14: WOTextField {
-	value = selectedDictionary.defaultMailServer;
-}
-
-TextField15: WOPasswordField {
-	value = selectedDictionary.defaultPassword;
-}
-
-TextField16: WOTextField {
-	value = selectedDictionary.defaultUsername;
+	value = settings.defaultMailServer;
+	size = "40";
 }
 
 DOCUMENT_LOCATION_ON_DISK_FIELD: WOTextField {
-	value = selectedDictionary.documentLocationOnDisk;
+	value = settings.documentLocationOnDisk;
+	size = "40";
+}
+
+INDEX_LOCATION_ON_DISK_FIELD: WOTextField {
+	value = settings.indexLocationOndisk;
+	size = "40";
 }
 
 TextField3: WOTextField {
-	value = selectedDictionary.noPageFoundErrorPageLinkingName;
-}
-
-TextField7: WOTextField {
-	value = selectedDictionary.systemFrontPageLinkingName;
-}
-
-TextField8: WOTextField {
-	value = selectedDictionary.indexLocationOndisk;
+	value = settings.noPageFoundErrorPageLinkingName;
+	size = "40";
 }

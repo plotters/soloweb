@@ -1,19 +1,18 @@
-<webobject name = "FORM">
+<wo:form>
 	<fieldset>
 		<legend>Kerfisstjóri</legend>
-		<label><webobject name="String6" />: </label><webobject name="TextField16" /><br />
-		<label><webobject name="String7" />: </label><webobject name="TextField15" /><br />
-		<label><webobject name="String9" />: </label><webobject name="TextField13" /><br />	
+		<label><wo:str value="$session.@ls.gsAdminUsername" />: </label><wo:textfield value="$settings.defaultUsername" size="40" /><br />
+		<label><wo:str value="$session.@ls.gsAdminPassword" />: </label><wo:password value="$settings.defaultPassword" size="40" /><br />
+		<label><wo:str value="$session.@ls.gsEmailAddress" />: </label><wo:textfield value="$settings.webmasterEmail" size="40" /><br />	
 	</fieldset>
 	<fieldset>
 		<legend>Vistun gagna</legend>
 		<label><webobject name="DOCUMENT_LOCATION_ON_DISK_STRING" />: </label><webobject name="DOCUMENT_LOCATION_ON_DISK_FIELD" /><br />
-		<label><webobject name="String13" />: </label><webobject name="TextField8" /><br />
+		<label><webobject name="String13" />: </label><webobject name="INDEX_LOCATION_ON_DISK_FIELD" /><br />
 	</fieldset>
 	<fieldset>
 		<legend>Sérstakar síður</legend>
 		<label><webobject name="String11" />: </label><webobject name="TextField3" /><br />
-		<label><webobject name="String18" />: </label><webobject name="TextField7" /><br />
 	</fieldset>
 	<fieldset>
 		<legend>Ýmislegt</legend>
@@ -22,4 +21,4 @@
 	</fieldset>
 	
 	<label>&nbsp;</label><webobject name="SubmitButton4" />
-</webobject>
+</wo:form>

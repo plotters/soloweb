@@ -14,17 +14,14 @@ import er.extensions.eof.ERXEC;
 
 /**
  * @author Hugi Þórðarson
- * @version 2.9.2b4
- * 
- * FIXME: Refactor and review
  */
 
 public class SWSettingsDatabase extends SWSettingsPanel {
 
 	public String connectionsTabName = SWLoc.string( "dbsTabConnections", session() );
 	public String switchTabName = SWLoc.string( "dbsTabSwitchAndConstruct", session() );
-	public NSArray<String> tabs = new NSArray<String>( new String[] { connectionsTabName, switchTabName } );
-	public String selectedTab = connectionsTabName;
+	public NSArray<String> dbTabs = new NSArray<String>( new String[] { connectionsTabName, switchTabName } );
+	public String dbSelectedTab = connectionsTabName;
 
 	/**
 	* A list of all plugins registered with the SoloWeb system
@@ -40,16 +37,6 @@ public class SWSettingsDatabase extends SWSettingsPanel {
 	* The database name currently being iterated over in the list of databases ("Frontbase" or "Oracle")
 	 */
 	public String currentDatabase;
-
-	/**
-	* The selected plugins to construct DB schema for
-	 *
-	public NSMutableArray pluginsToConstruct = new NSMutableArray();
-	*/
-	/**
-	    * The selected plugins to drop DB schema for
-	 */
-	public NSMutableArray<SWPluginItem> pluginsToDrop = new NSMutableArray<SWPluginItem>();
 
 	public SWSettingsDatabase( WOContext context ) {
 		super( context );
@@ -100,19 +87,9 @@ public class SWSettingsDatabase extends SWSettingsPanel {
 	* Constructs a connection dictionary for the selected database type and inserts it into the settings
 	 */
 	public WOActionResults switchAdaptors() {
-		NSMutableDictionary dict = new NSMutableDictionary();
-
-		if( selectedDictionary().valueForKey( "adaptorName" ).equals( "FrontBase" ) ) {
-			dict.setObjectForKey( "", "URL" );
-		}
-		else {
-			dict.setObjectForKey( "", "userName" );
-			dict.setObjectForKey( "", "password" );
-			dict.setObjectForKey( "", "serverId" );
-		}
-
-		SWSettings.takeSettingForKey( dict, SWSettings.CONN_DICT );
-
+		NSMutableDictionary<String, Object> cd = new NSMutableDictionary<String, Object>();
+		cd.setObjectForKey( "", "URL" );
+		SWSettings.takeSettingForKey( cd, SWSettings.CONN_DICT );
 		return null;
 	}
 
@@ -132,20 +109,20 @@ public class SWSettingsDatabase extends SWSettingsPanel {
 
 		SWSQLUtilities.reconnectToDatabase();
 
-		Enumeration b = plugins.objectEnumerator();
+		Enumeration<SWPluginItem> b = plugins.objectEnumerator();
 		SWPluginItem pi;
 
 		while( b.hasMoreElements() ) {
-			pi = (SWPluginItem)b.nextElement();
+			pi = b.nextElement();
 
-			Enumeration e = pi.models().objectEnumerator();
+			Enumeration<String> e = pi.models().objectEnumerator();
 
 			String aModelName;
 			EOModel aModel;
 			String sqlString = null;
 
 			while( e.hasMoreElements() ) {
-				aModelName = (String)e.nextElement();
+				aModelName = e.nextElement();
 				aModel = EOModelGroup.defaultGroup().modelNamed( aModelName );
 
 				if( pi.dropSchema() && pi.constructSchema() )
