@@ -46,7 +46,13 @@ public class SWNavigation extends SWGenericComponent {
 	}
 
 	public NSArray<SWPage> list() {
-		return (NSArray<SWPage>)valueForBinding( LIST_BINDING );
+		NSArray<SWPage> a = (NSArray<SWPage>)valueForBinding( LIST_BINDING );
+
+		if( a == null && selectedPage() != null ) {
+			return selectedPage().topLevelPage().sortedAndApprovedSubPages();
+		}
+
+		return a;
 	}
 
 	public boolean isNotSelected() {
