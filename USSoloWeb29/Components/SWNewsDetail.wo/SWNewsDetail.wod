@@ -19,6 +19,7 @@ SOCIAL_FACEBOOK_LINK : AjaxSocialNetworkLink {
 	alt = "Skrá á Facebook";
 	title = selectedNewsItem.name;
 	url = moreURLIncludingDomain;
+	target = "_blank";
 }
 
 SOCIAL_DIGG_LINK : AjaxSocialNetworkLink {
@@ -208,4 +209,8 @@ LOC_COMMENTS_TEXT : WOString {
 
 SPAM_STRING : WOString {
 	value = expectedSpamAnswer;
+}
+
+PAGE_TITLE : WOString {
+	value = pageTitle;
 }

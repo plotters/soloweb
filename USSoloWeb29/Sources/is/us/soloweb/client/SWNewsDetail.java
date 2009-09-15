@@ -13,7 +13,7 @@ import er.ajax.AjaxHighlight;
 
 /**
  * The default detail view for an SWNewsitem, including comment publishing.
- *
+ * 
  * @author Hugi Þórðarson
  * @version 2.9.6
  * @since 2.7
@@ -22,8 +22,7 @@ import er.ajax.AjaxHighlight;
 public class SWNewsDetail extends SoloNewsNewsList {
 
 	/**
-	 * Contains IP-addresses that attempted to publish a comment,
-	 * but failed to pass the spam check. Spambots.
+	 * Contains IP-addresses that attempted to publish a comment, but failed to pass the spam check. Spambots.
 	 */
 	public static final NSMutableArray<String> REJECTED_IP_ADDRESSES = new NSMutableArray<String>();
 
@@ -163,7 +162,7 @@ public class SWNewsDetail extends SoloNewsNewsList {
 	}
 
 	/**
-	 * This action is invoked if an error occurs during the publishing process. 
+	 * This action is invoked if an error occurs during the publishing process.
 	 */
 	public WOActionResults error( String errorKey, Object... vars ) {
 		errorMessage = USStringUtilities.stringWithFormat( localizedString( errorKey ), vars );
@@ -174,4 +173,20 @@ public class SWNewsDetail extends SoloNewsNewsList {
 	public String moreURL() {
 		return SWURLGeneration.moreURLForNewsItem( context(), selectedNewsItem().newsItemID(), selectedPage(), detailPageName(), detailPageID() );
 	}
+
+	/**
+	 * Name of the given page with the prefix of the page it resides on.
+	 */
+	public String pageTitle() {
+		StringBuilder sb = new StringBuilder( "" );
+
+		if( selectedPage().nameWithPrefix() != null ) {
+			sb.append( selectedPage().namePrefix() );
+		}
+
+		sb.append( selectedNewsItem().name() );
+
+		return sb.toString();
+	}
+
 }
