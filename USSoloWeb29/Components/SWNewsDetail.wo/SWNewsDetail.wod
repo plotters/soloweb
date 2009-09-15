@@ -210,7 +210,3 @@ LOC_COMMENTS_TEXT : WOString {
 SPAM_STRING : WOString {
 	value = expectedSpamAnswer;
 }
-
-PAGE_TITLE : WOString {
-	value = pageTitle;
-}

@@ -174,19 +174,4 @@ public class SWNewsDetail extends SoloNewsNewsList {
 		return SWURLGeneration.moreURLForNewsItem( context(), selectedNewsItem().newsItemID(), selectedPage(), detailPageName(), detailPageID() );
 	}
 
-	/**
-	 * Name of the given page with the prefix of the page it resides on.
-	 */
-	public String pageTitle() {
-		StringBuilder sb = new StringBuilder( "" );
-
-		if( USStringUtilities.stringHasValue( selectedPage().namePrefix() ) ) {
-			sb.append( selectedPage().namePrefix() );
-		}
-
-		sb.append( selectedNewsItem().name() );
-
-		return sb.toString();
-	}
-
 }
