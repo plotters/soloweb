@@ -180,7 +180,7 @@ public class SWNewsDetail extends SoloNewsNewsList {
 	public String pageTitle() {
 		StringBuilder sb = new StringBuilder( "" );
 
-		if( selectedPage().nameWithPrefix() != null ) {
+		if( USStringUtilities.stringHasValue( selectedPage().namePrefix() ) ) {
 			sb.append( selectedPage().namePrefix() );
 		}
 
