@@ -1,8 +1,8 @@
 package is.us.soloweb;
 
-import is.us.soloweb.data.*;
+import is.us.soloweb.data.SWComponent;
 import is.us.soloweb.looks.SWStandardSiteLook;
-import is.us.soloweb.util.*;
+import is.us.soloweb.util.SWC;
 
 import com.webobjects.appserver.WOContext;
 
@@ -16,10 +16,6 @@ import com.webobjects.appserver.WOContext;
 
 public abstract class SWGenericTemplate extends SWAbstractComponent {
 
-	/**
-	 * The currently selected page
-	 */
-	private SWPage _selectedPage;
 	private SWComponent _currentComponent;
 
 	public SWGenericTemplate( WOContext context ) {
@@ -47,24 +43,6 @@ public abstract class SWGenericTemplate extends SWAbstractComponent {
 			return lookName;
 
 		return SWStandardSiteLook.class.getSimpleName();
-	}
-
-	/**
-	 * Returns the selected page.
-	 */
-	public SWPage selectedPage() {
-		if( _selectedPage == null ) {
-			_selectedPage = SWPageUtilities.pageFromRequest( ec(), context().request() );
-		}
-
-		return _selectedPage;
-	}
-
-	/**
-	 * Sets the selected page.
-	 */
-	public void setSelectedPage( SWPage p ) {
-		_selectedPage = p;
 	}
 
 	public SWComponent currentComponent() {

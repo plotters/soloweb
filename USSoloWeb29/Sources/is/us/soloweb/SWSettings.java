@@ -9,11 +9,9 @@ import com.webobjects.appserver.WORequest;
 import com.webobjects.foundation.*;
 
 /**
- * SWSettings allows the programmer to create persistent settings and access them in a simple fashion
+ * SWSettings simplifies access to the various SoloWeb settings and properties.
  *
  * @author Hugi Þórðarson
- * @version 2.9.2b4
- * @since 2.7
  */
 
 public class SWSettings extends Object implements NSKeyValueCoding {

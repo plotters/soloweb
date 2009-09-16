@@ -1,6 +1,7 @@
 package is.us.soloweb;
 
-import is.us.soloweb.util.SWC;
+import is.us.soloweb.data.SWPage;
+import is.us.soloweb.util.*;
 
 import com.webobjects.appserver.*;
 import com.webobjects.eocontrol.EOEditingContext;
@@ -19,6 +20,11 @@ public abstract class SWAbstractComponent extends ERXComponent {
 
 	private EOEditingContext _ec;
 
+	/**
+	 * The currently selected page
+	 */
+	private SWPage _selectedPage;
+
 	private static final String ICELANDIC = "Icelandic";
 	private static final String LANGUAGE = "language";
 
@@ -32,6 +38,24 @@ public abstract class SWAbstractComponent extends ERXComponent {
 	}
 
 	/**
+	 * Returns the selected page.
+	 */
+	public SWPage selectedPage() {
+		if( _selectedPage == null ) {
+			_selectedPage = SWPageUtilities.pageFromRequest( ec(), context().request() );
+		}
+
+		return _selectedPage;
+	}
+
+	/**
+	 * Sets the selected page.
+	 */
+	public void setSelectedPage( SWPage p ) {
+		_selectedPage = p;
+	}
+
+	/**
 	 * The editingContext
 	 */
 	protected EOEditingContext ec() {
@@ -42,6 +66,9 @@ public abstract class SWAbstractComponent extends ERXComponent {
 		return _ec;
 	}
 
+	/**
+	 * Overridden for localization support.
+	 */
 	public Object valueForKeyPath( String keypath ) {
 
 		if( keypath.startsWith( LOC_KEYPATH ) )
@@ -50,6 +77,9 @@ public abstract class SWAbstractComponent extends ERXComponent {
 		return super.valueForKeyPath( keypath );
 	}
 
+	/**
+	 * Overridden for localization support.
+	 */
 	public Object valueForKey( String keypath ) {
 
 		if( keypath.startsWith( LOC_KEYPATH ) )
