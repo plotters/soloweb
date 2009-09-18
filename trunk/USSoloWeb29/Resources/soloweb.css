@@ -88,6 +88,8 @@ a:hover  {
 }
 
 .swmenuTitle {
+	position: absolute;
+	right: 10px;
 	font-weight: bold;
 	text-align: right;
 	float: right;
