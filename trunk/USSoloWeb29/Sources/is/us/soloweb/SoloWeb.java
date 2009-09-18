@@ -123,8 +123,7 @@ public class SoloWeb {
 			logger.info( "*** SoloWeb ready at " + new NSTimestamp() );
 		}
 		catch( Exception e ) {
-			logger.error( "An exception was thrown while initializing SoloWeb" );
-			logger.error( e.toString() );
+			logger.error( "An exception was thrown while initializing SoloWeb", e );
 		}
 	}
 
