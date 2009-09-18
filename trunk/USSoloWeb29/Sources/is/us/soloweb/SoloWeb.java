@@ -116,7 +116,7 @@ public class SoloWeb {
 			}
 
 			if( SWSettings.sessionTimeOut() != null ) {
-				int sessionTimeOutInSeconds = new Integer( SWSettings.sessionTimeOut() ) * 60;
+				int sessionTimeOutInSeconds = SWSettings.sessionTimeOut() * 60;
 				app.setSessionTimeOut( sessionTimeOutInSeconds );
 			}
 

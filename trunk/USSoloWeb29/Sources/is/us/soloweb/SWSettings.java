@@ -263,8 +263,8 @@ public class SWSettings extends Object implements NSKeyValueCoding {
 	/**
 	 * @return The default session timeout. 
 	 */
-	public static String sessionTimeOut() {
-		return (String)SWSettings.settingForKeyWithDefaultValue( SESSION_TIME_OUT, 30 );
+	public static Integer sessionTimeOut() {
+		return USUtilities.integerFromObject( SWSettings.settingForKeyWithDefaultValue( SESSION_TIME_OUT, 30 ) );
 	}
 
 	/**
