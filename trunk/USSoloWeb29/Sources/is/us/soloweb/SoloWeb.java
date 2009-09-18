@@ -110,9 +110,16 @@ public class SoloWeb {
 
 		try {
 			SWPluginHandler.defaultInstance().loadRegisteredPlugins();
-			app.setSMTPHost( SWSettings.defaultMailServer() );
-			int sessionTimeOutInSeconds = new Integer( SWSettings.sessionTimeOut() ) * 60;
-			app.setSessionTimeOut( sessionTimeOutInSeconds );
+
+			if( SWSettings.defaultMailServer() != null ) {
+				app.setSMTPHost( SWSettings.defaultMailServer() );
+			}
+
+			if( SWSettings.sessionTimeOut() != null ) {
+				int sessionTimeOutInSeconds = new Integer( SWSettings.sessionTimeOut() ) * 60;
+				app.setSessionTimeOut( sessionTimeOutInSeconds );
+			}
+
 			logger.info( "*** SoloWeb ready at " + new NSTimestamp() );
 		}
 		catch( Exception e ) {
