@@ -746,9 +746,7 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	}
 
 	/**
-	 * Returns the primary language of this page.
-	 * 
-	 * TODO: Optimize, it traverses the site hierarchy each time the page is opened.
+	 * Returns the primary language of this page, english if no language is set.
 	 */
 	public String primaryLanguage() {
 		String language = language();
@@ -760,9 +758,8 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	}
 
 	/**
-	 * Returns the primary language of this page.
+	 * Returns the primary language of this page, english if no language is set.
 	 * 
-	 * TODO: Optimize, it traverses the site hierarchy each time the page is opened.
 	 * FIXME: Only settable for sites now.
 	 */
 	public Locale locale() {
