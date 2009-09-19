@@ -44,10 +44,6 @@ public class SWMainMenu extends SWAdminComponent {
 		return systemDictionary().objectForKey( currentKey );
 	}
 
-	public void sleep() {
-		session().savePageInPermanentCache( this );
-	}
-
 	/**
 	 * Logs out the current user and displays the "SWLoggedOut" component.
 	 */
@@ -70,9 +66,5 @@ public class SWMainMenu extends SWAdminComponent {
 		nextPage.setFolderEntityName( SWNewsFolder.class.getSimpleName() );
 		nextPage.setEditingComponentName( SWEditNewsItem.class.getSimpleName() );
 		return nextPage;
-	}
-
-	public WOActionResults search() {
-		return null;
 	}
 }
