@@ -1,7 +1,3 @@
-Administrative:
-* Set up the SoloWeb website.
-* Set up a Trac-system
-
 Misc: 
 * Locale Support in sites and pages.
 * A really simple setup procedure.
