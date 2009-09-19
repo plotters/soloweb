@@ -41,6 +41,7 @@ public abstract class SWAbstractComponent extends ERXComponent {
 	 * Returns the selected page.
 	 */
 	public SWPage selectedPage() {
+
 		if( _selectedPage == null ) {
 			_selectedPage = SWPageUtilities.pageFromRequest( ec(), context().request() );
 		}
