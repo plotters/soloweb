@@ -1,7 +1,6 @@
 package is.us.soloweb;
 
 import is.us.soloweb.data.*;
-import is.us.soloweb.util.*;
 
 import com.webobjects.appserver.WOContext;
 
@@ -36,11 +35,6 @@ public abstract class SWGenericComponent extends SWAbstractComponent {
 		if( currentComponent() != null )
 			return currentComponent().page();
 
-		SWPage p = (SWPage)valueForBinding( SWC.SELECTED_PAGE );
-
-		if( p != null )
-			return p;
-
-		return SWPageUtilities.pageFromRequest( ec(), context().request() );
+		return super.selectedPage();
 	}
 }

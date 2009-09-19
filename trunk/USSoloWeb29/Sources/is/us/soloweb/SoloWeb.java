@@ -22,11 +22,12 @@ import er.extensions.appserver.ERXMessageEncoding;
 public class SoloWeb {
 
 	private static final Logger logger = LoggerFactory.getLogger( SoloWeb.class );
+
 	private NSMutableArray<String> _pluginModels = new NSMutableArray<String>( new String[] { SWC.SOLOWEB_EOMODEL_NAME } );
 	private NSTimestamp _startupTime;
-	private int _numberOfServedPagesSinceStartup;
-	private int _numberOfServedRequestsSinceStartup;
-	private int _numberOfServedBytesSinceStartup;
+	private int _numberOfServedPagesSinceStartup = 0;
+	private int _numberOfServedRequestsSinceStartup = 0;
+	private int _numberOfServedBytesSinceStartup = 0;
 
 	private NSMutableDictionary<String, String> _activeSettingsTabs;
 	private NSMutableDictionary<String, String> _activePageEditingComponents;
@@ -58,6 +59,8 @@ public class SoloWeb {
 
 	/**
 	 * Types of objects this system can manage.
+	 * 
+	 * TODO: Wrong location for this.
 	 */
 	public HashMap<String, String> localizedNames() {
 		HashMap<String, String> h = new HashMap<String, String>();
@@ -104,7 +107,6 @@ public class SoloWeb {
 		_activeSiteEditingComponents = new NSMutableDictionary<String, String>( additionalSiteEditingComponents() );
 		_activeSystemsAndComponents = new NSMutableDictionary<String, String>( additionalSystemsAndComponents() );
 		_activeSettingsTabs = new NSMutableDictionary<String, String>( additionalSettingsTabs() );
-		_numberOfServedPagesSinceStartup = 0;
 
 		ERXMessageEncoding.setDefaultEncodingForAllLanguages( SWC.ENCODING_UTF_8 );
 

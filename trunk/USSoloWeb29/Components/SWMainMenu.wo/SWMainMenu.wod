@@ -72,16 +72,6 @@ VERSION_STRING : WOString {
 	value = application.sw.solowebVersion;
 }
 
-SEARCH_FORM : WOForm {
-	action = search;
-	style = "margin: 0px; padding: 0px;";
-}
-
-SEARCH_FIELD : WOTextField {
-	value = searchString;
-	style = "float: right; padding: 2px; border: 1px solid gray; margin: 6px; color: gray;";
-}
-
 TRANSACTIONS_LINK : WOHyperlink {
 	pageName = "SWTransactionLogViewer";
 }
