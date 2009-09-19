@@ -1,6 +1,6 @@
 package is.us.soloweb.client;
 
-import is.us.soloweb.SWGenericComponent;
+import is.us.soloweb.SWAbstractComponent;
 import is.us.soloweb.data.SWPage;
 import is.us.soloweb.util.SWC;
 import is.us.util.USArrayUtilities;
@@ -17,7 +17,7 @@ import com.webobjects.foundation.NSArray;
  * @since 2.7
  */
 
-public class SWNavigation extends SWGenericComponent {
+public class SWNavigation extends SWAbstractComponent {
 
 	private static final String LIST_BINDING = "list";
 
@@ -46,13 +46,14 @@ public class SWNavigation extends SWGenericComponent {
 	}
 
 	public NSArray<SWPage> list() {
-		NSArray<SWPage> a = (NSArray<SWPage>)valueForBinding( LIST_BINDING );
+		return (NSArray<SWPage>)valueForBinding( LIST_BINDING );
+		/*
+				if( a == null && selectedPage() != null ) {
+					return selectedPage().topLevelPage().sortedAndApprovedSubPages();
+				}
 
-		if( a == null && selectedPage() != null ) {
-			return selectedPage().topLevelPage().sortedAndApprovedSubPages();
-		}
-
-		return a;
+				return a;
+				*/
 	}
 
 	public boolean isNotSelected() {
@@ -91,7 +92,24 @@ public class SWNavigation extends SWGenericComponent {
 		return b.toString();
 	}
 
+	/**
+	 * @return a boolean indicating if a subpage of this page is currently selected.
+	 */
 	public boolean subPageIsSelected() {
 		return selectedPage().isSubPageOfPage( currentPage, true );
+	}
+
+	/**
+	 * The SWPage currently being displayed.
+	 */
+	@Override
+	public SWPage selectedPage() {
+
+		SWPage pageFromBinding = (SWPage)valueForBinding( "selectedPage" );
+
+		if( pageFromBinding != null )
+			return pageFromBinding;
+
+		return super.selectedPage();
 	}
 }
