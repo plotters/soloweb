@@ -4,6 +4,9 @@ import is.us.soloweb.data.SWNewsItem;
 import is.us.soloweb.util.*;
 import is.us.wo.util.USHTTPUtilities;
 
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 import com.webobjects.appserver.*;
 import com.webobjects.eocontrol.EOEditingContext;
 import com.webobjects.foundation.*;
@@ -24,6 +27,8 @@ public class SWRSSComponent extends ERXComponent {
 	private Integer _folderID;
 	private Integer _count;
 	private String _detailPageName;
+
+	public SimpleDateFormat dateFormat = new SimpleDateFormat( "EEE, dd MMM yyyy HH:mm:ss Z", Locale.US );
 
 	public SWRSSComponent( WOContext context ) {
 		super( context );

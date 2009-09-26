@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <webobject name="TITLE_TAG">Hugi</webobject>
-    <webobject name="DESCRIPTION_TAG">Með hálfum Huga</webobject>
+    <title>Hugi</title>
+    <description>Með hálfum Huga</description>
     <webobject name="REPETITION">
-      <webobject name="ITEM_ELEMENT">
-        <webobject name="TITLE_ELEMENT"><webobject name="NAME_STRING" /></webobject>
-        <webobject name="LINK_ELEMENT"><webobject name="URL_STRING" /></webobject>
-        <webobject name="DESC_ELEMENT"><webobject name="TEXT_STRING" /></webobject>
-        <webobject name="AUTHOR_ELEMENT">Hugi</webobject>
-      </webobject>
+      <item>
+        <title><webobject name="NAME_STRING" /></title>
+        <link><webobject name="URL_STRING" /></link>
+        <description><webobject name="TEXT_STRING" /></description>
+        <author>Hugi Þórðarson</author>
+        <pubDate><wo:str value="$currentNewsItem.date" /></pubDate>
+      </item>
     </webobject>
   </channel>
 </rss>
