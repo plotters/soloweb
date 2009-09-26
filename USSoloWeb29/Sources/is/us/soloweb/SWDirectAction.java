@@ -252,7 +252,11 @@ public abstract class SWDirectAction extends ERXDirectAction {
 		String detailPageName = request().stringFormValueForKey( SWC.URL_PAGE_NAME );
 
 		Integer categoryID = new Integer( categoryIDString );
-		int count = new Integer( countString ).intValue();
+
+		int count = 10;
+
+		if( countString != null )
+			count = new Integer( countString );
 
 		nextPage.setFolderID( categoryID );
 		nextPage.setCount( count );

@@ -1,7 +1,3 @@
-DESCRIPTION_TAG: WOXMLNode {
-	elementName = "description";
-}
-
 REPETITION: WORepetition {
 	item = currentNewsItem;
 	list = newsItems;
@@ -19,28 +15,4 @@ URL_STRING: WOString {
 TEXT_STRING: WOString {
 	value = currentNewsItem.excerpt;
 	escapeHTML = true;
-}
-
-TITLE_TAG: WOXMLNode {
-	elementName = "title";
-}
-
-ITEM_ELEMENT: WOXMLNode {
-	elementName = "item";
-}
-
-TITLE_ELEMENT: WOXMLNode {
-	elementName = "title";
-}
-
-LINK_ELEMENT: WOXMLNode {
-	elementName = "link";
-}
-
-DESC_ELEMENT: WOXMLNode {
-	elementName = "description";
-}
-
-AUTHOR_ELEMENT : WOXMLNode {
-	elementName = "author";
 }
