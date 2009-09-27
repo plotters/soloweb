@@ -16,6 +16,7 @@ import com.webobjects.appserver.WOContext;
 
 public abstract class SWGenericTemplate extends SWAbstractComponent {
 
+	public static final String SW_LOOK_COOKIE = "sw_look";
 	private SWComponent _currentComponent;
 
 	public SWGenericTemplate( WOContext context ) {

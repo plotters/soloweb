@@ -108,7 +108,8 @@ public class SWPageUtilities {
 		String pageID = request.stringFormValueForKey( SWC.URL_PAGE_ID );
 
 		if( pageID != null ) {
-			return pageWithID( ec, new Integer( pageID ) );
+			if( USStringUtilities.isDigitsOnly( pageID ) )
+				return pageWithID( ec, new Integer( pageID ) );
 		}
 
 		String pageName = request.stringFormValueForKey( SWC.URL_PAGE_NAME );
