@@ -51,7 +51,7 @@ public class SWAssetManagement extends SWAdminComponent {
 	 * The asset name, abbreviated. 
 	 */
 	public String shortName() {
-		return USStringUtilities.abbrString( currentObject.name(), 30 );
+		return USStringUtilities.abbreviate( currentObject.name(), 30 );
 	}
 
 	/**
