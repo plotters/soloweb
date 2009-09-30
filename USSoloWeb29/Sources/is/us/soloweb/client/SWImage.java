@@ -1,6 +1,7 @@
 package is.us.soloweb.client;
 
 import is.us.soloweb.data.SWDocument;
+import is.us.soloweb.util.SWURLGeneration;
 
 import com.webobjects.appserver.WOContext;
 
@@ -35,9 +36,6 @@ public class SWImage extends ERXComponent {
 	}
 
 	public String url() {
-		if( document() == null )
-			return null;
-
-		return document().documentURL( context() );
+		return SWURLGeneration.urlForObjectInContext( document(), context() );
 	}
 }
