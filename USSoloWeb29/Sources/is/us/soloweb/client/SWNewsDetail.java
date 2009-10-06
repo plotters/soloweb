@@ -22,11 +22,6 @@ import er.ajax.AjaxHighlight;
 public class SWNewsDetail extends SoloNewsNewsList {
 
 	/**
-	 * Contains IP-addresses that attempted to publish a comment, but failed to pass the spam check. Spambots.
-	 */
-	public static final NSMutableArray<String> REJECTED_IP_ADDRESSES = new NSMutableArray<String>();
-
-	/**
 	 * Variables in the UI.
 	 */
 	public String userName = user().username();
@@ -90,7 +85,6 @@ public class SWNewsDetail extends SoloNewsNewsList {
 		String userID = SWExternalUserUtilities.readUserIDFromRequest( context().request() );
 
 		if( !expectedSpamAnswer.equalsIgnoreCase( hatesSpamString ) ) {
-			addRejectedIPAddress( ipAddress );
 			return error( "commentsWrongSpamAnswerError", expectedSpamAnswer );
 		}
 
@@ -148,17 +142,6 @@ public class SWNewsDetail extends SoloNewsNewsList {
 		errorMessage = null;
 
 		return null;
-	}
-
-	/**
-	 * Marks an IP address rejected by the spam check.
-	 * 
-	 * @param ipAddress The rejected address
-	 */
-	private void addRejectedIPAddress( String ipAddress ) {
-		if( USStringUtilities.stringHasValue( ipAddress ) ) {
-			REJECTED_IP_ADDRESSES.addObject( ipAddress );
-		}
 	}
 
 	/**
