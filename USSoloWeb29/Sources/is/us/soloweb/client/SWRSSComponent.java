@@ -23,12 +23,15 @@ import er.extensions.eof.ERXEC;
 public class SWRSSComponent extends ERXComponent {
 
 	private EOEditingContext _ec;
-	public SWNewsItem currentNewsItem;
+	public SWNewsItem currentItem;
 	private Integer _folderID;
 	private Integer _count;
 	private String _detailPageName;
 
-	public SimpleDateFormat dateFormat = new SimpleDateFormat( "EEE, dd MMM yyyy HH:mm:ss Z", Locale.US );
+	/**
+	 * Dates in RSS-feeds are in RFC822 format.
+	 */
+	public SimpleDateFormat dateFormat = new SimpleDateFormat( "EEE', 'dd' 'MMM' 'yyyy' 'HH:mm:ss' 'Z", Locale.US );
 
 	public SWRSSComponent( WOContext context ) {
 		super( context );
@@ -42,6 +45,9 @@ public class SWRSSComponent extends ERXComponent {
 		super.appendToResponse( r, c );
 	}
 
+	/**
+	 * Our editing context.
+	 */
 	private EOEditingContext ec() {
 		if( _ec == null ) {
 			_ec = ERXEC.newEditingContext();
@@ -50,14 +56,24 @@ public class SWRSSComponent extends ERXComponent {
 		return _ec;
 	}
 
-	public NSArray<SWNewsItem> newsItems() {
+	public NSArray<SWNewsItem> items() {
 		return SWNewsUtilities.recentNewsFromFolderWithID( ec(), count(), categoryID().intValue() );
 	}
 
+	/**
+	 * @return The URL for the channel. 
+	 */
+	public String channelLink() {
+		return urlPrefix();
+	}
+
+	/**
+	 * @return The URL for the current item.
+	 */
 	public String urlString() {
 		NSMutableDictionary<String, Object> d = new NSMutableDictionary<String, Object>();
 		d.setObjectForKey( detailPageName(), SWC.URL_PAGE_NAME );
-		d.setObjectForKey( currentNewsItem.newsItemID(), SWC.URL_NEWS_DETAIL );
+		d.setObjectForKey( currentItem.newsItemID(), SWC.URL_NEWS_DETAIL );
 		return urlPrefix() + context().directActionURLForActionNamed( SWC.PAGE_DIRECT_ACTION_NAME, d );
 	}
 
