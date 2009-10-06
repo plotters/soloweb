@@ -2,15 +2,15 @@
 <rss version="2.0">
   <channel>
     <title>Hugi</title>
+    <link>Hugi</link>
     <description>Með hálfum Huga</description>
-    <webobject name="REPETITION">
+    <wo:repetition item="$currentItem" list="$items">
       <item>
-        <title><webobject name="NAME_STRING" /></title>
-        <link><webobject name="URL_STRING" /></link>
-        <description><webobject name="TEXT_STRING" /></description>
-        <author>Hugi Þórðarson</author>
-        <pubDate><wo:str value="$currentNewsItem.date" /></pubDate>
+        <title><wo:str value="currentItem.name" /></title>
+        <link><wo:str value="$urlString" /></link>
+        <description><wo:str value="$currentItem.excerpt" /></description>
+        <pubDate><wo:str value="$currentItem.date" /></pubDate>
       </item>
-    </webobject>
+    </wo:repetition>
   </channel>
 </rss>
