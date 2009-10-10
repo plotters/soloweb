@@ -8,7 +8,7 @@
       <item>
         <title><wo:str value="$currentItem.name" /></title>
         <link><wo:str value="$urlString" /></link>
-        <description><wo:str value="$currentItem.excerpt" /></description>
+        <description><wo:str value="$currentItem.text" escapeHTML = "$true" /></description>
         <pubDate><wo:str value="$currentItem.date" /></pubDate>
       </item>
     </wo:repetition>
