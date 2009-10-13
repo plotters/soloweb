@@ -156,5 +156,4 @@ public class SWNewsDetail extends SoloNewsNewsList {
 	public String moreURL() {
 		return SWURLGeneration.moreURLForNewsItem( context(), selectedNewsItem().newsItemID(), selectedPage(), detailPageName(), detailPageID() );
 	}
-
 }
