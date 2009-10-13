@@ -109,7 +109,13 @@ public abstract class SWAbstractComponent extends ERXComponent {
 		}
 
 		NSArray<String> languages = new NSArray<String>( language );
-		String returnString = WOApplication.application().resourceManager().stringForKey( key, SWC.STRINGS_FILE_NAME, SWC.LOCALIZED_STRING_NOT_FOUND, SWC.FRAMEWORK_NAME, languages );
+		String returnString = null;
+
+		returnString = WOApplication.application().resourceManager().stringForKey( key, SWC.STRINGS_FILE_NAME, SWC.LOCALIZED_STRING_NOT_FOUND, application().name(), languages );
+
+		if( returnString == null ) {
+			returnString = WOApplication.application().resourceManager().stringForKey( key, SWC.STRINGS_FILE_NAME, SWC.LOCALIZED_STRING_NOT_FOUND, SWC.FRAMEWORK_NAME, languages );
+		}
 
 		return returnString;
 	}
