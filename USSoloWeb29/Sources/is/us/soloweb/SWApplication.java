@@ -68,12 +68,6 @@ public abstract class SWApplication extends ERXApplication {
 
 		USHTTPUtilities.resetCookieHeaderInResponse( response );
 
-		/*
-				if( SWSettings.useTidy( request ) && USHTTPUtilities.contentTypeHTML( response ) ) {
-					USHTTPUtilities.tidyResponse( response );
-				}
-		*/
-
 		return response;
 	}
 

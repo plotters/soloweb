@@ -67,4 +67,11 @@ public class SWComment extends _SWComment {
 		b.append( refererURL );
 		return b.toString();
 	}
+
+	/**
+	 * @return A unique identified for this comment, used in comment lists.
+	 */
+	public String anchor() {
+		return "swcomment_" + commentID();
+	}
 }
