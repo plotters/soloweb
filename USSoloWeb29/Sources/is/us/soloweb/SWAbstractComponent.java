@@ -97,6 +97,9 @@ public abstract class SWAbstractComponent extends ERXComponent {
 	}
 
 	/**
+	 * Fetches a localized string.
+	 * If the existing string exists in the applicaiton package, it will be fetched from there.
+	 * Otherwise, the string will be fetched from the SoloWeb framework.
 	 * 
 	 * @param key
 	 * @return
@@ -111,7 +114,7 @@ public abstract class SWAbstractComponent extends ERXComponent {
 		NSArray<String> languages = new NSArray<String>( language );
 		String returnString = null;
 
-		returnString = WOApplication.application().resourceManager().stringForKey( key, SWC.STRINGS_FILE_NAME, SWC.LOCALIZED_STRING_NOT_FOUND, application().name(), languages );
+		returnString = WOApplication.application().resourceManager().stringForKey( key, SWC.STRINGS_FILE_NAME, null, application().name(), languages );
 
 		if( returnString == null ) {
 			returnString = WOApplication.application().resourceManager().stringForKey( key, SWC.STRINGS_FILE_NAME, SWC.LOCALIZED_STRING_NOT_FOUND, SWC.FRAMEWORK_NAME, languages );
