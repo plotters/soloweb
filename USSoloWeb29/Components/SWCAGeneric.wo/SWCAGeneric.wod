@@ -1,0 +1,21 @@
+WOD_STRING: WOText {
+	cols = 60;
+	rows = 10;
+	value = currentComponent.customInfo.wodString;
+}
+
+HTML_STRING: WOText {
+	cols = 60;
+	rows = 10;
+	value = currentComponent.customInfo.htmlString;
+}
+
+TEMPLATE_NAM_STRING: WOTextField {
+	size = 60;
+	value = currentComponent.templateName;
+}
+
+CI_STRING: WOTextField {
+	size = 60;
+	value = currentComponent.customInfoString;
+}

@@ -58,6 +58,7 @@ public class SWEditComponent extends SWInspectionComponent<SWComponent> {
 		activeComponents.setObjectForKey( SWCAText.class.getName(), SWLoc.string( "cpteContent", session() ) );
 		activeComponents.setObjectForKey( SWCANews.class.getName(), SWLoc.string( "cpteNews", session() ) );
 		activeComponents.setObjectForKey( SWCADocuments.class.getName(), SWLoc.string( "cpteDocuments", session() ) );
+		activeComponents.setObjectForKey( SWCAGeneric.class.getName(), "Generic" );
 		return activeComponents;
 	}
 
