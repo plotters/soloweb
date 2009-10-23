@@ -17,12 +17,15 @@ import er.extensions.eof.*;
 
 public class SWTransactionManager {
 
+	/**
+	 * The transaction watcher is a singleton - this is the instance.
+	 */
 	private static SWTransactionManager _defaultTransactionManager;
 
 	private static NSMutableArray<SWTransaction> transactionsMissingPrimaryKeys = new NSMutableArray<SWTransaction>();
 
 	/**
-	 * Actions that can be performed on EOs.
+	 * Actions that can be performed (and logged) on EOs.
 	 */
 	private static final String ACTION_INSERT = "I";
 	private static final String ACTION_UPDATE = "U";
@@ -31,7 +34,7 @@ public class SWTransactionManager {
 	/**
 	 * Key set in userinfo dictionary for EditingContexts where transactions should not be logged.
 	 */
-	private static final String DO_NOT_LOG = "DO_NOT_LOG_TRANSACTIONS_IN_THIS_EC";
+	private static final String DO_NOT_LOG_MARKER = "DO_NOT_LOG_TRANSACTIONS_IN_THIS_EC";
 
 	/**
 	 * Logging happens in this EC.
@@ -45,7 +48,7 @@ public class SWTransactionManager {
 	 * (logging transactions in the loggingEC would result in an infinite loop).
 	 */
 	private SWTransactionManager() {
-		_loggingEC.setUserInfoForKey( true, DO_NOT_LOG );
+		_loggingEC.setUserInfoForKey( true, DO_NOT_LOG_MARKER );
 	}
 
 	/**
@@ -61,14 +64,13 @@ public class SWTransactionManager {
 
 	/**
 	 * This method is invoked each time changes are saved in *any* EC in the application.
-	 * It updates
 	 */
-	public void handleSaveChangesInEditingContext( NSNotification notification ) {
+	public void beforeSaveChangesInEditingContext( NSNotification notification ) {
 		EOEditingContext ec = (EOEditingContext)notification.object();
 
 		SWUser user = (SWUser)ec.userInfoForKey( SWC.SW_USER_USERINFO_KEY );
 
-		Object shouldNotLog = ec.userInfoForKey( DO_NOT_LOG );
+		Object shouldNotLog = ec.userInfoForKey( DO_NOT_LOG_MARKER );
 
 		if( shouldNotLog == null ) {
 			for( Object o : ec.registeredObjects() ) {
@@ -117,9 +119,9 @@ public class SWTransactionManager {
 		}
 	}
 
-	public void addPrimaryKeyToInsertTransactions( NSNotification notification ) {
+	public void afterSaveChangesInEditingContext( NSNotification notification ) {
 		EOEditingContext ec = (EOEditingContext)notification.object();
-		Object shouldNotLog = ec.userInfoForKey( DO_NOT_LOG );
+		Object shouldNotLog = ec.userInfoForKey( DO_NOT_LOG_MARKER );
 
 		if( shouldNotLog == null ) {
 			for( SWTransaction t : transactionsMissingPrimaryKeys ) {
@@ -157,10 +159,10 @@ public class SWTransactionManager {
 	 * Registers the transaction manager so it starts listening and watching transactions.
 	 */
 	public static void register() {
-		NSSelector<SWTransactionManager> beoreSaveSelector = new NSSelector<SWTransactionManager>( "handleSaveChangesInEditingContext", new Class[] { NSNotification.class } );
-		NSNotificationCenter.defaultCenter().addObserver( defaultTransactionManager(), beoreSaveSelector, ERXEC.EditingContextWillSaveChangesNotification, null );
+		NSSelector<SWTransactionManager> beforeSaveSelector = new NSSelector<SWTransactionManager>( "beforeSaveChangesInEditingContext", new Class[] { NSNotification.class } );
+		NSNotificationCenter.defaultCenter().addObserver( defaultTransactionManager(), beforeSaveSelector, ERXEC.EditingContextWillSaveChangesNotification, null );
 
-		NSSelector<SWTransactionManager> afterSaveSelector = new NSSelector<SWTransactionManager>( "addPrimaryKeyToInsertTransactions", new Class[] { NSNotification.class } );
+		NSSelector<SWTransactionManager> afterSaveSelector = new NSSelector<SWTransactionManager>( "afterSaveChangesInEditingContext", new Class[] { NSNotification.class } );
 		NSNotificationCenter.defaultCenter().addObserver( defaultTransactionManager(), afterSaveSelector, ERXEC.EditingContextDidSaveChangesNotification, null );
 	}
 }

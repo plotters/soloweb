@@ -1,5 +1,4 @@
-CONTENT: WOComponentContent {
-}
+CONTENT: WOComponentContent {}
 
 LINK: WOHyperlink {
 	action = transfer;

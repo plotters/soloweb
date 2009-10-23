@@ -1,25 +1,9 @@
-<webobject name = "WRAPPER">
-  <table width = "100%" border = "0" cellspacing = "0" cellpadding = "2">
-    <tr>
-      <td>
-        <webobject name = "Hyperlink2"><webobject name = "String4" /></webobject>
-        <br />
-      </td>
-      <td align = "RIGHT" valign = "TOP">
-        <font size = "4"><webobject name = "String3" /></font>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <webobject name = "String1" />
-        &quot;<b><webobject name = "ResetHitCount3" /></b>&quot; 
-        <webobject name = "String2" />
-        <br />
-        <br />
-        <webobject name = "Conditional1"><webobject name = "SWFolderList1" /></webobject>
-        <webobject name = "Conditional2"><webobject name = "SWFolderList2" /></webobject>
-      </td>
-      <td />
-    </tr>
-  </table>
-</webobject>
+<wo:SWAdminComponentWrapper>
+	<h3><wo:str value="$session.@ls.tdfHeader" /></h3>
+	<p><wo:hyperlink action="$cancel" class="swcancelButton"><wo:str value="$session.@ls.tdfCancel" /></wo:hyperlink></p>
+
+	<p><wo:str value="$session.@ls.tdfPart1" /> &quot;<b><wo:str value="$record.name" /></b>&quot; <wo:str value="$session.@ls.tdfPart2" /></p>
+	
+	<wo:conditional condition="$isFolder"><webobject name = "SWFolderList1" /></wo:conditional>
+	<wo:conditional condition="$isFolder" negate="$true"><webobject name = "SWFolderList2" /></wo:conditional>
+</wo:SWAdminComponentWrapper>
