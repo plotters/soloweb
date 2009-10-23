@@ -11,11 +11,12 @@ ResetHitCount: WOString {
 	value = record.page.name; // VALID
 }
 
-ResetHitCount2: WOHyperlink {
+Hyperlink1: WOHyperlink {
 	action = cancel;
+	class = "swcancelButton";
 }
 
-SWSiteListing1: SWSiteListing {
+SITE_LISTING: SWSiteListing {
 	pageAction = "selectObject";
 	selectedPage = currentParent;
 }

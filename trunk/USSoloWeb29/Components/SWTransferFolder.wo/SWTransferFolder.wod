@@ -1,22 +1,3 @@
-WRAPPER: SWAdminComponentWrapper {}
-
-Conditional1: WOConditional {
-	condition = isFolder;
-}
-
-Conditional2: WOConditional {
-	condition = isFolder;
-	negate = true;
-}
-
-Hyperlink2: WOHyperlink {
-	action = cancel;
-}
-
-ResetHitCount3: WOString {
-	value = record.name; // VALID
-}
-
 SWFolderList1: SWFolderList {
 	actionName = "selectObject";
 	disabledFolder = record;
@@ -30,20 +11,4 @@ SWFolderList2: SWFolderList {
 	disabledFolder = record.folder;			// VALID
 	entityName = record.folder.entityName;	// VALID
 	selectedFolder = currentParent;
-}
-
-String1: WOString {
-	value = session.@ls.tdfPart1;
-}
-
-String2: WOString {
-	value = session.@ls.tdfPart2;
-}
-
-String3: WOString {
-	value = session.@ls.tdfHeader;
-}
-
-String4: WOString {
-	value = session.@ls.tdfCancel;
 }

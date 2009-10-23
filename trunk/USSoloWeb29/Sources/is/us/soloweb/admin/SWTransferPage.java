@@ -30,18 +30,6 @@ public class SWTransferPage extends SWTransferComponentGeneric {
 		}
 	}
 
-	/*
-		public WOActionResults transferFirst() {
-			if( !shouldCopy ) {
-				((SWPage)record).transferOwnershipWithIndex( ((SWPage)currentParent).parentPage(), 0 );
-			}
-			else {
-				((SWPage)currentParent).parentPage().insertSubPageAtIndex( ((SWPage)record).createCopy(), 0 );
-			}
-
-			return returnBack();
-		}
-	*/
 	public WOActionResults returnBack() {
 		ec().saveChanges();
 		componentToReturn.ensureAwakeInContext( context() );

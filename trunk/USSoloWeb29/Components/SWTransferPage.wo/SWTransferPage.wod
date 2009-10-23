@@ -9,6 +9,7 @@ COPY_CHECKBOX: WOCheckBox {
 
 Hyperlink1: WOHyperlink {
 	action = cancel;
+	class = "swcancelButton";
 }
 
 ResetHitCount: WOString {
