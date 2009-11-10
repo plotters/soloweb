@@ -46,6 +46,12 @@ public class SWEditPage extends SWInspectionComponent<SWPage> {
 	}
 
 	public String selectedComponentName() {
+
+		// When the user has no access to a previously selected tab, select the first tab in the list
+		if( !tabDictionary().containsKey( selectedTab() ) ) {
+			return tabDictionary().objectForKey( tabDictionary().allKeys().get( 0 ) );
+		}
+
 		return tabDictionary().objectForKey( selectedTab() );
 	}
 
