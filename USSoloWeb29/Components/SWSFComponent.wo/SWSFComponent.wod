@@ -22,4 +22,5 @@ ICON: WOImage {
 
 SIZE_STRING: WOString {
 	value = selectedDocument.sizeKB;
+	numberformat = "0";
 }
