@@ -155,6 +155,7 @@ CANCEL_STRING: WOString {
 
 SIZE_STRING: WOString {
 	value = currentObject.sizeKB;
+	numberformat = "0";
 }
 
 NAME_STRING: WOString {
