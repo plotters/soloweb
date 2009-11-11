@@ -135,24 +135,32 @@ public class SWTransactionManager {
 	}
 
 	private SWTransaction createAndInsertTransactionForEO( String action, EOEnterpriseObject eo ) {
-		SWTransaction t = new SWTransaction();
-		_loggingEC.insertObject( t );
-		t.setDate( new NSTimestamp() );
 
-		// FIXME: Look into this, it might be breaking with proper MVC design.
-		SWUser user = (SWUser)eo.editingContext().userInfoForKey( SWC.SW_USER_USERINFO_KEY );
+		Object o = ((ERXGenericRecord)eo).primaryKey();
+		boolean shouldLog = (o instanceof Number);
 
-		if( user != null )
-			t.setUserID( user.userID() );
+		if( shouldLog ) {
+			SWTransaction t = new SWTransaction();
+			_loggingEC.insertObject( t );
+			t.setDate( new NSTimestamp() );
 
-		t.setBefore( NSPropertyListSerialization.stringFromPropertyList( ((ERXGenericRecord)eo).committedSnapshot() ) );
-		t.setAfter( NSPropertyListSerialization.stringFromPropertyList( ((ERXGenericRecord)eo).changesFromCommittedSnapshot() ) );
-		t.setAction( action );
-		t.setEntityNameString( eo.entityName() );
-		t.setObjectID( USUtilities.integerFromObject( ((ERXGenericRecord)eo).primaryKey() ) );
-		t.setRecord( eo );
+			// FIXME: Look into this, it might be breaking with proper MVC design.
+			SWUser user = (SWUser)eo.editingContext().userInfoForKey( SWC.SW_USER_USERINFO_KEY );
 
-		return t;
+			if( user != null )
+				t.setUserID( user.userID() );
+
+			t.setBefore( NSPropertyListSerialization.stringFromPropertyList( ((ERXGenericRecord)eo).committedSnapshot() ) );
+			t.setAfter( NSPropertyListSerialization.stringFromPropertyList( ((ERXGenericRecord)eo).changesFromCommittedSnapshot() ) );
+			t.setAction( action );
+			t.setEntityNameString( eo.entityName() );
+			t.setObjectID( USUtilities.integerFromObject( o ) );
+			t.setRecord( eo );
+			return t;
+		}
+
+		return null;
+
 	}
 
 	/**
