@@ -95,7 +95,10 @@ public class SWTransactionManager {
 					}
 				}
 				SWTransaction t = createAndInsertTransactionForEO( ACTION_INSERT, eo );
-				transactionsMissingPrimaryKeys.addObject( t );
+				// VEF-522 Quick 'n dirty fix for null pointer when creating news items
+				if( t != null ) {
+					transactionsMissingPrimaryKeys.addObject( t );
+				}
 			}
 
 			for( EOEnterpriseObject eo : ec.updatedObjects() ) {
