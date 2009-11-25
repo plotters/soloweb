@@ -38,7 +38,7 @@ public class SWTransactionLogViewer extends SWAdminComponent {
 		NSTimestamp dateFrom = USTimestampUtilities.normalizeTimestampToMidnight( date );
 		NSTimestamp dateTo = dateFrom.timestampByAddingGregorianUnits( 0, 0, 1, 0, 0, 0 );
 
-		EOQualifier q = SWTransaction.USER_ID.ne( null ).and( USEOUtilities.qualifierBetweenDates( SWTransaction.DATE_KEY, dateFrom, dateTo ) );
+		EOQualifier q = SWTransaction.USER_ID.isNotNull().and( USEOUtilities.qualifierBetweenDates( SWTransaction.DATE_KEY, dateFrom, dateTo ) );
 		EOFetchSpecification fs = new EOFetchSpecification( SWTransaction.ENTITY_NAME, q, SWTransaction.DATE.descs() );
 
 		transactions = ec().objectsWithFetchSpecification( fs );
