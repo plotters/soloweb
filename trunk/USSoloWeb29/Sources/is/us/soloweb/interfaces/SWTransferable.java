@@ -13,6 +13,11 @@ import com.webobjects.eocontrol.EOEnterpriseObject;
 public interface SWTransferable extends EOEnterpriseObject {
 
 	/**
+	 * @return Name of the item.
+	 */
+	public String name();
+
+	/**
 	 * Implement this method for your objects, and you will be able to use the standard object transfer mechanism provided in SWAdmin
 	 *
 	 * @param newOwner The destination object
