@@ -18,7 +18,7 @@ import com.webobjects.foundation.*;
 public class SWFolderUtilities {
 
 	private static final NSArray<EOSortOrdering> SORT_ORDERINGS = SWDocumentFolder.NAME.ascInsensitives();
-	private static final EOQualifier ROOT_FOLDER_QUALIFIER = SWDocumentFolder.PARENT_FOLDER_ID.eq( null );
+	private static final EOQualifier ROOT_FOLDER_QUALIFIER = SWDocumentFolder.PARENT_FOLDER_ID.isNull();
 
 	/**
 	 * Implementation of SWTransferable. Transfers this folder to a new parent folder
