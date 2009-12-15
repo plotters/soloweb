@@ -3,6 +3,7 @@ package is.us.soloweb.forms.data;
 import is.us.soloweb.SWSettings;
 import is.us.soloweb.forms.SWFUtilities;
 import is.us.soloweb.forms.data.auto._SWFRegistration;
+import is.us.soloweb.interfaces.SWInspectable;
 import is.us.template.USTemplateSimple;
 import is.us.util.*;
 import is.us.wo.util.USC;
@@ -19,7 +20,7 @@ import com.webobjects.foundation.*;
  * @author Hugi Þórðarson
  */
 
-public class SWFRegistration extends _SWFRegistration {
+public class SWFRegistration extends _SWFRegistration implements SWInspectable {
 
 	private static final Logger logger = LoggerFactory.getLogger( SWFRegistration.class );
 
@@ -181,4 +182,21 @@ public class SWFRegistration extends _SWFRegistration {
 		SWFField field = form().sortedPrimaryFields().objectAtIndex( new Integer( number ).intValue() );
 		return SWFUtilities.valueForFieldAndRegistration( editingContext(), field, this );
 	}
+
+	/**
+	 * FIXME: That's a kludge.
+	 */
+	@Override
+	public String name() {
+		if( registrationID() != null )
+			return registrationID().toString();
+
+		return null;
+	}
+
+	/**
+	 * FIXME: That's a kludge.
+	 */
+	@Override
+	public void setName(String name) {}
 }

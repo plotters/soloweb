@@ -31,6 +31,8 @@ import er.extensions.components.ERXComponent;
 
 public class SWFRegistrationList extends ERXComponent {
 
+	private static final String TRUE = "TRUE";
+
 	private EOEditingContext ec = session().defaultEditingContext();
 
 	public SWFForm selectedForm;
@@ -80,7 +82,7 @@ public class SWFRegistrationList extends ERXComponent {
 					if( USStringUtilities.stringHasValue( fs.value() ) )
 						d.setObjectForKey( fs.value(), "searchString" );
 
-					d.setObjectForKey( "TRUE", "isFixed" );
+					d.setObjectForKey( TRUE, "isFixed" );
 					a2.addObject( d );
 				}
 
@@ -181,7 +183,7 @@ public class SWFRegistrationList extends ERXComponent {
 
 	public WOComponent showEditableVersion() {
 		SWFEditRegistration nextPage = (SWFEditRegistration)pageWithName( "SWFEditRegistration" );
-		nextPage.setSelectedRegistration( currentRegistration );
+		nextPage.setSelectedObject( currentRegistration );
 		return nextPage;
 	}
 
@@ -193,7 +195,7 @@ public class SWFRegistrationList extends ERXComponent {
 	}
 
 	public boolean allowRemovalOfArgument() {
-		boolean isFixed = "TRUE".equals( currentSearchArgument.valueForKey( "isFixed" ) );
+		boolean isFixed = TRUE.equals( currentSearchArgument.valueForKey( "isFixed" ) );
 		boolean userPrivileged = ((SWSession)session()).solowebUser().hasPrivilegeFor( selectedForm.folder(), "editFormSettings" );
 
 		if( isFixed )

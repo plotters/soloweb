@@ -1,3 +1,5 @@
+WRAPPER: SWAdminComponentWrapper {}
+
 Conditional1: WOConditional {
 	condition = fieldList.count;
 }
@@ -29,8 +31,6 @@ Repetition1: WORepetition {
 	list = exportFields;
 }
 
-SWAdminComponentWrapper1: SWAdminComponentWrapper {
-}
 
 String1: WOString {
 	value = currentField.name;

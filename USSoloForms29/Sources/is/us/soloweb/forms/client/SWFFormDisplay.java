@@ -1,4 +1,4 @@
-package is.us.soloweb.forms;
+package is.us.soloweb.forms.client;
 
 import is.us.soloweb.SWGenericComponent;
 import is.us.soloweb.forms.data.SWFForm;

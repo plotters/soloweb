@@ -10,7 +10,7 @@ Conditional2: WOConditional {
 	condition = currentField.name.length;
 }
 
-Form1: WOForm {
+FORM: WOForm {
 	enctype = "mutipart/form-data";
 }
 
@@ -19,9 +19,9 @@ GenericContainer1: WOGenericContainer {
 	valign = "TOP";
 }
 
-Repetition2: WORepetition {
+FIELD_REPETITION: WORepetition {
 	item = currentField;
-	list = selectedRegistration.form.sortedFields;
+	list = selectedObject.form.sortedFields;
 }
 
 SWFFieldDisplay1: SWFFieldDisplay {
@@ -53,10 +53,6 @@ String11: WOString {
 String2: WOString {
 	value = currentStringWithBreaks;
 	escapeHTML = false;
-}
-
-String3: WOString {
-	value = selectedRegistration.registrationID;
 }
 
 String4: WOString {
