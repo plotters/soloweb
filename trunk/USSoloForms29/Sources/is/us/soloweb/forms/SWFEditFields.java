@@ -3,7 +3,8 @@ package is.us.soloweb.forms;
 import is.us.soloweb.forms.data.SWFField;
 import is.us.util.USUtilities;
 
-import com.webobjects.appserver.*;
+import com.webobjects.appserver.WOComponent;
+import com.webobjects.appserver.WOContext;
 import com.webobjects.eocontrol.EOEditingContext;
 import com.webobjects.foundation.NSArray;
 

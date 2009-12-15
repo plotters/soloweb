@@ -1,14 +1,18 @@
 package is.us.soloweb.forms;
 
-import is.us.soloweb.forms.data.*;
+import is.us.soloweb.admin.SWAdminComponent;
+import is.us.soloweb.forms.data.SWFField;
+import is.us.soloweb.forms.data.SWFFieldSet;
+import is.us.soloweb.forms.data.SWFForm;
 
-import com.webobjects.appserver.*;
+import com.webobjects.appserver.WOActionResults;
+import com.webobjects.appserver.WOContext;
 
 /**
  * @author Hugi Þórðarson
  */
 
-public class SWFEditFieldSets extends SWFAdminComponent {
+public class SWFEditFieldSets extends SWAdminComponent {
 
 	public SWFForm selectedForm;
 	public SWFField currentField;
@@ -18,22 +22,22 @@ public class SWFEditFieldSets extends SWFAdminComponent {
 		super( context );
 	}
 
-	public WOComponent addFieldSet() {
+	public WOActionResults addFieldSet() {
 		selectedForm.addFieldSet();
 		return saveChanges();
 	}
 
-	public WOComponent removeFieldSet() {
+	public WOActionResults removeFieldSet() {
 		selectedForm.removeFieldSet( currentFieldSet );
 		return saveChanges();
 	}
 
-	public WOComponent fieldSetUp() {
+	public WOActionResults fieldSetUp() {
 		currentFieldSet.changeSortOrder( -1 );
 		return saveChanges();
 	}
 
-	public WOComponent fieldSetDown() {
+	public WOActionResults fieldSetDown() {
 		currentFieldSet.changeSortOrder( 1 );
 		return saveChanges();
 	}

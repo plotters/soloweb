@@ -1,15 +1,18 @@
 package is.us.soloweb.forms;
 
+import is.us.soloweb.admin.SWAdminComponent;
 import is.us.soloweb.forms.data.SWFField;
 
-import com.webobjects.appserver.*;
-import com.webobjects.foundation.*;
+import com.webobjects.appserver.WOComponent;
+import com.webobjects.appserver.WOContext;
+import com.webobjects.foundation.NSDictionary;
+import com.webobjects.foundation.NSMutableDictionary;
 
 /**
  * @author Hugi Þórðarson
  */
 
-public class SWFEditField extends SWFAdminComponent {
+public class SWFEditField extends SWAdminComponent {
 
 	private SWFField _selectedField;
 	private WOComponent _componentToReturnTo;

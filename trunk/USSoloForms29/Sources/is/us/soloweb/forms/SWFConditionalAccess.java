@@ -1,10 +1,15 @@
 package is.us.soloweb.forms;
 
-import is.us.soloweb.data.*;
-import is.us.soloweb.forms.data.*;
+import is.us.soloweb.admin.SWAdminComponent;
+import is.us.soloweb.data.SWGroup;
+import is.us.soloweb.data.SWUser;
+import is.us.soloweb.forms.data.SWFField;
+import is.us.soloweb.forms.data.SWFFixedSearch;
+import is.us.soloweb.forms.data.SWFForm;
 import is.us.soloweb.interfaces.SWInspectable;
 
-import com.webobjects.appserver.*;
+import com.webobjects.appserver.WOComponent;
+import com.webobjects.appserver.WOContext;
 import com.webobjects.eocontrol.EOEnterpriseObject;
 import com.webobjects.foundation.NSArray;
 
@@ -12,7 +17,7 @@ import com.webobjects.foundation.NSArray;
  * @author Hugi Þórðarson
  */
 
-public class SWFConditionalAccess extends SWFAdminComponent {
+public class SWFConditionalAccess extends SWAdminComponent {
 
 	public SWFForm selectedForm;
 	private NSArray _allUsersAndGroups;

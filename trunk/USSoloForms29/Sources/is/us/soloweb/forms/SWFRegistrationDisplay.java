@@ -1,12 +1,20 @@
 package is.us.soloweb.forms;
 
-import is.us.soloweb.forms.data.*;
-import is.us.util.*;
+import is.us.soloweb.forms.data.SWFField;
+import is.us.soloweb.forms.data.SWFRegistration;
+import is.us.soloweb.forms.data.SWFRegistrationField;
+import is.us.util.USEOUtilities;
+import is.us.util.USStringUtilities;
 
 import java.util.Enumeration;
 
-import com.webobjects.appserver.*;
-import com.webobjects.foundation.*;
+import com.webobjects.appserver.WOComponent;
+import com.webobjects.appserver.WOContext;
+import com.webobjects.foundation.NSArray;
+import com.webobjects.foundation.NSDictionary;
+import com.webobjects.foundation.NSMutableArray;
+import com.webobjects.foundation.NSMutableDictionary;
+import com.webobjects.foundation.NSPropertyListSerialization;
 
 /**
  * @author Hugi Þórðarson

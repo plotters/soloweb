@@ -1,6 +1,7 @@
 package is.us.soloweb.forms;
 
-import is.us.soloweb.forms.data.*;
+import is.us.soloweb.forms.data.SWFField;
+import is.us.soloweb.forms.data.SWFRegistration;
 import is.us.util.USStringUtilities;
 
 import com.webobjects.appserver.WOContext;

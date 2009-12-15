@@ -1,15 +1,27 @@
 package is.us.soloweb.forms;
 
 import is.us.soloweb.SWSession;
-import is.us.soloweb.forms.data.*;
-import is.us.util.*;
+import is.us.soloweb.forms.data.SWFField;
+import is.us.soloweb.forms.data.SWFFixedSearch;
+import is.us.soloweb.forms.data.SWFForm;
+import is.us.soloweb.forms.data.SWFRegistration;
+import is.us.soloweb.forms.data.SWFRegistrationField;
+import is.us.util.USArrayUtilities;
+import is.us.util.USStringUtilities;
 import is.us.wo.util.USHTTPUtilities;
 
 import java.util.Enumeration;
 
-import com.webobjects.appserver.*;
-import com.webobjects.eocontrol.*;
-import com.webobjects.foundation.*;
+import com.webobjects.appserver.WOComponent;
+import com.webobjects.appserver.WOContext;
+import com.webobjects.appserver.WODisplayGroup;
+import com.webobjects.appserver.WOResponse;
+import com.webobjects.eocontrol.EOEditingContext;
+import com.webobjects.eocontrol.EOSortOrdering;
+import com.webobjects.foundation.NSArray;
+import com.webobjects.foundation.NSDictionary;
+import com.webobjects.foundation.NSMutableArray;
+import com.webobjects.foundation.NSMutableDictionary;
 
 import er.extensions.components.ERXComponent;
 
