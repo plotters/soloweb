@@ -49,7 +49,7 @@ Conditional2: WOConditional {
 	negate = true;
 }
 
-Conditional20: WOConditional {
+HAS_NO_SEARCH_ARGUMENTS: WOConditional {
 	condition = searchArguments.count;
 	negate = true;
 }
@@ -224,7 +224,7 @@ SubmitButton1: WOSubmitButton {
 	value = "Search";
 }
 
-SubmitButton2: WOSubmitButton {
+ADD_SEARCH_ARGUMENT_BUTTON: WOSubmitButton {
 	action = addSearchArgument;
 	value = "Add search argument";
 	style = "width: 200px;";
@@ -241,7 +241,7 @@ SubmitButton4: WOSubmitButton {
 	value = "-";
 }
 
-SubmitButton5: WOSubmitButton {
+SHOW_ALL_RECORDS_BUTTON: WOSubmitButton {
 	action = search;
 	value = "Show all records";
 	style = "width: 200px;";

@@ -24,16 +24,14 @@ Conditional3: WOConditional {
 	negate = true;
 }
 
-ImageButton1: WOImageButton {
+DOWN_BUTTON: WOSubmitButton {
 	action = fieldDown;
-	framework = "SoloWeb29";
-	filename = "arrow_down.gif";
+	value = "Færa niður";
 }
 
-ImageButton2: WOImageButton {
+UP_BUTTON: WOSubmitButton {
 	action = fieldUp;
-	framework = "SoloWeb29";
-	filename = "arrow_up.gif"; 
+	value = "Færa upp";
 }
 
 PopUpButton1: WOPopUpButton {
