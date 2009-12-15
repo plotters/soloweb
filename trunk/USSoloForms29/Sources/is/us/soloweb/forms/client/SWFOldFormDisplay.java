@@ -1,6 +1,7 @@
-package is.us.soloweb.forms;
+package is.us.soloweb.forms.client;
 
 import is.us.soloweb.SWGenericComponent;
+import is.us.soloweb.forms.SWFUtilities;
 import is.us.soloweb.forms.data.SWFField;
 import is.us.soloweb.forms.data.SWFForm;
 import is.us.soloweb.forms.data.SWFRegistration;

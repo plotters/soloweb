@@ -18,6 +18,9 @@ import com.webobjects.foundation.NSTimestamp;
 import com.webobjects.foundation.NSTimestampFormatter;
 
 /**
+ * FIXME: We're not respecting encodings.
+ * FIXME: Additional separators.
+ * 
  * @author Hugi Þórðarson
  */
 
