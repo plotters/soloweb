@@ -1,13 +1,16 @@
 package is.us.soloweb.forms;
 
+import is.us.soloweb.admin.SWAdminComponent;
+
 import com.webobjects.appserver.WOContext;
-import com.webobjects.foundation.*;
+import com.webobjects.foundation.NSDictionary;
+import com.webobjects.foundation.NSMutableDictionary;
 
 /**
  * @author Hugi Þórðarson
  */
 
-public class SWFFormAdmin extends SWFAdminComponent {
+public class SWFFormAdmin extends SWAdminComponent {
 
 	public SWFFormAdmin( WOContext context ) {
 		super( context );

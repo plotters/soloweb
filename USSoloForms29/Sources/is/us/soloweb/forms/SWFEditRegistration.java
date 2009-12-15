@@ -1,6 +1,8 @@
 package is.us.soloweb.forms;
 
-import is.us.soloweb.forms.data.*;
+import is.us.soloweb.admin.SWAdminComponent;
+import is.us.soloweb.forms.data.SWFField;
+import is.us.soloweb.forms.data.SWFRegistration;
 import is.us.util.USStringUtilities;
 
 import com.webobjects.appserver.WOContext;
@@ -10,7 +12,7 @@ import com.webobjects.foundation.NSData;
  * @author Hugi Þórðarson
  */
 
-public class SWFEditRegistration extends SWFAdminComponent {
+public class SWFEditRegistration extends SWAdminComponent {
 
 	private SWFRegistration _selectedRegistration;
 	public SWFField currentField;

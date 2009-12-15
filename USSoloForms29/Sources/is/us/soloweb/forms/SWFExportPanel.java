@@ -1,18 +1,27 @@
 package is.us.soloweb.forms;
 
-import is.us.soloweb.forms.data.*;
+import is.us.soloweb.admin.SWAdminComponent;
+import is.us.soloweb.forms.data.SWFField;
+import is.us.soloweb.forms.data.SWFForm;
+import is.us.soloweb.forms.data.SWFRegistration;
 import is.us.util.USStringUtilities;
 
 import java.util.Enumeration;
 
-import com.webobjects.appserver.*;
-import com.webobjects.foundation.*;
+import com.webobjects.appserver.WOActionResults;
+import com.webobjects.appserver.WOComponent;
+import com.webobjects.appserver.WOContext;
+import com.webobjects.appserver.WOResponse;
+import com.webobjects.foundation.NSArray;
+import com.webobjects.foundation.NSMutableArray;
+import com.webobjects.foundation.NSTimestamp;
+import com.webobjects.foundation.NSTimestampFormatter;
 
 /**
  * @author Hugi Þórðarson
  */
 
-public class SWFExportPanel extends SWFAdminComponent {
+public class SWFExportPanel extends SWAdminComponent {
 
 	private NSArray<SWFRegistration> _registrations;
 	private SWFForm _form;

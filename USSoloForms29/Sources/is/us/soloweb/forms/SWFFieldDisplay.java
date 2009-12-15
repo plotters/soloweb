@@ -1,10 +1,11 @@
 package is.us.soloweb.forms;
 
 import is.us.soloweb.forms.data.SWFField;
-import is.us.util.*;
+import is.us.util.USStringUtilities;
 import is.us.wo.util.USHTTPUtilities;
 
-import com.webobjects.appserver.*;
+import com.webobjects.appserver.WOContext;
+import com.webobjects.appserver.WOResponse;
 import com.webobjects.foundation.NSData;
 
 import er.extensions.components.ERXComponent;

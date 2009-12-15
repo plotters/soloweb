@@ -6,7 +6,9 @@ import is.us.util.USArrayUtilities;
 import java.util.Enumeration;
 
 import com.webobjects.eocontrol.EOQualifier;
-import com.webobjects.foundation.*;
+import com.webobjects.foundation.NSArray;
+import com.webobjects.foundation.NSMutableArray;
+import com.webobjects.foundation.NSSelector;
 
 /**
  * @author Hugi Þórðarson
