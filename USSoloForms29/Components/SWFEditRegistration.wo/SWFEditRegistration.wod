@@ -1,3 +1,7 @@
+FORM: WOForm {
+	enctype = "mutipart/form-data";
+}
+
 Conditional1: WOConditional {
 	condition = currentField.isRequired;
 }
@@ -10,32 +14,23 @@ Conditional2: WOConditional {
 	condition = currentField.name.length;
 }
 
-FORM: WOForm {
-	enctype = "mutipart/form-data";
-}
-
-GenericContainer1: WOGenericContainer {
-	elementName = "TD";
-	valign = "TOP";
-}
-
 FIELD_REPETITION: WORepetition {
 	item = currentField;
 	list = selectedObject.form.sortedFields;
 }
 
-SWFFieldDisplay1: SWFFieldDisplay {
+VALUE_EDIT: SWFFieldDisplay {
 	currentField = currentField;
 	currentString = currentString;
 	currentData = currentData;
 }
 
-SWPrivilegeConditional1: SWPrivilegeConditional {
+CAN_EDIT_VALUE: SWPrivilegeConditional {
 	identifier = "canEditValue";
 	record = currentField;
 }
 
-SWPrivilegeConditional2: SWPrivilegeConditional {
+CAN_NOT_EDIT_VALUE: SWPrivilegeConditional {
 	identifier = "canEditValue";
 	negate = true;
 	record = currentField;
@@ -50,7 +45,7 @@ String11: WOString {
 	value = currentField.explanatoryTextWithBreaks;
 }
 
-String2: WOString {
+VALUE_STRING: WOString {
 	value = currentStringWithBreaks;
 	escapeHTML = false;
 }

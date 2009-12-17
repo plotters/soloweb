@@ -218,9 +218,9 @@ public class SWFUtilities {
 	/**
 	 * 
 	 */
-	public static NSArray<SWFRegistration> searchRegistrations( EOEditingContext ec, SWFForm form, NSArray searchArguments ) {
+	public static NSArray<SWFRegistration> searchRegistrations( EOEditingContext ec, SWFForm form, NSArray<NSDictionary> searchArguments ) {
 
-		Enumeration e = searchArguments.objectEnumerator();
+		Enumeration<NSDictionary> e = searchArguments.objectEnumerator();
 		NSMutableArray<EOQualifier> qualArr = new NSMutableArray<EOQualifier>();
 		int i = 0;
 
@@ -249,11 +249,12 @@ public class SWFUtilities {
 						q2 = new EOKeyValueQualifier( "registrationFields" + i + ".value", EOQualifier.QualifierOperatorLike, "*" + searchString + "*" );
 					}
 
-					qualArr.addObjectsFromArray( new NSArray( new Object[] { q1, q2 } ) );
+					qualArr.addObjectsFromArray( new NSArray<EOQualifier>( new EOQualifier[] { q1, q2 } ) );
 					i++;
 				}
 			}
 		}
+
 		qualArr.addObject( new EOKeyValueQualifier( "formID", EOQualifier.QualifierOperatorEqual, form.formID() ) );
 
 		EOQualifier q = new EOAndQualifier( qualArr );

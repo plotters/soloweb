@@ -22,12 +22,18 @@ public class SWFSearchField {
 	public NSSelector searchOperator;
 	public String dateFormatString;
 
-	public static NSArray fieldList( NSArray fields ) {
+	/**
+	 * Generates a
+	 * 
+	 * @param fields
+	 * @return
+	 */
+	public static NSArray<SWFSearchField> fieldList( NSArray<SWFField> fields ) {
 
 		if( !USArrayUtilities.arrayHasObjects( fields ) )
-			return new NSArray();
+			return NSArray.emptyArray();
 
-		NSMutableArray a = new NSMutableArray();
+		NSMutableArray<SWFSearchField> a = new NSMutableArray<SWFSearchField>();
 		SWFSearchField arg = null;
 
 		arg = new SWFSearchField();
@@ -50,7 +56,7 @@ public class SWFSearchField {
 		arg.dateFormatString = "%d.%m.%Y";
 		a.addObject( arg );
 
-		Enumeration e = fields.objectEnumerator();
+		Enumeration<SWFField> e = fields.objectEnumerator();
 
 		while( e.hasMoreElements() ) {
 			SWFField f = (SWFField)e.nextElement();
@@ -63,6 +69,7 @@ public class SWFSearchField {
 		return a;
 	}
 
+	@Override
 	public boolean equals( Object o ) {
 		if( o instanceof SWFSearchField ) {
 			if( this.field != null ) {

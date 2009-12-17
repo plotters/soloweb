@@ -10,8 +10,8 @@ CheckBox4: WOCheckBox {
 	checked = currentField.primaryField;
 }
 
-Conditional1: WOConditional {
-	condition = fields;
+HAS_FIELDS_CONDITIONAL: WOConditional {
+	condition = fields.count;
 }
 
 Conditional2: WOConditional {
@@ -26,12 +26,12 @@ Conditional3: WOConditional {
 
 DOWN_BUTTON: WOSubmitButton {
 	action = fieldDown;
-	value = "Færa niður";
+	value = "↓";
 }
 
 UP_BUTTON: WOSubmitButton {
 	action = fieldUp;
-	value = "Færa upp";
+	value = "↑";
 }
 
 PopUpButton1: WOPopUpButton {
@@ -51,7 +51,7 @@ SubmitButton2: WOSubmitButton {
 	action = editField;
 }
 
-SubmitButton3: WOSubmitButton {
+ADD_FIELD_BUTTON: WOSubmitButton {
 	action = addField;
 	value = "Add a field";
 	style = "width: 200px;";

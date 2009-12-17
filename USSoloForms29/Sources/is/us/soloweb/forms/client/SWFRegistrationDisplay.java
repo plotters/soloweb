@@ -1,5 +1,8 @@
-package is.us.soloweb.forms;
+package is.us.soloweb.forms.client;
 
+import is.us.soloweb.forms.SWFFormAdminComponent;
+import is.us.soloweb.forms.SWFSearchField;
+import is.us.soloweb.forms.SWFUtilities;
 import is.us.soloweb.forms.data.SWFField;
 import is.us.soloweb.forms.data.SWFRegistration;
 import is.us.soloweb.forms.data.SWFRegistrationField;

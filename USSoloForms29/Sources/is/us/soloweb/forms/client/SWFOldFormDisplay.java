@@ -10,7 +10,7 @@ import is.us.util.USStringUtilities;
 
 import java.util.Enumeration;
 
-import com.webobjects.appserver.WOComponent;
+import com.webobjects.appserver.WOActionResults;
 import com.webobjects.appserver.WOContext;
 import com.webobjects.appserver.WOResponse;
 import com.webobjects.eocontrol.EOEditingContext;
@@ -26,6 +26,12 @@ import com.webobjects.foundation.NSMutableDictionary;
 
 public class SWFOldFormDisplay extends SWGenericComponent {
 
+	private static final String ERROR_REQUIRED = "Vinsamlegast fyllið út alla reiti sem merktir eru með stjörnu";
+	private static final String ERROR_MAX = "Hámarksfjölda skráninga fyrir þetta form hefur verið náð.";
+
+	/**
+	 * Perhaps the session's editing context is not the best place for this.
+	 */
 	private EOEditingContext ec = session().defaultEditingContext();
 
 	public SWFForm selectedForm;
@@ -34,8 +40,9 @@ public class SWFOldFormDisplay extends SWGenericComponent {
 
 	public String errorString;
 	public boolean hasRegistered = false;
-	public NSMutableDictionary<SWFField, Object> someFields = new NSMutableDictionary<SWFField, Object>();
-	public NSMutableDictionary<SWFField, NSData> someDataFields = new NSMutableDictionary<SWFField, NSData>();
+
+	private NSMutableDictionary<SWFField, Object> fields = new NSMutableDictionary<SWFField, Object>();
+	private NSMutableDictionary<SWFField, NSData> dataFields = new NSMutableDictionary<SWFField, NSData>();
 
 	public SWFOldFormDisplay( WOContext context ) {
 		super( context );
@@ -46,10 +53,13 @@ public class SWFOldFormDisplay extends SWGenericComponent {
 		return true;
 	}
 
-	public WOComponent submitForm() {
+	/**
+	 * Submits the current form.
+	 */
+	public WOActionResults submitForm() {
 
 		if( selectedForm.maxRegistrations() != null && (selectedForm.registrations().count() >= selectedForm.maxRegistrations()) ) {
-			errorString = "Hámarksfjölda skráninga fyrir þetta form hefur verið náð.";
+			errorString = ERROR_MAX;
 			return context().page();
 		}
 
@@ -58,27 +68,29 @@ public class SWFOldFormDisplay extends SWGenericComponent {
 			return context().page();
 		}
 
-		SWFRegistration registration = SWFUtilities.registrationFromDictionary( ec, selectedForm, someFields, someDataFields );
+		SWFRegistration registration = SWFUtilities.registrationFromDictionary( ec, selectedForm, fields, dataFields );
 		hasRegistered = true;
 		registration.sendNotification();
 
 		return context().page();
 	}
 
+	/**
+	 * Most of our initialization happens here.
+	 */
+	@Override
 	public void appendToResponse( WOResponse r, WOContext c ) {
 
 		if( selectedForm != null ) {
 			if( registration.editingContext() == null ) {
 				ec.insertObject( registration );
 
-				Enumeration<SWFField> e = selectedForm.fields().objectEnumerator();
+				for( SWFField field : selectedForm.fields() ) {
+					String defaultValue = field.defaultValue();
 
-				while( e.hasMoreElements() ) {
-					SWFField nextElement = e.nextElement();
-					String defaultValue = nextElement.defaultValue();
-
-					if( defaultValue != null )
-						someFields.setObjectForKey( defaultValue, nextElement );
+					if( defaultValue != null ) {
+						fields.setObjectForKey( defaultValue, field );
+					}
 				}
 			}
 		}
@@ -86,48 +98,66 @@ public class SWFOldFormDisplay extends SWGenericComponent {
 		super.appendToResponse( r, c );
 	}
 
+	/**
+	 * @return The string value for the current field.
+	 */
 	public String currentString() {
-		return (String)someFields.objectForKey( currentField );
+		return (String)fields.objectForKey( currentField );
 	}
 
+	/**
+	 * Sets the string value for the current field.
+	 * 
+	 * @param data The data to set
+	 */
 	public void setCurrentString( String s ) {
 		if( USStringUtilities.stringHasValue( s ) )
-			someFields.setObjectForKey( s, currentField );
+			fields.setObjectForKey( s, currentField );
 		else
-			someFields.removeObjectForKey( currentField );
+			fields.removeObjectForKey( currentField );
 	}
 
+	/**
+	 * @return The binary data value for the current field.
+	 */
 	public NSData currentData() {
-		return someDataFields.objectForKey( currentField );
+		return dataFields.objectForKey( currentField );
 	}
 
-	public void setCurrentData( NSData d ) {
-		if( d != null && d.length() > 0 )
-			someDataFields.setObjectForKey( d, currentField );
+	/**
+	 * Sets the binary data value for the current field.
+	 * 
+	 * @param data The data to set
+	 */
+	public void setCurrentData( NSData data ) {
+		if( data != null && data.length() > 0 )
+			dataFields.setObjectForKey( data, currentField );
 		else
-			someDataFields.removeObjectForKey( currentField );
+			dataFields.removeObjectForKey( currentField );
 	}
 
+	/**
+	 * @return The string to show if not all required fields are filled out.
+	 */
 	public String requiredFieldEmptyString() {
 		if( selectedForm != null )
 			if( USStringUtilities.stringHasValue( selectedForm.requiredFieldEmptyString() ) )
 				return selectedForm.requiredFieldEmptyString();
 
-		return "Vinsamlegast fylli&eth; &uacute;t alla reiti sem merktir eru me&eth; stj&ouml;rnu";
+		return ERROR_REQUIRED;
 	}
 
+	/**
+	 * @return A boolean indicating if all the required fields have been filled out.
+	 */
 	private boolean requiredFieldsFilledOut() {
-		NSArray<SWFField> a = selectedForm.requiredFields();
+		NSArray<SWFField> req = selectedForm.requiredFields();
 
-		if( !USArrayUtilities.arrayHasObjects( a ) )
+		if( !USArrayUtilities.arrayHasObjects( req ) )
 			return true;
 
-		Enumeration<SWFField> e = a.objectEnumerator();
-
-		while( e.hasMoreElements() ) {
-			SWFField f = e.nextElement();
-
-			if( someFields.objectForKey( f ) == null )
+		for( SWFField f : req ) {
+			if( fields.objectForKey( f ) == null )
 				return false;
 		}
 
