@@ -9,6 +9,8 @@ import com.webobjects.appserver.WOContext;
 import com.webobjects.foundation.NSData;
 
 /**
+ * For editing a single SWRegistration.
+ * 
  * @author Hugi Þórðarson
  */
 

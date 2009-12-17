@@ -1,32 +1,29 @@
 <wo:SWAdminComponentWrapper>
-  <webobject name="FORM">
-    <webobject name = "SubmitButton2" />
-    <table cellspacing = "0" cellpadding = "2" border = "1">
-      <webobject name = "FIELD_REPETITION">
-        <webobject name = "Conditional13">
-          <tr>
-            <td colspan = "2">
-              <br />
-              <webobject name = "String4" />
-            </td>
-          </tr>
-        </webobject>
-        <tr>
-          <td align = "RIGHT" valign = "TOP">
-            <webobject name = "Conditional2">
-              <webobject name = "Conditional1">
-                <font color = "#ff0000">*</font>&nbsp;</webobject>
-              <b><webobject name = "String1" />:</b>
-              <br />
-              <webobject name = "String11" />
-            </webobject>
-          </td>
-          <webobject name = "GenericContainer1">
-            <webobject name = "SWPrivilegeConditional2"><webobject name = "String2" /></webobject>
-            <webobject name = "SWPrivilegeConditional1"><webobject name = "SWFFieldDisplay1" /></webobject>
-          </webobject>
-        </tr>
-      </webobject>
-    </table>
-  </webobject>
+	<webobject name="FORM">
+		<webobject name = "SubmitButton2" />
+		<table cellspacing="0" cellpadding="0">
+			<webobject name="FIELD_REPETITION">
+				<webobject name="Conditional13">
+					<tr>
+						<td colspan = "2"><webobject name = "String4" /></td>
+					</tr>
+				</webobject>
+				<tr>
+					<td align="right" valign="top">
+						<webobject name = "Conditional2">
+							<webobject name = "Conditional1">
+								<font color = "#ff0000">*</font>
+							</webobject>
+							<webobject name = "String1" />:
+							<p><webobject name = "String11" /></p>
+						</webobject>
+					</td>
+					<td>
+						<webobject name="CAN_NOT_EDIT_VALUE"><webobject name="VALUE_STRING" /></webobject>
+						<webobject name="CAN_EDIT_VALUE"><webobject name="VALUE_EDIT" /></webobject>
+					</td>
+				</tr>
+			</webobject>
+		</table>
+	</webobject>
 </wo:SWAdminComponentWrapper>
