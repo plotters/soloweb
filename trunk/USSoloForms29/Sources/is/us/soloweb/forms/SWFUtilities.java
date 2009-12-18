@@ -284,4 +284,7 @@ public class SWFUtilities {
 
 		return cacheDictionary;
 	}
+
+	public static final String TRUE_STRING = "TRUE";
+	public static final String FALSE_STRING = "FALSE";
 }

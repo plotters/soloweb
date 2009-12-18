@@ -1,5 +1,7 @@
 package is.us.soloweb.forms.fields;
 
+import is.us.soloweb.forms.SWFUtilities;
+
 import com.webobjects.appserver.WOContext;
 
 import er.extensions.components.ERXComponent;
@@ -9,9 +11,6 @@ import er.extensions.components.ERXComponent;
  */
 
 public class SWFCheckbox extends ERXComponent {
-
-	public static final String TRUE_STRING = "TRUE";
-	public static final String FALSE_STRING = "FALSE";
 
 	public SWFCheckbox( WOContext context ) {
 		super( context );
@@ -23,13 +22,13 @@ public class SWFCheckbox extends ERXComponent {
 	}
 
 	public boolean checked() {
-		return TRUE_STRING.equals( valueForBinding( "stringValue" ) );
+		return SWFUtilities.TRUE_STRING.equals( valueForBinding( "stringValue" ) );
 	}
 
 	public void setChecked( boolean newChecked ) {
 		if( newChecked )
-			setValueForBinding( TRUE_STRING, "stringValue" );
+			setValueForBinding( SWFUtilities.TRUE_STRING, "stringValue" );
 		else
-			setValueForBinding( FALSE_STRING, "stringValue" );
+			setValueForBinding( SWFUtilities.FALSE_STRING, "stringValue" );
 	}
 }

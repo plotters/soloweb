@@ -8,6 +8,9 @@ import com.webobjects.appserver.WOContext;
 import com.webobjects.eocontrol.EOEditingContext;
 
 /**
+ * For displaying forms on a web site. Decides if you're showing a multi-step
+ * complex form or a simple form.
+ * 
  * @author Hugi Þórðarson
  */
 
