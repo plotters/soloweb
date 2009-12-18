@@ -1,20 +1,24 @@
 package is.us.soloweb;
 
-import is.us.soloweb.data.*;
+import is.us.soloweb.data.SWSite;
+import is.us.soloweb.data.SWUser;
 import is.us.soloweb.util.SWC;
 
 import com.webobjects.appserver.WOApplication;
-import com.webobjects.foundation.*;
+import com.webobjects.foundation.NSArray;
+import com.webobjects.foundation.NSMutableArray;
+import com.webobjects.foundation.NSMutableDictionary;
+import com.webobjects.foundation.NSTimestamp;
 
 import er.extensions.appserver.ERXSession;
 import er.extensions.localization.ERXLocalizer;
 
 /**
- * SWSession is the replacement for WOSession for SoloWeb applications.
- * It is the same as WOSession, but also stores the current active user,
- * if a user is logged in to the SoloWeb system, and also keeps a
- * customInfo dictionary, like many other SW-objects.
- *
+ * SWSession is the replacement for WOSession for SoloWeb applications. It is
+ * the same as WOSession, but also stores the current active user, if a user is
+ * logged in to the SoloWeb system, and also keeps a customInfo dictionary, like
+ * many other SW-objects.
+ * 
  * @author Hugi Þórðarson
  * @version 2.9.2.b4
  * @since 2.3
@@ -30,12 +34,14 @@ public abstract class SWSession extends ERXSession {
 	private SWUser _solowebUser;
 	private SWSite _selectedSite;
 	private NSTimestamp _startTime;
+	private NSTimestamp _lastActivity;
 	private boolean _isLoggedIn = false;
 
 	public SWSession() {
 		ERXLocalizer.setAvailableLanguages( new NSArray<String>( SWC.DEFAULT_LANGUAGE ) );
 		setCustomInfo( new NSMutableDictionary<Object, Object>() );
 		setStartTime( new NSTimestamp() );
+		setLastActivity( new NSTimestamp() );
 	}
 
 	public NSTimestamp startTime() {
@@ -44,6 +50,14 @@ public abstract class SWSession extends ERXSession {
 
 	private void setStartTime( NSTimestamp t ) {
 		_startTime = t;
+	}
+
+	public NSTimestamp lastActivity() {
+		return _lastActivity;
+	}
+
+	private void setLastActivity( NSTimestamp t ) {
+		_lastActivity = t;
 	}
 
 	/**
@@ -71,7 +85,8 @@ public abstract class SWSession extends ERXSession {
 	}
 
 	/**
-	 * A dictionary to store special information, like many other SW-objects provide.
+	 * A dictionary to store special information, like many other SW-objects
+	 * provide.
 	 */
 	public NSMutableDictionary customInfo() {
 		return _customInfo;
@@ -168,4 +183,5 @@ public abstract class SWSession extends ERXSession {
 	public boolean isLoggedIn() {
 		return _isLoggedIn;
 	}
+
 }

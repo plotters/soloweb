@@ -1,13 +1,23 @@
 package is.us.soloweb.util;
 
-import is.us.soloweb.data.*;
-import is.us.soloweb.interfaces.*;
+import is.us.soloweb.data.SWTransaction;
+import is.us.soloweb.data.SWUser;
+import is.us.soloweb.interfaces.SWCustomInfo;
+import is.us.soloweb.interfaces.SWTransactionLogged;
 import is.us.util.USUtilities;
 
-import com.webobjects.eocontrol.*;
-import com.webobjects.foundation.*;
+import com.webobjects.eocontrol.EOEditingContext;
+import com.webobjects.eocontrol.EOEnterpriseObject;
+import com.webobjects.foundation.NSMutableArray;
+import com.webobjects.foundation.NSNotification;
+import com.webobjects.foundation.NSNotificationCenter;
+import com.webobjects.foundation.NSPropertyListSerialization;
+import com.webobjects.foundation.NSSelector;
+import com.webobjects.foundation.NSTimestamp;
 
-import er.extensions.eof.*;
+import er.extensions.eof.ERXEC;
+import er.extensions.eof.ERXEnterpriseObject;
+import er.extensions.eof.ERXGenericRecord;
 
 /**
  * For updating customInfo attributes.
@@ -32,7 +42,8 @@ public class SWTransactionManager {
 	private static final String ACTION_DELETE = "D";
 
 	/**
-	 * Key set in userinfo dictionary for EditingContexts where transactions should not be logged.
+	 * Key set in userinfo dictionary for EditingContexts where transactions
+	 * should not be logged.
 	 */
 	private static final String DO_NOT_LOG_MARKER = "DO_NOT_LOG_TRANSACTIONS_IN_THIS_EC";
 
@@ -44,15 +55,16 @@ public class SWTransactionManager {
 	/**
 	 * It's a singleton.
 	 * 
-	 * We set the logging editing context so that transactions in it are not logged
-	 * (logging transactions in the loggingEC would result in an infinite loop).
+	 * We set the logging editing context so that transactions in it are not
+	 * logged (logging transactions in the loggingEC would result in an infinite
+	 * loop).
 	 */
 	private SWTransactionManager() {
 		_loggingEC.setUserInfoForKey( true, DO_NOT_LOG_MARKER );
 	}
 
 	/**
-	 * Creates our default transaction manager. 
+	 * Creates our default transaction manager.
 	 */
 	public static SWTransactionManager defaultTransactionManager() {
 		if( _defaultTransactionManager == null ) {
@@ -63,7 +75,8 @@ public class SWTransactionManager {
 	}
 
 	/**
-	 * This method is invoked each time changes are saved in *any* EC in the application.
+	 * This method is invoked each time changes are saved in *any* EC in the
+	 * application.
 	 */
 	public void beforeSaveChangesInEditingContext( NSNotification notification ) {
 		EOEditingContext ec = (EOEditingContext)notification.object();
@@ -95,7 +108,7 @@ public class SWTransactionManager {
 					}
 				}
 				SWTransaction t = createAndInsertTransactionForEO( ACTION_INSERT, eo );
-				// VEF-522 Quick 'n dirty fix for null pointer when creating news items
+
 				if( t != null ) {
 					transactionsMissingPrimaryKeys.addObject( t );
 				}
@@ -167,7 +180,8 @@ public class SWTransactionManager {
 	}
 
 	/**
-	 * Registers the transaction manager so it starts listening and watching transactions.
+	 * Registers the transaction manager so it starts listening and watching
+	 * transactions.
 	 */
 	public static void register() {
 		NSSelector<SWTransactionManager> beforeSaveSelector = new NSSelector<SWTransactionManager>( "beforeSaveChangesInEditingContext", new Class[] { NSNotification.class } );
