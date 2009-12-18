@@ -20,6 +20,8 @@ import com.webobjects.foundation.NSMutableDictionary;
 import com.webobjects.foundation.NSPropertyListSerialization;
 
 /**
+ * For diplaying form contents on the client side.
+ * 
  * @author Hugi Þórðarson
  */
 
@@ -40,23 +42,42 @@ public class SWFRegistrationDisplay extends SWFFormAdminComponent {
 		super( context );
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public SWFRegistrationField currentRegistrationField() {
 		SWFField f = (SWFField)fieldList().objectAtIndex( fieldIndex );
 		return (SWFRegistrationField)_cacheDictionary.valueForKey( "" + f.fieldID() + currentRegistration.registrationID() );
 	}
 
+	/**
+	 * 
+	 */
 	public NSArray fieldList() {
 		return USEOUtilities.fetchObjects( ec, SWFField.class, "fieldID", fieldIDList() );
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	private NSArray fieldIDList() {
 		return NSPropertyListSerialization.arrayForString( (String)currentComponent().customInfo().valueForKey( "swfFieldList" ) );
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public NSArray searchFieldList() {
 		return SWFSearchField.fieldList( USEOUtilities.fetchObjects( ec, SWFField.class, "fieldID", searchFieldIDList() ) );
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	private NSArray searchFieldIDList() {
 		return NSPropertyListSerialization.arrayForString( (String)currentComponent().customInfo().valueForKey( "swfSearchFieldList" ) );
 	}
@@ -85,6 +106,10 @@ public class SWFRegistrationDisplay extends SWFFormAdminComponent {
 		}
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public WOComponent search() {
 		NSArray searchArray = additionalSearchArguments.arrayByAddingObjectsFromArray( convertedSearchArguments() );
 		NSArray a = SWFUtilities.searchRegistrations( ec, selectedForm(), searchArray );
@@ -92,10 +117,17 @@ public class SWFRegistrationDisplay extends SWFFormAdminComponent {
 		return context().page();
 	}
 
+	/**
+	 * 
+	 */
 	public void populateCache() {
 		_cacheDictionary = SWFUtilities.createCacheDictionary( registrations() );
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public NSMutableArray convertedSearchArguments() {
 		NSMutableArray a = searchArguments();
 		NSMutableArray result = new NSMutableArray();
@@ -117,6 +149,10 @@ public class SWFRegistrationDisplay extends SWFFormAdminComponent {
 		return result;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public int registrationIndexDisplay() {
 		return registrationIndex + 1;
 	}
