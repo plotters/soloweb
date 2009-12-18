@@ -5,16 +5,28 @@ import is.us.soloweb.forms.SWFUtilities;
 import is.us.soloweb.forms.data.auto._SWFRegistration;
 import is.us.soloweb.interfaces.SWInspectable;
 import is.us.template.USTemplateSimple;
-import is.us.util.*;
+import is.us.util.USDataUtilities;
+import is.us.util.USMailSender;
+import is.us.util.USStringUtilities;
+import is.us.util.USUtilities;
 import is.us.wo.util.USC;
 
 import java.io.File;
 import java.util.Enumeration;
 
-import org.slf4j.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import com.webobjects.eocontrol.*;
-import com.webobjects.foundation.*;
+import com.webobjects.eocontrol.EOEditingContext;
+import com.webobjects.eocontrol.EOKeyValueQualifier;
+import com.webobjects.eocontrol.EOQualifier;
+import com.webobjects.eocontrol.EOSortOrdering;
+import com.webobjects.foundation.NSArray;
+import com.webobjects.foundation.NSDictionary;
+import com.webobjects.foundation.NSMutableArray;
+import com.webobjects.foundation.NSMutableDictionary;
+import com.webobjects.foundation.NSRange;
+import com.webobjects.foundation.NSTimestamp;
 
 /**
  * @author Hugi Þórðarson
@@ -186,7 +198,6 @@ public class SWFRegistration extends _SWFRegistration implements SWInspectable {
 	/**
 	 * FIXME: That's a kludge.
 	 */
-	@Override
 	public String name() {
 		if( registrationID() != null )
 			return registrationID().toString();
@@ -197,6 +208,5 @@ public class SWFRegistration extends _SWFRegistration implements SWInspectable {
 	/**
 	 * FIXME: That's a kludge.
 	 */
-	@Override
-	public void setName(String name) {}
+	public void setName( String name ) {}
 }
