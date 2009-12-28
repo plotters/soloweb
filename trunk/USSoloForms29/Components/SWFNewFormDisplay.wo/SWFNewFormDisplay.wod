@@ -6,7 +6,7 @@ Conditional12: WOConditional {
 	condition = currentField.name.length;
 }
 
-Conditional13: WOConditional {
+HAS_ABOVE_TEXT: WOConditional {
 	condition = currentField.aboveText.length;
 }
 
@@ -15,7 +15,7 @@ Conditional14: WOConditional {
 	negate = true;
 }
 
-Conditional15: WOConditional {
+IS_NOT_FIRST_FIELDSET_CONDITIONAL: WOConditional {
 	condition = currentFieldSet.isFirst;
 	negate = true;
 }
@@ -24,7 +24,7 @@ Conditional16: WOConditional {
 	condition = currentFieldSet.isLast;
 }
 
-Conditional17: WOKeyValueConditional {
+SECOND_LEVEL_CONDITIONAL: WOKeyValueConditional {
 	key = "currentLevel";
 	value = "second";
 }
@@ -33,7 +33,7 @@ Conditional18: WOConditional {
 	condition = currentField.isRequired;
 }
 
-Conditional2: WOKeyValueConditional {
+FIRST_LEVEL_CONDITONAL: WOKeyValueConditional {
 	key = "currentLevel";
 	value = "first";
 }
@@ -46,47 +46,34 @@ Conditional28: WOConditional {
 	condition = currentField.aboveText.length;
 }
 
-Conditional3: WOKeyValueConditional {
+THIRD_LEVEL_CONDITIONAL: WOKeyValueConditional {
 	key = "currentLevel";
 	value = "third";
 }
 
-Conditional4: WOConditional {
-	condition = context.isInForm;
-	negate = true;
-}
-
-Conditional5: WOConditional {
-	condition = context.isInForm;
-}
-
-Conditional6: WOConditional {
-	condition = selectedForm;
-}
-
-Form1: WOForm {
+FORM: WOForm {
 	multipleSubmit = true;
 	enctype = "multipart/form-data";
 }
 
-Form2: WOForm {
+FORM_2: WOForm {
 	multipleSubmit = true;
 }
 
-Form3: WOForm {
+PRINTABLE_FORM: WOForm {
 	target = "_blank";
 }
 
-GenericContainer1: WOGenericContainer {
+TD_CONTAINER: WOGenericContainer {
+	elementName = "td";
+	valign = "top";
 	colspan = colspan;
-	elementName = "TD";
-	valign = "TOP";
 }
 
 GenericContainer2: WOGenericContainer {
+	elementName = "td";
+	valign = "top";
 	colspan = colspan;
-	elementName = "TD";
-	valign = "TOP";
 }
 
 Repetition1: WORepetition {
@@ -94,18 +81,18 @@ Repetition1: WORepetition {
 	list = selectedForm.sortedFieldsExcludingAdminFields;
 }
 
-Repetition2: WORepetition {
+FIELD_REPETITION: WORepetition {
 	item = currentField;
 	list = currentFieldSet.sortedFields;
 }
 
-SWFFieldDisplay1: SWFFieldDisplay {
+FIELD_DISPLAY: SWFFieldDisplay {
 	currentField = currentField;
 	currentString = currentString;
 	currentData = currentData;
 }
 
-String1: WOString {
+FIELD_NAME_STRING: WOString {
 	value = currentField.name;
 }
 
@@ -114,9 +101,9 @@ String10: WOString {
 	escapeHTML = false;
 }
 
-String11: WOString {
-	escapeHTML = false;
+EXPLANATORY_TEXT_STRING: WOString {
 	value = currentField.explanatoryTextWithBreaks;
+	escapeHTML = false;
 }
 
 String12: WOString {
@@ -124,18 +111,22 @@ String12: WOString {
 	value = currentField.explanatoryTextWithBreaks;
 }
 
-String2: WOString {
-	escapeHTML = false;
-	value = errorString;
+HAS_ERROR_CONDITIONAL : WOConditional {
+	condition = errorString.length;
 }
 
-String3: WOString {
+ERROR_STRING: WOString {
+	value = errorString;
+	escapeHTML = false;
+}
+
+POST_REGISTRATION_MESSAGE: WOString {
 	value = selectedForm.registrationMessage;
 }
 
-String4: WOString {
-	escapeHTML = false;
+ABOVE_TEXT: WOString {
 	value = currentField.aboveTextWithBreaks;
+	escapeHTML = false;
 }
 
 String5: WOString {
@@ -174,17 +165,17 @@ SubmitButton3: WOSubmitButton {
 	action = previousFieldSet;
 }
 
-SubmitButton4: WOSubmitButton {
+MAKE_CORRECTIONS_BUTTON: WOSubmitButton {
 	action = performCorrections;
 	value = "Make corrections";
 }
 
-SubmitButton5: WOSubmitButton {
+SUBMIT_FORM_BUTTON: WOSubmitButton {
 	action = submitForm;
 	value = "Submit form";
 }
 
-SubmitButton7: WOSubmitButton {
+PRINTABLE_SUBMIT_BUTTON: WOSubmitButton {
 	action = showPrintableVersion;
 	value = "Printable version of the form";
 }
