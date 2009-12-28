@@ -14,3 +14,16 @@ NEW_FORM_DISPLAY: SWFNewFormDisplay {
 OLD_FORM_DISPLAY: SWFOldFormDisplay {
 	selectedForm = selectedForm;
 }
+
+HAS_FORM_COND: WOConditional {
+	condition = selectedForm;
+}
+
+IS_NOT_IN_FORM_COND: WOConditional {
+	condition = context.isInForm;
+	negate = true;
+}
+
+IS_IN_FORM_COND: WOConditional {
+	condition = context.isInForm;
+}

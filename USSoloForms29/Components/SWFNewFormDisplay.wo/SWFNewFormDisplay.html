@@ -1,28 +1,59 @@
-<WEBOBJECT NAME=Conditional6><WEBOBJECT NAME=Conditional4><BR><FONT COLOR="#ff0000"><B><WEBOBJECT NAME=String2></WEBOBJECT></B></FONT><WEBOBJECT NAME=Conditional2><H2><WEBOBJECT NAME=String5></WEBOBJECT>
-(step
-<WEBOBJECT NAME=String6></WEBOBJECT>
-of
-<WEBOBJECT NAME=String7></WEBOBJECT>)</H2><WEBOBJECT NAME=Form1><TABLE CELLSPACING=0 CELLPADDING=2 BORDER=1><WEBOBJECT NAME=Repetition2><WEBOBJECT NAME=Conditional13><TR><TD colspan="2"><BR><WEBOBJECT NAME=String4></WEBOBJECT></TD></TR></WEBOBJECT><TR>
-	<WEBOBJECT NAME=Conditional12>
-		<TD ALIGN=RIGHT VALIGN=TOP><WEBOBJECT NAME=Conditional1><FONT COLOR="#ff0000">*</FONT>&nbsp;</WEBOBJECT><B><WEBOBJECT NAME=String1></WEBOBJECT>:</B><BR><WEBOBJECT NAME=String11></WEBOBJECT></TD>
-	</WEBOBJECT><WEBOBJECT NAME=GenericContainer1><WEBOBJECT NAME=SWFFieldDisplay1></WEBOBJECT></WEBOBJECT></TR></WEBOBJECT><TR><TH ALIGN=RIGHT COLSPAN=2><WEBOBJECT NAME=Conditional15><WEBOBJECT NAME=SubmitButton3></WEBOBJECT></WEBOBJECT>&nbsp;<WEBOBJECT NAME=Conditional14><WEBOBJECT NAME=SubmitButton2></WEBOBJECT></WEBOBJECT>&nbsp;<WEBOBJECT NAME=Conditional16><WEBOBJECT NAME=SubmitButton1></WEBOBJECT></WEBOBJECT></TH></TR></TABLE></WEBOBJECT></WEBOBJECT><WEBOBJECT NAME=Conditional17><H2>Please
-		review your data</H2><BR>
-	<WEBOBJECT NAME=Form2><TABLE CELLSPACING=0 CELLPADDING=2 BORDER=1>
-		<WEBOBJECT NAME=Repetition1><WEBOBJECT NAME=Conditional28>
-				<TR>
-					<TD COLSPAN=2><BR><WEBOBJECT NAME=String9></WEBOBJECT></TD>
-				</TR>
-			</WEBOBJECT>
-			<TR>
-				<WEBOBJECT NAME=Conditional27>
-					<TD ALIGN=RIGHT VALIGN=TOP><WEBOBJECT NAME=Conditional18><FONT COLOR="#ff0000">*</FONT>&nbsp;</WEBOBJECT><B><WEBOBJECT NAME=String8></WEBOBJECT>:</B><BR>
-						<WEBOBJECT NAME=String12></WEBOBJECT></TD>
-				</WEBOBJECT><WEBOBJECT NAME=GenericContainer2><WEBOBJECT NAME=String10></WEBOBJECT></WEBOBJECT>
-			</TR>
-		</WEBOBJECT>
-		<TR>
-			<TD></TD>
-			<TD ALIGN=RIGHT>&nbsp;&nbsp;<WEBOBJECT NAME=SubmitButton4></WEBOBJECT><WEBOBJECT NAME=SubmitButton5></WEBOBJECT></TD>
-		</TR>
-	</TABLE>
-</WEBOBJECT></WEBOBJECT><WEBOBJECT NAME=Conditional3><BR><BR><CENTER><WEBOBJECT NAME=Form3><WEBOBJECT NAME=SubmitButton7></WEBOBJECT></WEBOBJECT></CENTER><P ALIGN=CENTER><div style="border: 2px solid black; background-color: #eeeeee; text-align: center; font-size: large; padding: 20px; margin: 20px;"><WEBOBJECT NAME=String3></WEBOBJECT></div></P></WEBOBJECT></WEBOBJECT><WEBOBJECT NAME=Conditional5><TABLE CELLSPACING=0 CELLPADDING=2 BORDER=1 WIDTH="100%"><TR><TD ALIGN=CENTER>Form eru ekki birt i vi&eth;haldskerfi.</TD></TR></TABLE></WEBOBJECT></WEBOBJECT>
+<webobject name="HAS_ERROR_CONDITIONAL"><font color="#ff0000"><b><webobject name="ERROR_STRING"></webobject></b></font></webobject>
+
+<webobject name="FIRST_LEVEL_CONDITONAL">
+	<h2><webobject name="String5" /> (skref <webobject name="String6" /> af <webobject name="String7" />)</h2>
+	<webobject name="FORM">
+		<table cellspacing="0" cellpadding="0">
+			<webobject name="FIELD_REPETITION">
+				<webobject name="HAS_ABOVE_TEXT">
+					<tr>
+						<td colspan="2"><BR><webobject name="ABOVE_TEXT" /></td>
+					</tr>
+				</webobject>
+				<tr>
+					<webobject name="Conditional12">
+						<td align="RIGHT" valign="TOP"><webobject name="Conditional1"><font color="#ff0000">*</font> </webobject><b><webobject name="FIELD_NAME_STRING" />:</b><br /><webobject name="EXPLANATORY_TEXT_STRING" /></td>
+					</webobject>
+					<webobject name="TD_CONTAINER"><webobject name="FIELD_DISPLAY" /></webobject>
+				</tr>
+			</webobject>
+			<tr>
+				<th align="right" colspan="2">
+					<webobject name="IS_NOT_FIRST_FIELDSET_CONDITIONAL"><webobject name="SubmitButton3" /></webobject>
+					<webobject name="Conditional14"><webobject name="SubmitButton2" /></webobject>
+					<webobject name="Conditional16"><webobject name="SubmitButton1" /></webobject>
+				</th>
+			</tr>
+		</table>
+	</webobject>
+</webobject>
+
+<webobject name="SECOND_LEVEL_CONDITIONAL">
+	<h2>Please review your data</h2>
+	<webobject name="FORM_2">
+		<table cellspacing="0" cellpadding="2">
+			<webobject name="Repetition1">
+				<webobject name="Conditional28">
+					<tr>
+						<td colspan="2"><br /><webobject name="String9" /></td>
+					</tr>
+				</webobject>
+				<tr>
+					<webobject name="Conditional27">
+						<td align="right" valign="top">
+							<webobject name="Conditional18"><font color="#ff0000">*</font></webobject> <b><webobject name="String8" />:</b><br />
+							<webobject name="String12" />
+						</td>
+					</webobject>
+					<webobject name="GenericContainer2"><webobject name="String10" /></webobject>
+				</tr>
+			</webobject>
+			<tr>
+				<td></td>
+				<td align="right">&nbsp;&nbsp;<webobject name="MAKE_CORRECTIONS_BUTTON" /><webobject name="SUBMIT_FORM_BUTTON" /></td>
+			</tr>
+		</table>
+	</webobject>
+</webobject>
+
+<webobject name="THIRD_LEVEL_CONDITIONAL"><br /><br /><center><webobject name="PRINTABLE_FORM"><webobject name="PRINTABLE_SUBMIT_BUTTON"></webobject></webobject></center><p align="center"><div style="border: 2px solid black; background-color: #eeeeee; text-align: center; font-size: large; padding: 20px; margin: 20px;"><webobject name="POST_REGISTRATION_MESSAGE" /></div></p></webobject>
