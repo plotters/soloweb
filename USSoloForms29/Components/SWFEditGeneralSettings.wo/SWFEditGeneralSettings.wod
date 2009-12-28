@@ -1,36 +1,36 @@
-String2: WOString {
+NAME_STRING: WOString {
 	value = selectedForm.formID;
 }
 
-SubmitButton1: WOSubmitButton {
+SUBMIT_BUTTON: WOSubmitButton {
 	action = saveChanges;
 	value = "Save";
 }
 
-TextField1: WOTextField {
+NAME_FIELD: WOTextField {
 	size = 40;
 	value = selectedForm.name;
 }
 
-TextField3: WOText {
+AFTER_REGISTRATION: WOText {
 	value = selectedForm.registrationMessage;
 	cols = 60;
 	rows = 5;
 }
 
-TextField4: WOText {
+REQUIRED_FIELD_EMPTY_TEXT: WOText {
 	value = selectedForm.requiredFieldEmptyString;
 	cols = 60;
 	rows = 5;
 }
 
-TextField5: WOText {
+EMAIL_TO: WOText {
 	value = selectedForm.notifyEmailAddresses;
 	cols = 60;
 	rows = 5;
 }
 
-TextField6: WOTextField {
+EMAIL_FROM: WOTextField {
 	size = 40;
 	value = selectedForm.fromEmailAddress;
 }
