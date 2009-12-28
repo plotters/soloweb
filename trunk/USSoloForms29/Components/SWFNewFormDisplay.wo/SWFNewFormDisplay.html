@@ -1,7 +1,7 @@
 <webobject name="HAS_ERROR_CONDITIONAL"><font color="#ff0000"><b><webobject name="ERROR_STRING"></webobject></b></font></webobject>
 
 <webobject name="FIRST_LEVEL_CONDITONAL">
-	<h2><webobject name="String5" /> (skref <webobject name="String6" /> af <webobject name="String7" />)</h2>
+	<h2><webobject name="FIELD_SET_NAME" /> (skref <webobject name="CURRENT_INDEX" /> af <webobject name="FIELDSET_COUNT" />)</h2>
 	<webobject name="FORM">
 		<table cellspacing="0" cellpadding="0">
 			<webobject name="FIELD_REPETITION">
@@ -11,17 +11,17 @@
 					</tr>
 				</webobject>
 				<tr>
-					<webobject name="Conditional12">
-						<td align="RIGHT" valign="TOP"><webobject name="Conditional1"><font color="#ff0000">*</font> </webobject><b><webobject name="FIELD_NAME_STRING" />:</b><br /><webobject name="EXPLANATORY_TEXT_STRING" /></td>
+					<webobject name="FIELD_HAS_NAME_CONDITIONAL">
+						<td align="RIGHT" valign="TOP"><webobject name="IS_REQUIRED"><font color="#ff0000">*</font> </webobject><b><webobject name="FIELD_NAME_STRING" />:</b><br /><webobject name="EXPLANATORY_TEXT_STRING" /></td>
 					</webobject>
 					<webobject name="TD_CONTAINER"><webobject name="FIELD_DISPLAY" /></webobject>
 				</tr>
 			</webobject>
 			<tr>
 				<th align="right" colspan="2">
-					<webobject name="IS_NOT_FIRST_FIELDSET_CONDITIONAL"><webobject name="SubmitButton3" /></webobject>
-					<webobject name="Conditional14"><webobject name="SubmitButton2" /></webobject>
-					<webobject name="Conditional16"><webobject name="SubmitButton1" /></webobject>
+					<webobject name="IS_NOT_FIRST_FIELDSET_CONDITIONAL"><webobject name="PREVIOUS_FIELDSET_BUTTON" /></webobject>
+					<webobject name="IS_NOT_LAST_COND"><webobject name="NEXT_FIELDSET_BUTTON" /></webobject>
+					<webobject name="IS_LAST_COND"><webobject name="REVIEW_BUTTON" /></webobject>
 				</th>
 			</tr>
 		</table>
@@ -29,23 +29,23 @@
 </webobject>
 
 <webobject name="SECOND_LEVEL_CONDITIONAL">
-	<h2>Please review your data</h2>
+	<h2>Gakktu úr skugga um að gögnin séu rétt slegin inn</h2>
 	<webobject name="FORM_2">
 		<table cellspacing="0" cellpadding="2">
-			<webobject name="Repetition1">
-				<webobject name="Conditional28">
+			<webobject name="FIELD_REPETITION_2">
+				<webobject name="HAS_ABOVE_TEXT_2">
 					<tr>
-						<td colspan="2"><br /><webobject name="String9" /></td>
+						<td colspan="2"><br /><webobject name="ABOVE_TEXT_2" /></td>
 					</tr>
 				</webobject>
 				<tr>
-					<webobject name="Conditional27">
+					<webobject name="FIELD_HAS_NAME_CONDITIONAL_2">
 						<td align="right" valign="top">
-							<webobject name="Conditional18"><font color="#ff0000">*</font></webobject> <b><webobject name="String8" />:</b><br />
-							<webobject name="String12" />
+							<webobject name="IS_REQUIRED_2"><font color="#ff0000">*</font></webobject> <b><webobject name="FIELD_NAME_STRING_2" />:</b><br />
+							<webobject name="EXPLANATORY_TEXT_2" />
 						</td>
 					</webobject>
-					<webobject name="GenericContainer2"><webobject name="String10" /></webobject>
+					<webobject name="TD_CONTAINER_2"><webobject name="FIELD_VALUE_STRING" /></webobject>
 				</tr>
 			</webobject>
 			<tr>
@@ -56,4 +56,13 @@
 	</webobject>
 </webobject>
 
-<webobject name="THIRD_LEVEL_CONDITIONAL"><br /><br /><center><webobject name="PRINTABLE_FORM"><webobject name="PRINTABLE_SUBMIT_BUTTON"></webobject></webobject></center><p align="center"><div style="border: 2px solid black; background-color: #eeeeee; text-align: center; font-size: large; padding: 20px; margin: 20px;"><webobject name="POST_REGISTRATION_MESSAGE" /></div></p></webobject>
+<webobject name="THIRD_LEVEL_CONDITIONAL">
+	<center>
+		<webobject name="PRINTABLE_FORM"><webobject name="PRINTABLE_SUBMIT_BUTTON" /></webobject>
+	</center>
+	<p align="center">
+		<div style="border: 2px solid black; background-color: #eeeeee; text-align: center; font-size: large; padding: 20px; margin: 20px;">
+			<webobject name="POST_REGISTRATION_MESSAGE" />
+		</div>
+	</p>
+</webobject>

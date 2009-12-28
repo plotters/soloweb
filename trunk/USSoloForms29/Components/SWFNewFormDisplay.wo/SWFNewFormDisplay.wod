@@ -1,8 +1,8 @@
-Conditional1: WOConditional {
+IS_REQUIRED: WOConditional {
 	condition = currentField.isRequired;
 }
 
-Conditional12: WOConditional {
+FIELD_HAS_NAME_CONDITIONAL: WOConditional {
 	condition = currentField.name.length;
 }
 
@@ -10,7 +10,7 @@ HAS_ABOVE_TEXT: WOConditional {
 	condition = currentField.aboveText.length;
 }
 
-Conditional14: WOConditional {
+IS_NOT_LAST_COND: WOConditional {
 	condition = currentFieldSet.isLast;
 	negate = true;
 }
@@ -20,7 +20,7 @@ IS_NOT_FIRST_FIELDSET_CONDITIONAL: WOConditional {
 	negate = true;
 }
 
-Conditional16: WOConditional {
+IS_LAST_COND: WOConditional {
 	condition = currentFieldSet.isLast;
 }
 
@@ -29,7 +29,7 @@ SECOND_LEVEL_CONDITIONAL: WOKeyValueConditional {
 	value = "second";
 }
 
-Conditional18: WOConditional {
+IS_REQUIRED_2: WOConditional {
 	condition = currentField.isRequired;
 }
 
@@ -38,11 +38,11 @@ FIRST_LEVEL_CONDITONAL: WOKeyValueConditional {
 	value = "first";
 }
 
-Conditional27: WOConditional {
+FIELD_HAS_NAME_CONDITIONAL_2: WOConditional {
 	condition = currentField.name.length;
 }
 
-Conditional28: WOConditional {
+HAS_ABOVE_TEXT_2: WOConditional {
 	condition = currentField.aboveText.length;
 }
 
@@ -70,13 +70,13 @@ TD_CONTAINER: WOGenericContainer {
 	colspan = colspan;
 }
 
-GenericContainer2: WOGenericContainer {
+TD_CONTAINER_2: WOGenericContainer {
 	elementName = "td";
 	valign = "top";
 	colspan = colspan;
 }
 
-Repetition1: WORepetition {
+FIELD_REPETITION_2: WORepetition {
 	item = currentField;
 	list = selectedForm.sortedFieldsExcludingAdminFields;
 }
@@ -96,7 +96,7 @@ FIELD_NAME_STRING: WOString {
 	value = currentField.name;
 }
 
-String10: WOString {
+FIELD_VALUE_STRING: WOString {
 	value = currentStringWithBreaks;
 	escapeHTML = false;
 }
@@ -106,7 +106,7 @@ EXPLANATORY_TEXT_STRING: WOString {
 	escapeHTML = false;
 }
 
-String12: WOString {
+EXPLANATORY_TEXT_2: WOString {
 	escapeHTML = false;
 	value = currentField.explanatoryTextWithBreaks;
 }
@@ -129,38 +129,38 @@ ABOVE_TEXT: WOString {
 	escapeHTML = false;
 }
 
-String5: WOString {
+FIELD_SET_NAME: WOString {
 	value = currentFieldSet.name;
 }
 
-String6: WOString {
+CURRENT_INDEX: WOString {
 	value = currentIndexDisplay;
 }
 
-String7: WOString {
+FIELDSET_COUNT: WOString {
 	value = selectedForm.fieldSets.@count;
 }
 
-String8: WOString {
+FIELD_NAME_STRING_2: WOString {
 	value = currentField.name;
 }
 
-String9: WOString {
-	escapeHTML = false;
+ABOVE_TEXT_2: WOString {
 	value = currentField.aboveTextWithBreaks;
+	escapeHTML = false;
 }
 
-SubmitButton1: WOSubmitButton {
+REVIEW_BUTTON: WOSubmitButton {
 	action = goToPreview;
 	value = "Review data";
 }
 
-SubmitButton2: WOSubmitButton {
+NEXT_FIELDSET_BUTTON: WOSubmitButton {
 	action = nextFieldSet;
 	value = "Next";
 }
 
-SubmitButton3: WOSubmitButton {
+PREVIOUS_FIELDSET_BUTTON: WOSubmitButton {
 	value = "Previous";
 	action = previousFieldSet;
 }
