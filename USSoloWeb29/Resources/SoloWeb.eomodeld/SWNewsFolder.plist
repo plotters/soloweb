@@ -35,6 +35,7 @@
     primaryKeyAttributes = (folderID); 
     relationships = (
         {
+            deleteRule = EODeleteRuleCascade; 
             destination = SWNewsFolder; 
             isToMany = Y; 
             joinSemantic = EOInnerJoin; 

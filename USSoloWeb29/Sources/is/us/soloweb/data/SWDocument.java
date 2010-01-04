@@ -128,7 +128,7 @@ public class SWDocument extends _SWDocument implements SWAsset<SWDocumentFolder>
 	 * @return The asset's size in kibibytes.
 	 */
 	public double sizeKB() {
-		return size() / 1024d;
+		return size() / 1000d;
 	}
 
 	/**
