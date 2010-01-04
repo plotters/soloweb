@@ -1,7 +1,7 @@
 {
     attributes = (
         {columnName = "DONT_STORE_DATA"; name = dontStoreData; prototypeName = int; }, 
-        {columnName = "FORM_FOLDER_ID"; name = formFolderID; prototypeName = int; }, 
+        {columnName = "FORM_FOLDER_ID"; name = folderID; prototypeName = int; }, 
         {allowsNull = N; columnName = "FORM_ID"; name = formID; prototypeName = int; }, 
         {
             columnName = "FROM_EMAIL_ADDRESS"; 
@@ -42,11 +42,11 @@
         registrationMessage, 
         usersCanDeleteRegistrations, 
         requiredFieldEmptyString, 
-        formFolderID, 
         dontStoreData, 
         notifyEmailAddresses, 
         fromEmailAddress, 
-        maxRegistrations
+        maxRegistrations, 
+        folderID
     ); 
     className = "is.us.soloweb.forms.data.SWFForm"; 
     classProperties = (
@@ -57,14 +57,14 @@
         registrationMessage, 
         usersCanDeleteRegistrations, 
         requiredFieldEmptyString, 
-        formFolderID, 
         folder, 
         dontStoreData, 
         notifyEmailAddresses, 
         fromEmailAddress, 
         fieldSets, 
         fixedSearches, 
-        maxRegistrations
+        maxRegistrations, 
+        folderID
     ); 
     externalName = "SWF_FORM"; 
     fetchSpecificationDictionary = {}; 
@@ -100,7 +100,7 @@
             destination = SWFFormFolder; 
             isToMany = N; 
             joinSemantic = EOInnerJoin; 
-            joins = ({destinationAttribute = folderID; sourceAttribute = formFolderID; }); 
+            joins = ({destinationAttribute = folderID; sourceAttribute = folderID; }); 
             name = folder; 
         }, 
         {
