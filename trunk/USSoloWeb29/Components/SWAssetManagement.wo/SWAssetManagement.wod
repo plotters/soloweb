@@ -1,7 +1,7 @@
 WRAPPER: SWAdminComponentWrapper {}
 
 HAS_DOCUMENTS_CONDITIONAL: WOConditional {
-	condition = selectedFolder.sortedDocuments.count;
+	condition = selectedFolder.count;
 }
 
 CREATE_ROOT_FOLDER_CONDITIONAL: WOConditional {

@@ -108,4 +108,9 @@ public class SWNewsFolder extends _SWNewsFolder implements SWFolder<SWNewsFolder
 	public String nameIncludingHierarchy() {
 		return SWFolderUtilities.nameIncludingHierarchy( this );
 	}
+
+	@Override
+	public Class documentEntityClass() {
+		return SWNewsItem.class;
+	}
 }

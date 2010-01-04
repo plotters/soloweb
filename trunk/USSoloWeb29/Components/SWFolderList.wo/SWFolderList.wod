@@ -38,5 +38,5 @@ String1: WOString {
 }
 
 ITEM_COUNT_STRING : WOString {
-	value = currentFolder.sortedDocuments.count;
+	value = currentFolder.count;
 }

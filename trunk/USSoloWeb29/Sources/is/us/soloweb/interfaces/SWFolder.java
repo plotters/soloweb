@@ -65,4 +65,9 @@ public interface SWFolder<E, T> extends EOEnterpriseObject, USHierarchy, SWTrans
 	 * Calculates the number of files in the folder.
 	 */
 	public int count();
+
+	/**
+	 * The entity name of the document objects in the folder.
+	 */
+	public Class documentEntityClass();
 }
