@@ -109,4 +109,9 @@ public class SWDocumentFolder extends _SWDocumentFolder implements SWFolder<SWDo
 	public String nameIncludingHierarchy() {
 		return SWFolderUtilities.nameIncludingHierarchy( this );
 	}
+
+	@Override
+	public Class documentEntityClass() {
+		return SWDocument.class;
+	}
 }

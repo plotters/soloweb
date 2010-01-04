@@ -2,6 +2,7 @@ package is.us.soloweb.util;
 
 import is.us.soloweb.admin.SWAssetManagement;
 import is.us.soloweb.data.SWDocumentFolder;
+import is.us.soloweb.data.SWNewsItem;
 import is.us.soloweb.interfaces.SWAsset;
 import is.us.soloweb.interfaces.SWFolder;
 import is.us.util.USArrayUtilities;
@@ -15,6 +16,8 @@ import com.webobjects.eocontrol.EOFetchSpecification;
 import com.webobjects.eocontrol.EOQualifier;
 import com.webobjects.foundation.NSArray;
 import com.webobjects.foundation.NSMutableArray;
+
+import er.extensions.eof.ERXEOControlUtilities;
 
 /**
  * @author A mixin for use with SWFolder
@@ -120,8 +123,9 @@ public class SWFolderUtilities {
 	 * Number of items in this folder. Does not include subfolders.
 	 */
 	public static int count( SWFolder folder ) {
-		//		ERXEOControlUtilities.objectCountWithQualifier( folder.editingContext(), folder.entityName(), qualifier )
-		return folder.sortedDocuments().count();
+		EOQualifier q = SWNewsItem.FOLDER_ID.eq( folder.folderID() );
+		return ERXEOControlUtilities.objectCountWithQualifier( folder.editingContext(), folder.documentEntityClass().getSimpleName(), q );
+		//		return folder.sortedDocuments().count();
 	}
 
 	/**
