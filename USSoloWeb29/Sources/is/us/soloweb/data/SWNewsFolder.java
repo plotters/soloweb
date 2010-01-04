@@ -16,7 +16,7 @@ import com.webobjects.foundation.NSArray;
  * @since 2.4
  */
 
-public class SWNewsFolder extends _SWNewsFolder implements SWFolder<SWNewsFolder> {
+public class SWNewsFolder extends _SWNewsFolder implements SWFolder<SWNewsFolder, SWNewsItem> {
 
 	/**
 	 * Implementation of SWTransferable. Transfers this folder to a new parent
