@@ -16,7 +16,7 @@ import com.webobjects.foundation.NSArray;
  * @author Hugi Þórðarson
  */
 
-public class SWFFormFolder extends _SWFFormFolder implements SWFolder<SWFFormFolder>, SWInspectable {
+public class SWFFormFolder extends _SWFFormFolder implements SWFolder<SWFFormFolder, SWFForm>, SWInspectable {
 
 	@Override
 	public NSArray<SWFForm> sortedDocuments() {
