@@ -2,15 +2,17 @@ package is.us.soloweb.data;
 
 import is.us.soloweb.SoloWeb;
 import is.us.soloweb.util.SWC;
-import is.us.util.*;
+import is.us.util.USEOUtilities;
+import is.us.util.USUtilities;
 
 import java.util.Enumeration;
 
-import com.webobjects.eoaccess.*;
+import com.webobjects.eoaccess.EOEntity;
+import com.webobjects.eoaccess.EOUtilities;
 
 /**
  * An SWAccessPrivilege stores an array of access privileges for a user/group
- *
+ * 
  * @author Hugi Þórðarson
  * @version 2.7
  * @since 2.7
@@ -19,21 +21,24 @@ import com.webobjects.eoaccess.*;
 public class SWAccessPrivilege extends _SWAccessPrivilege {
 
 	/**
-	 * returns true if this privilege is a user privilege, rather than a group privilege
+	 * returns true if this privilege is a user privilege, rather than a group
+	 * privilege
 	 */
 	public boolean isUserPrivilege() {
 		return user() != null;
 	}
 
 	/**
-	 * returns true if this privilege is a group privilege, rather than a user privilege
+	 * returns true if this privilege is a group privilege, rather than a user
+	 * privilege
 	 */
 	public boolean isGroupPrivilege() {
 		return group() != null;
 	}
 
 	/**
-	 * Returns the name of the group if this is a group privilege, but user, if it`s a user privilege
+	 * Returns the name of the group if this is a group privilege, but user, if
+	 * it`s a user privilege
 	 */
 	public String name() {
 
@@ -47,14 +52,16 @@ public class SWAccessPrivilege extends _SWAccessPrivilege {
 	}
 
 	/**
-	 * If an unbound key request comes in, it is handled by valueForIdentifier( String )
+	 * If an unbound key request comes in, it is handled by valueForIdentifier(
+	 * String )
 	 */
 	public Object handleQueryWithUnboundKey( String myKey ) {
 		return valueForIdentifier( myKey );
 	}
 
 	/**
-	 * If a value is set for an unbound key, it is handled by setValueForIdentifier( Number, String )
+	 * If a value is set for an unbound key, it is handled by
+	 * setValueForIdentifier( Number, String )
 	 */
 	public void handleTakeValueForUnboundKey( Object myValue, String myKey ) {
 
@@ -110,10 +117,10 @@ public class SWAccessPrivilege extends _SWAccessPrivilege {
 		if( identifier.equals( null ) )
 			return null;
 
-		Enumeration e = values().objectEnumerator();
+		Enumeration<SWAccessPrivilegeValue> e = values().objectEnumerator();
 
 		while( e.hasMoreElements() ) {
-			SWAccessPrivilegeValue apv = (SWAccessPrivilegeValue)e.nextElement();
+			SWAccessPrivilegeValue apv = e.nextElement();
 
 			if( identifier.equals( apv.identifier() ) )
 				return apv;
@@ -123,14 +130,14 @@ public class SWAccessPrivilege extends _SWAccessPrivilege {
 	}
 
 	/**
-	 * the entity of the record this privilege applies to. 
+	 * the entity of the record this privilege applies to.
 	 */
 	private EOEntity destinationEntityEntity() {
 		return EOUtilities.entityNamed( editingContext(), destinationEntity() );
 	}
 
 	/**
-	 * The database record that this privilege applies to. 
+	 * The database record that this privilege applies to.
 	 */
 	public Object record() {
 		Object record = USEOUtilities.objectMatchingKeyAndValue( editingContext(), destinationEntity(), destinationEntityEntity().primaryKeyAttributeNames().objectAtIndex( 0 ), destinationID() );

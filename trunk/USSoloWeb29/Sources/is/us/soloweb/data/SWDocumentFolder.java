@@ -17,7 +17,7 @@ import com.webobjects.foundation.NSArray;
  * @since 2.7
  */
 
-public class SWDocumentFolder extends _SWDocumentFolder implements SWFolder<SWDocumentFolder> {
+public class SWDocumentFolder extends _SWDocumentFolder implements SWFolder<SWDocumentFolder, SWDocument> {
 
 	/**
 	 * Implementation of SWTransferable. Transfers this folder to a new parent

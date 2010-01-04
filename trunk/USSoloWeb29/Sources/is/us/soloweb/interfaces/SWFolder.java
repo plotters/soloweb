@@ -14,7 +14,7 @@ import com.webobjects.foundation.NSArray;
  * @since 2.7
  */
 
-public interface SWFolder<E> extends EOEnterpriseObject, USHierarchy, SWTransferable, SWInheritsPrivileges, SWInspectable {
+public interface SWFolder<E, T> extends EOEnterpriseObject, USHierarchy, SWTransferable, SWInheritsPrivileges, SWInspectable {
 
 	/**
 	 * The folder's name
@@ -39,12 +39,12 @@ public interface SWFolder<E> extends EOEnterpriseObject, USHierarchy, SWTransfer
 	/**
 	 * Unsorted documents in this folder.
 	 */
-	public NSArray<? extends SWAsset> documents();
+	public NSArray<T> documents();
 
 	/**
 	 * Sorted documents in this folder.
 	 */
-	public NSArray<? extends SWAsset> sortedDocuments();
+	public NSArray<T> sortedDocuments();
 
 	/**
 	 * @return The total size of objects in the folder in bytes.

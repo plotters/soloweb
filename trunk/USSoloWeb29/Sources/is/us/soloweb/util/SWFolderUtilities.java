@@ -120,6 +120,7 @@ public class SWFolderUtilities {
 	 * Number of items in this folder. Does not include subfolders.
 	 */
 	public static int count( SWFolder folder ) {
+		//		ERXEOControlUtilities.objectCountWithQualifier( folder.editingContext(), folder.entityName(), qualifier )
 		return folder.sortedDocuments().count();
 	}
 
