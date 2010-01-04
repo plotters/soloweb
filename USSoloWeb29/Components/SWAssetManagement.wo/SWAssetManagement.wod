@@ -198,13 +198,3 @@ EDIT_SWITCH_COMPONENT: WOSwitchComponent {
 SELECTED_FOLDER_CONDITIONAL: WOConditional {
 	condition = selectedFolder;
 }
-
-SEARCH_FORM : WOForm {}
-
-SEARCH_FIELD : WOTextField {
-	value = searchString;
-}
-
-SEARCH_BUTTON : WOSubmitButton {
-	action = search;
-}

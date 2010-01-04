@@ -2,10 +2,14 @@ package is.us.soloweb.admin;
 
 import is.us.soloweb.SWSession;
 import is.us.soloweb.interfaces.SWFolder;
-import is.us.soloweb.util.*;
-import is.us.util.*;
+import is.us.soloweb.util.SWAccessPrivilegeUtilities;
+import is.us.soloweb.util.SWC;
+import is.us.util.USArrayUtilities;
+import is.us.util.USHierarchyUtilities;
 
-import com.webobjects.appserver.*;
+import com.webobjects.appserver.WOActionResults;
+import com.webobjects.appserver.WOApplication;
+import com.webobjects.appserver.WOContext;
 import com.webobjects.eoaccess.EOUtilities;
 import com.webobjects.foundation.NSArray;
 
@@ -27,6 +31,9 @@ public class SWFolderList extends SWAdminComponent {
 		return false;
 	}
 
+	/**
+	 * FIXME: This is major voodoo. Stop. Doing. This.
+	 */
 	public NSArray<SWFolder> rootFolders() {
 		NSArray<SWFolder> a = NSArray.emptyArray();
 
@@ -101,7 +108,8 @@ public class SWFolderList extends SWAdminComponent {
 	}
 
 	/**
-	 * Determines if the current branch should be expanded (if subpages should be displayed)
+	 * Determines if the current branch should be expanded (if subpages should
+	 * be displayed)
 	 */
 	public boolean isExpanded( SWFolder anObject ) {
 		return ((SWSession)session()).arrayWithKeyContainsObject( entityName(), anObject );
@@ -136,7 +144,7 @@ public class SWFolderList extends SWAdminComponent {
 	}
 
 	/**
-	 * Toggles visibility of subfolders. 
+	 * Toggles visibility of subfolders.
 	 */
 	public WOActionResults toggleDisplay() {
 		if( isExpanded( currentFolder ) )
@@ -148,7 +156,7 @@ public class SWFolderList extends SWAdminComponent {
 	}
 
 	/**
-	 * True if the current folder has no subfolders. 
+	 * True if the current folder has no subfolders.
 	 */
 	public boolean hasNoSubFolders() {
 		return !USArrayUtilities.arrayHasObjects( currentFolder.sortedSubFolders() );

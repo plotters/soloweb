@@ -25,20 +25,8 @@ import er.extensions.eof.ERXEOControlUtilities;
 public class SWFolderUtilities {
 
 	private static final EOQualifier ROOT_FOLDER_QUALIFIER = SWDocumentFolder.PARENT_FOLDER_ID.isNull();
-	private static final String PARENT_FOLDER_REL = "parent";
-
-	/**
-	 * Implementation of SWTransferable. Transfers this folder to a new parent
-	 * folder
-	 * 
-	 * @param newOwner The destination parent object
-	 * 
-	 *        public static void transferOwnership( SWFolder folder, SWFolder
-	 *        newOwner ) {
-	 *        folder.removeObjectFromBothSidesOfRelationshipWithKey( parent(),
-	 *        PARENT_KEY ); folder.addObjectToBothSidesOfRelationshipWithKey(
-	 *        newOwner, PARENT_KEY ); }
-	 */
+	private static final String PARENT_KEY = "parent";
+	private static final String NAME_KEY = "name";
 
 	/**
 	 * Returns all folder objects without a parent folder (essentially root
@@ -50,7 +38,7 @@ public class SWFolderUtilities {
 	public static NSArray sortedRootFolders( EOEditingContext ec, SWFolder folder ) {
 		EOFetchSpecification fs = new EOFetchSpecification( folder.entityName(), ROOT_FOLDER_QUALIFIER, null );
 		NSArray a = ec.objectsWithFetchSpecification( fs );
-		return USArrayUtilities.sortedArrayUsingIcelandicComparator( a, "name" );
+		return USArrayUtilities.sortedArrayUsingIcelandicComparator( a, NAME_KEY );
 	}
 
 	/**
@@ -59,7 +47,7 @@ public class SWFolderUtilities {
 	 * @return An NSArray with subfolders
 	 */
 	public static NSArray sortedSubFolders( SWFolder folder ) {
-		return USArrayUtilities.sortedArrayUsingIcelandicComparator( folder.children(), "name" );
+		return USArrayUtilities.sortedArrayUsingIcelandicComparator( folder.children(), NAME_KEY );
 	}
 
 	/**
@@ -69,16 +57,17 @@ public class SWFolderUtilities {
 	 */
 	public static SWFolder subFolderNamed( SWFolder parentFolder, String folderName ) {
 
-		if( folderName == null )
+		if( folderName == null ) {
 			return null;
+		}
 
-		Enumeration<SWFolder> e = parentFolder.sortedSubFolders().objectEnumerator();
+		NSArray<SWFolder> a = parentFolder.sortedSubFolders();
 
-		while( e.hasMoreElements() ) {
-			SWFolder currentFolder = e.nextElement();
+		for( SWFolder f : a ) {
 
-			if( folderName.equals( currentFolder.name() ) )
-				return currentFolder;
+			if( folderName.equals( f.name() ) ) {
+				return f;
+			}
 		}
 
 		return null;
@@ -89,8 +78,9 @@ public class SWFolderUtilities {
 	 */
 	public static SWAsset itemNamed( SWFolder folder, String itemName ) {
 
-		if( itemName == null )
+		if( itemName == null ) {
 			return null;
+		}
 
 		Enumeration<SWAsset> e = folder.sortedDocuments().objectEnumerator();
 
@@ -115,7 +105,7 @@ public class SWFolderUtilities {
 		}
 
 		if( folder.parent() != null ) {
-			folder.removeObjectFromBothSidesOfRelationshipWithKey( folder.parent(), SWDocumentFolder.PARENT_KEY );
+			folder.removeObjectFromBothSidesOfRelationshipWithKey( folder.parent(), PARENT_KEY );
 		}
 
 		folder.editingContext().deleteObject( folder );
@@ -127,7 +117,6 @@ public class SWFolderUtilities {
 	public static int count( SWFolder folder ) {
 		EOQualifier q = SWNewsItem.FOLDER_ID.eq( folder.folderID() );
 		return ERXEOControlUtilities.objectCountWithQualifier( folder.editingContext(), folder.documentEntityClass().getSimpleName(), q );
-		//		return folder.sortedDocuments().count();
 	}
 
 	/**
@@ -180,7 +169,7 @@ public class SWFolderUtilities {
 		newFolder.setInheritsPrivileges( SWC.TRUE_INTEGER );
 
 		if( parentFolder != null ) {
-			newFolder.addObjectToBothSidesOfRelationshipWithKey( parentFolder, PARENT_FOLDER_REL );
+			newFolder.addObjectToBothSidesOfRelationshipWithKey( parentFolder, PARENT_KEY );
 		}
 
 		return newFolder;
