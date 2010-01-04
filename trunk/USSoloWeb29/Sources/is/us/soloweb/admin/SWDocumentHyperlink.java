@@ -1,20 +1,23 @@
 package is.us.soloweb.admin;
 
-import is.us.soloweb.data.*;
+import is.us.soloweb.data.SWDocument;
+import is.us.soloweb.data.SWDocumentFolder;
 import is.us.util.USUtilities;
 
-import com.webobjects.appserver.*;
+import com.webobjects.appserver.WOActionResults;
+import com.webobjects.appserver.WOComponent;
+import com.webobjects.appserver.WOContext;
 import com.webobjects.foundation.NSKeyValueCoding;
 
 import er.extensions.components.ERXComponent;
 import er.extensions.foundation.ERXStringUtilities;
 
 /**
- * Use this component to select an SWDocument to use.
- * To use this component, include it in your page, and specify a record to connect to a picture,
- * the name of the relationship pointing to the SWDocument, and an instance of a WOComponent to
- * return to, once picture selection has been completed.
- *
+ * Use this component to select an SWDocument to use. To use this component,
+ * include it in your page, and specify a record to connect to a picture, the
+ * name of the relationship pointing to the SWDocument, and an instance of a
+ * WOComponent to return to, once picture selection has been completed.
+ * 
  * @author Hugi Þórðarson
  * @version 2.9.2b1
  * @since 2.5
@@ -38,7 +41,8 @@ public class SWDocumentHyperlink extends ERXComponent {
 	public String fieldName;
 
 	/**
-	 * A WOComponent instance to return after picture selection has been completed
+	 * A WOComponent instance to return after picture selection has been
+	 * completed
 	 */
 	public WOComponent componentToReturn;
 
@@ -96,7 +100,7 @@ public class SWDocumentHyperlink extends ERXComponent {
 	public WOActionResults nullifyDocument() {
 		record.takeValueForKey( null, fieldName );
 		session().defaultEditingContext().saveChanges();
-		return context().page();
+		return null;
 	}
 
 	public String uniqueIdentifier() {
