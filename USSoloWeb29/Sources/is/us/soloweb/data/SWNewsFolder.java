@@ -76,7 +76,7 @@ public class SWNewsFolder extends _SWNewsFolder implements SWFolder<SWNewsFolder
 	 * subfolders.
 	 */
 	public double sizeKB() {
-		return SWFolderUtilities.size( this );
+		return SWFolderUtilities.sizeKB( this );
 	}
 
 	/**

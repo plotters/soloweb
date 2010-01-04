@@ -74,8 +74,10 @@ public class SWDocument extends _SWDocument implements SWAsset<SWDocumentFolder>
 	 * @return The document's data
 	 */
 	public NSData data() {
-		if( documentID() == null )
+		if( documentID() == null ) {
 			return _temporaryData;
+		}
+
 		byte[] b = USDataUtilities.readBytesFromFile( file() );
 
 		if( b == null )
