@@ -84,7 +84,6 @@ public class SWDocumentFolder extends _SWDocumentFolder implements SWFolder<SWDo
 	 * Implementation of SWInheritsPrivileges - returns the object this object
 	 * should inherit privileges from (the parent folder)
 	 */
-	@Override
 	public SWInheritsPrivileges inheritsPrivilegesFrom() {
 		return parent();
 	}
