@@ -18,49 +18,40 @@ import com.webobjects.foundation.NSArray;
 
 public class SWFFormFolder extends _SWFFormFolder implements SWFolder<SWFFormFolder, SWFForm>, SWInspectable {
 
-	@Override
 	public NSArray<SWFForm> sortedDocuments() {
 		return USArrayUtilities.sortedArrayUsingIcelandicComparator( documents(), SWDocument.NAME_KEY );
 
 	}
 
-	@Override
 	public void transferOwnership( EOEnterpriseObject newOwner ) {
 		this.removeObjectFromBothSidesOfRelationshipWithKey( parent(), PARENT_KEY );
 		this.addObjectToBothSidesOfRelationshipWithKey( newOwner, PARENT_KEY );
 	}
 
-	@Override
 	public NSArray<SWFFormFolder> sortedRootFolders( EOEditingContext ec ) {
 		return SWFolderUtilities.sortedRootFolders( ec, this );
 	}
 
-	@Override
 	public NSArray<SWFFormFolder> sortedSubFolders() {
 		return SWFolderUtilities.sortedSubFolders( this );
 	}
 
-	@Override
 	public long size() {
 		return SWFolderUtilities.size( this );
 	}
 
-	@Override
 	public double sizeKB() {
 		return SWFolderUtilities.sizeKB( this );
 	}
 
-	@Override
 	public int count() {
 		return SWFolderUtilities.count( this );
 	}
 
-	@Override
 	public SWInheritsPrivileges inheritsPrivilegesFrom() {
 		return parent();
 	}
 
-	@Override
 	public Class documentEntityClass() {
 		return SWFForm.class;
 	}
