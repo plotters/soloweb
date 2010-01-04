@@ -1,17 +1,33 @@
 package is.us.soloweb.data;
 
-import is.us.soloweb.interfaces.*;
-import is.us.soloweb.util.*;
-import is.us.util.*;
+import is.us.soloweb.interfaces.SWCustomInfo;
+import is.us.soloweb.interfaces.SWInheritsPrivileges;
+import is.us.soloweb.interfaces.SWInspectable;
+import is.us.soloweb.interfaces.SWTimedContent;
+import is.us.soloweb.interfaces.SWTransferable;
+import is.us.soloweb.util.SWC;
+import is.us.soloweb.util.SWTimedContentUtilities;
+import is.us.util.USArrayUtilities;
+import is.us.util.USHierarchy;
+import is.us.util.USHierarchyUtilities;
+import is.us.util.USSortable;
+import is.us.util.USSortableUtilities;
+import is.us.util.USStringUtilities;
+import is.us.util.USUtilities;
 
-import java.util.*;
+import java.util.Enumeration;
+import java.util.Locale;
 
-import com.webobjects.eocontrol.*;
-import com.webobjects.foundation.*;
+import com.webobjects.eocontrol.EOEnterpriseObject;
+import com.webobjects.eocontrol.EOQualifier;
+import com.webobjects.eocontrol.EOSortOrdering;
+import com.webobjects.foundation.NSArray;
+import com.webobjects.foundation.NSMutableArray;
+import com.webobjects.foundation.NSMutableDictionary;
 
 /**
  * An SWPage represents a single page of content in SoloWeb
- *
+ * 
  * @author Hugi Þórðarson
  * @version 2.9.2b6
  * @since 2.3
@@ -98,8 +114,10 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	}
 
 	/**
-	 * A convenience method to insert a new subpage at the specified index. Takes care of resorting all pages with sortnumber above the specified index.
-	 *
+	 * A convenience method to insert a new subpage at the specified index.
+	 * Takes care of resorting all pages with sortnumber above the specified
+	 * index.
+	 * 
 	 * @param aPAge an SWPage object to insert
 	 * @param index sortingnumber for the new page
 	 */
@@ -123,8 +141,9 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	}
 
 	/**
-	 * A convenience method to remove the specified subpage. Takes care of resorting all pages with sortnumbers above the specified index.
-	 *
+	 * A convenience method to remove the specified subpage. Takes care of
+	 * resorting all pages with sortnumbers above the specified index.
+	 * 
 	 * @param aPAge an SWPage object to remove from subPages
 	 */
 	public void removeSubPage( SWPage aPage ) {
@@ -145,7 +164,8 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	}
 
 	/**
-	 * Used to shift the page's sort ordering (only done by "1" or "-1" in the current version
+	 * Used to shift the page's sort ordering (only done by "1" or "-1" in the
+	 * current version
 	 */
 	public void changeSortOrder( int offset ) {
 
@@ -168,14 +188,16 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	}
 
 	/**
-	 * A boolean telling us if this page is the uppermost of it`s siblingPages array
+	 * A boolean telling us if this page is the uppermost of it`s siblingPages
+	 * array
 	 */
 	public boolean isFirst() {
 		return USSortableUtilities.isFirst( this );
 	}
 
 	/**
-	 * A boolean telling us if this page is the bottom of it`s siblingPages array
+	 * A boolean telling us if this page is the bottom of it`s siblingPages
+	 * array
 	 */
 	public boolean isLast() {
 		return USSortableUtilities.isLast( this, siblingPages() );
@@ -189,7 +211,8 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	}
 
 	/**
-	 * All published SWComponents related to this page, sorted by their sortnumber
+	 * All published SWComponents related to this page, sorted by their
+	 * sortnumber
 	 */
 	public NSArray<SWComponent> sortedAndApprovedComponents() {
 		NSArray<SWComponent> anArray = EOQualifier.filteredArrayWithQualifier( sortedComponents(), PUBLISHED_QUALIFIER );
@@ -219,7 +242,8 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	}
 
 	/**
-	 * A convenience method to remove a component from the page. Takes care of keeping the sortnumbers correct.
+	 * A convenience method to remove a component from the page. Takes care of
+	 * keeping the sortnumbers correct.
 	 */
 	public void removeComponent( SWComponent aComponent ) {
 
@@ -238,16 +262,19 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	}
 
 	/**
-	 * Checks if aPage is a subpage of this page. Includingself indicates if aPage should be included in the check.
+	 * Checks if aPage is a subpage of this page. Includingself indicates if
+	 * aPage should be included in the check.
 	 */
 	public boolean isParentPageOfPage( SWPage page, boolean includingSelf ) {
 		return USHierarchyUtilities.isParentNodeOfNode( this, page, includingSelf );
 	}
 
 	/**
-	 * returns an array with all pages owing inheritance to this page, down the entire site tree.
-	 *
-	 * @param includingTopLevel indicates if the topLevePage should be included in the array.
+	 * returns an array with all pages owing inheritance to this page, down the
+	 * entire site tree.
+	 * 
+	 * @param includingTopLevel indicates if the topLevePage should be included
+	 *        in the array.
 	 */
 	public NSArray<SWPage> everySubPage( boolean includingSelf ) {
 		return USHierarchyUtilities.everyChild( this, includingSelf );
@@ -262,17 +289,19 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 
 	/**
 	 * Tells us if the specified page owes inheritance to the specified page
-	 *
+	 * 
 	 * @param aPage the page to check against
-	 * @param includingTopLevel if this is false, aPage will not be checked against, only it`s subpages
+	 * @param includingTopLevel if this is false, aPage will not be checked
+	 *        against, only it`s subpages
 	 */
 	public boolean isSubPageOfPage( SWPage aPage, boolean includingTopLevel ) {
 		return USHierarchyUtilities.isChildOfNode( this, aPage, true );
 	}
 
 	/**
-	 * A convenience method to transfer one page to another page. Takes care of maintaining sortorder and relationships
-	 *
+	 * A convenience method to transfer one page to another page. Takes care of
+	 * maintaining sortorder and relationships
+	 * 
 	 * @param newOwner the page to transfer ownership to
 	 */
 	public void transferOwnership( EOEnterpriseObject newOwner ) {
@@ -331,7 +360,8 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	}
 
 	/**
-	 * Returns an array of all parent pages. includeSelf indicates if the calling page should be included.
+	 * Returns an array of all parent pages. includeSelf indicates if the
+	 * calling page should be included.
 	 */
 	public NSArray<SWPage> everyParentPage( boolean includingSelf ) {
 		return USHierarchyUtilities.everyParentNode( this, includingSelf );
@@ -345,7 +375,8 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	}
 
 	/**
-	 * Returns an array containing all parent pages in reverse order. includeSelf indicates if the calling page should be included.
+	 * Returns an array containing all parent pages in reverse order.
+	 * includeSelf indicates if the calling page should be included.
 	 */
 	public NSArray<SWPage> breadcrumb( boolean includeSelf ) {
 		return USHierarchyUtilities.everyParentNodeReversed( this, includeSelf );
@@ -397,7 +428,8 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	}
 
 	/**
-	 * Returns this pages name, plus the prefix specified in a parent page. If no prefix is specified, returns the page`s name
+	 * Returns this pages name, plus the prefix specified in a parent page. If
+	 * no prefix is specified, returns the page`s name
 	 */
 	public String nameWithPrefix() {
 		String aString = (String)USHierarchyUtilities.valueInHierarchyForKeyPath( this, NAME_PREFIX_KEY );
@@ -405,7 +437,8 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	}
 
 	/**
-	 * Returns this pages name, plus all prefixes specified for parent pages. If no prefixes are specified, returns the page's name
+	 * Returns this pages name, plus all prefixes specified for parent pages. If
+	 * no prefixes are specified, returns the page's name
 	 */
 	public String nameWithAccumulatedPrefix() {
 
@@ -424,14 +457,16 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	}
 
 	/**
-	 * Returns true if this page`s display time has come, and has not expired. Returns true if no values are specified for timeIn or timeOut.
+	 * Returns true if this page`s display time has come, and has not expired.
+	 * Returns true if no values are specified for timeIn or timeOut.
 	 */
 	public boolean isTimeValid() {
 		return SWTimedContentUtilities.validateDisplayTime( this );
 	}
 
 	/**
-	 * Returns the page at the specified index in the parent page hierarchy. 0 is the front page of the site, 1 is the subpage of that page etc.
+	 * Returns the page at the specified index in the parent page hierarchy. 0
+	 * is the front page of the site, 1 is the subpage of that page etc.
 	 */
 
 	public SWPage parentPageAtLevel( int aLevel ) {
@@ -460,14 +495,14 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	}
 
 	/**
-	 * ??? 
+	 * ???
 	 */
 	public NSArray<SWPage> expandedSiteTree() {
 		return expandedSiteTreeFromLevel( 1 );
 	}
 
 	/**
-	 * ??? 
+	 * ???
 	 */
 	public NSArray<SWPage> expandedSiteTreeFromLevel( int level ) {
 
@@ -493,7 +528,7 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	}
 
 	/**
-	 * ??? 
+	 * ???
 	 */
 	private NSArray<SWPage> everySubPageForSelectedPage( SWPage aPage ) {
 		NSArray<SWPage> subPages = aPage.sortedAndApprovedSubPages();
@@ -513,7 +548,7 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	}
 
 	/**
-	 * Creates a new subpage of this page with the given name. 
+	 * Creates a new subpage of this page with the given name.
 	 */
 	public SWPage createSubPage() {
 		SWPage newPage = new SWPage();
@@ -529,7 +564,7 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	}
 
 	/**
-	 * FIXME: Implement generic way to copy stuff. 
+	 * FIXME: Implement generic way to copy stuff.
 	 */
 	public SWPage createCopy() {
 
@@ -573,7 +608,7 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	}
 
 	/**
-	 * ??? 
+	 * ???
 	 */
 	public Object valueForKeyPath( String s ) {
 
@@ -584,7 +619,7 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	}
 
 	/**
-	 * ??? 
+	 * ???
 	 */
 	public Object valueForKey( String s ) {
 		if( s != null && s.charAt( 0 ) == '@' )
@@ -594,7 +629,7 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	}
 
 	/**
-	 * ??? 
+	 * ???
 	 */
 	private Object valueForKeyPathWithOperator( String s ) {
 
@@ -619,7 +654,7 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	}
 
 	/**
-	 * ??? 
+	 * ???
 	 */
 	static class _ValueHierarchyOperator implements SWPageOperator {
 
@@ -631,7 +666,7 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	}
 
 	/**
-	 * ??? 
+	 * ???
 	 */
 	static class _LevelInHierarchyOperator implements SWPageOperator {
 
@@ -665,7 +700,7 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	}
 
 	/**
-	 * ??? 
+	 * ???
 	 */
 	static class _ExpandedHierarchyOperator implements SWPageOperator {
 
@@ -688,14 +723,14 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	}
 
 	/**
-	 * ??? 
+	 * ???
 	 */
 	static interface SWPageOperator {
 		public abstract Object compute( SWPage page, String keyPath );
 	}
 
 	/**
-	 * ??? 
+	 * ???
 	 */
 	public static void setOperatorForKey( String s, SWPageOperator operator ) {
 
@@ -710,7 +745,7 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	}
 
 	/**
-	 * ??? 
+	 * ???
 	 */
 	public static SWPageOperator operatorForKey( String s ) {
 
@@ -724,7 +759,7 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	}
 
 	/**
-	 * ??? 
+	 * ???
 	 */
 	static {
 		setOperatorForKey( "valueInHierarchyForKeyPath", new _ValueHierarchyOperator() );
@@ -767,7 +802,7 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	}
 
 	/**
-	 * Unique ID for this object to use in ajax-stuff. 
+	 * Unique ID for this object to use in ajax-stuff.
 	 */
 	public String uniqueID() {
 		return "id" + pageID();

@@ -3,7 +3,9 @@ package is.us.soloweb.interfaces;
 import is.us.soloweb.admin.SWAdminComponent;
 import is.us.soloweb.util.SWAccessPrivilegeUtilities;
 
-import com.webobjects.appserver.*;
+import com.webobjects.appserver.WOActionResults;
+import com.webobjects.appserver.WOComponent;
+import com.webobjects.appserver.WOContext;
 import com.webobjects.foundation.NSDictionary;
 
 /**

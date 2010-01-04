@@ -1,17 +1,17 @@
 package is.us.soloweb.interfaces;
 
-import com.webobjects.eocontrol.EOEnterpriseObject;
 import com.webobjects.foundation.NSTimestamp;
 
 /**
- * An SWAsset represents a system asset that can be stored in the folder file system
- *
+ * An SWAsset represents a system asset that can be stored in the folder file
+ * system
+ * 
  * @author Hugi Þórðarson
  * @version 2.7
  * @since 2.7
  */
 
-public interface SWAsset<E extends SWFolder> extends SWTransferable, EOEnterpriseObject {
+public interface SWAsset<E extends SWFolder> extends SWInspectable, SWTransferable {
 
 	public String name();
 
