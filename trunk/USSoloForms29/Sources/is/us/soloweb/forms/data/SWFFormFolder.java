@@ -55,4 +55,8 @@ public class SWFFormFolder extends _SWFFormFolder implements SWFolder<SWFFormFol
 	public Class documentEntityClass() {
 		return SWFForm.class;
 	}
+
+	public void deleteFolder() {
+		SWFolderUtilities.deleteFolder( this );
+	}
 }
