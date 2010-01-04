@@ -1,5 +1,7 @@
 package is.us.soloweb.interfaces;
 
+import er.extensions.eof.ERXEnterpriseObject;
+
 /**
  * Defines the interface for editable items in SoloWeb.
  * 
@@ -7,7 +9,7 @@ package is.us.soloweb.interfaces;
  * @version 2.9.4b4
  */
 
-public interface SWInspectable {
+public interface SWInspectable extends ERXEnterpriseObject {
 
 	public String name();
 
