@@ -1,6 +1,5 @@
 package is.us.soloweb.util;
 
-import is.us.soloweb.admin.SWAssetManagement;
 import is.us.soloweb.data.SWDocumentFolder;
 import is.us.soloweb.data.SWNewsItem;
 import is.us.soloweb.interfaces.SWAsset;
@@ -26,6 +25,7 @@ import er.extensions.eof.ERXEOControlUtilities;
 public class SWFolderUtilities {
 
 	private static final EOQualifier ROOT_FOLDER_QUALIFIER = SWDocumentFolder.PARENT_FOLDER_ID.isNull();
+	private static final String PARENT_FOLDER_REL = "parent";
 
 	/**
 	 * Implementation of SWTransferable. Transfers this folder to a new parent
@@ -107,16 +107,18 @@ public class SWFolderUtilities {
 	/**
 	 * Deletes this folder and all items contained in it
 	 */
-	public static void deleteFolder( EOEditingContext ec, SWFolder folder ) {
-		Enumeration e = folder.sortedDocuments().objectEnumerator();
+	public static void deleteFolder( SWFolder folder ) {
+		NSArray<SWAsset> assets = folder.sortedDocuments();
 
-		while( e.hasMoreElements() )
-			((SWAsset)e.nextElement()).deleteAsset();
+		for( SWAsset asset : assets ) {
+			asset.deleteAsset();
+		}
 
-		if( folder.parent() != null )
+		if( folder.parent() != null ) {
 			folder.removeObjectFromBothSidesOfRelationshipWithKey( folder.parent(), SWDocumentFolder.PARENT_KEY );
+		}
 
-		ec.deleteObject( folder );
+		folder.editingContext().deleteObject( folder );
 	}
 
 	/**
@@ -178,7 +180,7 @@ public class SWFolderUtilities {
 		newFolder.setInheritsPrivileges( SWC.TRUE_INTEGER );
 
 		if( parentFolder != null ) {
-			newFolder.addObjectToBothSidesOfRelationshipWithKey( parentFolder, SWAssetManagement.PARENT_FOLDER_REL );
+			newFolder.addObjectToBothSidesOfRelationshipWithKey( parentFolder, PARENT_FOLDER_REL );
 		}
 
 		return newFolder;

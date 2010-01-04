@@ -1,15 +1,32 @@
 package is.us.soloweb.admin;
 
-import is.us.soloweb.*;
+import is.us.soloweb.SWLoc;
+import is.us.soloweb.SWSession;
+import is.us.soloweb.SWSettings;
 import is.us.soloweb.data.SWNewsItem;
-import is.us.soloweb.interfaces.*;
-import is.us.soloweb.util.*;
-import is.us.util.*;
+import is.us.soloweb.interfaces.SWAsset;
+import is.us.soloweb.interfaces.SWFolder;
+import is.us.soloweb.util.SWAccessPrivilegeUtilities;
+import is.us.soloweb.util.SWC;
+import is.us.soloweb.util.SWFolderUtilities;
+import is.us.util.USEOUtilities;
+import is.us.util.USHierarchy;
+import is.us.util.USHierarchyUtilities;
+import is.us.util.USStringUtilities;
+import is.us.util.USUtilities;
 
-import com.webobjects.appserver.*;
-import com.webobjects.eoaccess.*;
+import com.webobjects.appserver.WOActionResults;
+import com.webobjects.appserver.WOComponent;
+import com.webobjects.appserver.WOContext;
+import com.webobjects.appserver.WOResponse;
+import com.webobjects.eoaccess.EOModelGroup;
+import com.webobjects.eoaccess.EOUtilities;
 import com.webobjects.eocontrol.EOEnterpriseObject;
-import com.webobjects.foundation.*;
+import com.webobjects.foundation.NSArray;
+import com.webobjects.foundation.NSDictionary;
+import com.webobjects.foundation.NSKeyValueCoding;
+import com.webobjects.foundation.NSKeyValueCodingAdditions;
+import com.webobjects.foundation.NSMutableArray;
 
 /**
  * The huge component that manages all assets.
@@ -19,8 +36,6 @@ import com.webobjects.foundation.*;
  */
 
 public class SWAssetManagement extends SWAdminComponent {
-
-	public static final String PARENT_FOLDER_REL = "parent";
 
 	public SWAsset currentObject;
 
@@ -48,7 +63,7 @@ public class SWAssetManagement extends SWAdminComponent {
 	}
 
 	/**
-	 * The asset name, abbreviated. 
+	 * The asset name, abbreviated.
 	 */
 	public String shortName() {
 		return USStringUtilities.abbreviate( currentObject.name(), 30 );
@@ -62,8 +77,9 @@ public class SWAssetManagement extends SWAdminComponent {
 			NSMutableArray<String> tabs = new NSMutableArray<String>();
 			tabs.addObject( documentsTabName );
 
-			if( SWSettings.privilegesEnabled() && user().hasPrivilegeFor( selectedFolder(), SWC.PRIVILEGE_CAN_MANAGE_USERS ) )
+			if( SWSettings.privilegesEnabled() && user().hasPrivilegeFor( selectedFolder(), SWC.PRIVILEGE_CAN_MANAGE_USERS ) ) {
 				tabs.addObject( privilegesTabName );
+			}
 
 			_tabs = tabs.immutableClone();
 		}
@@ -119,11 +135,12 @@ public class SWAssetManagement extends SWAdminComponent {
 		if( asset != null ) {
 			setSelectedFolder( asset.folder() );
 		}
-		this._selectedObject = asset;
+
+		_selectedObject = asset;
 	}
 
-	public void setSelectedFolder( SWFolder newFolder ) {
-		_selectedFolder = newFolder;
+	public void setSelectedFolder( SWFolder folder ) {
+		_selectedFolder = folder;
 		expandAllParents( _selectedFolder );
 		setSelectedObject( null );
 	}
@@ -132,19 +149,27 @@ public class SWAssetManagement extends SWAdminComponent {
 	 * FIXME: This is just plain wrong.
 	 */
 	public String rowClass() {
-		if( (currentObject instanceof SWNewsItem) && (!USUtilities.numberIsTrue( ((SWNewsItem)currentObject).published() ) || !SWTimedContentUtilities.validateDisplayTime( ((SWNewsItem)currentObject) )) )
-			return SWC.CSS_UNPUBLISHED;
+		if( currentObject instanceof SWNewsItem ) {
+			if( !((SWNewsItem)currentObject).isPublished() ) {
+				return SWC.CSS_UNPUBLISHED;
+			}
+		}
 
 		return null;
 	}
 
 	/**
-	 * Indicates if the current object is selected. 
+	 * Indicates if the current object is selected.
 	 */
 	public boolean isSelected() {
 		return currentObject.equals( selectedObject() );
 	}
 
+	/**
+	 * Selectes the current object and returns the user to the calling page.
+	 * 
+	 * @return Te calling component.
+	 */
 	public WOActionResults selectObjectAndReturn() {
 
 		if( !useID() ) {
@@ -197,7 +222,7 @@ public class SWAssetManagement extends SWAdminComponent {
 	}
 
 	public WOActionResults deleteSelectedFolder() {
-		deleteFolder( selectedFolder() );
+		SWFolderUtilities.deleteFolder( selectedFolder() );
 		setSelectedFolder( null );
 		return saveChanges();
 	}
@@ -229,22 +254,6 @@ public class SWAssetManagement extends SWAdminComponent {
 		for( SWFolder nextParent : a ) {
 			((SWSession)session()).addObjectToArrayWithKey( nextParent, folderEntityName() );
 		}
-	}
-
-	/**
-	 * Deletes a folder and all the assets it contains. 
-	 */
-	private static void deleteFolder( SWFolder folder ) {
-		NSArray<SWAsset> a = folder.sortedDocuments();
-
-		for( SWAsset asset : a ) {
-			asset.deleteAsset();
-		}
-
-		if( folder.parent() != null )
-			folder.removeObjectFromBothSidesOfRelationshipWithKey( folder.parent(), PARENT_FOLDER_REL );
-
-		folder.editingContext().deleteObject( folder );
 	}
 
 	public String entityName() {
