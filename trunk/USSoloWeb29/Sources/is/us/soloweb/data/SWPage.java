@@ -35,6 +35,8 @@ import com.webobjects.foundation.NSMutableDictionary;
 
 public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPage>, SWTimedContent, SWInheritsPrivileges, USSortable, SWCustomInfo, SWInspectable {
 
+	private static final String BUTUR_TEMPLATE_004 = "ButurTemplate004";
+
 	/**
 	 * Registered SWPage.Operators in the system.
 	 */
@@ -137,7 +139,7 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 		}
 
 		aPage.setSortNumber( new Integer( index ) );
-		addObjectToBothSidesOfRelationshipWithKey( aPage, "subPages" );
+		addObjectToBothSidesOfRelationshipWithKey( aPage, SUB_PAGES_KEY );
 	}
 
 	/**
@@ -156,11 +158,12 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 			SWPage p = e.nextElement();
 			int h = pages.indexOfObject( p );
 
-			if( h >= index )
+			if( h >= index ) {
 				p.setSortNumber( new Integer( h - 1 ) );
+			}
 		}
 
-		removeObjectFromBothSidesOfRelationshipWithKey( aPage, "subPages" );
+		removeObjectFromBothSidesOfRelationshipWithKey( aPage, SUB_PAGES_KEY );
 	}
 
 	/**
@@ -215,14 +218,14 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	 * sortnumber
 	 */
 	public NSArray<SWComponent> sortedAndApprovedComponents() {
-		NSArray<SWComponent> anArray = EOQualifier.filteredArrayWithQualifier( sortedComponents(), PUBLISHED_QUALIFIER );
-		return SWTimedContentUtilities.validateDisplayTimeForArray( anArray );
+		NSArray<SWComponent> a = EOQualifier.filteredArrayWithQualifier( sortedComponents(), PUBLISHED_QUALIFIER );
+		return SWTimedContentUtilities.validateDisplayTimeForArray( a );
 	}
 
 	/**
 	 * A convenience method to insert a component at the specified index
 	 */
-	public void insertComponentAtIndex( SWComponent aComponent, int index ) {
+	public void insertComponentAtIndex( SWComponent componentToAdd, int index ) {
 
 		NSMutableArray<SWComponent> components = (NSMutableArray<SWComponent>)sortedComponents();
 		Enumeration<SWComponent> e = components.objectEnumerator();
@@ -234,21 +237,22 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 				tc.setSortNumber( new Integer( h + 1 ) );
 		}
 
-		if( aComponent.templateName() == null )
-			aComponent.setTemplateName( "ButurTemplate004" );
+		if( componentToAdd.templateName() == null ) {
+			componentToAdd.setTemplateName( BUTUR_TEMPLATE_004 );
+		}
 
-		aComponent.setSortNumber( new Integer( index ) );
-		addObjectToBothSidesOfRelationshipWithKey( aComponent, "components" );
+		componentToAdd.setSortNumber( new Integer( index ) );
+		addObjectToBothSidesOfRelationshipWithKey( componentToAdd, COMPONENTS_KEY );
 	}
 
 	/**
 	 * A convenience method to remove a component from the page. Takes care of
 	 * keeping the sortnumbers correct.
 	 */
-	public void removeComponent( SWComponent aComponent ) {
+	public void removeComponent( SWComponent componentToRemove ) {
 
 		NSMutableArray<SWComponent> components = (NSMutableArray<SWComponent>)sortedComponents();
-		int index = components.indexOfObject( aComponent );
+		int index = components.indexOfObject( componentToRemove );
 		Enumeration<SWComponent> e = components.objectEnumerator();
 
 		while( e.hasMoreElements() ) {
@@ -258,7 +262,7 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 				tc.setSortNumber( new Integer( h - 1 ) );
 		}
 
-		removeObjectFromBothSidesOfRelationshipWithKey( aComponent, "components" );
+		removeObjectFromBothSidesOfRelationshipWithKey( componentToRemove, COMPONENTS_KEY );
 	}
 
 	/**
@@ -308,10 +312,14 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 		transferOwnershipWithIndex( newOwner, 0 );
 	}
 
+	/**
+	 * Addition for SWPage, to insert the page at a given index.
+	 */
 	public void transferOwnershipWithIndex( EOEnterpriseObject newOwner, int index ) {
 		if( newOwner.equals( parentPage() ) && index >= parentPage().sortedSubPages().indexOfObject( this ) ) {
 			index--;
 		}
+
 		parentPage().removeSubPage( this );
 		((SWPage)newOwner).insertSubPageAtIndex( this, index );
 	}
@@ -353,7 +361,7 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	}
 
 	/**
-	 * same as everyParentPage( true )
+	 * Same as everyParentPage( true )
 	 */
 	public NSArray<SWPage> everyParentPage() {
 		return USHierarchyUtilities.everyParentNode( this, true );
@@ -383,14 +391,14 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	}
 
 	/**
-	 * A boolean telling us if this page has been published
+	 * A boolean telling us if this page has been published.
 	 */
 	public boolean isPublished() {
 		return USUtilities.numberIsTrue( published() ) && isTimeValid();
 	}
 
 	/**
-	 * A boolean telling us if this page is accessible to the public
+	 * A boolean telling us if this page is accessible to the public.
 	 */
 	public boolean isAccessible() {
 		return USUtilities.numberIsTrue( accessible() ) && isTimeValid();
@@ -468,7 +476,6 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	 * Returns the page at the specified index in the parent page hierarchy. 0
 	 * is the front page of the site, 1 is the subpage of that page etc.
 	 */
-
 	public SWPage parentPageAtLevel( int aLevel ) {
 		return (SWPage)USHierarchyUtilities.parentNodeAtLevel( this, aLevel );
 	}

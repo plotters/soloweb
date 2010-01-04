@@ -1,27 +1,35 @@
 package is.us.soloweb.data;
 
-import is.us.soloweb.interfaces.*;
+import is.us.soloweb.interfaces.SWCustomInfo;
+import is.us.soloweb.interfaces.SWInspectable;
 import is.us.soloweb.util.SWC;
-import is.us.util.*;
+import is.us.util.USArrayUtilities;
+import is.us.util.USStringUtilities;
+import is.us.util.USUtilities;
 import is.us.wo.util.USC;
 
 import java.util.Locale;
 
-import org.slf4j.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import com.webobjects.eocontrol.*;
-import com.webobjects.foundation.*;
+import com.webobjects.eocontrol.EOEditingContext;
+import com.webobjects.eocontrol.EOQualifier;
+import com.webobjects.foundation.NSArray;
+import com.webobjects.foundation.NSMutableArray;
+import com.webobjects.foundation.NSMutableDictionary;
 
 /**
  * An SWSite represents a site, and contains a tree of pages
- *
+ * 
  * @author Hugi Þórðarson
- * @version 2.9.2b4
+ * @version 2.9.2b6
  * @since 2.3
  */
 
 public class SWSite extends _SWSite implements SWCustomInfo, SWInspectable {
 
+	private Locale _locale = null;
 	private static final Logger logger = LoggerFactory.getLogger( SWSite.class );
 
 	/**
@@ -50,26 +58,6 @@ public class SWSite extends _SWSite implements SWCustomInfo, SWInspectable {
 		}
 
 		return list;
-	}
-
-	/**
-	 * Sets the string containing the domain names this Site applies to
-	 * Makes sure that the site name ends with the sitename delimiter.
-	 *
-	public void setQual( String value ) {
-		value = USStringUtilities.replace( value, SWC.LF, SWC.SITENAME_DELIMITER );
-		super.setQual( value );
-	}
-	*/
-
-	/**
-	 * An array with the languages selected for this site
-	 */
-	public NSArray<String> languageInArray() {
-		if( language() != null )
-			return NSArray.emptyArray();
-
-		return new NSArray<String>( language() );
 	}
 
 	/**
@@ -135,8 +123,9 @@ public class SWSite extends _SWSite implements SWCustomInfo, SWInspectable {
 		_customInfo = d;
 	}
 
-	private Locale _locale = null;
-
+	/**
+	 * @return The site's locale.
+	 */
 	public Locale locale() {
 
 		if( _locale == null && language() != null ) {
@@ -152,6 +141,9 @@ public class SWSite extends _SWSite implements SWCustomInfo, SWInspectable {
 		return _locale;
 	}
 
+	/**
+	 * @return Name of the site's locale in english.
+	 */
 	public String englishLanguageName() {
 		if( locale() == null )
 			return null;
@@ -159,6 +151,9 @@ public class SWSite extends _SWSite implements SWCustomInfo, SWInspectable {
 		return locale().getDisplayName( Locale.ENGLISH );
 	}
 
+	/**
+	 * Overridden to nullify the locale.
+	 */
 	@Override
 	public void setLanguage( String value ) {
 		super.setLanguage( value );
