@@ -32,15 +32,6 @@ public class SWNewsItem extends _SWNewsItem implements SWTimedContent, SWAsset<S
 	}
 
 	/**
-	 * Returns the newsItem's excerpt with breaks encoded to BR-tags
-	 * 
-	 * public String generatedExcerptWithBreaks() { if( excerptWithBreaks() !=
-	 * null) return excerptWithBreaks();
-	 * 
-	 * return USStringUtilities.convertBreakString( excerpt() ); }
-	 */
-
-	/**
 	 * Returns the newsItem's text with breaks encoded to BR-tags
 	 */
 	public String textWithBreaks() {
@@ -111,9 +102,9 @@ public class SWNewsItem extends _SWNewsItem implements SWTimedContent, SWAsset<S
 	}
 
 	/**
-	 * @return The asset's size in kibibytes.
+	 * @return The asset's size in kilobytes.
 	 */
 	public double sizeKB() {
-		return size() / 1024d;
+		return size() / 1000d;
 	}
 }
