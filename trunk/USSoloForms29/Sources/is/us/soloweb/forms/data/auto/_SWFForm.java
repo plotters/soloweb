@@ -17,7 +17,7 @@ public abstract class _SWFForm extends  ERXGenericRecord {
 
   // Attribute Keys
   public static final ERXKey<Integer> DONT_STORE_DATA = new ERXKey<Integer>("dontStoreData");
-  public static final ERXKey<Integer> FORM_FOLDER_ID = new ERXKey<Integer>("formFolderID");
+  public static final ERXKey<Integer> FOLDER_ID = new ERXKey<Integer>("folderID");
   public static final ERXKey<Integer> FORM_ID = new ERXKey<Integer>("formID");
   public static final ERXKey<String> FROM_EMAIL_ADDRESS = new ERXKey<String>("fromEmailAddress");
   public static final ERXKey<Integer> MAX_REGISTRATIONS = new ERXKey<Integer>("maxRegistrations");
@@ -35,7 +35,7 @@ public abstract class _SWFForm extends  ERXGenericRecord {
 
   // Attributes
   public static final String DONT_STORE_DATA_KEY = DONT_STORE_DATA.key();
-  public static final String FORM_FOLDER_ID_KEY = FORM_FOLDER_ID.key();
+  public static final String FOLDER_ID_KEY = FOLDER_ID.key();
   public static final String FORM_ID_KEY = FORM_ID.key();
   public static final String FROM_EMAIL_ADDRESS_KEY = FROM_EMAIL_ADDRESS.key();
   public static final String MAX_REGISTRATIONS_KEY = MAX_REGISTRATIONS.key();
@@ -72,15 +72,15 @@ public abstract class _SWFForm extends  ERXGenericRecord {
     takeStoredValueForKey(value, "dontStoreData");
   }
 
-  public Integer formFolderID() {
-    return (Integer) storedValueForKey("formFolderID");
+  public Integer folderID() {
+    return (Integer) storedValueForKey("folderID");
   }
 
-  public void setFormFolderID(Integer value) {
+  public void setFolderID(Integer value) {
     if (_SWFForm.LOG.isDebugEnabled()) {
-    	_SWFForm.LOG.debug( "updating formFolderID from " + formFolderID() + " to " + value);
+    	_SWFForm.LOG.debug( "updating folderID from " + folderID() + " to " + value);
     }
-    takeStoredValueForKey(value, "formFolderID");
+    takeStoredValueForKey(value, "folderID");
   }
 
   public Integer formID() {
