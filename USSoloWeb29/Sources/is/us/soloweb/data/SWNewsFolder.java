@@ -1,69 +1,98 @@
 package is.us.soloweb.data;
 
-import is.us.soloweb.interfaces.*;
+import is.us.soloweb.interfaces.SWFolder;
+import is.us.soloweb.interfaces.SWInheritsPrivileges;
 import is.us.soloweb.util.SWFolderUtilities;
 
-import com.webobjects.eocontrol.*;
+import com.webobjects.eocontrol.EOEditingContext;
+import com.webobjects.eocontrol.EOEnterpriseObject;
 import com.webobjects.foundation.NSArray;
 
 /**
  * An SWGroup represents a group of users with access to the SoloWeb system
- *
+ * 
  * @author Hugi Þórðarson
  * @version 2.9.2b6
  * @since 2.4
  */
 
-public class SWNewsFolder extends _SWNewsFolder implements SWFolder<SWNewsFolder>, SWInspectable {
+public class SWNewsFolder extends _SWNewsFolder implements SWFolder<SWNewsFolder> {
 
 	/**
-	 * Implementation of SWTransferable. Transfers this folder to a new parent folder
+	 * Implementation of SWTransferable. Transfers this folder to a new parent
+	 * folder
 	 * 
 	 * @param newOwner The destination parent object
 	 */
+	@Override
 	public void transferOwnership( EOEnterpriseObject newOwner ) {
 		this.removeObjectFromBothSidesOfRelationshipWithKey( parent(), PARENT_KEY );
 		this.addObjectToBothSidesOfRelationshipWithKey( newOwner, PARENT_KEY );
 	}
 
 	/**
-	 * Returns all folder objects without a parent folder (essentially root folders), sorted alphabetically
-	 *
+	 * Returns all folder objects without a parent folder (essentially root
+	 * folders), sorted alphabetically
+	 * 
 	 * @param ec The calling EOEditingContext
 	 * @return folder objects without a parent folder
 	 */
-	public NSArray sortedRootFolders( EOEditingContext ec ) {
+	@Override
+	public NSArray<SWNewsFolder> sortedRootFolders( EOEditingContext ec ) {
 		return SWFolderUtilities.sortedRootFolders( ec, this );
 	}
 
 	/**
 	 * Returns all subfolders sorted alphabetically
-	 *
+	 * 
 	 * @return An NSArray with subfolders
 	 */
-	public NSArray sortedSubFolders() {
+	@Override
+	public NSArray<SWNewsFolder> sortedSubFolders() {
 		return SWFolderUtilities.sortedSubFolders( this );
 	}
 
 	/**
 	 * Returns all items in this folder, sorted by default sort order.
 	 */
-	public NSArray sortedDocuments() {
-		return SWFolderUtilities.sortedDocuments( this );
+	@Override
+	public NSArray<SWNewsItem> sortedDocuments() {
+		return SWNewsItem.DATE.descs().sorted( documents() );
 	}
 
 	/**
 	 * Number of items in this folder. Does not include subfolders.
 	 */
+	@Override
 	public int count() {
 		return SWFolderUtilities.count( this );
 	}
 
 	/**
-	 * Calculates the total size of items in this folder. Does not include subfolders.
+	 * Calculates the total size of items in this folder. Does not include
+	 * subfolders.
 	 */
-	public int size() {
+	@Override
+	public long size() {
 		return SWFolderUtilities.size( this );
+	}
+
+	/**
+	 * Calculates the total size of items in this folder. Does not include
+	 * subfolders.
+	 */
+	@Override
+	public double sizeKB() {
+		return SWFolderUtilities.size( this );
+	}
+
+	/**
+	 * Implementation of SWInheritsPrivileges - returns the object this object
+	 * should inherit privileges from (the parent folder)
+	 */
+	@Override
+	public SWInheritsPrivileges inheritsPrivilegesFrom() {
+		return parent();
 	}
 
 	/**
@@ -78,16 +107,5 @@ public class SWNewsFolder extends _SWNewsFolder implements SWFolder<SWNewsFolder
 	 */
 	public String nameIncludingHierarchy() {
 		return SWFolderUtilities.nameIncludingHierarchy( this );
-	}
-
-	/**
-	 * Implementation of SWInheritsPrivileges - returns the object this object should inherit privileges from (the parent folder)
-	 */
-	public SWInheritsPrivileges inheritsPrivilegesFrom() {
-		return parent();
-	}
-
-	public NSArray<EOSortOrdering> itemSordOrderings() {
-		return SWNewsItem.DATE.descs();
 	}
 }

@@ -3,21 +3,16 @@ package is.us.soloweb.util;
 import is.us.soloweb.data.SWTransaction;
 import is.us.soloweb.data.SWUser;
 import is.us.soloweb.interfaces.SWCustomInfo;
-import is.us.soloweb.interfaces.SWTransactionLogged;
 import is.us.util.USUtilities;
 
 import com.webobjects.eocontrol.EOEditingContext;
-import com.webobjects.eocontrol.EOEnterpriseObject;
 import com.webobjects.foundation.NSMutableArray;
 import com.webobjects.foundation.NSNotification;
 import com.webobjects.foundation.NSNotificationCenter;
 import com.webobjects.foundation.NSPropertyListSerialization;
 import com.webobjects.foundation.NSSelector;
-import com.webobjects.foundation.NSTimestamp;
 
 import er.extensions.eof.ERXEC;
-import er.extensions.eof.ERXEnterpriseObject;
-import er.extensions.eof.ERXGenericRecord;
 
 /**
  * For updating customInfo attributes.
@@ -85,17 +80,25 @@ public class SWTransactionManager {
 
 		Object shouldNotLog = ec.userInfoForKey( DO_NOT_LOG_MARKER );
 
-		if( shouldNotLog == null ) {
-			for( Object o : ec.registeredObjects() ) {
-				if( o instanceof SWCustomInfo ) {
-					SWCustomInfo ci = (SWCustomInfo)o;
-					String currentCustomInfoSerialized = NSPropertyListSerialization.stringFromPropertyList( ci.customInfo() );
+		// Cleanup of customInfo dictionaries, where applicable.
+		for( Object o : ec.registeredObjects() ) {
+			if( o instanceof SWCustomInfo ) {
+				SWCustomInfo ci = (SWCustomInfo)o;
+				String currentCustomInfoSerialized = NSPropertyListSerialization.stringFromPropertyList( ci.customInfo() );
 
-					if( !USUtilities.eq( ci.customInfoString(), currentCustomInfoSerialized ) ) {
-						ci.setCustomInfoString( currentCustomInfoSerialized );
-					}
+				if( !USUtilities.eq( ci.customInfoString(), currentCustomInfoSerialized ) ) {
+					ci.setCustomInfoString( currentCustomInfoSerialized );
 				}
+
+				System.out.println( ci.customInfo() );
+				System.out.println( ci.customInfoString() );
+				System.out.println( "-----------" );
 			}
+		}
+
+		/*
+		// Transaction logging
+		if( shouldNotLog == null ) {
 
 			for( EOEnterpriseObject eo : ec.insertedObjects() ) {
 				if( eo instanceof SWTransactionLogged ) {
@@ -133,52 +136,54 @@ public class SWTransactionManager {
 
 			_loggingEC.saveChanges();
 		}
+		*/
 	}
 
-	public void afterSaveChangesInEditingContext( NSNotification notification ) {
-		EOEditingContext ec = (EOEditingContext)notification.object();
-		Object shouldNotLog = ec.userInfoForKey( DO_NOT_LOG_MARKER );
+	/*
+		public void afterSaveChangesInEditingContext( NSNotification notification ) {
+			EOEditingContext ec = (EOEditingContext)notification.object();
+			Object shouldNotLog = ec.userInfoForKey( DO_NOT_LOG_MARKER );
 
-		if( shouldNotLog == null ) {
-			for( SWTransaction t : transactionsMissingPrimaryKeys ) {
-				ERXEnterpriseObject eo = ((ERXGenericRecord)t.record());
-				t.setObjectID( USUtilities.integerFromObject( eo.primaryKey() ) );
-				transactionsMissingPrimaryKeys.removeObject( eo );
+			if( shouldNotLog == null ) {
+				for( SWTransaction t : transactionsMissingPrimaryKeys ) {
+					ERXEnterpriseObject eo = ((ERXGenericRecord)t.record());
+					t.setObjectID( USUtilities.integerFromObject( eo.primaryKey() ) );
+					transactionsMissingPrimaryKeys.removeObject( eo );
+				}
+
+				_loggingEC.saveChanges();
+			}
+		}
+
+		private SWTransaction createAndInsertTransactionForEO( String action, EOEnterpriseObject eo ) {
+
+			Object o = ((ERXGenericRecord)eo).primaryKey();
+			boolean shouldLog = (o instanceof Number);
+
+			if( shouldLog ) {
+				SWTransaction t = new SWTransaction();
+				_loggingEC.insertObject( t );
+				t.setDate( new NSTimestamp() );
+
+				// FIXME: Look into this, it might be breaking with proper MVC design.
+				SWUser user = (SWUser)eo.editingContext().userInfoForKey( SWC.SW_USER_USERINFO_KEY );
+
+				if( user != null )
+					t.setUserID( user.userID() );
+
+				t.setBefore( NSPropertyListSerialization.stringFromPropertyList( ((ERXGenericRecord)eo).committedSnapshot() ) );
+				t.setAfter( NSPropertyListSerialization.stringFromPropertyList( ((ERXGenericRecord)eo).changesFromCommittedSnapshot() ) );
+				t.setAction( action );
+				t.setEntityNameString( eo.entityName() );
+				t.setObjectID( USUtilities.integerFromObject( o ) );
+				t.setRecord( eo );
+				return t;
 			}
 
-			_loggingEC.saveChanges();
+			return null;
+
 		}
-	}
-
-	private SWTransaction createAndInsertTransactionForEO( String action, EOEnterpriseObject eo ) {
-
-		Object o = ((ERXGenericRecord)eo).primaryKey();
-		boolean shouldLog = (o instanceof Number);
-
-		if( shouldLog ) {
-			SWTransaction t = new SWTransaction();
-			_loggingEC.insertObject( t );
-			t.setDate( new NSTimestamp() );
-
-			// FIXME: Look into this, it might be breaking with proper MVC design.
-			SWUser user = (SWUser)eo.editingContext().userInfoForKey( SWC.SW_USER_USERINFO_KEY );
-
-			if( user != null )
-				t.setUserID( user.userID() );
-
-			t.setBefore( NSPropertyListSerialization.stringFromPropertyList( ((ERXGenericRecord)eo).committedSnapshot() ) );
-			t.setAfter( NSPropertyListSerialization.stringFromPropertyList( ((ERXGenericRecord)eo).changesFromCommittedSnapshot() ) );
-			t.setAction( action );
-			t.setEntityNameString( eo.entityName() );
-			t.setObjectID( USUtilities.integerFromObject( o ) );
-			t.setRecord( eo );
-			return t;
-		}
-
-		return null;
-
-	}
-
+	*/
 	/**
 	 * Registers the transaction manager so it starts listening and watching
 	 * transactions.
@@ -187,7 +192,7 @@ public class SWTransactionManager {
 		NSSelector<SWTransactionManager> beforeSaveSelector = new NSSelector<SWTransactionManager>( "beforeSaveChangesInEditingContext", new Class[] { NSNotification.class } );
 		NSNotificationCenter.defaultCenter().addObserver( defaultTransactionManager(), beforeSaveSelector, ERXEC.EditingContextWillSaveChangesNotification, null );
 
-		NSSelector<SWTransactionManager> afterSaveSelector = new NSSelector<SWTransactionManager>( "afterSaveChangesInEditingContext", new Class[] { NSNotification.class } );
-		NSNotificationCenter.defaultCenter().addObserver( defaultTransactionManager(), afterSaveSelector, ERXEC.EditingContextDidSaveChangesNotification, null );
+		//		NSSelector<SWTransactionManager> afterSaveSelector = new NSSelector<SWTransactionManager>( "afterSaveChangesInEditingContext", new Class[] { NSNotification.class } );
+		//		NSNotificationCenter.defaultCenter().addObserver( defaultTransactionManager(), afterSaveSelector, ERXEC.EditingContextDidSaveChangesNotification, null );
 	}
 }
