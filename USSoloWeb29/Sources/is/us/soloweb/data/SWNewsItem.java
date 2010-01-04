@@ -1,21 +1,28 @@
 package is.us.soloweb.data;
 
-import is.us.soloweb.interfaces.*;
+import is.us.soloweb.interfaces.SWAsset;
+import is.us.soloweb.interfaces.SWTimedContent;
+import is.us.soloweb.interfaces.SWTransactionLogged;
 import is.us.soloweb.util.SWTimedContentUtilities;
-import is.us.util.*;
+import is.us.util.USStringUtilities;
+import is.us.util.USUtilities;
 
-import com.webobjects.eocontrol.*;
-import com.webobjects.foundation.*;
+import com.webobjects.eocontrol.EOEditingContext;
+import com.webobjects.eocontrol.EOEnterpriseObject;
+import com.webobjects.eocontrol.EOFetchSpecification;
+import com.webobjects.eocontrol.EOQualifier;
+import com.webobjects.foundation.NSArray;
+import com.webobjects.foundation.NSTimestamp;
 
 /**
  * An SWNewsItem represents a newsitem in the SoloWeb system
- *
+ * 
  * @author Hugi Þórðarson
  * @version 2.7
  * @since 2.3
  */
 
-public class SWNewsItem extends _SWNewsItem implements SWTimedContent, SWAsset<SWNewsFolder>, SWInspectable, SWTransactionLogged {
+public class SWNewsItem extends _SWNewsItem implements SWTimedContent, SWAsset<SWNewsFolder>, SWTransactionLogged {
 
 	/**
 	 * Returns the newsItem's excerpt with breaks encoded to BR-tags
@@ -26,14 +33,12 @@ public class SWNewsItem extends _SWNewsItem implements SWTimedContent, SWAsset<S
 
 	/**
 	 * Returns the newsItem's excerpt with breaks encoded to BR-tags
-	 *
-	public String generatedExcerptWithBreaks() {
-		if( excerptWithBreaks() != null)
-			return excerptWithBreaks();
-
-		return USStringUtilities.convertBreakString( excerpt() );
-	}
-	*/
+	 * 
+	 * public String generatedExcerptWithBreaks() { if( excerptWithBreaks() !=
+	 * null) return excerptWithBreaks();
+	 * 
+	 * return USStringUtilities.convertBreakString( excerpt() ); }
+	 */
 
 	/**
 	 * Returns the newsItem's text with breaks encoded to BR-tags
@@ -43,7 +48,8 @@ public class SWNewsItem extends _SWNewsItem implements SWTimedContent, SWAsset<S
 	}
 
 	/**
-	 * Indicates if this object has been published, and if it's display time has come
+	 * Indicates if this object has been published, and if it's display time has
+	 * come
 	 */
 	public boolean isPublished() {
 		return USUtilities.numberIsTrue( published() ) && isTimeValid();
