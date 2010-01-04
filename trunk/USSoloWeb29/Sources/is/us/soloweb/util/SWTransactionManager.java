@@ -89,10 +89,6 @@ public class SWTransactionManager {
 				if( !USUtilities.eq( ci.customInfoString(), currentCustomInfoSerialized ) ) {
 					ci.setCustomInfoString( currentCustomInfoSerialized );
 				}
-
-				System.out.println( ci.customInfo() );
-				System.out.println( ci.customInfoString() );
-				System.out.println( "-----------" );
 			}
 		}
 
