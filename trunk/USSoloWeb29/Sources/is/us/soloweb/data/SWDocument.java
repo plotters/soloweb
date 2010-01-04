@@ -1,28 +1,40 @@
 package is.us.soloweb.data;
 
 import is.us.soloweb.SWSettings;
-import is.us.soloweb.interfaces.*;
-import is.us.soloweb.util.*;
-import is.us.util.*;
+import is.us.soloweb.interfaces.SWAsset;
+import is.us.soloweb.util.SWC;
+import is.us.soloweb.util.SWURLGeneration;
+import is.us.soloweb.util.SWZipUtilities;
+import is.us.util.USDataUtilities;
+import is.us.util.USEOUtilities;
+import is.us.util.USStringUtilities;
 import is.us.wo.util.USHTTPUtilities;
 
-import java.io.*;
+import java.io.File;
+import java.io.UnsupportedEncodingException;
 
-import org.slf4j.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.webobjects.appserver.WOContext;
-import com.webobjects.eocontrol.*;
-import com.webobjects.foundation.*;
+import com.webobjects.eocontrol.EOEditingContext;
+import com.webobjects.eocontrol.EOEnterpriseObject;
+import com.webobjects.foundation.NSData;
+import com.webobjects.foundation.NSNotification;
+import com.webobjects.foundation.NSNotificationCenter;
+import com.webobjects.foundation.NSPathUtilities;
+import com.webobjects.foundation.NSSelector;
+import com.webobjects.foundation.NSTimestamp;
 
 /**
  * An SWDocument represents a binary document.
- *
+ * 
  * @author Hugi Þórðarson
  * @version 2.9.2b6
  * @since 2.7
  */
 
-public class SWDocument extends _SWDocument implements SWAsset<SWDocumentFolder>, SWInspectable {
+public class SWDocument extends _SWDocument implements SWAsset<SWDocumentFolder> {
 
 	private static final Logger logger = LoggerFactory.getLogger( SWDocument.class );
 
@@ -41,7 +53,8 @@ public class SWDocument extends _SWDocument implements SWAsset<SWDocumentFolder>
 	/**
 	 * @return The full path to the document on disk
 	 * 
-	 * Warning: Data storage should be implementation agnostic, so use data() where possible. 
+	 *         Warning: Data storage should be implementation agnostic, so use
+	 *         data() where possible.
 	 */
 	private String path() {
 		return _documentLocationOnDisk + documentID();
@@ -50,7 +63,8 @@ public class SWDocument extends _SWDocument implements SWAsset<SWDocumentFolder>
 	/**
 	 * @return The file on disk
 	 * 
-	 * Warning: Data storage will become implementation agnostic, so use data() where possible.
+	 *         Warning: Data storage will become implementation agnostic, so use
+	 *         data() where possible.
 	 */
 	private File file() {
 		return new File( path() );
@@ -85,7 +99,8 @@ public class SWDocument extends _SWDocument implements SWAsset<SWDocumentFolder>
 	}
 
 	/**
-	 * Synchronizes the data on disk. This method is called by the frameworks and should not be invoked by a framework consumer.
+	 * Synchronizes the data on disk. This method is called by the frameworks
+	 * and should not be invoked by a framework consumer.
 	 */
 	public void writeTemporaryDataToDiskIfRequired( NSNotification n ) {
 		if( _temporaryData != null && documentID() != null ) {
@@ -118,7 +133,7 @@ public class SWDocument extends _SWDocument implements SWAsset<SWDocumentFolder>
 
 	/**
 	 * @return The document matching the specified ID
-	 *
+	 * 
 	 * @param ec The EOEditingContext to fetch into
 	 * @param id The ID of the document to fetch
 	 */
@@ -173,7 +188,7 @@ public class SWDocument extends _SWDocument implements SWAsset<SWDocumentFolder>
 	}
 
 	/**
-	 * Indicates if this document has non-null data( with some length as well). 
+	 * Indicates if this document has non-null data( with some length as well).
 	 */
 	public boolean hasData() {
 		if( file().exists() && file().length() > 0 )
@@ -200,7 +215,7 @@ public class SWDocument extends _SWDocument implements SWAsset<SWDocumentFolder>
 	}
 
 	/**
-	 * Attempts to convert the stored data to a String using UTF-8 encoding. 
+	 * Attempts to convert the stored data to a String using UTF-8 encoding.
 	 */
 	public String string() {
 		NSData data = data();
@@ -215,7 +230,7 @@ public class SWDocument extends _SWDocument implements SWAsset<SWDocumentFolder>
 	}
 
 	/**
-	 * Stores the given string as binary data using UTF-8 encoding. 
+	 * Stores the given string as binary data using UTF-8 encoding.
 	 */
 	public void setString( String s ) {
 		if( s == null ) {
@@ -242,7 +257,8 @@ public class SWDocument extends _SWDocument implements SWAsset<SWDocumentFolder>
 	}
 
 	/**
-	 * @return The file's extension. If there is no stored extension, we fetch it from the document's name.
+	 * @return The file's extension. If there is no stored extension, we fetch
+	 *         it from the document's name.
 	 */
 	@Override
 	public String extension() {
