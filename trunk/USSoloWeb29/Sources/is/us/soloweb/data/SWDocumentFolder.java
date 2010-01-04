@@ -25,7 +25,6 @@ public class SWDocumentFolder extends _SWDocumentFolder implements SWFolder<SWDo
 	 * 
 	 * @param newOwner The destination parent object
 	 */
-	@Override
 	public void transferOwnership( EOEnterpriseObject newOwner ) {
 		this.removeObjectFromBothSidesOfRelationshipWithKey( parent(), PARENT_KEY );
 		this.addObjectToBothSidesOfRelationshipWithKey( newOwner, PARENT_KEY );
@@ -38,7 +37,6 @@ public class SWDocumentFolder extends _SWDocumentFolder implements SWFolder<SWDo
 	 * @param ec The calling EOEditingContext
 	 * @return folder objects without a parent folder
 	 */
-	@Override
 	public NSArray<SWDocumentFolder> sortedRootFolders( EOEditingContext ec ) {
 		return SWFolderUtilities.sortedRootFolders( ec, this );
 	}
@@ -48,7 +46,6 @@ public class SWDocumentFolder extends _SWDocumentFolder implements SWFolder<SWDo
 	 * 
 	 * @return An NSArray with subfolders
 	 */
-	@Override
 	public NSArray<SWDocumentFolder> sortedSubFolders() {
 		return SWFolderUtilities.sortedSubFolders( this );
 	}
@@ -56,7 +53,6 @@ public class SWDocumentFolder extends _SWDocumentFolder implements SWFolder<SWDo
 	/**
 	 * Returns all items in this folder, sorted by default sort order.
 	 */
-	@Override
 	public NSArray<SWDocument> sortedDocuments() {
 		return USArrayUtilities.sortedArrayUsingIcelandicComparator( documents(), SWDocument.NAME_KEY );
 	}
@@ -64,7 +60,6 @@ public class SWDocumentFolder extends _SWDocumentFolder implements SWFolder<SWDo
 	/**
 	 * Number of items in this folder. Does not include subfolders.
 	 */
-	@Override
 	public int count() {
 		return SWFolderUtilities.count( this );
 	}
@@ -73,7 +68,6 @@ public class SWDocumentFolder extends _SWDocumentFolder implements SWFolder<SWDo
 	 * Calculates the total size of items in this folder. Does not include
 	 * subfolders.
 	 */
-	@Override
 	public long size() {
 		return SWFolderUtilities.size( this );
 	}
@@ -82,7 +76,6 @@ public class SWDocumentFolder extends _SWDocumentFolder implements SWFolder<SWDo
 	 * Calculates the total size of items in this folder. Does not include
 	 * subfolders.
 	 */
-	@Override
 	public double sizeKB() {
 		return SWFolderUtilities.sizeKB( this );
 	}
@@ -110,7 +103,6 @@ public class SWDocumentFolder extends _SWDocumentFolder implements SWFolder<SWDo
 		return SWFolderUtilities.nameIncludingHierarchy( this );
 	}
 
-	@Override
 	public Class documentEntityClass() {
 		return SWDocument.class;
 	}

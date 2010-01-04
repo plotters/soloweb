@@ -24,7 +24,6 @@ public class SWNewsFolder extends _SWNewsFolder implements SWFolder<SWNewsFolder
 	 * 
 	 * @param newOwner The destination parent object
 	 */
-	@Override
 	public void transferOwnership( EOEnterpriseObject newOwner ) {
 		this.removeObjectFromBothSidesOfRelationshipWithKey( parent(), PARENT_KEY );
 		this.addObjectToBothSidesOfRelationshipWithKey( newOwner, PARENT_KEY );
@@ -37,7 +36,6 @@ public class SWNewsFolder extends _SWNewsFolder implements SWFolder<SWNewsFolder
 	 * @param ec The calling EOEditingContext
 	 * @return folder objects without a parent folder
 	 */
-	@Override
 	public NSArray<SWNewsFolder> sortedRootFolders( EOEditingContext ec ) {
 		return SWFolderUtilities.sortedRootFolders( ec, this );
 	}
@@ -47,7 +45,6 @@ public class SWNewsFolder extends _SWNewsFolder implements SWFolder<SWNewsFolder
 	 * 
 	 * @return An NSArray with subfolders
 	 */
-	@Override
 	public NSArray<SWNewsFolder> sortedSubFolders() {
 		return SWFolderUtilities.sortedSubFolders( this );
 	}
@@ -55,7 +52,6 @@ public class SWNewsFolder extends _SWNewsFolder implements SWFolder<SWNewsFolder
 	/**
 	 * Returns all items in this folder, sorted by default sort order.
 	 */
-	@Override
 	public NSArray<SWNewsItem> sortedDocuments() {
 		return SWNewsItem.DATE.descs().sorted( documents() );
 	}
@@ -63,7 +59,6 @@ public class SWNewsFolder extends _SWNewsFolder implements SWFolder<SWNewsFolder
 	/**
 	 * Number of items in this folder. Does not include subfolders.
 	 */
-	@Override
 	public int count() {
 		return SWFolderUtilities.count( this );
 	}
@@ -72,7 +67,6 @@ public class SWNewsFolder extends _SWNewsFolder implements SWFolder<SWNewsFolder
 	 * Calculates the total size of items in this folder. Does not include
 	 * subfolders.
 	 */
-	@Override
 	public long size() {
 		return SWFolderUtilities.size( this );
 	}
@@ -81,7 +75,6 @@ public class SWNewsFolder extends _SWNewsFolder implements SWFolder<SWNewsFolder
 	 * Calculates the total size of items in this folder. Does not include
 	 * subfolders.
 	 */
-	@Override
 	public double sizeKB() {
 		return SWFolderUtilities.size( this );
 	}
@@ -90,7 +83,6 @@ public class SWNewsFolder extends _SWNewsFolder implements SWFolder<SWNewsFolder
 	 * Implementation of SWInheritsPrivileges - returns the object this object
 	 * should inherit privileges from (the parent folder)
 	 */
-	@Override
 	public SWInheritsPrivileges inheritsPrivilegesFrom() {
 		return parent();
 	}
@@ -109,7 +101,6 @@ public class SWNewsFolder extends _SWNewsFolder implements SWFolder<SWNewsFolder
 		return SWFolderUtilities.nameIncludingHierarchy( this );
 	}
 
-	@Override
 	public Class documentEntityClass() {
 		return SWNewsItem.class;
 	}
