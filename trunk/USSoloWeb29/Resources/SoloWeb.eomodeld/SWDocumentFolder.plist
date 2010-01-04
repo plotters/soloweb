@@ -43,7 +43,7 @@
             destination = SWDocument; 
             isToMany = Y; 
             joinSemantic = EOInnerJoin; 
-            joins = ({destinationAttribute = documentFolderID; sourceAttribute = folderID; }); 
+            joins = ({destinationAttribute = folderID; sourceAttribute = folderID; }); 
             name = documents; 
         }, 
         {
