@@ -59,4 +59,9 @@ public class SWFFormFolder extends _SWFFormFolder implements SWFolder<SWFFormFol
 	public SWInheritsPrivileges inheritsPrivilegesFrom() {
 		return parent();
 	}
+
+	@Override
+	public Class documentEntityClass() {
+		return SWFForm.class;
+	}
 }
