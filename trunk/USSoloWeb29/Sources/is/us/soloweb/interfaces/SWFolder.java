@@ -70,4 +70,9 @@ public interface SWFolder<E, T> extends EOEnterpriseObject, USHierarchy, SWTrans
 	 * The entity name of the document objects in the folder.
 	 */
 	public Class documentEntityClass();
+
+	/**
+	 * Deletes the folder, all it's assets and all it's subfolders.
+	 */
+	public void deleteFolder();
 }

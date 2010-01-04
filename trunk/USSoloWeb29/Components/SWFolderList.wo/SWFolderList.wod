@@ -16,12 +16,10 @@ SELECT_FOLDER_LINK: WOHyperlink {
 
 TOGGLE_IMAGE: WOImage {
 	src = toggleString;
-	escapeHTML = false;
 	width = "9";
 }
 
 FOLDER_IMAGE: WOImage {
-	border = 0;
 	filename = "mappa.gif";
 }
 

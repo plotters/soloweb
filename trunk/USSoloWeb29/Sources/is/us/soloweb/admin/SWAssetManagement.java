@@ -51,12 +51,8 @@ public class SWAssetManagement extends SWAdminComponent {
 
 	public String documentsTabName = SWLoc.string( "sfAdminTabDocuments", session() );
 	public String privilegesTabName = SWLoc.string( "sfAdminTabAccessPrivileges", session() );
-
 	public String selectedTab = documentsTabName;
-
 	private NSArray<String> _tabs;
-
-	public String searchString;
 
 	public SWAssetManagement( WOContext c ) {
 		super( c );
@@ -88,20 +84,13 @@ public class SWAssetManagement extends SWAdminComponent {
 	}
 
 	/**
-	 * Search for a given document and select it.
-	 */
-	public WOActionResults search() {
-		Integer id = new Integer( searchString );
-		setSelectedObjectUsingID( id );
-		return context().page();
-	}
-
-	/**
 	 * I've got a feeling we can move some functionality around here.
+	 * 
+	 * FIXME: Remove this horror.
 	 */
 	public void appendToResponse( WOResponse r, WOContext c ) {
 		if( record() != null ) {
-			if( selectedObject() != null ) {
+			if( selectedObject() == null ) {
 				if( record().valueForKey( fieldName() ) != null ) {
 					if( !useID() ) {
 						setSelectedObject( (SWAsset)record().valueForKey( fieldName() ) );
@@ -146,7 +135,8 @@ public class SWAssetManagement extends SWAdminComponent {
 	}
 
 	/**
-	 * FIXME: This is just plain wrong.
+	 * TODO: We're creating a special case for news items here. I wonder if we
+	 * shouldn't be using this for all types of assets.
 	 */
 	public String rowClass() {
 		if( currentObject instanceof SWNewsItem ) {
@@ -166,9 +156,7 @@ public class SWAssetManagement extends SWAdminComponent {
 	}
 
 	/**
-	 * Selectes the current object and returns the user to the calling page.
-	 * 
-	 * @return Te calling component.
+	 * Selects the current object and returns the user to the calling component.
 	 */
 	public WOActionResults selectObjectAndReturn() {
 
@@ -222,7 +210,7 @@ public class SWAssetManagement extends SWAdminComponent {
 	}
 
 	public WOActionResults deleteSelectedFolder() {
-		SWFolderUtilities.deleteFolder( selectedFolder() );
+		selectedFolder().deleteFolder();
 		setSelectedFolder( null );
 		return saveChanges();
 	}
