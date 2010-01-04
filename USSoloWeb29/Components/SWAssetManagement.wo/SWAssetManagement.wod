@@ -164,7 +164,7 @@ NAME_STRING: WOString {
 }
 
 FOLDER_SIZE_STRING: WOString {
-	value = selectedFolder.size;
+	value = selectedFolder.sizeKB;
 }
 
 DATE_STRING: WOString {
