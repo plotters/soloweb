@@ -1,6 +1,5 @@
 {
     attributes = (
-        {columnName = "FILE_FOLDER_ID"; name = documentFolderID; prototypeName = int; }, 
         {
             allowsNull = N; 
             columnName = "DOCUMENT_ID"; 
@@ -9,16 +8,17 @@
         }, 
         {columnName = "DOCUMENT_TYPE_ID"; name = documentTypeID; prototypeName = int; }, 
         {columnName = EXTENSION; name = extension; prototypeName = "string_1000"; }, 
+        {columnName = "FILE_FOLDER_ID"; name = folderID; prototypeName = int; }, 
         {columnName = "MIME_TYPE"; name = mimeType; prototypeName = "string_1000"; }, 
         {columnName = NAME; name = name; prototypeName = "string_1000"; }, 
         {columnName = "PICTURE_ID"; name = pictureID; prototypeName = int; }, 
         {columnName = TEXT; name = text; prototypeName = "string_1000000"; }
     ); 
     attributesUsedForLocking = (
-        documentFolderID, 
         documentID, 
         documentTypeID, 
         extension, 
+        folderID, 
         mimeType, 
         name, 
         pictureID, 
@@ -26,11 +26,11 @@
     ); 
     className = "is.us.soloweb.data.SWDocument"; 
     classProperties = (
-        documentFolderID, 
         documentID, 
         documentTypeID, 
         extension, 
         folder, 
+        folderID, 
         mimeType, 
         name, 
         pictureID, 
@@ -45,7 +45,7 @@
             destination = SWDocumentFolder; 
             isToMany = N; 
             joinSemantic = EOInnerJoin; 
-            joins = ({destinationAttribute = folderID; sourceAttribute = documentFolderID; }); 
+            joins = ({destinationAttribute = folderID; sourceAttribute = folderID; }); 
             name = folder; 
         }
     ); 

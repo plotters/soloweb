@@ -16,10 +16,10 @@ public abstract class _SWDocument extends  ERXGenericRecord {
   public static final String ENTITY_NAME = "SWDocument";
 
   // Attribute Keys
-  public static final ERXKey<Integer> DOCUMENT_FOLDER_ID = new ERXKey<Integer>("documentFolderID");
   public static final ERXKey<Integer> DOCUMENT_ID = new ERXKey<Integer>("documentID");
   public static final ERXKey<Integer> DOCUMENT_TYPE_ID = new ERXKey<Integer>("documentTypeID");
   public static final ERXKey<String> EXTENSION = new ERXKey<String>("extension");
+  public static final ERXKey<Integer> FOLDER_ID = new ERXKey<Integer>("folderID");
   public static final ERXKey<String> MIME_TYPE = new ERXKey<String>("mimeType");
   public static final ERXKey<String> NAME = new ERXKey<String>("name");
   public static final ERXKey<Integer> PICTURE_ID = new ERXKey<Integer>("pictureID");
@@ -28,10 +28,10 @@ public abstract class _SWDocument extends  ERXGenericRecord {
   public static final ERXKey<is.us.soloweb.data.SWDocumentFolder> FOLDER = new ERXKey<is.us.soloweb.data.SWDocumentFolder>("folder");
 
   // Attributes
-  public static final String DOCUMENT_FOLDER_ID_KEY = DOCUMENT_FOLDER_ID.key();
   public static final String DOCUMENT_ID_KEY = DOCUMENT_ID.key();
   public static final String DOCUMENT_TYPE_ID_KEY = DOCUMENT_TYPE_ID.key();
   public static final String EXTENSION_KEY = EXTENSION.key();
+  public static final String FOLDER_ID_KEY = FOLDER_ID.key();
   public static final String MIME_TYPE_KEY = MIME_TYPE.key();
   public static final String NAME_KEY = NAME.key();
   public static final String PICTURE_ID_KEY = PICTURE_ID.key();
@@ -47,17 +47,6 @@ public abstract class _SWDocument extends  ERXGenericRecord {
       throw new IllegalStateException("You attempted to localInstance " + this + ", which has not yet committed.");
     }
     return localInstance;
-  }
-
-  public Integer documentFolderID() {
-    return (Integer) storedValueForKey("documentFolderID");
-  }
-
-  public void setDocumentFolderID(Integer value) {
-    if (_SWDocument.LOG.isDebugEnabled()) {
-    	_SWDocument.LOG.debug( "updating documentFolderID from " + documentFolderID() + " to " + value);
-    }
-    takeStoredValueForKey(value, "documentFolderID");
   }
 
   public Integer documentID() {
@@ -91,6 +80,17 @@ public abstract class _SWDocument extends  ERXGenericRecord {
     	_SWDocument.LOG.debug( "updating extension from " + extension() + " to " + value);
     }
     takeStoredValueForKey(value, "extension");
+  }
+
+  public Integer folderID() {
+    return (Integer) storedValueForKey("folderID");
+  }
+
+  public void setFolderID(Integer value) {
+    if (_SWDocument.LOG.isDebugEnabled()) {
+    	_SWDocument.LOG.debug( "updating folderID from " + folderID() + " to " + value);
+    }
+    takeStoredValueForKey(value, "folderID");
   }
 
   public String mimeType() {

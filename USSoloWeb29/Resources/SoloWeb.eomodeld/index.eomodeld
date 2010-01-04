@@ -1,7 +1,7 @@
 {
     EOModelVersion = "2.1"; 
     adaptorName = JDBC; 
-    connectionDictionary = {URL = ""; }; 
+    connectionDictionary = {URL = ""; password = ""; plugin = ""; username = ""; }; 
     entities = (
         {className = EOGenericRecord; name = EOFrontBasePrototypes; }, 
         {className = EOGenericRecord; name = EOMSSQL2000Prototypes; }, 
@@ -39,7 +39,7 @@
     }; 
     userInfo = {
         "_EntityModeler" = {
-            activeDatabaseConfigName = FrontBase; 
+            activeDatabaseConfigName = OracleTest; 
             databaseConfigs = {
                 FrontBase = {
                     adaptorName = JDBC; 
