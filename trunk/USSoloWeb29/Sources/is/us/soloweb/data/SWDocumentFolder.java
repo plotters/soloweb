@@ -92,7 +92,7 @@ public class SWDocumentFolder extends _SWDocumentFolder implements SWFolder<SWDo
 	 * Deletes this folder and all items contained in it
 	 */
 	public void deleteFolder() {
-		SWFolderUtilities.deleteFolder( editingContext(), this );
+		SWFolderUtilities.deleteFolder( this );
 	}
 
 	/**

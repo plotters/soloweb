@@ -91,7 +91,7 @@ public class SWNewsFolder extends _SWNewsFolder implements SWFolder<SWNewsFolder
 	 * Deletes this folder and all items contained in it
 	 */
 	public void deleteFolder() {
-		SWFolderUtilities.deleteFolder( editingContext(), this );
+		SWFolderUtilities.deleteFolder( this );
 	}
 
 	/**
