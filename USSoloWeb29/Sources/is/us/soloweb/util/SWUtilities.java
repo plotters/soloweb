@@ -1,12 +1,31 @@
 package is.us.soloweb.util;
 
 import is.us.soloweb.SoloWeb;
-import is.us.soloweb.admin.*;
-import is.us.soloweb.data.*;
-import is.us.soloweb.interfaces.*;
+import is.us.soloweb.admin.SWAssetManagement;
+import is.us.soloweb.admin.SWEditComponent;
+import is.us.soloweb.admin.SWEditDocument;
+import is.us.soloweb.admin.SWEditGroup;
+import is.us.soloweb.admin.SWEditNewsItem;
+import is.us.soloweb.admin.SWEditPage;
+import is.us.soloweb.admin.SWEditSite;
+import is.us.soloweb.admin.SWEditUser;
+import is.us.soloweb.data.SWComponent;
+import is.us.soloweb.data.SWDocument;
+import is.us.soloweb.data.SWDocumentFolder;
+import is.us.soloweb.data.SWGroup;
+import is.us.soloweb.data.SWNewsFolder;
+import is.us.soloweb.data.SWNewsItem;
+import is.us.soloweb.data.SWPage;
+import is.us.soloweb.data.SWSite;
+import is.us.soloweb.data.SWUser;
+import is.us.soloweb.interfaces.SWInspectable;
+import is.us.soloweb.interfaces.SWInspectionComponent;
 import is.us.util.USStringUtilities;
 
-import com.webobjects.appserver.*;
+import com.webobjects.appserver.WOApplication;
+import com.webobjects.appserver.WOContext;
+import com.webobjects.appserver.WOElement;
+import com.webobjects.appserver.WORequest;
 import com.webobjects.eocontrol.EOEditingContext;
 import com.webobjects.foundation.NSArray;
 
@@ -18,9 +37,8 @@ import er.extensions.components.ERXComponent;
  * @version 2.9.2b6
  * @since 2.9.2b6
  * 
- * FIXME: A more generic implementation should be in order.
- * FIXME: We're not accounting for plugins here.
- * FIXME: We're not accounting for access privileges here.
+ *        FIXME: We're not accounting for plugins here. FIXME: We're not
+ *        accounting for access privileges here.
  */
 
 public class SWUtilities {
@@ -110,7 +128,8 @@ public class SWUtilities {
 	}
 
 	/**
-	 * Fetches an HTML document and a WOD document matching the given IDs and attempts to create a template. 
+	 * Fetches an HTML document and a WOD document matching the given IDs and
+	 * attempts to create a template.
 	 */
 	public static WOElement createTemplateFromSoloWebFiles( EOEditingContext ec, ERXComponent component, int htmlID, int wodID ) {
 		String htmlString = USStringUtilities.stringFromDataUsingEncoding( SWDocument.documentWithID( ec, htmlID ).data().bytes(), SWC.ENCODING_UTF_8 );
