@@ -7,7 +7,12 @@
 <webobject name="SELECT_IMAGE_LINK" />
 
 <webobject name="NAME_FIELD" />
-<webobject name="HTML_EDITOR" />
+<wo:conditional condition="$currentComponent.isWikiMarkup" negate="true">
+	<webobject name="HTML_EDITOR" />
+</wo:conditional>
+<wo:conditional condition="$currentComponent.isWikiMarkup">
+	<webobject name="WIKI_EDITOR" />
+</wo:conditional>
 
 <webobject name="ENCODE_BREAKS_CHECK" /> <webobject name="String1" />
-<webobject name="WIKI_CHECK" /> Wiki
+<webobject name="WIKI_CHECK" /> Wiki-texti
