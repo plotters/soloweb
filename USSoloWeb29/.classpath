@@ -18,11 +18,11 @@
 	<classpathentry kind="con" path="WOFramework/USJars"/>
 	<classpathentry kind="con" path="WOFramework/USWebObjects"/>
 	<classpathentry kind="con" path="WOFramework/USJava"/>
-	<classpathentry exported="true" kind="lib" path="Libraries/org.eclipse.mylyn.wikitext.confluence.core_1.1.1.v20090722-0200-e3x.jar"/>
-	<classpathentry exported="true" kind="lib" path="Libraries/org.eclipse.mylyn.wikitext.core_1.1.1.v20090722-0200-e3x.jar"/>
-	<classpathentry exported="true" kind="lib" path="Libraries/org.eclipse.mylyn.wikitext.mediawiki.core_1.1.1.v20090722-0200-e3x.jar"/>
-	<classpathentry exported="true" kind="lib" path="Libraries/org.eclipse.mylyn.wikitext.textile.core_1.1.1.v20090722-0200-e3x.jar"/>
-	<classpathentry exported="true" kind="lib" path="Libraries/org.eclipse.mylyn.wikitext.tracwiki.core_1.1.1.v20090722-0200-e3x.jar"/>
-	<classpathentry exported="true" kind="lib" path="Libraries/org.eclipse.mylyn.wikitext.twiki.core_1.1.1.v20090722-0200-e3x.jar"/>
+	<classpathentry kind="lib" path="Libraries/org.eclipse.mylyn.wikitext.confluence.core_1.3.0.I20100105-0700-e3x.jar"/>
+	<classpathentry kind="lib" path="Libraries/org.eclipse.mylyn.wikitext.core_1.3.0.I20100105-0700-e3x.jar"/>
+	<classpathentry kind="lib" path="Libraries/org.eclipse.mylyn.wikitext.mediawiki.core_1.3.0.I20100105-0700-e3x.jar"/>
+	<classpathentry kind="lib" path="Libraries/org.eclipse.mylyn.wikitext.textile.core_1.3.0.I20100105-0700-e3x.jar"/>
+	<classpathentry kind="lib" path="Libraries/org.eclipse.mylyn.wikitext.tracwiki.core_1.3.0.I20100105-0700-e3x.jar"/>
+	<classpathentry kind="lib" path="Libraries/org.eclipse.mylyn.wikitext.twiki.core_1.3.0.I20100105-0700-e3x.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,10 +1,7 @@
-WRAPPER : SWAdminComponentWrapper {}
-
-FORM: WOForm {}
-
 SUBMIT_BUTTON : WOSubmitButton {
 	action = saveChangesAndReturn;
 	value = "Vista";
+	accesskey = "s";
 }
 
 PUBLISHED_CHECKOX: WOCheckBox {
