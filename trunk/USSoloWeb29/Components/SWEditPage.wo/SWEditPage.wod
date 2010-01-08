@@ -16,7 +16,7 @@ PREVIEW_LINK: WOHyperlink {
 	target = "_blank";
 	directActionName = "dp";
 	?id = selectedObject.pageID;
-	accesskey = "1";
+	accesskey = "p";
 }
 
 CREATE_PAGE_LINK: WOHyperlink {

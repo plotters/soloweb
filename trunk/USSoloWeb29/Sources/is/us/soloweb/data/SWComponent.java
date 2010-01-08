@@ -10,9 +10,11 @@ import is.us.util.USSortableUtilities;
 import is.us.util.USStringUtilities;
 import is.us.util.USUtilities;
 
+import java.io.StringWriter;
 import java.util.Enumeration;
 
 import org.eclipse.mylyn.wikitext.core.parser.MarkupParser;
+import org.eclipse.mylyn.wikitext.core.parser.builder.HtmlDocumentBuilder;
 import org.eclipse.mylyn.wikitext.core.parser.markup.MarkupLanguage;
 import org.eclipse.mylyn.wikitext.textile.core.TextileLanguage;
 
@@ -153,11 +155,12 @@ public class SWComponent extends _SWComponent implements SWTransferable, SWTimed
 		String s = super.textTwo();
 
 		if( isWikiMarkup() ) {
-			System.out.println( s );
+			StringWriter writer = new StringWriter();
 			MarkupLanguage language = new TextileLanguage();
-			MarkupParser parser = new MarkupParser( language );
-			s = parser.parseToHtml( s );
-			System.out.println( s );
+			HtmlDocumentBuilder builder = new HtmlDocumentBuilder( writer );
+			MarkupParser parser = new MarkupParser( language, builder );
+			parser.parse( s, false );
+			s = writer.toString();
 		}
 
 		if( USUtilities.booleanFromObject( encodeBreaks() ) ) {
@@ -181,8 +184,8 @@ public class SWComponent extends _SWComponent implements SWTransferable, SWTimed
 	}
 
 	/**
-	 * @return Indicates if the text in this component should be rendered using
-	 *         the Textile engine.
+	 * Indicates if the text in this component should be rendered using the
+	 * Textile engine.
 	 */
 	public boolean isWikiMarkup() {
 		return USUtilities.booleanFromObject( wikiMarkup() );
