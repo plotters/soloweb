@@ -180,7 +180,11 @@ public class SWComponent extends _SWComponent implements SWTransferable, SWTimed
 		return s;
 	}
 
+	/**
+	 * @return Indicates if the text in this component should be rendered using
+	 *         the Textile engine.
+	 */
 	public boolean isWikiMarkup() {
-		return true;
+		return USUtilities.booleanFromObject( wikiMarkup() );
 	}
 }

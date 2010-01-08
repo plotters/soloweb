@@ -39,7 +39,7 @@
     }; 
     userInfo = {
         "_EntityModeler" = {
-            activeDatabaseConfigName = OracleTest; 
+            activeDatabaseConfigName = Oracle; 
             databaseConfigs = {
                 FrontBase = {
                     adaptorName = JDBC; 

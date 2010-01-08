@@ -25,7 +25,8 @@
         {columnName = "TEXT_ONE"; name = textOne; prototypeName = "string_1000"; }, 
         {columnName = "TEXT_TWO"; name = textTwo; prototypeName = "string_1000000"; }, 
         {columnName = "TIME_IN"; name = timeIn; prototypeName = time; }, 
-        {columnName = "TIME_OUT"; name = timeOut; prototypeName = time; }
+        {columnName = "TIME_OUT"; name = timeOut; prototypeName = time; }, 
+        {columnName = "WIKI_MARKUP"; name = wikiMarkup; prototypeName = int; }
     ); 
     attributesUsedForLocking = (
         componentID, 
@@ -38,7 +39,8 @@
         templateName, 
         textOne, 
         timeIn, 
-        timeOut
+        timeOut, 
+        wikiMarkup
     ); 
     className = "is.us.soloweb.data.SWComponent"; 
     classProperties = (
@@ -56,7 +58,8 @@
         textOne, 
         textTwo, 
         timeIn, 
-        timeOut
+        timeOut, 
+        wikiMarkup
     ); 
     externalName = "SW_COMPONENT"; 
     fetchSpecificationDictionary = {}; 
