@@ -1,5 +1,9 @@
-CheckBox1: WOCheckBox {
+ENCODE_BREAKS_CHECK: WOCheckBox {
 	checked = currentComponent.encodeBreaks;
+}
+
+WIKI_CHECK: WOCheckBox {
+	checked = currentComponent.wikiMarkup;
 }
 
 NAME_FIELD: WOTextField {
@@ -7,48 +11,26 @@ NAME_FIELD: WOTextField {
 	value = currentComponent.textOne;
 }
 
-IMAGE_1: WOImage {
-	filename = "butur001.gif";
-	framework = application.sw.frameworkBundleName;
-}
-
-IMAGE_2: WOImage {
+IMAGE_LEFT: WOImage {
 	filename = "butur002.gif";
 	framework = application.sw.frameworkBundleName;
 }
 
-IMAGE_3: WOImage {
+IMAGE_RIGHT: WOImage {
 	filename = "butur003.gif";
 	framework = application.sw.frameworkBundleName;
 }
 
-IMAGE_4: WOImage {
-	filename = "butur004.gif";
-	framework = application.sw.frameworkBundleName;
-}
-
-RADIO_1: WORadioButton {
-	name = currentComponent.componentID;
-	selection = currentComponent.templateName;
-	value = "ButurTemplate001";
-}
-
-RADIO_2: WORadioButton {
+RADIO_LEFT: WORadioButton {
 	name = currentComponent.componentID;
 	selection = currentComponent.templateName;
 	value = "ButurTemplate002";
 }
 
-RADIO_3: WORadioButton {
+RADIO_RIGHT: WORadioButton {
 	name = currentComponent.componentID;
 	selection = currentComponent.templateName;
 	value = "ButurTemplate003";
-}
-
-RADIO_4: WORadioButton {
-	name = currentComponent.componentID;
-	selection = currentComponent.templateName;
-	value = "ButurTemplate004";
 }
 
 SELECT_IMAGE_LINK: SWDocumentHyperlink {
