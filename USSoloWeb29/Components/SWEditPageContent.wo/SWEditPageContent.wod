@@ -11,28 +11,20 @@ DELETE_COMPONENT_LINK: WOHyperlink {
 	action = deleteComponent;
 	class = "swdeleteButton";
 	onClick = session.@cs.deletePageComponentWarning;
-/*	updateContainerID = "pageContentContainer"; */
-}
-
-EDIT_COMPONENT: SWEditComponent {
-	selectedObject = currentComponent;
 }
 
 INSERT_BELOW_LINK: WOHyperlink {
 	action = insertComponentBelow;
 	class = "swcreateButton";
-/*	updateContainerID = "pageContentContainer"; */
 }
 
 INSERT_ABOVE_LINK: WOHyperlink {
 	action = insertComponentAbove;
 	class = "swcreateButton";
-/*	updateContainerID = "pageContentContainer"; */
 }
 
 INSERT_ABOVE_LINK_2: WOHyperlink {
 	action = insertComponentAbove;
-/*	updateContainerID = "pageContentContainer"; */
 }
 
 INSERT_COMPONENT_ABOVE_IMAGE: WOImage {
@@ -41,17 +33,16 @@ INSERT_COMPONENT_ABOVE_IMAGE: WOImage {
 
 MOVE_UP_LINK: WOHyperlink {
 	action = moveComponentUp;
-/*	updateContainerID = "pageContentContainer"; */
 }
 
 MOVE_DOWN_LINK: WOHyperlink {
 	action = moveComponentDown;
-/*	updateContainerID = "pageContentContainer"; */
 }
 
 COMPONENT_REPETITION: WORepetition {
 	item = currentComponent;
 	list = selectedObject.sortedComponents;
+	index = currentIndex;
 }
 
 TRANSFER_LINK: SWTransferHyperlink {
@@ -74,13 +65,9 @@ COMPONENT_LAST_CONDITIONAL: WOConditional {
 	negate = true;
 }
 
-UPDATE_CONTAINER : AjaxUpdateContainer {
-	id = "pageContentContainer";
-}
-
 EDIT_COMPONENT_BUTTON: WOHyperlink {
 	action = selectComponent;
-	/* updateContainerID = "pageContentContainer"; */
+	accesskey = currentIndex;
 }
 
 DISPLAY_COMPONENT : WOSwitchComponent {

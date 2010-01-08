@@ -1,12 +1,14 @@
 package is.us.soloweb.admin;
 
 import is.us.soloweb.SWSession;
-import is.us.soloweb.data.*;
+import is.us.soloweb.data.SWComponent;
+import is.us.soloweb.data.SWPage;
 import is.us.soloweb.interfaces.SWInspectionComponent;
 import is.us.soloweb.util.SWUtilities;
 import is.us.util.USSortable;
 
-import com.webobjects.appserver.*;
+import com.webobjects.appserver.WOActionResults;
+import com.webobjects.appserver.WOContext;
 import com.webobjects.foundation.NSMutableArray;
 
 /**
@@ -20,6 +22,7 @@ public class SWEditPageContent extends SWInspectionComponent<SWPage> {
 	 * The current component being iterated over
 	 */
 	public SWComponent currentComponent;
+	public int currentIndex;
 
 	public SWEditPageContent( WOContext context ) {
 		super( context );
@@ -60,7 +63,7 @@ public class SWEditPageContent extends SWInspectionComponent<SWPage> {
 
 	/**
 	 * Creates a new component and inserts it at the specified index
-	 *
+	 * 
 	 * @param anInt The index to insert the component at.
 	 */
 	private WOActionResults insertComponentAtIndex( int anInt ) {
@@ -88,8 +91,9 @@ public class SWEditPageContent extends SWInspectionComponent<SWPage> {
 	}
 
 	/**
-	 * Returns the name of the template to display for the current component.
-	 * If a bogus templateName is specified, an SWAdminErrorMessage is appended to the response instead.
+	 * Returns the name of the template to display for the current component. If
+	 * a bogus templateName is specified, an SWAdminErrorMessage is appended to
+	 * the response instead.
 	 */
 	public String templateName() {
 		try {
