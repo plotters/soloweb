@@ -24,5 +24,6 @@
 	<classpathentry kind="lib" path="Libraries/org.eclipse.mylyn.wikitext.textile.core_1.3.0.I20100105-0700-e3x.jar"/>
 	<classpathentry kind="lib" path="Libraries/org.eclipse.mylyn.wikitext.tracwiki.core_1.3.0.I20100105-0700-e3x.jar"/>
 	<classpathentry kind="lib" path="Libraries/org.eclipse.mylyn.wikitext.twiki.core_1.3.0.I20100105-0700-e3x.jar"/>
+	<classpathentry kind="lib" path="Libraries/jtidy-r938.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
