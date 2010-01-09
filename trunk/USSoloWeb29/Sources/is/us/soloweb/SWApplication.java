@@ -75,6 +75,10 @@ public abstract class SWApplication extends ERXApplication {
 			SWHTMLCleaner.tidyResponse( response );
 		}
 
+		if( SWSettings.useGzip( request ) && USHTTPUtilities.contentTypeHTML( response ) ) {
+			USHTTPUtilities.compressResponse( response );
+		}
+
 		return response;
 	}
 

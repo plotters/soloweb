@@ -1,16 +1,20 @@
 package is.us.soloweb;
 
-import is.us.soloweb.util.*;
-import is.us.util.*;
+import is.us.soloweb.util.SWC;
+import is.us.soloweb.util.SWDictionary;
+import is.us.soloweb.util.SWProperties;
+import is.us.util.USStringUtilities;
+import is.us.util.USUtilities;
 
 import java.io.File;
 
 import com.webobjects.appserver.WORequest;
-import com.webobjects.foundation.*;
+import com.webobjects.foundation.NSDictionary;
+import com.webobjects.foundation.NSKeyValueCoding;
 
 /**
  * SWSettings simplifies access to the various SoloWeb settings and properties.
- *
+ * 
  * @author Hugi Þórðarson
  */
 
@@ -39,6 +43,8 @@ public class SWSettings extends Object implements NSKeyValueCoding {
 	private static final String DEFAULT_USERNAME = "defaultUsername";
 	private static final String DOCUMENT_LOCATION_ON_DISK = "documentLocationOnDisk";
 	private static final String ONLY_SHOW_GROUP_PRIVILEGES = "onlyShowGroupPrivileges";
+	private static final String USE_TIDY = "useTidy";
+	private static final String USE_GZIP = "useGzip";
 
 	/**
 	 * Initializes SWSettings
@@ -73,7 +79,8 @@ public class SWSettings extends Object implements NSKeyValueCoding {
 	}
 
 	/**
-	 * Returns the specified setting, returning the default value if no setting is found
+	 * Returns the specified setting, returning the default value if no setting
+	 * is found
 	 */
 	public static Object settingForKeyWithDefaultValue( String aKey, Object defaultValue ) {
 		Object obj = settingForKey( aKey );
@@ -128,18 +135,18 @@ public class SWSettings extends Object implements NSKeyValueCoding {
 	}
 
 	/**
-	 * Indicates if access privileges are enabled for this SoloWeb system. 
+	 * Indicates if access privileges are enabled for this SoloWeb system.
 	 */
 	public static boolean privilegesEnabled() {
 		return booleanForKey( ENABLE_PRIVILEGES );
 	}
 
 	/**
-	 * Indicates if we want to compress the response using GZip.
-	 * Will always return false if the requesting user agent does not support Gzip.
+	 * Indicates if we want to compress the response using GZip. Will always
+	 * return false if the requesting user agent does not support Gzip.
 	 */
 	public static boolean useGzip( WORequest r ) {
-		boolean propertyValue = SWC.TRUE_STRING.equals( System.getProperty( SWProperties.USE_GZIP_PROPERTY ) );
+		boolean propertyValue = SWC.TRUE_STRING.equals( System.getProperty( SWProperties.USE_GZIP_PROPERTY ) ) || useGzip();
 		boolean disabled = SWC.FALSE_STRING.equals( r.stringFormValueForKey( SWProperties.USE_GZIP ) );
 		boolean enabled = SWC.TRUE_STRING.equals( r.stringFormValueForKey( SWProperties.USE_GZIP ) );
 		boolean result = (propertyValue || enabled) && !disabled;
@@ -147,10 +154,11 @@ public class SWSettings extends Object implements NSKeyValueCoding {
 	}
 
 	/**
-	 * Indicates if we want to use HTML tidy to automatically clean up HTML-code.
+	 * Indicates if we want to use HTML tidy to automatically clean up
+	 * HTML-code.
 	 */
 	public static boolean useTidy( WORequest r ) {
-		boolean propertyValue = SWC.TRUE_STRING.equals( System.getProperty( SWProperties.USE_TIDY_PROPERTY ) );
+		boolean propertyValue = SWC.TRUE_STRING.equals( System.getProperty( SWProperties.USE_TIDY_PROPERTY ) ) || useTidy();
 		boolean disabled = SWC.FALSE_STRING.equals( r.stringFormValueForKey( SWProperties.USE_TIDY ) );
 		boolean enabled = SWC.TRUE_STRING.equals( r.stringFormValueForKey( SWProperties.USE_TIDY ) );
 		boolean result = (propertyValue || enabled) && !disabled;
@@ -205,42 +213,56 @@ public class SWSettings extends Object implements NSKeyValueCoding {
 	}
 
 	/**
-	 * @return The ID of the group that contains all users. 
+	 * @return A boolean indicating if we are using HTML tidy.
+	 */
+	public static boolean useTidy() {
+		return booleanForKey( USE_TIDY );
+	}
+
+	/**
+	 * @return A boolean indicating if we are using Gzip compression
+	 */
+	public static boolean useGzip() {
+		return booleanForKey( USE_GZIP );
+	}
+
+	/**
+	 * @return The ID of the group that contains all users.
 	 */
 	public static Integer allUsersGroupID() {
 		return integerForKey( ALL_USER_GROUP_ID );
 	}
 
 	/**
-	 * @return The default admin username for SoloWeb. 
+	 * @return The default admin username for SoloWeb.
 	 */
 	public static String defaultUsername() {
 		return (String)SWSettings.settingForKeyWithDefaultValue( SWSettings.DEFAULT_USERNAME, DEFAULT_USERNAME_AND_PASSWORD );
 	}
 
 	/**
-	 * @return The default admin password for SoloWeb. 
+	 * @return The default admin password for SoloWeb.
 	 */
 	public static String defaultPassword() {
 		return (String)SWSettings.settingForKeyWithDefaultValue( SWSettings.DEFAULT_PASSWORD, DEFAULT_USERNAME_AND_PASSWORD );
 	}
 
 	/**
-	 * @return The default admin password for SoloWeb. 
+	 * @return The default admin password for SoloWeb.
 	 */
 	public static String webmasterEmail() {
 		return (String)SWSettings.settingForKeyWithDefaultValue( SWSettings.WEBMASTER_EMAIL, null );
 	}
 
 	/**
-	 * @return The SMTP Server used to send mail from SoloWeb. 
+	 * @return The SMTP Server used to send mail from SoloWeb.
 	 */
 	public static String defaultMailServer() {
 		return (String)SWSettings.settingForKeyWithDefaultValue( SWSettings.DEFAULT_MAIL_SERVER, null );
 	}
 
 	/**
-	 * @return The default admin password for SoloWeb. 
+	 * @return The default admin password for SoloWeb.
 	 */
 	public static String documentLocationOnDisk() {
 		return (String)SWSettings.settingForKeyWithDefaultValue( SWSettings.DOCUMENT_LOCATION_ON_DISK, null );
@@ -261,7 +283,7 @@ public class SWSettings extends Object implements NSKeyValueCoding {
 	}
 
 	/**
-	 * @return The default session timeout. 
+	 * @return The default session timeout.
 	 */
 	public static Integer sessionTimeOut() {
 		return USUtilities.integerFromObject( SWSettings.settingForKeyWithDefaultValue( SESSION_TIME_OUT, 30 ) );

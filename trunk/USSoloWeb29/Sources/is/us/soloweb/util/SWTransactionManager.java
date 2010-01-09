@@ -16,7 +16,6 @@ import com.webobjects.foundation.NSSelector;
 import com.webobjects.foundation.NSTimestamp;
 
 import er.extensions.eof.ERXEC;
-import er.extensions.eof.ERXEnterpriseObject;
 import er.extensions.eof.ERXGenericRecord;
 
 /**
@@ -110,11 +109,11 @@ public class SWTransactionManager {
 						((SWTransactionLogged)eo).setCreatedBy( user );
 					}
 				}
-				SWTransaction t = createAndInsertTransactionForEO( ACTION_INSERT, eo );
+				createAndInsertTransactionForEO( ACTION_INSERT, eo );
 
-				if( t != null ) {
-					transactionsMissingPrimaryKeys.addObject( t );
-				}
+				//				if( t != null ) {
+				//					transactionsMissingPrimaryKeys.addObject( t );
+				//				}
 			}
 
 			for( EOEnterpriseObject eo : ec.updatedObjects() ) {
@@ -138,21 +137,22 @@ public class SWTransactionManager {
 		}
 	}
 
-	public void afterSaveChangesInEditingContext( NSNotification notification ) {
-		EOEditingContext ec = (EOEditingContext)notification.object();
-		Object shouldNotLog = ec.userInfoForKey( DO_NOT_LOG_MARKER );
+	/*
+		public void afterSaveChangesInEditingContext( NSNotification notification ) {
+			EOEditingContext ec = (EOEditingContext)notification.object();
+			Object shouldNotLog = ec.userInfoForKey( DO_NOT_LOG_MARKER );
 
-		if( shouldNotLog == null ) {
-			for( SWTransaction t : transactionsMissingPrimaryKeys ) {
-				ERXEnterpriseObject eo = ((ERXGenericRecord)t.record());
-				t.setObjectID( USUtilities.integerFromObject( eo.primaryKey() ) );
-				transactionsMissingPrimaryKeys.removeObject( eo );
+			if( shouldNotLog == null ) {
+				for( SWTransaction t : transactionsMissingPrimaryKeys ) {
+					ERXEnterpriseObject eo = ((ERXGenericRecord)t.record());
+					t.setObjectID( USUtilities.integerFromObject( eo.primaryKey() ) );
+					transactionsMissingPrimaryKeys.removeObject( eo );
+				}
+
+				_loggingEC.saveChanges();
 			}
-
-			_loggingEC.saveChanges();
 		}
-	}
-
+	*/
 	private SWTransaction createAndInsertTransactionForEO( String action, EOEnterpriseObject eo ) {
 
 		Object o = ((ERXGenericRecord)eo).primaryKey();
@@ -190,7 +190,7 @@ public class SWTransactionManager {
 		NSSelector<SWTransactionManager> beforeSaveSelector = new NSSelector<SWTransactionManager>( "beforeSaveChangesInEditingContext", new Class[] { NSNotification.class } );
 		NSNotificationCenter.defaultCenter().addObserver( defaultTransactionManager(), beforeSaveSelector, ERXEC.EditingContextWillSaveChangesNotification, null );
 
-		NSSelector<SWTransactionManager> afterSaveSelector = new NSSelector<SWTransactionManager>( "afterSaveChangesInEditingContext", new Class[] { NSNotification.class } );
-		NSNotificationCenter.defaultCenter().addObserver( defaultTransactionManager(), afterSaveSelector, ERXEC.EditingContextDidSaveChangesNotification, null );
+		//		NSSelector<SWTransactionManager> afterSaveSelector = new NSSelector<SWTransactionManager>( "afterSaveChangesInEditingContext", new Class[] { NSNotification.class } );
+		//		NSNotificationCenter.defaultCenter().addObserver( defaultTransactionManager(), afterSaveSelector, ERXEC.EditingContextDidSaveChangesNotification, null );
 	}
 }
