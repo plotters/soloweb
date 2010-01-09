@@ -41,11 +41,15 @@ PICTURE_LINK: SWDocumentHyperlink {
 	record = selectedObject;
 }
 
-TEXT_FIELD: USHTMLEditor {
+HTML_EDITOR: USHTMLEditor {
 	value = selectedObject.text;
 }
 
-String1: WOString {
+WIKI_EDITOR: USHTMLEditorSimple {
+	value = selectedObject.text;
+}
+
+NAME_STRING: WOString {
 	value = selectedObject.name;
 }
 
@@ -124,4 +128,8 @@ CREATED_BY_HYPERLINK : SWObjectHyperlink {
 
 MODIFIED_BY_HYPERLINK : SWObjectHyperlink {
 	object = selectedObject.modifiedBy;
+}
+
+WIKI_CHECK: WOCheckBox {
+	checked = selectedObject.wikiMarkup;
 }

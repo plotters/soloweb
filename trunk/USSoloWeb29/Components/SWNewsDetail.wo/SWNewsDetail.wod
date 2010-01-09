@@ -1,17 +1,8 @@
-DONT_ENCODE_BREAKS_CONDITIONAL: WOConditional {
-	condition = selectedNewsItem.shouldEncodeBreaks;
-	negate = true;
-}
-
-ENCODE_BREAKS_CONDITIONAL: WOConditional {
-	condition = selectedNewsItem.shouldEncodeBreaks;
-}
-
 IMAGE: SWImage {
 	document = selectedNewsItem.document;
+	align = currentComponent.customInfo.imageAlignment;
 	hspace = "5";
 	vspace = "5";
-	align = currentComponent.customInfo.imageAlignment;
 }
 
 SOCIAL_FACEBOOK_LINK : AjaxSocialNetworkLink {
@@ -53,13 +44,8 @@ COMMENT_DATE_STRING: WOString {
 }
 
 TEXT_STRING: WOString {
+	value = selectedNewsItem.textRendered;
 	escapeHTML = false;
-	value = selectedNewsItem.text;
-}
-
-TEXT_WITH_BREAKS_STRING: WOString {
-	escapeHTML = false;
-	value = selectedNewsItem.textWithBreaks;
 }
 
 COMMENTS_CONDITIONAL: WOConditional {

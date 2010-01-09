@@ -33,6 +33,7 @@ public abstract class _SWNewsItem extends  ERXGenericRecord {
   public static final ERXKey<String> TEXT = new ERXKey<String>("text");
   public static final ERXKey<NSTimestamp> TIME_IN = new ERXKey<NSTimestamp>("timeIn");
   public static final ERXKey<NSTimestamp> TIME_OUT = new ERXKey<NSTimestamp>("timeOut");
+  public static final ERXKey<Integer> WIKI_MARKUP = new ERXKey<Integer>("wikiMarkup");
   // Relationship Keys
   public static final ERXKey<is.us.soloweb.data.SWComment> COMMENTS = new ERXKey<is.us.soloweb.data.SWComment>("comments");
   public static final ERXKey<is.us.soloweb.data.SWUser> CREATED_BY = new ERXKey<is.us.soloweb.data.SWUser>("createdBy");
@@ -58,6 +59,7 @@ public abstract class _SWNewsItem extends  ERXGenericRecord {
   public static final String TEXT_KEY = TEXT.key();
   public static final String TIME_IN_KEY = TIME_IN.key();
   public static final String TIME_OUT_KEY = TIME_OUT.key();
+  public static final String WIKI_MARKUP_KEY = WIKI_MARKUP.key();
   // Relationships
   public static final String COMMENTS_KEY = COMMENTS.key();
   public static final String CREATED_BY_KEY = CREATED_BY.key();
@@ -260,6 +262,17 @@ public abstract class _SWNewsItem extends  ERXGenericRecord {
     	_SWNewsItem.LOG.debug( "updating timeOut from " + timeOut() + " to " + value);
     }
     takeStoredValueForKey(value, "timeOut");
+  }
+
+  public Integer wikiMarkup() {
+    return (Integer) storedValueForKey("wikiMarkup");
+  }
+
+  public void setWikiMarkup(Integer value) {
+    if (_SWNewsItem.LOG.isDebugEnabled()) {
+    	_SWNewsItem.LOG.debug( "updating wikiMarkup from " + wikiMarkup() + " to " + value);
+    }
+    takeStoredValueForKey(value, "wikiMarkup");
   }
 
   public is.us.soloweb.data.SWUser createdBy() {

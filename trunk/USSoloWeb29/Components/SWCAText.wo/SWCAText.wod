@@ -45,6 +45,7 @@ HTML_EDITOR: USHTMLEditor {
 WIKI_EDITOR: USHTMLEditorSimple {
 	value = currentComponent.textTwo;
 }
+
 String1: WOString {
 	value = session.@ls.componentEncodeBreaks;
 }

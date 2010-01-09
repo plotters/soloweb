@@ -29,7 +29,8 @@
         }, 
         {columnName = TEXT; name = text; prototypeName = "string_1000000"; }, 
         {columnName = "TIME_IN"; name = timeIn; prototypeName = time; }, 
-        {columnName = "TIME_OUT"; name = timeOut; prototypeName = time; }
+        {columnName = "TIME_OUT"; name = timeOut; prototypeName = time; }, 
+        {columnName = "WIKI_MARKUP"; name = wikiMarkup; prototypeName = int; }
     ); 
     attributesUsedForLocking = (
         createdByID, 
@@ -47,7 +48,8 @@
         published, 
         subheading, 
         timeIn, 
-        timeOut
+        timeOut, 
+        wikiMarkup
     ); 
     className = "is.us.soloweb.data.SWNewsItem"; 
     classProperties = (
@@ -72,7 +74,8 @@
         subheading, 
         text, 
         timeIn, 
-        timeOut
+        timeOut, 
+        wikiMarkup
     ); 
     externalName = "SW_NEWS_ITEM"; 
     fetchSpecificationDictionary = {}; 
