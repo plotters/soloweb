@@ -1,10 +1,13 @@
 package is.us.soloweb;
 
 import is.us.soloweb.util.SWExternalUserUtilities;
+import is.us.soloweb.util.SWHTMLCleaner;
 import is.us.wo.util.USHTTPUtilities;
 
-import com.webobjects.appserver.*;
-import com.webobjects.foundation.*;
+import com.webobjects.appserver.WORequest;
+import com.webobjects.appserver.WOResponse;
+import com.webobjects.foundation.NSArray;
+import com.webobjects.foundation.NSDictionary;
 
 import er.extensions.appserver.ERXApplication;
 
@@ -21,7 +24,7 @@ public abstract class SWApplication extends ERXApplication {
 	}
 
 	/**
-	 * SoloWeb 
+	 * SoloWeb
 	 */
 	public SoloWeb sw() {
 		return SoloWeb.sw();
@@ -67,6 +70,10 @@ public abstract class SWApplication extends ERXApplication {
 		SWExternalUserUtilities.writeUserIDToResponse( userUUID, response, domain );
 
 		USHTTPUtilities.resetCookieHeaderInResponse( response );
+
+		if( SWSettings.useTidy( request ) && USHTTPUtilities.contentTypeHTML( response ) ) {
+			SWHTMLCleaner.tidyResponse( response );
+		}
 
 		return response;
 	}
