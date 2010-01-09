@@ -156,9 +156,9 @@ public class SWTransactionManager {
 	private SWTransaction createAndInsertTransactionForEO( String action, EOEnterpriseObject eo ) {
 
 		Object o = ((ERXGenericRecord)eo).primaryKey();
-		boolean shouldLog = (o instanceof Number);
+		boolean hasNumericPrimaryKey = (o instanceof Number);
 
-		if( shouldLog ) {
+		if( hasNumericPrimaryKey ) {
 			SWTransaction t = new SWTransaction();
 			_loggingEC.insertObject( t );
 			t.setDate( new NSTimestamp() );

@@ -3,8 +3,7 @@
 	<h4 class="sw_newsdate"><webobject name="DATE_STRING" /></h4>
 	<webobject name="IMAGE" />
 	<div class="sw_newsitem_text">
-		<webobject name="DONT_ENCODE_BREAKS_CONDITIONAL"><webobject name="TEXT_STRING" /></webobject>
-		<webobject name="ENCODE_BREAKS_CONDITIONAL"><webobject name="TEXT_WITH_BREAKS_STRING" /></webobject>
+		<webobject name="TEXT_STRING" />
 	</div>
 	<div class="social_media_links">
 		<webobject name="SOCIAL_FACEBOOK_LINK" />
@@ -21,7 +20,7 @@
 		<webobject name="COMMENTS_CONDITIONAL">
 		<div class="conversation"><webobject name="COMMENT_REPETITION">
 			<webobject name="COMMENT_DIV">
-				<wo:element elementName="a" name="$currentComment.anchor" />
+				<wo:container elementName="a" name="$currentComment.anchor" />
 				<div class="commentPerson"><webobject name="COMMENT_LINK"><webobject name="CURRENT_NAME_STRING" /></webobject></div>
 				<div class="commentDate"><span class="commentTime"><webobject name="COMMENT_TIME_STRING" /></span> <webobject name="COMMENT_DATE_STRING" /></div>
 				<div class="commentText"><webobject name="CURRENT_COMMENT_TEXT_STRING" /><br style="clear: both;" /></div>

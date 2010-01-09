@@ -1,5 +1,5 @@
 <div class="swmenu">
-	<span class="swmenuTitle"><webobject name="String1" /> (<webobject name="String2" />)</span>
+	<span class="swmenuTitle"><webobject name="NAME_STRING" /> (<webobject name="String2" />)</span>
 </div>
 <div id="swobjectEdit">
 	<webobject name="FORM">
@@ -16,8 +16,14 @@
 		<h3><webobject name="EXCERPT_STRING" />: </h3>
 		<webobject name="EXCERPT_FIELD" />
 		<h3>Texti</h3>
-		<webobject name="TEXT_FIELD" />
+		<wo:conditional condition="$selectedObject.isWikiMarkup" negate="true">
+			<webobject name="HTML_EDITOR" />
+		</wo:conditional>
+		<wo:conditional condition="$selectedObject.isWikiMarkup">
+			<webobject name="WIKI_EDITOR" />
+		</wo:conditional>
 		<label><webobject name="ENCODEBREAKS_STRING" />: </label><webobject name="ENCODE_BREAKS_CHECKBOX" /><br />
+		 <label><a href="http://www.us.is/textile-reference/index.html" onclick="window.open(this.href,'textile_reference','height=400,width=600,scrollbars=1');return false;">Wiki-texti</a></label><webobject name="WIKI_CHECK" /><br />
 		<div class="swobjecthistory">
 			Búið til: <webobject name="CREATION_DATE_STRING" /> <webobject name="CREATED_BY_HYPERLINK"><webobject name= "CREATED_BY_STRING" /></webobject><br />
 			Breytt: <webobject name="MODIFICATION_DATE_STRING" /> <webobject name="MODIFIED_BY_HYPERLINK"><webobject name= "MODIFIED_BY_STRING" /></webobject><br />

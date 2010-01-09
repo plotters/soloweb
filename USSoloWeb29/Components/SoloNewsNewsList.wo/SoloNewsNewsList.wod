@@ -3,15 +3,6 @@ DISPLAY_DETAIL_CONDITIONAL: WOConditional {
 	negate = true;
 }
 
-DO_NOT_ENCODE_BREAKS_CONDITIONAL: WOConditional {
-	condition = currentNewsItem.shouldEncodeBreaks;
-	negate = true;
-}
-
-ENCODE_BREAKS_CONDITIONAL: WOConditional {
-	condition = currentNewsItem.shouldEncodeBreaks;
-}
-
 HAS_DETAIL_ITEM_CONDITIONAL: WOConditional {
 	condition = displayDetail;
 }
@@ -65,13 +56,8 @@ EXCERPT_WITH_BREAKS_STRING: WOString {
 	escapeHTML = false;
 }
 
-TEXT_WITHOUT_BREAKS_STRING: WOString {
-	value = currentNewsItem.text;
-	escapeHTML = false;
-}
-
-TEXT_WITH_BREAKS_STRING: WOString {
-	value = currentNewsItem.textWithBreaks;
+TEXT_STRING: WOString {
+	value = currentNewsItem.textRendered;
 	escapeHTML = false;
 }
 

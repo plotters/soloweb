@@ -7,6 +7,13 @@ import is.us.soloweb.util.SWTimedContentUtilities;
 import is.us.util.USStringUtilities;
 import is.us.util.USUtilities;
 
+import java.io.StringWriter;
+
+import org.eclipse.mylyn.wikitext.core.parser.MarkupParser;
+import org.eclipse.mylyn.wikitext.core.parser.builder.HtmlDocumentBuilder;
+import org.eclipse.mylyn.wikitext.core.parser.markup.MarkupLanguage;
+import org.eclipse.mylyn.wikitext.textile.core.TextileLanguage;
+
 import com.webobjects.eocontrol.EOEditingContext;
 import com.webobjects.eocontrol.EOEnterpriseObject;
 import com.webobjects.eocontrol.EOFetchSpecification;
@@ -106,5 +113,35 @@ public class SWNewsItem extends _SWNewsItem implements SWTimedContent, SWAsset<S
 	 */
 	public double sizeKB() {
 		return size() / 1000d;
+	}
+
+	/**
+	 * @return The newsitem's text, formatted for display.
+	 */
+	public String textRendered() {
+		String s = super.text();
+
+		if( isWikiMarkup() ) {
+			StringWriter writer = new StringWriter();
+			MarkupLanguage language = new TextileLanguage();
+			HtmlDocumentBuilder builder = new HtmlDocumentBuilder( writer );
+			MarkupParser parser = new MarkupParser( language, builder );
+			parser.parse( s, false );
+			s = writer.toString();
+		}
+
+		if( USUtilities.booleanFromObject( encodeBreaks() ) ) {
+			s = USStringUtilities.convertBreakString( s );
+		}
+
+		return s;
+	}
+
+	/**
+	 * Indicates if the text in this component should be rendered using the
+	 * Textile engine.
+	 */
+	public boolean isWikiMarkup() {
+		return USUtilities.booleanFromObject( wikiMarkup() );
 	}
 }

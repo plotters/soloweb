@@ -70,10 +70,11 @@ public class SWEditPageContent extends SWInspectionComponent<SWPage> {
 		SWComponent c = new SWComponent();
 		ec().insertObject( c );
 		selectedObject().insertComponentAtIndex( c, anInt );
+		ec().saveChanges();
 
 		((SWSession)session()).customInfo().takeValueForKey( new NSMutableArray<SWComponent>( c ), SWComponent.class.getSimpleName() );
 
-		return saveChanges();
+		return SWUtilities.editObjectInContext( currentComponent, context() );
 	}
 
 	public WOActionResults selectComponent() {
