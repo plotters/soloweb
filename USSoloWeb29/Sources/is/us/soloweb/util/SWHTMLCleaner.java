@@ -27,7 +27,7 @@ public class SWHTMLCleaner {
 
 		tidy.setTidyMark( false );
 		tidy.setXHTML( true );
-		tidy.setBreakBeforeBR( true );
+		tidy.setBreakBeforeBR( false );
 		tidy.setIndentContent( false );
 		tidy.setSmartIndent( false );
 		tidy.setIndentAttributes( false );
@@ -36,7 +36,7 @@ public class SWHTMLCleaner {
 		tidy.setNumEntities( false );
 		tidy.setInputEncoding( "UTF-8" );
 		tidy.setOutputEncoding( "UTF-8" );
-		tidy.setWraplen( 0 );
+		//		tidy.setDropProprietaryAttributes( true );
 
 		return tidy;
 	}
