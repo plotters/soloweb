@@ -154,7 +154,7 @@ public class SWComponent extends _SWComponent implements SWTransferable, SWTimed
 	public String textTwoRendered() {
 		String s = super.textTwo();
 
-		if( isWikiMarkup() ) {
+		if( isWikiMarkup() && s != null ) {
 			StringWriter writer = new StringWriter();
 			MarkupLanguage language = new TextileLanguage();
 			HtmlDocumentBuilder builder = new HtmlDocumentBuilder( writer );

@@ -121,7 +121,7 @@ public class SWNewsItem extends _SWNewsItem implements SWTimedContent, SWAsset<S
 	public String textRendered() {
 		String s = super.text();
 
-		if( isWikiMarkup() ) {
+		if( isWikiMarkup() && s != null ) {
 			StringWriter writer = new StringWriter();
 			MarkupLanguage language = new TextileLanguage();
 			HtmlDocumentBuilder builder = new HtmlDocumentBuilder( writer );
