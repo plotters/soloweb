@@ -1,29 +1,14 @@
 package is.us.soloweb.data;
 
-import is.us.soloweb.interfaces.SWCustomInfo;
-import is.us.soloweb.interfaces.SWInheritsPrivileges;
-import is.us.soloweb.interfaces.SWInspectable;
-import is.us.soloweb.interfaces.SWTimedContent;
-import is.us.soloweb.interfaces.SWTransferable;
-import is.us.soloweb.util.SWC;
-import is.us.soloweb.util.SWTimedContentUtilities;
-import is.us.util.USArrayUtilities;
-import is.us.util.USHierarchy;
-import is.us.util.USHierarchyUtilities;
-import is.us.util.USSortable;
-import is.us.util.USSortableUtilities;
-import is.us.util.USStringUtilities;
-import is.us.util.USUtilities;
+import is.us.soloweb.client.ButurTemplate002;
+import is.us.soloweb.interfaces.*;
+import is.us.soloweb.util.*;
+import is.us.util.*;
 
-import java.util.Enumeration;
-import java.util.Locale;
+import java.util.*;
 
-import com.webobjects.eocontrol.EOEnterpriseObject;
-import com.webobjects.eocontrol.EOQualifier;
-import com.webobjects.eocontrol.EOSortOrdering;
-import com.webobjects.foundation.NSArray;
-import com.webobjects.foundation.NSMutableArray;
-import com.webobjects.foundation.NSMutableDictionary;
+import com.webobjects.eocontrol.*;
+import com.webobjects.foundation.*;
 
 /**
  * An SWPage represents a single page of content in SoloWeb
@@ -35,7 +20,7 @@ import com.webobjects.foundation.NSMutableDictionary;
 
 public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPage>, SWTimedContent, SWInheritsPrivileges, USSortable, SWCustomInfo, SWInspectable {
 
-	private static final String BUTUR_TEMPLATE_004 = "ButurTemplate004";
+	private static final String DEFAULT_COMPONENT_TEMPLATE_NAME = ButurTemplate002.class.getSimpleName();
 
 	/**
 	 * Registered SWPage.Operators in the system.
@@ -238,7 +223,7 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 		}
 
 		if( componentToAdd.templateName() == null ) {
-			componentToAdd.setTemplateName( BUTUR_TEMPLATE_004 );
+			componentToAdd.setTemplateName( DEFAULT_COMPONENT_TEMPLATE_NAME );
 		}
 
 		componentToAdd.setSortNumber( new Integer( index ) );
@@ -733,6 +718,7 @@ public class SWPage extends _SWPage implements SWTransferable, USHierarchy<SWPag
 	 * ???
 	 */
 	static interface SWPageOperator {
+
 		public abstract Object compute( SWPage page, String keyPath );
 	}
 
