@@ -8,6 +8,10 @@ PUBLISHED_CHECKOX: WOCheckBox {
 	checked = selectedObject.published;
 }
 
+WIKI_CHECKOX: WOCheckBox {
+	checked = selectedObject.wikiMarkup;
+}
+
 TAB_PANEL_SELECTION: WOKeyValueConditional {
     key = "tabPanelSelection";
     value = currentType;
