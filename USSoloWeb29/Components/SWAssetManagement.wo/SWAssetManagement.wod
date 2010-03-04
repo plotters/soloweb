@@ -63,6 +63,7 @@ SELECT_ASSET_HYPERLINK: SWObjectHyperlink {
 SELECT_ASSET_HYPERLINK: WOHyperlink {
 	action = selectObject;
 	disabled = isSelected;
+	title = currentObject.name;
 }
 
 CREATE_ASSET_LINK: WOHyperlink {

@@ -1,32 +1,15 @@
 package is.us.soloweb.admin;
 
-import is.us.soloweb.SWLoc;
-import is.us.soloweb.SWSession;
-import is.us.soloweb.SWSettings;
+import is.us.soloweb.*;
 import is.us.soloweb.data.SWNewsItem;
-import is.us.soloweb.interfaces.SWAsset;
-import is.us.soloweb.interfaces.SWFolder;
-import is.us.soloweb.util.SWAccessPrivilegeUtilities;
-import is.us.soloweb.util.SWC;
-import is.us.soloweb.util.SWFolderUtilities;
-import is.us.util.USEOUtilities;
-import is.us.util.USHierarchy;
-import is.us.util.USHierarchyUtilities;
-import is.us.util.USStringUtilities;
-import is.us.util.USUtilities;
+import is.us.soloweb.interfaces.*;
+import is.us.soloweb.util.*;
+import is.us.util.*;
 
-import com.webobjects.appserver.WOActionResults;
-import com.webobjects.appserver.WOComponent;
-import com.webobjects.appserver.WOContext;
-import com.webobjects.appserver.WOResponse;
-import com.webobjects.eoaccess.EOModelGroup;
-import com.webobjects.eoaccess.EOUtilities;
+import com.webobjects.appserver.*;
+import com.webobjects.eoaccess.*;
 import com.webobjects.eocontrol.EOEnterpriseObject;
-import com.webobjects.foundation.NSArray;
-import com.webobjects.foundation.NSDictionary;
-import com.webobjects.foundation.NSKeyValueCoding;
-import com.webobjects.foundation.NSKeyValueCodingAdditions;
-import com.webobjects.foundation.NSMutableArray;
+import com.webobjects.foundation.*;
 
 /**
  * The huge component that manages all assets.
