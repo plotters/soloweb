@@ -9,6 +9,7 @@ import com.webobjects.appserver.WOContext;
 import com.webobjects.foundation.*;
 
 import er.extensions.eof.ERXEC;
+import er.extensions.foundation.ERXStringUtilities;
 
 /**
  * Displays newsitems sorted by date. 
@@ -18,7 +19,9 @@ import er.extensions.eof.ERXEC;
 
 public class SWOldNewsComponent extends SoloNewsNewsList {
 
-	public SimpleDateFormat format = new java.text.SimpleDateFormat( "MMMM yyyy", selectedPage().locale() );
+	public SimpleDateFormat monthFormat = new java.text.SimpleDateFormat( "MMMM yyyy", selectedPage().locale() );
+	public SimpleDateFormat dayFormat = new java.text.SimpleDateFormat( "d. MMM", selectedPage().locale() );
+
 	public NSTimestamp currentMonth;
 	public SWNewsItem currentNewsItem;
 	private NSArray<SWNewsItem> _allItems;
@@ -56,5 +59,10 @@ public class SWOldNewsComponent extends SoloNewsNewsList {
 	public NSArray<SWNewsItem> newsitems() {
 		NSTimestamp nextMonth = currentMonth.timestampByAddingGregorianUnits( 0, 1, 0, 0, 0, 0 );
 		return SWNewsItem.DATE.gte( currentMonth ).and( SWNewsItem.DATE.lt( nextMonth ) ).filtered( allItems() );
+	}
+
+	public String currentMonthString() {
+		String s = monthFormat.format( currentMonth );
+		return ERXStringUtilities.capitalize( s );
 	}
 }

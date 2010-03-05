@@ -4,8 +4,7 @@ MONTH_REPETITION : WORepetition {
 }
 
 MONTH_STRING : WOString {
-	value = currentMonth;
-	formatter = format;
+	value = currentMonthString;
 }
 
 NEWS_REPETITION : WORepetition {
@@ -19,7 +18,7 @@ NAME_STRING : WOString {
 
 DATE_STRING : WOString {
 	value = currentNewsItem.date;
-	dateformat = "%e";
+	formatter = dayFormat;
 }
 
 LINK : SWHyperlink {
@@ -43,4 +42,8 @@ HAS_DETAIL_ITEM_CONDITIONAL: WOConditional {
 DETAIL_COMPONENT: SWNewsDetail {
 	selectedNewsItem = selectedNewsItem;
 	currentComponent = currentComponent;
+}
+
+ALLOW_COMMENTS_CONDITIONAL: WOConditional {
+	condition = currentComponent.customInfo.allowComments;
 }
