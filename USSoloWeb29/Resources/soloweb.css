@@ -1,3 +1,12 @@
+/**
+Colors
+rgb( 252, 212, 157 );
+rgb( 217, 185, 140 );
+rgb( 168, 152, 125 );
+rgb( 40, 35, 35 );
+rgb( 95, 70, 63 );  
+ */
+
 body, td, th {
 	font-family: Tahoma, Arial, Helvetica, Sans-serif; 
 	font-size: 11px;
@@ -321,3 +330,41 @@ input[type="checkbox"] {
 #pageContentEdit {
 	background-color: white;
 }
+/*
+#swLogin {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	right: 0px;
+	padding: 100px;
+
+	text-align: center;
+	background-color: rgb( 95, 70, 63 );
+	
+	font-size: 14px;
+}
+
+#swLogin input, #swLogin select {
+	color: rgb( 40, 35, 35 );
+	background-color: rgb( 252, 212, 157 );
+	border: none;
+	font-size: 14px;
+}
+
+#swLogin legend {
+	font-size: 14px;
+	background-color: rgb( 252, 212, 157 );
+	color: rgb( 40, 35, 35 );
+	padding: 5px;
+}
+
+#swLogin fieldset {
+	width: 400px;
+	background-color: rgb( 168, 152, 125 );
+	border: 1px solid rgb( 40, 35, 35 );
+	border: none;
+	text-align: left;
+	margin: auto;	
+}
+*/

@@ -1,13 +1,15 @@
-<webobject name="WRAPPER">
-	<span class="swErrorMessage"><webobject name="ERROR_MESSAGE" /></span>
-    <webobject name="FORM">
-    	<fieldset style="width: 400px">
-    		<legend>SoloWeb innskráning</legend>
-    		<label>Notandanafn: </label> <webobject name="USERNAME_FIELD" /><br />
-    		<label>Aðgangsorð: </label> <webobject name="PASSWORD_FIELD" /><br />
-    		<label>Tungumál: </label> <webobject name="LANGUAGE_POPUP" /><br />
-    		<label>&nbsp;</label> <webobject name="REMEMBER_ME" /> Mundu mig<br />
-    		<label>&nbsp;</label><webobject name="SUBMIT_BUTTON" />
-    	</fieldset>
-    </webobject>
-</webobject>
+<wo:SWAdminComponentWrapper hideMenu="$true">
+	<div id="swLogin">
+		<wo:conditional condition="$errorMessage.length"><span class="swErrorMessage"><wo:str value="$errorMessage" /></span></wo:conditional>
+		<wo:form name="f" target="_top">
+	    	<fieldset style="width: 400px">
+	    		<legend>SoloWeb <wo:str value="$application.sw.solowebVersion" /></legend>
+	    		<label>Notandanafn: </label> <wo:textfield value="$username" name="q" /><br />
+	    		<label>Aðgangsorð: </label> <wo:password value="$password" name="p" /><br />
+	    		<label>Tungumál: </label> <wo:popUpButton list="$languages" item="$currentLanguage" selection="$selectedLanguage" /><br />
+	    		<label>&nbsp;</label> <wo:checkbox checked="$rememberMe" /> Mundu mig<br />
+	    		<label>&nbsp;</label><wo:submit action="$login" value="Tengjast" />
+	    	</fieldset>
+	    </wo:form>
+    </div>
+</wo:SWAdminComponentWrapper>
