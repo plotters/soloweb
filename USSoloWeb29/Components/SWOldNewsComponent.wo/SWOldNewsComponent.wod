@@ -1,0 +1,46 @@
+MONTH_REPETITION : WORepetition {
+	item = currentMonth;
+	list = months;
+}
+
+MONTH_STRING : WOString {
+	value = currentMonth;
+	formatter = format;
+}
+
+NEWS_REPETITION : WORepetition {
+	item = currentNewsItem;
+	list = newsitems;
+}
+
+NAME_STRING : WOString {
+	value = currentNewsItem.name;
+}
+
+DATE_STRING : WOString {
+	value = currentNewsItem.date;
+	dateformat = "%e";
+}
+
+LINK : SWHyperlink {
+	object = currentNewsItem;
+}
+
+COMMENT_COUNT : WOString {
+	value = currentNewsItem.comments.count;
+	numberformat = "0";
+}
+
+DISPLAY_DETAIL_CONDITIONAL: WOConditional {
+	condition = displayDetail;
+	negate = true;
+}
+
+HAS_DETAIL_ITEM_CONDITIONAL: WOConditional {
+	condition = displayDetail;
+}
+
+DETAIL_COMPONENT: SWNewsDetail {
+	selectedNewsItem = selectedNewsItem;
+	currentComponent = currentComponent;
+}
