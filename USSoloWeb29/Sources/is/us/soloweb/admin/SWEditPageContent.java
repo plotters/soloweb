@@ -1,14 +1,12 @@
 package is.us.soloweb.admin;
 
 import is.us.soloweb.SWSession;
-import is.us.soloweb.data.SWComponent;
-import is.us.soloweb.data.SWPage;
+import is.us.soloweb.data.*;
 import is.us.soloweb.interfaces.SWInspectionComponent;
 import is.us.soloweb.util.SWUtilities;
 import is.us.util.USSortable;
 
-import com.webobjects.appserver.WOActionResults;
-import com.webobjects.appserver.WOContext;
+import com.webobjects.appserver.*;
 import com.webobjects.foundation.NSMutableArray;
 
 /**
@@ -67,14 +65,14 @@ public class SWEditPageContent extends SWInspectionComponent<SWPage> {
 	 * @param anInt The index to insert the component at.
 	 */
 	private WOActionResults insertComponentAtIndex( int anInt ) {
-		SWComponent c = new SWComponent();
-		ec().insertObject( c );
-		selectedObject().insertComponentAtIndex( c, anInt );
+		SWComponent newComponent = new SWComponent();
+		ec().insertObject( newComponent );
+		selectedObject().insertComponentAtIndex( newComponent, anInt );
 		ec().saveChanges();
 
-		((SWSession)session()).customInfo().takeValueForKey( new NSMutableArray<SWComponent>( c ), SWComponent.class.getSimpleName() );
+		((SWSession)session()).customInfo().takeValueForKey( new NSMutableArray<SWComponent>( newComponent ), SWComponent.class.getSimpleName() );
 
-		return SWUtilities.editObjectInContext( currentComponent, context() );
+		return SWUtilities.editObjectInContext( newComponent, context() );
 	}
 
 	public WOActionResults selectComponent() {
