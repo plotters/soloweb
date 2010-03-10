@@ -1,13 +1,9 @@
 package is.us.soloweb;
 
-import is.us.soloweb.util.SWExternalUserUtilities;
-import is.us.soloweb.util.SWHTMLCleaner;
+import is.us.soloweb.util.*;
 import is.us.wo.util.USHTTPUtilities;
 
-import com.webobjects.appserver.WORequest;
-import com.webobjects.appserver.WOResponse;
-import com.webobjects.foundation.NSArray;
-import com.webobjects.foundation.NSDictionary;
+import com.webobjects.appserver.*;
 
 import er.extensions.appserver.ERXApplication;
 
@@ -80,33 +76,5 @@ public abstract class SWApplication extends ERXApplication {
 		}
 
 		return response;
-	}
-
-	public NSArray<String> additionalModels() {
-		return NSArray.emptyArray();
-	}
-
-	public NSDictionary<String, String> additionalSystems() {
-		return NSDictionary.emptyDictionary();
-	}
-
-	public NSDictionary<String, String> additionalComponents() {
-		return NSDictionary.emptyDictionary();
-	}
-
-	public NSDictionary<String, String> additionalSystemsAndComponents() {
-		return NSDictionary.emptyDictionary();
-	}
-
-	public NSDictionary<String, String> additionalSettingsTabs() {
-		return NSDictionary.emptyDictionary();
-	}
-
-	public NSDictionary<String, String> additionalPageEditingComponents() {
-		return NSDictionary.emptyDictionary();
-	}
-
-	public NSDictionary<String, String> additionalSiteEditingComponents() {
-		return NSDictionary.emptyDictionary();
 	}
 }

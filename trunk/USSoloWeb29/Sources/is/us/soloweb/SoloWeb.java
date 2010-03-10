@@ -3,7 +3,9 @@ package is.us.soloweb;
 import is.us.soloweb.admin.SWAdminErrorMessage;
 import is.us.soloweb.client.SWNoPageFoundErrorComponent;
 import is.us.soloweb.util.*;
+import is.us.util.USStringUtilities;
 
+import java.io.File;
 import java.util.HashMap;
 
 import org.slf4j.*;
@@ -189,32 +191,66 @@ public class SoloWeb {
 		return _activeSystemsAndComponents;
 	}
 
+	public NSArray<String> additionalModels() {
+		return nullSafeArrayForKey( "additionalModels" );
+	}
+
 	public NSDictionary<String, String> additionalSystems() {
-		return SWApplication.swapplication().additionalSystems();
+		return nullSafeDictionaryForKey( "additionalSystems" );
 	}
 
 	public NSDictionary<String, String> additionalComponents() {
-		return SWApplication.swapplication().additionalComponents();
+		return nullSafeDictionaryForKey( "additionalComponents" );
 	}
 
 	public NSDictionary<String, String> additionalSystemsAndComponents() {
-		return SWApplication.swapplication().additionalSystemsAndComponents();
+		return nullSafeDictionaryForKey( "additionalSystemsAndComponents" );
 	}
 
 	public NSDictionary<String, String> additionalSettingsTabs() {
-		return SWApplication.swapplication().additionalSettingsTabs();
+		return nullSafeDictionaryForKey( "additionalSettingsTabs" );
 	}
 
 	public NSDictionary<String, String> additionalPageEditingComponents() {
-		return SWApplication.swapplication().additionalPageEditingComponents();
+		return nullSafeDictionaryForKey( "additionalPageEditingComponents" );
 	}
 
 	public NSDictionary<String, String> additionalSiteEditingComponents() {
-		return SWApplication.swapplication().additionalSiteEditingComponents();
+		return nullSafeDictionaryForKey( "additionalSiteEditingComponents" );
 	}
 
-	public NSArray<String> additionalModels() {
-		return SWApplication.swapplication().additionalModels();
+	/**
+	 * Read the definitions from the application bundle.
+	 * @return
+	 */
+	private static NSDictionary<String, Object> definitionsDictionary() {
+		String pathString = WOApplication.application().resourceManager().pathForResourceNamed( "SWDefinitions.plist", "app", null );
+		String definitionsString = USStringUtilities.readStringFromFileUsingEncoding( new File( pathString ), "UTF-8" );
+		return NSPropertyListSerialization.dictionaryForString( definitionsString );
+	}
+
+	/**
+	 * Fetch a value for key, return empty dictionary if key does not exist. 
+	 */
+	private static NSDictionary<String, String> nullSafeDictionaryForKey( String key ) {
+		NSDictionary<String, String> d = (NSDictionary<String, String>)definitionsDictionary().objectForKey( key );
+
+		if( d == null )
+			return NSDictionary.emptyDictionary();
+
+		return d;
+	}
+
+	/**
+	 * Fetch a value for key, return empty dictionary if key does not exist. 
+	 */
+	private static NSArray<String> nullSafeArrayForKey( String key ) {
+		NSArray<String> a = (NSArray<String>)definitionsDictionary().objectForKey( key );
+
+		if( a == null )
+			return NSArray.emptyArray();
+
+		return a;
 	}
 
 	public NSMutableArray<String> pluginModels() {

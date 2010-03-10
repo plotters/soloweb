@@ -74,6 +74,20 @@ public class SWURLGeneration {
 	}
 
 	/**
+	 * FIXME: Move to a property.
+	 */
+	private static String documentHost() {
+		return "http://mhg.karlmenn.is";
+	}
+
+	/**
+	 * FIXME: Move to SWURLGeneration?
+	 */
+	private static boolean includeHostInDocumentURLs() {
+		return false;
+	}
+
+	/**
 	 * Attempts to generate an URL for the given document.
 	 */
 	private static String urlForDocumentInContext( SWDocument document, WOContext context ) {
@@ -84,10 +98,17 @@ public class SWURLGeneration {
 			documentName = java.net.URLEncoder.encode( documentName, SWC.ENCODING_UTF_8 );
 		}
 		catch( Exception e ) {
-			logger.error( "Cannot encode document name for URLs", e );
+			logger.error( "Could not URL-encode document name: " + documentName, e );
 		}
 
-		return context.urlWithRequestHandlerKey( SWDocumentRequestHandler.KEY, document.documentID() + "/" + documentName, null );
+		String relativeURL = context.urlWithRequestHandlerKey( SWDocumentRequestHandler.KEY, document.documentID() + "/" + documentName, null );
+
+		if( includeHostInDocumentURLs() ) {
+			return documentHost() + relativeURL;
+		}
+		else {
+			return relativeURL;
+		}
 	}
 
 	/**
@@ -113,5 +134,4 @@ public class SWURLGeneration {
 
 		return context.directActionURLForActionNamed( SWC.PAGE_DIRECT_ACTION_NAME, d );
 	}
-
 }
