@@ -226,7 +226,13 @@ public class SoloWeb {
 	private static NSDictionary<String, Object> definitionsDictionary() {
 		String pathString = WOApplication.application().resourceManager().pathForResourceNamed( "SWDefinitions.plist", "app", null );
 		String definitionsString = USStringUtilities.readStringFromFileUsingEncoding( new File( pathString ), "UTF-8" );
-		return NSPropertyListSerialization.dictionaryForString( definitionsString );
+		NSDictionary<String, Object> d = NSPropertyListSerialization.dictionaryForString( definitionsString );
+
+		if( d == null ) {
+			return NSDictionary.emptyDictionary();
+		}
+
+		return d;
 	}
 
 	/**
