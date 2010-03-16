@@ -152,30 +152,30 @@ ABOVE_TEXT_2: WOString {
 
 REVIEW_BUTTON: WOSubmitButton {
 	action = goToPreview;
-	value = "Review data";
+	value = "Yfirfara innslegin gögn";
 }
 
 NEXT_FIELDSET_BUTTON: WOSubmitButton {
 	action = nextFieldSet;
-	value = "Next";
+	value = "Áfram";
 }
 
 PREVIOUS_FIELDSET_BUTTON: WOSubmitButton {
-	value = "Previous";
 	action = previousFieldSet;
+	value = "Til baka";
 }
 
 MAKE_CORRECTIONS_BUTTON: WOSubmitButton {
 	action = performCorrections;
-	value = "Make corrections";
+	value = "Breyta";
 }
 
 SUBMIT_FORM_BUTTON: WOSubmitButton {
 	action = submitForm;
-	value = "Submit form";
+	value = "Senda";
 }
 
 PRINTABLE_SUBMIT_BUTTON: WOSubmitButton {
 	action = showPrintableVersion;
-	value = "Printable version of the form";
+	value = "Prentvæn útgáfa";
 }
