@@ -1,26 +1,13 @@
 package is.us.soloweb.forms;
 
-import is.us.soloweb.data.SWGroup;
-import is.us.soloweb.data.SWUser;
-import is.us.soloweb.forms.data.SWFField;
-import is.us.soloweb.forms.data.SWFForm;
-import is.us.soloweb.forms.data.SWFRegistration;
-import is.us.soloweb.forms.data.SWFRegistrationField;
-import is.us.util.USArrayUtilities;
-import is.us.util.USStringUtilities;
+import is.us.soloweb.data.*;
+import is.us.soloweb.forms.data.*;
+import is.us.util.*;
 
 import java.util.Enumeration;
 
-import com.webobjects.eocontrol.EOAndQualifier;
-import com.webobjects.eocontrol.EOEditingContext;
-import com.webobjects.eocontrol.EOFetchSpecification;
-import com.webobjects.eocontrol.EOKeyValueQualifier;
-import com.webobjects.eocontrol.EOQualifier;
-import com.webobjects.foundation.NSArray;
-import com.webobjects.foundation.NSData;
-import com.webobjects.foundation.NSDictionary;
-import com.webobjects.foundation.NSMutableArray;
-import com.webobjects.foundation.NSMutableDictionary;
+import com.webobjects.eocontrol.*;
+import com.webobjects.foundation.*;
 
 /**
  * @author Hugi Þórðarson
@@ -287,4 +274,14 @@ public class SWFUtilities {
 
 	public static final String TRUE_STRING = "TRUE";
 	public static final String FALSE_STRING = "FALSE";
+
+	public static NSMutableArray convertElementsToIntegers( NSArray array ) {
+		NSMutableArray result = new NSMutableArray();
+
+		for( Object o : array ) {
+			result.addObject( USUtilities.integerFromObject( o ) );
+		}
+
+		return result;
+	}
 }

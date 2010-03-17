@@ -1,15 +1,11 @@
 package is.us.soloweb.forms;
 
-import is.us.soloweb.forms.data.SWFField;
-import is.us.soloweb.forms.data.SWFForm;
-import is.us.util.USEOUtilities;
+import is.us.soloweb.forms.data.*;
+import is.us.util.*;
 
-import com.webobjects.appserver.WOComponent;
-import com.webobjects.appserver.WOContext;
+import com.webobjects.appserver.*;
 import com.webobjects.eocontrol.EOEditingContext;
-import com.webobjects.foundation.NSArray;
-import com.webobjects.foundation.NSMutableArray;
-import com.webobjects.foundation.NSPropertyListSerialization;
+import com.webobjects.foundation.*;
 
 import er.extensions.components.ERXComponent;
 
@@ -45,7 +41,7 @@ public class SWFFieldListPalette extends ERXComponent {
 	}
 
 	private NSArray fieldIDList() {
-		return NSPropertyListSerialization.arrayForString( fieldString );
+		return SWFUtilities.convertElementsToIntegers( NSPropertyListSerialization.arrayForString( fieldString ) );
 	}
 
 	private void setFieldIDList( NSArray a ) {
