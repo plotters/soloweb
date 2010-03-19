@@ -4,11 +4,11 @@
 			<h4 class="sw_newsdate"><webobject name="DATE_STRING" /></h4>
 			<h3 class="sw_newsheading"><webobject name="MORE_LINK"><webobject name="NAME_STRING" /></webobject></h3>
 			<webobject name="SHOW_IMAGE_CONDITIONAL">
-				<webobject name="IMAGE" />
+				<wo:SWImage document="$currentNewsItem.document" align="$currentComponent.customInfo.imageAlignment" />
 			</webobject>
 			<webobject name="DISPLAY_EXCERPT_CONDITIONAL">
 				<div class="sw_newsitem_text">
-					<webobject name="EXCERPT_WITH_BREAKS_STRING" />
+					<wo:str value="$currentNewsItem.excerptWithBreaks" escapeHTML="$false" />
 				</div>
 				<webobject name="MORE_LINK"><webobject name="SHOW_MORE_LINK_TEXT" /></webobject>
 			</webobject>

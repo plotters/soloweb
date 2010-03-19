@@ -33,11 +33,6 @@ MORE_LINK: WOHyperlink {
 	class = "sw_newsitem_more_link";
 }
 
-IMAGE: SWImage {
-	document = currentNewsItem.document;
-	align = currentComponent.customInfo.imageAlignment;
-}
-
 DETAIL_COMPONENT: SWNewsDetail {
 	selectedNewsItem = selectedNewsItem;
 	currentComponent = currentComponent;
@@ -49,11 +44,6 @@ SHOW_MORE_LINK_TEXT: WOString {
 
 NAME_STRING: WOString {
 	value = currentNewsItem.name;
-}
-
-EXCERPT_WITH_BREAKS_STRING: WOString {
-	value = currentNewsItem.excerptWithBreaks;
-	escapeHTML = false;
 }
 
 TEXT_STRING: WOString {

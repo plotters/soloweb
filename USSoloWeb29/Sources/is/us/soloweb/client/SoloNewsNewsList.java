@@ -212,7 +212,7 @@ public class SoloNewsNewsList extends SWGenericComponent {
 		Locale locale = selectedPage().locale();
 
 		if( locale != null ) {
-			return new NSTimestampFormatter( "%A %e. %B %Y", new DateFormatSymbols( locale ) );
+			return new NSTimestampFormatter( "%A %e. %B %Y kl. %H:%M", new DateFormatSymbols( locale ) );
 		}
 
 		return new NSTimestampFormatter( "%d.%m.%Y" );
