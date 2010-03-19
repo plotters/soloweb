@@ -209,10 +209,13 @@ public class SoloNewsNewsList extends SWGenericComponent {
 	 * Currently only used in karlmenn.is news detail component.
 	 */
 	public java.text.Format timestampFormatter() {
-		Locale locale = selectedPage().locale();
 
-		if( locale != null ) {
-			return new NSTimestampFormatter( "%A %e. %B %Y kl. %H:%M", new DateFormatSymbols( locale ) );
+		if( selectedPage() != null ) {
+			Locale locale = selectedPage().locale();
+
+			if( locale != null ) {
+				return new NSTimestampFormatter( "%A %e. %B %Y kl. %H:%M", new DateFormatSymbols( locale ) );
+			}
 		}
 
 		return new NSTimestampFormatter( "%d.%m.%Y" );
