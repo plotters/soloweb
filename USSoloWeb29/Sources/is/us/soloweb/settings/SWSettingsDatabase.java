@@ -1,7 +1,7 @@
 package is.us.soloweb.settings;
 
 import is.us.soloweb.*;
-import is.us.soloweb.util.*;
+import is.us.soloweb.util.SWSQLUtilities;
 
 import java.util.Enumeration;
 
@@ -52,7 +52,7 @@ public class SWSettingsDatabase extends SWSettingsPanel {
 
 			SWPluginItem pi2 = new SWPluginItem();
 			pi2.setName( "SoloWeb" );
-			pi2.setVersion( SWC.SOLOWEB_VERSION );
+			pi2.setVersion( SoloWeb.sw().productVersion() );
 			pi2.setModels( new NSArray<String>( "SoloWeb" ) );
 			anArray.addObject( pi2 );
 
