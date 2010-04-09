@@ -11,6 +11,9 @@ import com.webobjects.foundation.*;
 
 public class SWC {
 
+	public static final String PRODUCT_VERSION = "2.9.2b7";
+	public static final String PRODUCT_NAME = "SoloWeb";
+
 	public static final String LANGUAGE_IELANDIC = "Icelandic";
 	public static final String LANGUAGE_ENGLISH = "English";
 	public static final NSArray<String> AVAILABLE_LANGUAGES = new NSArray<String>( new String[] { LANGUAGE_IELANDIC, LANGUAGE_ENGLISH } );
@@ -23,7 +26,6 @@ public class SWC {
 	public static final String CSS_ODD_ROW = "oddRow";
 	public static final String CSS_EVEN_ROW = "evenRow";
 
-	public static final String SOLOWEB_VERSION = "2.9.2b6";
 	public static final String FRAMEWORK_NAME = "USSoloWeb29";
 	public static final String STRINGS_FILE_NAME = "localizedStrings";
 

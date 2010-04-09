@@ -90,7 +90,7 @@ public class SoloWeb {
 	 * Basic initialization for SoloWeb.
 	 */
 	private void initSoloWeb() {
-		logger.info( "*** Welcome to SoloWeb, version " + SWC.SOLOWEB_VERSION );
+		logger.info( "*** Welcome to " + productNameAndVersion() );
 
 		SWSettings.init();
 		SWDBConnectionManager.init();
@@ -142,12 +142,30 @@ public class SoloWeb {
 		return SWC.FRAMEWORK_NAME;
 	}
 
-	public String solowebVersion() {
-		return SWC.SOLOWEB_VERSION;
+	/**
+	 * @return Version of the CMS product.
+	 */
+	public String productVersion() {
+		return SWC.PRODUCT_VERSION;
 	}
 
 	/**
-	 * This method is intentionally undocumented.
+	 * @return Name of the product. Currently "SoloWeb".
+	 */
+	public String productName() {
+		return SWC.PRODUCT_NAME;
+	}
+
+	/**
+	 * @return Name of product and version, in one pretty package.
+	 */
+	public String productNameAndVersion() {
+		return productName() + " " + productVersion();
+	}
+
+	/**
+	 * If an Error occurs, we shut down the application.
+	 * In case of a regular exception, we return the SoloWeb error page.
 	 */
 	public WOResponse handleException( Throwable anException, WOContext aContext ) {
 

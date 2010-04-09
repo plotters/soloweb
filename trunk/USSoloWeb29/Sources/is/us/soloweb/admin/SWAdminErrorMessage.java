@@ -21,6 +21,13 @@ public class SWAdminErrorMessage extends ERXComponent {
 		super( context );
 	}
 
+	/**
+	 * Non synchronized component
+	 */
+	public boolean synchronizesVariablesWithBindings() {
+		return false;
+	}
+
 	public static WOResponse errorWithMessage( String error, WOContext aContext ) {
 		return errorWithMessageAndStatusCode( error, aContext, 200 );
 	}
@@ -77,12 +84,5 @@ public class SWAdminErrorMessage extends ERXComponent {
 		String appPath = "/Apps" + WOApplication.application().baseURL();
 		String s = "Session has expired - the maximum period of inactivity before session termination is " + (WOApplication.application().sessionTimeOut().intValue() / 60) + " minutes. Click <A href=\"" + appPath + "\" target=\"top\">here</A> to reconnect.";
 		return errorWithMessage( s, aContext );
-	}
-
-	/**
-	 * Non synchronized component
-	 */
-	public boolean synchronizesVariablesWithBindings() {
-		return false;
 	}
 }
