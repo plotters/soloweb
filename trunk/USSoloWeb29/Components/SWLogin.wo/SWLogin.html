@@ -3,7 +3,7 @@
 		<wo:conditional condition="$errorMessage.length"><span class="swErrorMessage"><wo:str value="$errorMessage" /></span></wo:conditional>
 		<wo:form name="f" target="_top">
 	    	<fieldset style="width: 400px">
-	    		<legend>SoloWeb <wo:str value="$application.sw.solowebVersion" /></legend>
+	    		<legend><wo:str value="$application.sw.productNameAndVersion" /></legend>
 	    		<label>Notandanafn: </label> <wo:textfield value="$username" name="q" /><br />
 	    		<label>Aðgangsorð: </label> <wo:password value="$password" name="p" /><br />
 	    		<label>Tungumál: </label> <wo:popUpButton list="$languages" item="$currentLanguage" selection="$selectedLanguage" /><br />
@@ -11,5 +11,5 @@
 	    		<label>&nbsp;</label><wo:submit action="$login" value="Tengjast" />
 	    	</fieldset>
 	    </wo:form>
-    </div>
+    </div> 
 </wo:SWAdminComponentWrapper>

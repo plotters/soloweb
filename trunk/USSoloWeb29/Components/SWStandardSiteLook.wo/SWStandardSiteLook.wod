@@ -38,5 +38,5 @@ SITE_NAME: WOString {
 }
 
 VERSION_STRING : WOString {
-	value = application.sw.solowebVersion;
+	value = application.sw.productNameAndVersion;
 }
