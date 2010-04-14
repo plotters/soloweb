@@ -1,7 +1,3 @@
-ADMIN_CONDITIONAL: WOConditional {
-	condition = session.solowebUser.isAdministrator;
-}
-
 EDIT_PAGE_LINK: WOHyperlink {
 	pageName = "SWEditPage";
 }
@@ -10,12 +6,12 @@ EDIT_PAGE_STRING: WOString {
 	value = session.@ls.smSiteTree;
 }
 
-NEWS_LINK: WOHyperlink {
-	action = newsDB;
-}
-
 NEWS_STRING: WOString {
 	value = session.@ls.smNews;
+}
+
+NEWS_LINK: WOHyperlink {
+	action = newsDB;
 }
 
 DOCUMENTS_LINK: WOHyperlink {
@@ -69,7 +65,7 @@ SYSTEM_LINK : WOHyperlink {
 }
 
 VERSION_STRING : WOString {
-	value = application.sw.solowebVersion;
+	value = application.sw.productNameAndVersion;
 }
 
 TRANSACTIONS_LINK : WOHyperlink {
