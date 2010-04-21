@@ -1,4 +1,0 @@
-STRING: WOString {
-	value = currentComponent.textOne;
-	escapeHTML = false;
-}
