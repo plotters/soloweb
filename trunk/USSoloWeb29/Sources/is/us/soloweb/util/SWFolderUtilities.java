@@ -1,20 +1,14 @@
 package is.us.soloweb.util;
 
-import is.us.soloweb.data.SWDocumentFolder;
-import is.us.soloweb.data.SWNewsItem;
-import is.us.soloweb.interfaces.SWAsset;
-import is.us.soloweb.interfaces.SWFolder;
-import is.us.util.USArrayUtilities;
-import is.us.util.USHierarchyUtilities;
+import is.us.soloweb.data.*;
+import is.us.soloweb.interfaces.*;
+import is.us.util.*;
 
 import java.util.Enumeration;
 
 import com.webobjects.eoaccess.EOUtilities;
-import com.webobjects.eocontrol.EOEditingContext;
-import com.webobjects.eocontrol.EOFetchSpecification;
-import com.webobjects.eocontrol.EOQualifier;
-import com.webobjects.foundation.NSArray;
-import com.webobjects.foundation.NSMutableArray;
+import com.webobjects.eocontrol.*;
+import com.webobjects.foundation.*;
 
 import er.extensions.eof.ERXEOControlUtilities;
 
@@ -105,7 +99,7 @@ public class SWFolderUtilities {
 		}
 
 		if( folder.parent() != null ) {
-			folder.removeObjectFromBothSidesOfRelationshipWithKey( folder.parent(), PARENT_KEY );
+			folder.removeObjectFromBothSidesOfRelationshipWithKey( (EORelationshipManipulation)folder.parent(), PARENT_KEY );
 		}
 
 		folder.editingContext().deleteObject( folder );
