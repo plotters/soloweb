@@ -11,9 +11,9 @@ NAME_STRING: WOString {
 }
 
 LOC_COMMENTS : WOString {
-	value = @ls.comments;
+	value = @ls.comments; // VALID
 }
 
 LOC_LAST_COMMENTER : WOString {
-	value = @ls.lastCommenter;
+	value = @ls.lastCommenter; // VALID
 }
