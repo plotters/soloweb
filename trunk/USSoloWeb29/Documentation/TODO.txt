@@ -20,7 +20,7 @@ Misc:
 Templates:
 * Standard CSS-classes in all components (prefixed with "sw")
 * Dynamic templates configured in database.
-* Pure CSS-/XHTML default-templates
+* Versioned templates
 
 Feeds:
 * Improved RSS feeds
