@@ -11,7 +11,6 @@ import com.webobjects.foundation.NSArray;
  * For management of users and groups
  *
  * @author Hugi Þórðarson
- * @version 2.9.2b4
  * @since 2.3
  */
 

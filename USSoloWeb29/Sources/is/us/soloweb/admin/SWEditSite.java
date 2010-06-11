@@ -11,8 +11,6 @@ import com.webobjects.foundation.*;
  * SWEditSite is used to edit information for an SWSite
  *
  * @author Hugi Þórðarson
- * @version 2.9.2b6
- * @since 2.3
  */
 
 public class SWEditSite extends SWInspectionComponent<SWSite> {

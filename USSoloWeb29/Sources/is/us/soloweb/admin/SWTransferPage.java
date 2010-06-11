@@ -8,8 +8,6 @@ import com.webobjects.appserver.*;
  * A component for copying a page - or transferring it to a new parent page
  *
  * @author Hugi Þórðarson
- * @version 2.8
- * @since 2.5
  */
 
 public class SWTransferPage extends SWTransferComponentGeneric {
@@ -20,6 +18,7 @@ public class SWTransferPage extends SWTransferComponentGeneric {
 		super( context );
 	}
 
+	@Override
 	public WOActionResults selectObject() {
 		if( !shouldCopy ) {
 			return super.selectObject();

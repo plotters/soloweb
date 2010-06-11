@@ -13,8 +13,6 @@ import er.extensions.components.ERXComponent;
  * It's function is to check if a user has logged in, - if he hasn't, nothing is appended to the response
  *
  * @author Hugi Þórðarson
- * @version 2.5
- * @since 2.4
  */
 
 public abstract class SWAdminComponent extends ERXComponent {
@@ -33,11 +31,14 @@ public abstract class SWAdminComponent extends ERXComponent {
 	/**
 	 * Returns a response, based on if the user is logged in or not.
 	 */
+	@Override
 	public void appendToResponse( WOResponse aResponse, WOContext aContext ) {
-		if( ((SWSession)session()).isLoggedIn() || !requiresLogin() )
+		if( ((SWSession)session()).isLoggedIn() || !requiresLogin() ) {
 			super.appendToResponse( aResponse, aContext );
-		else
+		}
+		else {
 			super.appendToResponse( notLoggedInResponse(), aContext );
+		}
 	}
 
 	private boolean requiresLogin() {

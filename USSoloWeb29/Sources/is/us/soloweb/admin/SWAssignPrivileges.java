@@ -15,7 +15,6 @@ import com.webobjects.foundation.*;
  * SWAssignPrivileges takes a single EOEnterpriseObject as a binding, and allows the user to set access privileges for it
  *
  * @author Hugi Þórðarson
- * @version 2.7
  * @since 2.7
  */
 
@@ -176,14 +175,14 @@ public class SWAssignPrivileges extends SWAdminComponent {
 	/**
 	 * Adds an SWAccessPrivilege with the selectedObject (user or group) to the page
 	 *
-	 * @param aRecord The User or Group to add
+	 * @param object The User or Group to add
 	 * @param relationshipName The name of the relationship to add the object to ("user" or "group")
 	 */
-	public void addPrivilege( EOEnterpriseObject aRecord, String relationshipName ) {
+	private void addPrivilege( EOEnterpriseObject object, String relationshipName ) {
 		SWAccessPrivilege newPrivilege = new SWAccessPrivilege();
 		ec().insertObject( newPrivilege );
 
-		newPrivilege.addObjectToBothSidesOfRelationshipWithKey( aRecord, relationshipName );
+		newPrivilege.addObjectToBothSidesOfRelationshipWithKey( object, relationshipName );
 		newPrivilege.setDestinationID( primaryKey() );
 		newPrivilege.setDestinationEntity( record.entityName() );
 		newPrivilege.setNotInherited( notInherited );
@@ -225,7 +224,7 @@ public class SWAssignPrivileges extends SWAdminComponent {
 	/**
 	 * Finds and returns the primary key of the selected record
 	 */
-	public Integer primaryKey() {
+	private Integer primaryKey() {
 		return (Integer)((EOKeyGlobalID)ec().globalIDForObject( record )).keyValuesArray().objectAtIndex( 0 );
 	}
 

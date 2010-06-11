@@ -5,30 +5,18 @@ import is.us.soloweb.util.SWUtilities;
 
 import com.webobjects.appserver.*;
 
-import er.extensions.components.ERXComponent;
+import er.extensions.components.ERXStatelessComponent;
 
 /**
  * Generic stuff editing.
  * 
  * @author Hugi Þórðarson
- * @version 2.9.2b6
- * @since 2.9.4b6
  */
 
-public class SWObjectHyperlink extends ERXComponent {
+public class SWObjectHyperlink extends ERXStatelessComponent {
 
 	public SWObjectHyperlink( WOContext context ) {
 		super( context );
-	}
-
-	@Override
-	public boolean isStateless() {
-		return true;
-	}
-
-	@Override
-	public boolean synchronizesVariablesWithBindings() {
-		return false;
 	}
 
 	/**

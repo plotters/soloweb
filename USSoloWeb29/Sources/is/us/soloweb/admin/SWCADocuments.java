@@ -12,7 +12,6 @@ import com.webobjects.foundation.*;
 
 /**
  * @author Hugi Þórðarson
- * @version 2.9.2b4
  * @since 2.9.2
  */
 
@@ -32,7 +31,6 @@ public class SWCADocuments extends SWGenericComponent {
 		NSMutableDictionary<String, String> d = new NSMutableDictionary<String, String>();
 		d.setObjectForKey( SWSFComponent.class.getSimpleName(), SWLoc.string( "docComponentSingleDocument", session() ) );
 		d.setObjectForKey( SWSFFileList.class.getSimpleName(), SWLoc.string( "docComponentListOfDocuments", session() ) );
-		d.setObjectForKey( "MHGSlideshow", "Myndasýning" );
 		return d;
 	}
 

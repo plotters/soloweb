@@ -20,6 +20,16 @@ public class SWPrivilegeConditional extends SWAdminComponent {
 		super( context );
 	}
 
+	@Override
+	public boolean synchronizesVariablesWithBindings() {
+		return false;
+	}
+
+	@Override
+	public boolean isStateless() {
+		return true;
+	}
+
 	public String identifier() {
 		return stringValueForBinding( PRIVILEGE_IDENTIFIER );
 	}
@@ -45,15 +55,5 @@ public class SWPrivilegeConditional extends SWAdminComponent {
 			return USUtilities.booleanFromObject( condition() );
 
 		return false;
-	}
-
-	@Override
-	public boolean synchronizesVariablesWithBindings() {
-		return false;
-	}
-
-	@Override
-	public boolean isStateless() {
-		return true;
 	}
 }

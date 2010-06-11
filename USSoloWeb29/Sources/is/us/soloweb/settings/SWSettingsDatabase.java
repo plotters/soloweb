@@ -103,7 +103,7 @@ public class SWSettingsDatabase extends SWSettingsPanel {
 	}
 
 	/**
-	* Creates the SQL string to execute, based on selections made in the SQL generation window
+	 *  Creates the SQL string to execute, based on selections made in the SQL generation window
 	 */
 	public WOActionResults executeSQL() {
 
@@ -134,8 +134,9 @@ public class SWSettingsDatabase extends SWSettingsPanel {
 				else if( !pi.dropSchema() && !pi.constructSchema() )
 					sqlString = null;
 
-				if( sqlString != null )
-					executeSQL2( ERXEC.newEditingContext(), aModelName, sqlString );
+				if( sqlString != null ) {
+					generateSQL( ERXEC.newEditingContext(), aModelName, sqlString );
+				}
 			}
 		}
 
@@ -150,7 +151,7 @@ public class SWSettingsDatabase extends SWSettingsPanel {
 	 * @param modelName The model to base the database connection on
 	 * @param sqlString The SQL to execute
 	 */
-	public void executeSQL2( EOEditingContext ec, String modelName, String sqlString ) {
+	private void generateSQL( EOEditingContext ec, String modelName, String sqlString ) {
 
 		EODatabaseContext databaseContext;
 		EODatabaseChannel databaseChannel;
@@ -163,6 +164,7 @@ public class SWSettingsDatabase extends SWSettingsPanel {
 		if( !adaptorChannel.isOpen() ) {
 			adaptorChannel.openChannel();
 		}
+
 		databaseContext.lock();
 		EOSQLExpressionFactory e = new EOSQLExpressionFactory( EOAdaptor.adaptorWithModel( EOModelGroup.defaultGroup().modelNamed( modelName ) ) );
 

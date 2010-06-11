@@ -16,8 +16,6 @@ import com.webobjects.appserver.*;
  * </ul><br />
  *
  * @author Hugi Þórðarson
- * @version 2.5
- * @since 2.5
  */
 
 public class SWTransferHyperlink extends SWAdminComponent {

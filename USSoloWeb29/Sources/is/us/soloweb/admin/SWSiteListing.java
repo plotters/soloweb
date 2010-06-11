@@ -12,16 +12,12 @@ import com.webobjects.foundation.NSArray;
  * Displays all sites in the current SoloWeb system and their subpages in a hierarchical list.
  *
  * @author Hugi Þórðarson
- * @version 2.9.2b6
- * @since 2.3
  */
 
 public class SWSiteListing extends SWAdminComponent {
 
 	private static final String PLUS_GIF = "plus.gif";
-
 	private static final String MINUS_GIF = "minus.gif";
-
 	private static final String SPACER_GIF = "spacer.gif";
 
 	/**

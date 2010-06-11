@@ -15,7 +15,6 @@ import com.webobjects.foundation.*;
  * The huge component that manages all assets.
  * 
  * @author Hugi Þórðarson
- * @version 2.9.2b4
  */
 
 public class SWAssetManagement extends SWAdminComponent {
@@ -71,6 +70,7 @@ public class SWAssetManagement extends SWAdminComponent {
 	 * 
 	 * FIXME: Remove this horror.
 	 */
+	@Override
 	public void appendToResponse( WOResponse r, WOContext c ) {
 		if( record() != null ) {
 			if( selectedObject() == null ) {

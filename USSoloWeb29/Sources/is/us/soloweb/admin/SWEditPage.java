@@ -13,8 +13,6 @@ import com.webobjects.foundation.*;
  * the tabs to select a new component type.
  *
  * @author Hugi Þórðarson
- * @version 2.9.2b4
- * @since 2.3
  */
 
 public class SWEditPage extends SWInspectionComponent<SWPage> {

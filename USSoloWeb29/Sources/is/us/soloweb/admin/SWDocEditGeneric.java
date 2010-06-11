@@ -6,7 +6,6 @@ import com.webobjects.appserver.WOContext;
 
 /**
  * @author Hugi Þórðarson
- * @version 2.9.2b4
  * @since 2.9.2
  */
 

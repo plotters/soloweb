@@ -14,8 +14,6 @@ import com.webobjects.eocontrol.EOEnterpriseObject;
  * stored in "componentToReturn" is returned.
  *
  * @author Hugi Þórðarson
- * @version 2.9.2b4
- * @since 2.4
  */
 
 public abstract class SWTransferComponentGeneric extends SWAdminComponent {

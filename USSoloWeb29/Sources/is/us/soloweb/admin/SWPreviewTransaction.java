@@ -12,6 +12,8 @@ import er.extensions.components.ERXComponent;
 
 public class SWPreviewTransaction extends ERXComponent {
 
+	private static final String KVC_NULL = "<com.webobjects.foundation.NSKeyValueCoding$Null>";
+
 	public String currentKey;
 	public SWTransaction selectedObject;
 
@@ -22,7 +24,7 @@ public class SWPreviewTransaction extends ERXComponent {
 	public Object currentBeforeValue() {
 		Object o = selectedObject.beforeDictionary().objectForKey( currentKey );
 
-		if( "<com.webobjects.foundation.NSKeyValueCoding$Null>".equals( o ) )
+		if( KVC_NULL.equals( o ) )
 			o = null;
 
 		return o;
@@ -34,7 +36,7 @@ public class SWPreviewTransaction extends ERXComponent {
 		if( o == null )
 			o = currentBeforeValue();
 
-		if( "<com.webobjects.foundation.NSKeyValueCoding$Null>".equals( o ) )
+		if( KVC_NULL.equals( o ) )
 			o = null;
 
 		return o;

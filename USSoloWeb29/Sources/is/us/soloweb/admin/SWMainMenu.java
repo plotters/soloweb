@@ -10,8 +10,6 @@ import com.webobjects.foundation.*;
  * The "System menu" component, displayed at the top of the SoloWeb system.
  *
  * @author Hugi Þórðarson
- * @version 2.9.2b6
- * @since 2.3
  */
 
 public class SWMainMenu extends SWAdminComponent {
