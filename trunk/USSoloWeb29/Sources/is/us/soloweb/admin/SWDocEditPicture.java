@@ -2,7 +2,7 @@ package is.us.soloweb.admin;
 
 import is.us.soloweb.data.SWDocument;
 import is.us.thirdparty.ImageInfo;
-import is.us.util.USImageUtilities;
+import is.us.util.*;
 import is.us.util.USImageUtilities.CodecType;
 
 import java.awt.*;
@@ -16,9 +16,6 @@ import com.webobjects.foundation.*;
  * Used to preview and edit a picture in the admin system.
  * 
  * @author Hugi Þórðarson
- * @version 2.9.2b4
- * 
- * FIXME: This component can be much improved.
  */
 
 public class SWDocEditPicture extends SWDocEditGeneric {

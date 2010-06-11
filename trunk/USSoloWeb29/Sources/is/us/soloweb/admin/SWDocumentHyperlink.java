@@ -1,12 +1,9 @@
 package is.us.soloweb.admin;
 
-import is.us.soloweb.data.SWDocument;
-import is.us.soloweb.data.SWDocumentFolder;
+import is.us.soloweb.data.*;
 import is.us.util.USUtilities;
 
-import com.webobjects.appserver.WOActionResults;
-import com.webobjects.appserver.WOComponent;
-import com.webobjects.appserver.WOContext;
+import com.webobjects.appserver.*;
 import com.webobjects.foundation.NSKeyValueCoding;
 
 import er.extensions.components.ERXComponent;
@@ -19,7 +16,6 @@ import er.extensions.foundation.ERXStringUtilities;
  * WOComponent to return to, once picture selection has been completed.
  * 
  * @author Hugi Þórðarson
- * @version 2.9.2b1
  * @since 2.5
  */
 

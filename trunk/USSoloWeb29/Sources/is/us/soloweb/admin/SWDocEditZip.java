@@ -6,7 +6,6 @@ import com.webobjects.appserver.*;
  * For viewing and working with zip-files in SoloWeb.
  *  
  * @author Hugi Þórðarson
- * @version 2.9.2b4
  * 
  * TODO: zip, improve interface.
  * TODO: zip, show status of expansion.

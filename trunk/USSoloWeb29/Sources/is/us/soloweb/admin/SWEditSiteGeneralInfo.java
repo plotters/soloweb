@@ -18,8 +18,6 @@ import er.extensions.foundation.ERXArrayUtilities;
 
 public class SWEditSiteGeneralInfo extends SWInspectionComponent<SWSite> {
 
-	//	private static final Logger logger = LoggerFactory.getLogger( SWEditSiteGeneralInfo.class );
-	//	public Locale currentLocale;
 	public String currentLocaleName;
 
 	public SWEditSiteGeneralInfo( WOContext context ) {
@@ -29,10 +27,11 @@ public class SWEditSiteGeneralInfo extends SWInspectionComponent<SWSite> {
 	public NSArray<String> availableLocales() {
 		NSMutableArray<String> localeNames = new NSMutableArray<String>();
 
-		for( Locale l : Locale.getAvailableLocales() )
+		for( Locale l : Locale.getAvailableLocales() ) {
 			localeNames.addObject( l.getLanguage() );
+		}
 
-		NSArray a = ERXArrayUtilities.arrayWithoutDuplicates( localeNames );
+		NSArray<String> a = ERXArrayUtilities.arrayWithoutDuplicates( localeNames );
 		return ERXArrayUtilities.sortedArrayUsingComparator( a, NSComparator.AscendingCaseInsensitiveStringComparator );
 	}
 }

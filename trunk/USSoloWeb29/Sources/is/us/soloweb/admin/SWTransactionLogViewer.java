@@ -8,8 +8,6 @@ import com.webobjects.eocontrol.*;
 import com.webobjects.foundation.*;
 
 /**
- * 
- * 
  * @author Hugi Þórðarson
  */
 

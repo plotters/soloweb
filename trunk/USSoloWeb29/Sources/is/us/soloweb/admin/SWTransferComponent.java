@@ -8,8 +8,6 @@ import com.webobjects.appserver.*;
  * A component for transferring of an SWComponent to a new page
  *
  * @author Hugi Þórðarson
- * @version 2.9.2
- * @since 2.5
  */
 
 public class SWTransferComponent extends SWTransferComponentGeneric {
@@ -18,6 +16,7 @@ public class SWTransferComponent extends SWTransferComponentGeneric {
 		super( context );
 	}
 
+	@Override
 	public WOActionResults selectObject() {
 		if( !shouldCopy ) {
 			return super.selectObject();

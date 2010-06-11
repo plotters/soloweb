@@ -10,8 +10,6 @@ import com.webobjects.appserver.*;
  * The site tree displayed to the left when you log into a SoloWeb system.
  *
  * @author Hugi Þórðarson
- * @version 2.9.2b4
- * @since 2.3
  */
 
 public class SWSiteTree extends SWAdminComponent {

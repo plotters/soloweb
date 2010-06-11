@@ -12,8 +12,6 @@ import com.webobjects.foundation.NSArray;
  * The first page in the system.
  * 
  * @author Hugi Þórðarson 
- * @version 2.9.2b6
- * @since 2.9.2b4
  */
 
 public class SWStartPage extends SWAdminComponent {

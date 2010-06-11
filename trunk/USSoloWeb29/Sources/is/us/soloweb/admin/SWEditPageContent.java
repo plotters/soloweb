@@ -11,7 +11,6 @@ import com.webobjects.foundation.NSMutableArray;
 
 /**
  * @author Hugi Þórðarson
- * @version 2.9.2b4
  */
 
 public class SWEditPageContent extends SWInspectionComponent<SWPage> {

@@ -7,7 +7,6 @@ import com.webobjects.appserver.*;
 
 /**
  * @author Hugi Þórðarson
- * @version 2.9.2b4
  * @since 2.3
  */
 
@@ -17,6 +16,9 @@ public class SWEditNewsItem extends SWInspectionComponent<SWNewsItem> {
 		super( context );
 	}
 
+	/**
+	 * Previews the selected item.
+	 */
 	public WOActionResults preview() {
 		SWNewsPreview nextPage = pageWithName( SWNewsPreview.class );
 		nextPage.setSelectedObject( selectedObject() );

@@ -13,13 +13,11 @@ import com.webobjects.foundation.*;
  * the tabs to select a new component type.
  *
  * @author Hugi Þórðarson
- * @version 2.9.2b4
- * @since 2.3
  */
 
 public class SWEditComponent extends SWInspectionComponent<SWComponent> {
 
-	private String _defaultTabName = SWLoc.string( "cpteContent", session() );
+	private final String _defaultTabName = SWLoc.string( "cpteContent", session() );
 
 	/**
 	 * Name of the currently selected tab in the component type tab panel
@@ -84,6 +82,7 @@ public class SWEditComponent extends SWInspectionComponent<SWComponent> {
 	/**
 	 * The name of the component editing component to display.
 	 */
+	@Override
 	public String componentName() {
 		return projectTypes().objectForKey( currentType );
 	}
