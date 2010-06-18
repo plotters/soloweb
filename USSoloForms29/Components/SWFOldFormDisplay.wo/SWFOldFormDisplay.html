@@ -11,12 +11,19 @@
 					</tr>
 				</webobject>
 				<tr>
-					<td>&nbsp;</td>
+					<td><wo:WOHiddenField value="$hatesSpamString" id="spamStringField" /></td>
 					<td><webobject name="SUBMIT_BUTTON" /></td>
 					<td>&nbsp;</td>
 				</tr>
 			</table>
 		</webobject>
+			<script type = "text/javascript" language="javascript">
+			
+				var field = document.getElementById( 'spamStringField' );
+		
+				if( field )
+					field.value = "já";
+			</script>
 	</div>
 </webobject>
 <webobject name="HAS_REGISTERED_COND">

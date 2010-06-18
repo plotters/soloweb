@@ -1,24 +1,15 @@
 package is.us.soloweb.forms.client;
 
 import is.us.soloweb.SWGenericComponent;
-import is.us.soloweb.forms.SWFPrintableRegistration;
-import is.us.soloweb.forms.SWFUtilities;
-import is.us.soloweb.forms.data.SWFField;
-import is.us.soloweb.forms.data.SWFFieldSet;
-import is.us.soloweb.forms.data.SWFForm;
-import is.us.soloweb.forms.data.SWFRegistration;
-import is.us.util.USArrayUtilities;
-import is.us.util.USStringUtilities;
+import is.us.soloweb.forms.*;
+import is.us.soloweb.forms.data.*;
+import is.us.util.*;
 
 import java.util.Enumeration;
 
-import com.webobjects.appserver.WOComponent;
-import com.webobjects.appserver.WOContext;
-import com.webobjects.appserver.WOResponse;
+import com.webobjects.appserver.*;
 import com.webobjects.eocontrol.EOEditingContext;
-import com.webobjects.foundation.NSArray;
-import com.webobjects.foundation.NSData;
-import com.webobjects.foundation.NSMutableDictionary;
+import com.webobjects.foundation.*;
 
 /**
  * @author Hugi Þórðarson
@@ -26,7 +17,7 @@ import com.webobjects.foundation.NSMutableDictionary;
 
 public class SWFNewFormDisplay extends SWGenericComponent {
 
-	private EOEditingContext ec = session().defaultEditingContext();
+	private final EOEditingContext ec = session().defaultEditingContext();
 
 	private static final String LEVEL_1 = "first";
 	private static final String LEVEL_2 = "second";
@@ -79,6 +70,7 @@ public class SWFNewFormDisplay extends SWGenericComponent {
 		return context().page();
 	}
 
+	@Override
 	public void appendToResponse( WOResponse r, WOContext c ) {
 
 		if( firstTime ) {
@@ -90,8 +82,9 @@ public class SWFNewFormDisplay extends SWGenericComponent {
 				SWFField nextElement = e.nextElement();
 				String defaultValue = nextElement.defaultValue();
 
-				if( USStringUtilities.stringHasValue( defaultValue ) )
+				if( USStringUtilities.stringHasValue( defaultValue ) ) {
 					someFields.setObjectForKey( defaultValue, nextElement );
+				}
 			}
 		}
 
@@ -103,51 +96,60 @@ public class SWFNewFormDisplay extends SWGenericComponent {
 	}
 
 	public void setCurrentString( Object o ) {
-		if( o != null )
+		if( o != null ) {
 			someFields.setObjectForKey( o, currentField );
-		else
+		}
+		else {
 			someFields.removeObjectForKey( currentField );
+		}
 	}
 
 	public NSData currentData() {
 		return someDataFields.objectForKey( currentField );
 	}
 
-	public void setCurrentData( NSData d ) {
-		if( d != null && d.length() > 0 )
-			someDataFields.setObjectForKey( d, currentField );
-		else
+	public void setCurrentData( NSData data ) {
+		if( data != null && data.length() > 0 ) {
+			someDataFields.setObjectForKey( data, currentField );
+		}
+		else {
 			someDataFields.removeObjectForKey( currentField );
+		}
 	}
 
 	public String currentStringWithBreaks() {
-		if( currentString() instanceof String )
+		if( currentString() instanceof String ) {
 			return USStringUtilities.convertBreakString( ((String)currentString()) );
+		}
 
 		return null;
 	}
 
 	public String requiredFieldEmptyString() {
-		if( selectedForm != null )
-			if( USStringUtilities.stringHasValue( selectedForm.requiredFieldEmptyString() ) )
+		if( selectedForm != null ) {
+			if( USStringUtilities.stringHasValue( selectedForm.requiredFieldEmptyString() ) ) {
 				return selectedForm.requiredFieldEmptyString();
+			}
+		}
 
-		return "Vinsamlegast fylli&eth; &uacute;t alla reiti sem merktir eru me&eth; stj&ouml;rnu";
+		return "Vinsamlegast fyllið út alla reiti sem merktir eru með stjörnu";
 	}
 
 	private boolean requiredFieldsFilledOut() {
 		NSArray<SWFField> a = selectedForm.requiredFields();
 
-		if( !USArrayUtilities.arrayHasObjects( a ) )
+		if( !USArrayUtilities.arrayHasObjects( a ) ) {
 			return true;
+		}
 
 		Enumeration<SWFField> e = a.objectEnumerator();
 
 		while( e.hasMoreElements() ) {
 			SWFField f = e.nextElement();
 
-			if( someFields.objectForKey( f ) == null )
+			if( someFields.objectForKey( f ) == null ) {
 				return false;
+			}
 		}
 
 		return true;
@@ -158,7 +160,7 @@ public class SWFNewFormDisplay extends SWGenericComponent {
 	}
 
 	public SWFFieldSet currentFieldSet() {
-		return (SWFFieldSet)selectedForm.sortedFieldSets().objectAtIndex( _currentFieldSetIndex );
+		return selectedForm.sortedFieldSets().objectAtIndex( _currentFieldSetIndex );
 	}
 
 	public WOComponent nextFieldSet() {

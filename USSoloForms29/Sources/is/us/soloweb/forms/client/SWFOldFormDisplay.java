@@ -2,21 +2,12 @@ package is.us.soloweb.forms.client;
 
 import is.us.soloweb.SWGenericComponent;
 import is.us.soloweb.forms.SWFUtilities;
-import is.us.soloweb.forms.data.SWFField;
-import is.us.soloweb.forms.data.SWFForm;
-import is.us.soloweb.forms.data.SWFRegistration;
-import is.us.util.USArrayUtilities;
-import is.us.util.USStringUtilities;
+import is.us.soloweb.forms.data.*;
+import is.us.util.*;
 
-import java.util.Enumeration;
-
-import com.webobjects.appserver.WOActionResults;
-import com.webobjects.appserver.WOContext;
-import com.webobjects.appserver.WOResponse;
+import com.webobjects.appserver.*;
 import com.webobjects.eocontrol.EOEditingContext;
-import com.webobjects.foundation.NSArray;
-import com.webobjects.foundation.NSData;
-import com.webobjects.foundation.NSMutableDictionary;
+import com.webobjects.foundation.*;
 
 /**
  * A simple form display for a single step form.
@@ -32,7 +23,7 @@ public class SWFOldFormDisplay extends SWGenericComponent {
 	/**
 	 * Perhaps the session's editing context is not the best place for this.
 	 */
-	private EOEditingContext ec = session().defaultEditingContext();
+	private final EOEditingContext ec = session().defaultEditingContext();
 
 	public SWFForm selectedForm;
 	public SWFField currentField;
@@ -41,8 +32,11 @@ public class SWFOldFormDisplay extends SWGenericComponent {
 	public String errorString;
 	public boolean hasRegistered = false;
 
-	private NSMutableDictionary<SWFField, Object> fields = new NSMutableDictionary<SWFField, Object>();
-	private NSMutableDictionary<SWFField, NSData> dataFields = new NSMutableDictionary<SWFField, NSData>();
+	private final NSMutableDictionary<SWFField, Object> fields = new NSMutableDictionary<SWFField, Object>();
+	private final NSMutableDictionary<SWFField, NSData> dataFields = new NSMutableDictionary<SWFField, NSData>();
+
+	public String hatesSpamString;
+	public String expectedSpamAnswer = "já";
 
 	public SWFOldFormDisplay( WOContext context ) {
 		super( context );
@@ -57,6 +51,13 @@ public class SWFOldFormDisplay extends SWGenericComponent {
 	 * Submits the current form.
 	 */
 	public WOActionResults submitForm() {
+
+		System.out.println( hatesSpamString );
+
+		if( !expectedSpamAnswer.equalsIgnoreCase( hatesSpamString ) ) {
+			errorString = "Í Spam-reit verður að standa \"já\"";
+			return context().page();
+		}
 
 		if( selectedForm.maxRegistrations() != null && (selectedForm.registrations().count() >= selectedForm.maxRegistrations()) ) {
 			errorString = ERROR_MAX;
@@ -110,11 +111,13 @@ public class SWFOldFormDisplay extends SWGenericComponent {
 	 * 
 	 * @param data The data to set
 	 */
-	public void setCurrentString( String s ) {
-		if( USStringUtilities.stringHasValue( s ) )
-			fields.setObjectForKey( s, currentField );
-		else
+	public void setCurrentString( String string ) {
+		if( USStringUtilities.stringHasValue( string ) ) {
+			fields.setObjectForKey( string, currentField );
+		}
+		else {
 			fields.removeObjectForKey( currentField );
+		}
 	}
 
 	/**
@@ -130,19 +133,23 @@ public class SWFOldFormDisplay extends SWGenericComponent {
 	 * @param data The data to set
 	 */
 	public void setCurrentData( NSData data ) {
-		if( data != null && data.length() > 0 )
+		if( data != null && data.length() > 0 ) {
 			dataFields.setObjectForKey( data, currentField );
-		else
+		}
+		else {
 			dataFields.removeObjectForKey( currentField );
+		}
 	}
 
 	/**
 	 * @return The string to show if not all required fields are filled out.
 	 */
 	public String requiredFieldEmptyString() {
-		if( selectedForm != null )
-			if( USStringUtilities.stringHasValue( selectedForm.requiredFieldEmptyString() ) )
+		if( selectedForm != null ) {
+			if( USStringUtilities.stringHasValue( selectedForm.requiredFieldEmptyString() ) ) {
 				return selectedForm.requiredFieldEmptyString();
+			}
+		}
 
 		return ERROR_REQUIRED;
 	}
@@ -153,12 +160,14 @@ public class SWFOldFormDisplay extends SWGenericComponent {
 	private boolean requiredFieldsFilledOut() {
 		NSArray<SWFField> req = selectedForm.requiredFields();
 
-		if( !USArrayUtilities.arrayHasObjects( req ) )
+		if( !USArrayUtilities.arrayHasObjects( req ) ) {
 			return true;
+		}
 
 		for( SWFField f : req ) {
-			if( fields.objectForKey( f ) == null )
+			if( fields.objectForKey( f ) == null ) {
 				return false;
+			}
 		}
 
 		return true;
