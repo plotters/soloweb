@@ -44,8 +44,9 @@ public class SWFRegistrationDisplay extends SWFFormAdminComponent {
 	/**
 	 * 
 	 */
+	@Override
 	public NSArray fieldList() {
-		return USEOUtilities.fetchObjects( ec, SWFField.class, "fieldID", SWFUtilities.convertElementsToIntegers( fieldIDList() ) );
+		return USEOUtilities.objectsMatchingKeyAndValues( ec, SWFField.class, "fieldID", SWFUtilities.convertElementsToIntegers( fieldIDList() ) );
 	}
 
 	/**
@@ -61,7 +62,7 @@ public class SWFRegistrationDisplay extends SWFFormAdminComponent {
 	 * @return
 	 */
 	public NSArray searchFieldList() {
-		return SWFSearchField.fieldList( USEOUtilities.fetchObjects( ec, SWFField.class, "fieldID", searchFieldIDList() ) );
+		return SWFSearchField.fieldList( USEOUtilities.objectsMatchingKeyAndValues( ec, SWFField.class, "fieldID", searchFieldIDList() ) );
 	}
 
 	/**
