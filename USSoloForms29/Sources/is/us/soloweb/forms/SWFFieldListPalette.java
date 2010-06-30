@@ -1,7 +1,7 @@
 package is.us.soloweb.forms;
 
 import is.us.soloweb.forms.data.*;
-import is.us.util.*;
+import is.us.util.USEOUtilities;
 
 import com.webobjects.appserver.*;
 import com.webobjects.eocontrol.EOEditingContext;
@@ -15,7 +15,7 @@ import er.extensions.components.ERXComponent;
 
 public class SWFFieldListPalette extends ERXComponent {
 
-	private EOEditingContext ec = session().defaultEditingContext();
+	private final EOEditingContext ec = session().defaultEditingContext();
 
 	public String fieldString;
 	public SWFForm selectedForm;
@@ -50,7 +50,7 @@ public class SWFFieldListPalette extends ERXComponent {
 	}
 
 	public NSArray fieldList() {
-		return USEOUtilities.fetchObjects( ec, SWFField.class, "fieldID", fieldIDList() );
+		return USEOUtilities.objectsMatchingKeyAndValues( ec, SWFField.class, "fieldID", fieldIDList() );
 	}
 
 	public NSArray fieldsToAddToList() {
