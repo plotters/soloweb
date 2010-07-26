@@ -1,33 +1,33 @@
-<webobject name="DISPLAY_DETAIL_CONDITIONAL">
-	<webobject name="REPETITION">
+<wo:condition condition="$displayDetail" negate="$true">
+	<wo:repetition list="$newslist" item="$currentNewsItem">
 		<div class="sw_newsitem">
-			<h4 class="sw_newsdate"><webobject name="DATE_STRING" /></h4>
-			<h3 class="sw_newsheading"><webobject name="MORE_LINK"><webobject name="NAME_STRING" /></webobject></h3>
-			<webobject name="SHOW_IMAGE_CONDITIONAL">
+			<h4 class="sw_newsdate"><wo:str value="$currentNewsItem.date" formatter="$timestampFormatter" /></h4>
+			<h3 class="sw_newsheading"><wo:str value="$currentNewsItem.name" /></h3>
+			<wo:condition condition="$currentComponent.customInfo.showPicture">
 				<wo:SWImage document="$currentNewsItem.document" align="$currentComponent.customInfo.imageAlignment" />
-			</webobject>
-			<webobject name="DISPLAY_EXCERPT_CONDITIONAL">
+			</wo:condition>
+			<wo:condition condition="$displayExcerpt">
 				<div class="sw_newsitem_text">
 					<wo:str value="$currentNewsItem.excerptWithBreaks" escapeHTML="$false" />
 				</div>
-				<webobject name="MORE_LINK"><webobject name="SHOW_MORE_LINK_TEXT" /></webobject>
-			</webobject>
-			<webobject name="DISPLAY_TEXT_CONDITIONAL">
+				<wo:link href="$moreURL" class="sw_newsitem_more_link"><wo:str value="$@ls.defaultNewsShowMoreString" /></wo:link>
+			</wo:condition>
+			<wo:condition condition="$displayText">
 				<div class="sw_newsitem_text">
-					<webobject name="TEXT_STRING" />
+					<wo:str value="$currentNewsItem.textRendered" escapeHTML="$false" />
 				</div>
-			</webobject>
-			<webobject name="DISPLAY_LINK_ONLY_CONDITIONAL">
-				<webobject name="MORE_LINK"><webobject name="SHOW_MORE_LINK_TEXT" /></webobject>
-			</webobject>
-			<webobject name="ALLOW_COMMENTS_CONDITIONAL">
+			</wo:condition>
+			<wo:condition condition="$displayLinkOnly">
+				<wo:link href="$moreURL" class="sw_newsitem_more_link"><wo:str value="$@ls.defaultNewsShowMoreString" /></wo:link>
+			</wo:condition>
+			<wo:condition condition="$currentComponent.customInfo.allowComments">
 				<div class="talkblock">
-					<webobject name="MORE_LINK">
-						<webobject name="COMMENT_INFO" />
-					</webobject>
+					<wo:link href="$moreURL" class="sw_newsitem_more_link">
+						<wo:SWCommentInfo selectedNewsItem="$currentNewsItem" />
+					</wo:link>
 				</div>
-			</webobject>
+			</wo:condition>
 		</div>
-	</webobject>
-</webobject>
-<webobject name="HAS_DETAIL_ITEM_CONDITIONAL"><webobject name="DETAIL_COMPONENT" /></webobject>
+	</wo:repetition>
+</wo:condition>
+<wo:condition condition="$displayDetail"><wo:SWNewsDetail selectedNewsItem="$selectedNewsItem" currentComponent="$currentComponent" /></wo:condition>
