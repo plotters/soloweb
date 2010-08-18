@@ -13,14 +13,11 @@ import com.webobjects.foundation.NSArray;
  * Can also be used as a breadcrumbtrail.
  *
  * @author Hugi Þórðarson
- * @version 2.9.2b6
- * @since 2.7
  */
 
 public class SWNavigation extends SWAbstractComponent {
 
 	private static final String LIST_BINDING = "list";
-
 	private static final String LEVEL_NORMAL = "swLevelNormal";
 	private static final String LEVEL_OPEN = "swLevelOpen";
 	private static final String LEVEL_CLOSED = "swLevelClosed";
@@ -47,13 +44,6 @@ public class SWNavigation extends SWAbstractComponent {
 
 	public NSArray<SWPage> list() {
 		return (NSArray<SWPage>)valueForBinding( LIST_BINDING );
-		/*
-				if( a == null && selectedPage() != null ) {
-					return selectedPage().topLevelPage().sortedAndApprovedSubPages();
-				}
-
-				return a;
-				*/
 	}
 
 	public boolean isNotSelected() {

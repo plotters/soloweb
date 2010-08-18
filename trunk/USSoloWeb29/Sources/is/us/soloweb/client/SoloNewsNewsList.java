@@ -17,8 +17,6 @@ import com.webobjects.foundation.*;
  * The default news list
  *
  * @author Hugi Þórðarson
- * @version 2.9.2b5
- * @since 2.7
  */
 
 public class SoloNewsNewsList extends SWGenericComponent {
@@ -42,7 +40,6 @@ public class SoloNewsNewsList extends SWGenericComponent {
 	private static final int VALUE_VIEW_MODE_EXCERPT = 2;
 	private static final int VALUE_VIEW_MODE_TEXT = 3;
 
-	private NSArray<SWNewsItem> _newsItems;
 	private SWNewsItem _selectedNewsItem;
 	public SWNewsItem currentNewsItem;
 
@@ -51,38 +48,28 @@ public class SoloNewsNewsList extends SWGenericComponent {
 	}
 
 	public NSArray<SWNewsItem> newsItems() {
-		return _newsItems;
-	}
-
-	public void setNewsItems( NSArray<SWNewsItem> a ) {
-		_newsItems = a;
+		return (NSArray<SWNewsItem>)valueForBinding( "newsItems" );
 	}
 
 	/**
 	 * @return the list of news to show on the page.
 	 */
 	public NSArray<SWNewsItem> newslist() {
-		if( USArrayUtilities.arrayHasObjects( newsItems() ) )
+		if( USArrayUtilities.arrayHasObjects( newsItems() ) ) {
 			return newsItems();
+		}
 
 		return SWNewsUtilities.news( ec(), folderID(), daysToInclude(), daysToExclude(), sortOrdering(), itemsToShow(), itemsToSkip(), randomSort() );
-	}
-
-	/**
-	 * Indicates if a newsitem is currently selected.
-	 */
-	public boolean displayDetail() {
-		return selectedNewsItem() != null;
 	}
 
 	/**
 	 * @return The currently selected newsitem.
 	 */
 	public SWNewsItem selectedNewsItem() {
-		String detail = context().request().stringFormValueForKey( SWC.URL_NEWS_DETAIL );
+		String selectedNewsItemID = context().request().stringFormValueForKey( SWC.URL_NEWS_DETAIL );
 
-		if( detail != null && _selectedNewsItem == null ) {
-			_selectedNewsItem = SWNewsItem.fetchSWNewsItem( ec(), SWNewsItem.NEWS_ITEM_ID.eq( new Integer( detail ) ) );
+		if( selectedNewsItemID != null && _selectedNewsItem == null ) {
+			_selectedNewsItem = SWNewsItem.fetchSWNewsItem( ec(), SWNewsItem.NEWS_ITEM_ID.eq( new Integer( selectedNewsItemID ) ) );
 		}
 
 		return _selectedNewsItem;
@@ -123,13 +110,16 @@ public class SoloNewsNewsList extends SWGenericComponent {
 	 * 
 	 */
 	private Object valueForKeyWithDefaultValue( String key, Object defaultValue ) {
-		if( currentComponent() == null )
+
+		if( currentComponent() == null ) {
 			return defaultValue;
+		}
 
 		Object o = currentComponent().customInfo().valueForKey( key );
 
-		if( o == null )
+		if( o == null ) {
 			return defaultValue;
+		}
 
 		return o;
 	}
@@ -145,8 +135,9 @@ public class SoloNewsNewsList extends SWGenericComponent {
 	 * 
 	 */
 	private String sortKey() {
-		if( VALUE_SORT_KEY_ALPHABETICALLY.equals( stringValueForKeyWithDefaultValue( PARAM_SORT_KEY, null ) ) )
+		if( VALUE_SORT_KEY_ALPHABETICALLY.equals( stringValueForKeyWithDefaultValue( PARAM_SORT_KEY, null ) ) ) {
 			return SWNewsItem.NAME_KEY;
+		}
 
 		return SWNewsItem.DATE_KEY;
 	}
@@ -155,8 +146,9 @@ public class SoloNewsNewsList extends SWGenericComponent {
 	 * 
 	 */
 	private NSSelector sortSelector() {
-		if( VALUE_SORT_ORDER_ASCENDING.equals( stringValueForKeyWithDefaultValue( PARAM_SORT_ORDER, null ) ) )
+		if( VALUE_SORT_ORDER_ASCENDING.equals( stringValueForKeyWithDefaultValue( PARAM_SORT_ORDER, null ) ) ) {
 			return EOSortOrdering.CompareCaseInsensitiveAscending;
+		}
 
 		return EOSortOrdering.CompareCaseInsensitiveDescending;
 	}

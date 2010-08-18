@@ -11,18 +11,12 @@ import com.webobjects.appserver.WOContext;
  * This one specifies just text, no picture, aligned to the left in a table of 100% width.
  *
  * @author Hugi Þórðarson
- * @version 2.9.2b4
- * @since 1.4
  */
 
 public class ButurTemplate004 extends SWGenericComponent {
 
 	public ButurTemplate004( WOContext context ) {
 		super( context );
-	}
-
-	public SWComponent currentComponent() {
-		return (SWComponent)valueForBinding( SWC.CURRENT_COMPONENT );
 	}
 
 	public boolean synchronizesVariablesWithBindings() {

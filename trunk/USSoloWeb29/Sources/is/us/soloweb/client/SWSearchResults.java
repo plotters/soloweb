@@ -12,8 +12,6 @@ import com.webobjects.foundation.NSArray;
  * This is the page returned by SWDirectAction.search().
  *
  * @author Hugi Þórðarson
- * @version 2.8
- * @since 2.4
  */
 
 public class SWSearchResults extends SWGenericTemplate {

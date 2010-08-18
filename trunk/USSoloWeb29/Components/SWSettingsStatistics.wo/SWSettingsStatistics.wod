@@ -71,7 +71,7 @@ LS_HITS_SERVED : WOString {
 }
 
 LS_BYTES_SERVED : WOString {
-	value = session.@ls.aaNumberOfRequests;
+	value = session.@ls.aaNumberOfBytes;
 }
 
 HITS_SERVED : WOString {

@@ -10,8 +10,6 @@ import com.webobjects.appserver.WOContext;
  * The display component for a single SWDocument.
  *
  * @author Hugi Þórðarson
- * @version 2.9.2.b3
- * @since 2.3
  */
 
 public class SWSFComponent extends SWGenericComponent {

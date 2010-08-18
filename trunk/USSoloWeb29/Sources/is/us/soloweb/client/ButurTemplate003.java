@@ -11,8 +11,6 @@ import com.webobjects.appserver.WOContext;
  * This one specifies left-aligned text with a right aligned picture, 5px spacing, in a table of 100% width.
  *
  * @author Hugi Þórðarson
- * @version 2.9.2b4
- * @since 1.4
  */
 
 public class ButurTemplate003 extends SWGenericComponent {
@@ -21,14 +19,12 @@ public class ButurTemplate003 extends SWGenericComponent {
 		super( context );
 	}
 
-	public SWComponent currentComponent() {
-		return (SWComponent)valueForBinding( SWC.CURRENT_COMPONENT );
-	}
-
+	@Override
 	public boolean synchronizesVariablesWithBindings() {
 		return false;
 	}
 
+	@Override
 	public boolean isStateless() {
 		return true;
 	}
