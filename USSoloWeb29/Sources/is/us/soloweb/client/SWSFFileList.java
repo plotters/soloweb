@@ -12,8 +12,6 @@ import er.extensions.foundation.ERXArrayUtilities;
  * The display component for a list of SWDocuments.
  *
  * @author Hugi Þórðarson
- * @version 2.9.2b4
- * @since 2.3
  */
 
 public class SWSFFileList extends SWSFComponent {

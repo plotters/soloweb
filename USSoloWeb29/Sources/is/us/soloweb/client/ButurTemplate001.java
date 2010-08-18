@@ -1,8 +1,6 @@
 package is.us.soloweb.client;
 
 import is.us.soloweb.SWGenericComponent;
-import is.us.soloweb.data.SWComponent;
-import is.us.soloweb.util.SWC;
 
 import com.webobjects.appserver.WOContext;
 
@@ -11,8 +9,6 @@ import com.webobjects.appserver.WOContext;
  * This one displays the component heading in H1 size.
  *
  * @author Hugi Þórðarson
- * @version 2.9.2b4
- * @since 1.4
  */
 
 public class ButurTemplate001 extends SWGenericComponent {
@@ -21,14 +17,12 @@ public class ButurTemplate001 extends SWGenericComponent {
 		super( context );
 	}
 
-	public SWComponent currentComponent() {
-		return (SWComponent)valueForBinding( SWC.CURRENT_COMPONENT );
-	}
-
+	@Override
 	public boolean synchronizesVariablesWithBindings() {
 		return false;
 	}
 
+	@Override
 	public boolean isStateless() {
 		return true;
 	}

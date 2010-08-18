@@ -1,4 +1,4 @@
-<wo:condition condition="$displayDetail" negate="$true">
+<wo:condition condition="$selectedNewsItem" negate="$true">
 	<wo:repetition list="$newslist" item="$currentNewsItem">
 		<div class="sw_newsitem">
 			<h4 class="sw_newsdate"><wo:str value="$currentNewsItem.date" formatter="$timestampFormatter" /></h4>
@@ -30,4 +30,4 @@
 		</div>
 	</wo:repetition>
 </wo:condition>
-<wo:condition condition="$displayDetail"><wo:SWNewsDetail selectedNewsItem="$selectedNewsItem" currentComponent="$currentComponent" /></wo:condition>
+<wo:condition condition="$selectedNewsItem"><wo:SWNewsDetail selectedNewsItem="$selectedNewsItem" currentComponent="$currentComponent" /></wo:condition>
