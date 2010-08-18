@@ -20,10 +20,10 @@ public class SWNewsUtilities extends Object {
 	private static final EOQualifier PUBLISHED_QUALIFIER = SWNewsItem.PUBLISHED.eq( SWC.TRUE_INTEGER );
 
 	/**
-	 * Finds the folder with the given ID and returns a specified amount of news from it, sorted descendingly by date
+	 * Finds the folder with the given ID and returns a specified amount of news from it, sorted descending by date
 	 *
 	 * @param ec The EOEditingContext to fetch into
-	 * @param numberOfItems The number of newsitem to fetch
+	 * @param numberOfItems The number of news items to fetch
 	 * @param folderID The primary key of the folder to fetch from
 	 */
 	public static NSArray<SWNewsItem> recentNewsFromFolderWithID( EOEditingContext ec, Integer numberOfItems, Integer folderID ) {
@@ -52,11 +52,11 @@ public class SWNewsUtilities extends Object {
 
 			EOFetchSpecification fs = new EOFetchSpecification( SWNewsItem.class.getSimpleName(), q, NEWS_DEFAULT_SORT_ORDERINGS );
 
-			if( numberOfItems != null )
+			if( numberOfItems != null ) {
 				fs.setFetchLimit( numberOfItems );
+			}
 
-			NSArray<SWNewsItem> fetchedNews = ec.objectsWithFetchSpecification( fs );
-			return fetchedNews;
+			return ec.objectsWithFetchSpecification( fs );
 		}
 		catch( Exception e ) {
 			e.printStackTrace();
@@ -66,16 +66,6 @@ public class SWNewsUtilities extends Object {
 
 	/**
 	 * Constructs a list of news matching the given parameters.
-	 * 
-	 * @param ec
-	 * @param folderID
-	 * @param daysToInclude
-	 * @param daysToExclude
-	 * @param sortOrderings
-	 * @param itemsToShow
-	 * @param itemsToSkip
-	 * @param randomSort
-	 * @return
 	 */
 	public static NSArray<SWNewsItem> news( EOEditingContext ec, Integer folderID, Integer daysToInclude, Integer daysToExclude, NSArray<EOSortOrdering> sortOrderings, Integer itemsToShow, Integer itemsToSkip, boolean randomSort ) {
 
