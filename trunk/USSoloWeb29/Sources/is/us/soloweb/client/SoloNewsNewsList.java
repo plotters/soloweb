@@ -76,6 +76,13 @@ public class SoloNewsNewsList extends SWGenericComponent {
 	}
 
 	/**
+	 * Indicates if a newsitem is currently selected.
+	 */
+	public boolean displayDetail() {
+		return selectedNewsItem() != null;
+	}
+	
+	/**
 	 * FIXME: Move to consolidated URL-generation. 
 	 */
 	public String moreURL() {
