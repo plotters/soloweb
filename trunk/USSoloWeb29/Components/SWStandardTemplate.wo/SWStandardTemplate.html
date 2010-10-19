@@ -1,1 +1,1 @@
-<webobject name="SITE_TEMPLATE"><webobject name="COMPONENT_REPETITION"><webobject name="COMPONENT_TEMPLATE" /></webobject></webobject>
+<wo:switch WOComponentName="$lookName" selectedPage="$selectedPage"><wo:repetition item="$currentComponent" list="$selectedPage.sortedAndApprovedComponents"><wo:switch WOComponentName="$currentComponent.templateName" currentComponent="$currentComponent" /></wo:repetition></wo:switch>
