@@ -32,13 +32,13 @@ public class SWProperties {
 	public static final String USE_GZIP_PROPERTY = PROPERTY_PREFIX + USE_GZIP;
 
 	/**
-	 * Indicates if we want to use Gzip to compress the response.
+	 * Indicates if we want to use macros.
 	 */
 	public static final String USE_MACROS = "useMacros";
 	public static final String USE_MACROS_PROPERTY = PROPERTY_PREFIX + USE_MACROS;
 
 	/**
-	 * Indicates if we want to use Gzip to compress the response.
+	 * Indicates if we want to use dynamic templates.
 	 */
 	public static final String USE_DYNAMIC_TEMPLATES = "useDynamicTemplates";
 	public static final String USE_DYNAMIC_TEMPLATES_PROPERTY = PROPERTY_PREFIX + USE_DYNAMIC_TEMPLATES;
