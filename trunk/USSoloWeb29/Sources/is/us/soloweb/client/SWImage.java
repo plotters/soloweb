@@ -5,7 +5,7 @@ import is.us.soloweb.util.SWURLGeneration;
 
 import com.webobjects.appserver.WOContext;
 
-import er.extensions.components.ERXComponent;
+import er.extensions.components.ERXStatelessComponent;
 
 /**
  * The SoloWeb Equivalent to WOImage. Takes an SWPicture as an argument and displays it.
@@ -15,20 +15,10 @@ import er.extensions.components.ERXComponent;
  * @since 2.5
  */
 
-public class SWImage extends ERXComponent {
+public class SWImage extends ERXStatelessComponent {
 
 	public SWImage( WOContext context ) {
 		super( context );
-	}
-
-	@Override
-	public boolean synchronizesVariablesWithBindings() {
-		return false;
-	}
-
-	@Override
-	public boolean isStateless() {
-		return true;
 	}
 
 	public SWDocument document() {
