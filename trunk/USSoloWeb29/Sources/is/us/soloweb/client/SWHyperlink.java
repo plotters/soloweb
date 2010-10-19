@@ -5,26 +5,16 @@ import is.us.soloweb.util.SWURLGeneration;
 
 import com.webobjects.appserver.WOContext;
 
-import er.extensions.components.ERXComponent;
+import er.extensions.components.ERXStatelessComponent;
 
 /**
  * @author Hugi Þórðarson
  */
 
-public class SWHyperlink extends ERXComponent {
+public class SWHyperlink extends ERXStatelessComponent {
 
 	public SWHyperlink( WOContext context ) {
 		super( context );
-	}
-
-	@Override
-	public boolean isStateless() {
-		return true;
-	}
-
-	@Override
-	public boolean synchronizesVariablesWithBindings() {
-		return false;
 	}
 
 	/**
