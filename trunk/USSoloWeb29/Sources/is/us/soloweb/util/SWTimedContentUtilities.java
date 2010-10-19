@@ -54,16 +54,17 @@ public class SWTimedContentUtilities extends Object {
 	/**
 	* Takes an Array of SWTimedContent objects and returns it with the ones whose display time is not valid filtered out
 	*/
-	public static NSArray validateDisplayTimeForArray( NSArray inputArray ) {
+	public static <E extends SWTimedContent> NSArray<E> validateDisplayTimeForArray( NSArray<E> inputArray ) {
 
-		if( inputArray == null )
+		if( inputArray == null ) {
 			return null;
+		}
 
-		NSMutableArray anArray = new NSMutableArray();
-		Enumeration e = inputArray.objectEnumerator();
+		NSMutableArray<E> anArray = new NSMutableArray<E>();
+		Enumeration<E> e = inputArray.objectEnumerator();
 
 		while( e.hasMoreElements() ) {
-			SWTimedContent timedContent = ((SWTimedContent)e.nextElement());
+			E timedContent = e.nextElement();
 
 			if( timedContent != null )
 				if( timedContent.isTimeValid() )
