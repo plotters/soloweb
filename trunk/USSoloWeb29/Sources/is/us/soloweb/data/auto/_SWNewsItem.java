@@ -1,5 +1,5 @@
-// $LastChangedRevision: 4733 $ DO NOT EDIT.  Make changes to SWNewsItem.java instead.
-package is.us.soloweb.data;
+// DO NOT EDIT.  Make changes to is.us.soloweb.data.SWNewsItem.java instead.
+package is.us.soloweb.data.auto;
 
 import com.webobjects.eoaccess.*;
 import com.webobjects.eocontrol.*;
@@ -69,8 +69,8 @@ public abstract class _SWNewsItem extends  ERXGenericRecord {
 
   private static Logger LOG = Logger.getLogger(_SWNewsItem.class);
 
-  public SWNewsItem localInstanceIn(EOEditingContext editingContext) {
-    SWNewsItem localInstance = (SWNewsItem)EOUtilities.localInstanceOfObject(editingContext, this);
+  public is.us.soloweb.data.SWNewsItem localInstanceIn(EOEditingContext editingContext) {
+    is.us.soloweb.data.SWNewsItem localInstance = (is.us.soloweb.data.SWNewsItem)EOUtilities.localInstanceOfObject(editingContext, this);
     if (localInstance == null) {
       throw new IllegalStateException("You attempted to localInstance " + this + ", which has not yet committed.");
     }
@@ -78,209 +78,209 @@ public abstract class _SWNewsItem extends  ERXGenericRecord {
   }
 
   public Integer createdByID() {
-    return (Integer) storedValueForKey("createdByID");
+    return (Integer) storedValueForKey(_SWNewsItem.CREATED_BY_ID_KEY);
   }
 
   public void setCreatedByID(Integer value) {
     if (_SWNewsItem.LOG.isDebugEnabled()) {
     	_SWNewsItem.LOG.debug( "updating createdByID from " + createdByID() + " to " + value);
     }
-    takeStoredValueForKey(value, "createdByID");
+    takeStoredValueForKey(value, _SWNewsItem.CREATED_BY_ID_KEY);
   }
 
   public NSTimestamp creationDate() {
-    return (NSTimestamp) storedValueForKey("creationDate");
+    return (NSTimestamp) storedValueForKey(_SWNewsItem.CREATION_DATE_KEY);
   }
 
   public void setCreationDate(NSTimestamp value) {
     if (_SWNewsItem.LOG.isDebugEnabled()) {
     	_SWNewsItem.LOG.debug( "updating creationDate from " + creationDate() + " to " + value);
     }
-    takeStoredValueForKey(value, "creationDate");
+    takeStoredValueForKey(value, _SWNewsItem.CREATION_DATE_KEY);
   }
 
   public NSTimestamp date() {
-    return (NSTimestamp) storedValueForKey("date");
+    return (NSTimestamp) storedValueForKey(_SWNewsItem.DATE_KEY);
   }
 
   public void setDate(NSTimestamp value) {
     if (_SWNewsItem.LOG.isDebugEnabled()) {
     	_SWNewsItem.LOG.debug( "updating date from " + date() + " to " + value);
     }
-    takeStoredValueForKey(value, "date");
+    takeStoredValueForKey(value, _SWNewsItem.DATE_KEY);
   }
 
   public Integer documentID() {
-    return (Integer) storedValueForKey("documentID");
+    return (Integer) storedValueForKey(_SWNewsItem.DOCUMENT_ID_KEY);
   }
 
   public void setDocumentID(Integer value) {
     if (_SWNewsItem.LOG.isDebugEnabled()) {
     	_SWNewsItem.LOG.debug( "updating documentID from " + documentID() + " to " + value);
     }
-    takeStoredValueForKey(value, "documentID");
+    takeStoredValueForKey(value, _SWNewsItem.DOCUMENT_ID_KEY);
   }
 
   public Integer encodeBreaks() {
-    return (Integer) storedValueForKey("encodeBreaks");
+    return (Integer) storedValueForKey(_SWNewsItem.ENCODE_BREAKS_KEY);
   }
 
   public void setEncodeBreaks(Integer value) {
     if (_SWNewsItem.LOG.isDebugEnabled()) {
     	_SWNewsItem.LOG.debug( "updating encodeBreaks from " + encodeBreaks() + " to " + value);
     }
-    takeStoredValueForKey(value, "encodeBreaks");
+    takeStoredValueForKey(value, _SWNewsItem.ENCODE_BREAKS_KEY);
   }
 
   public String excerpt() {
-    return (String) storedValueForKey("excerpt");
+    return (String) storedValueForKey(_SWNewsItem.EXCERPT_KEY);
   }
 
   public void setExcerpt(String value) {
     if (_SWNewsItem.LOG.isDebugEnabled()) {
     	_SWNewsItem.LOG.debug( "updating excerpt from " + excerpt() + " to " + value);
     }
-    takeStoredValueForKey(value, "excerpt");
+    takeStoredValueForKey(value, _SWNewsItem.EXCERPT_KEY);
   }
 
   public Integer folderID() {
-    return (Integer) storedValueForKey("folderID");
+    return (Integer) storedValueForKey(_SWNewsItem.FOLDER_ID_KEY);
   }
 
   public void setFolderID(Integer value) {
     if (_SWNewsItem.LOG.isDebugEnabled()) {
     	_SWNewsItem.LOG.debug( "updating folderID from " + folderID() + " to " + value);
     }
-    takeStoredValueForKey(value, "folderID");
+    takeStoredValueForKey(value, _SWNewsItem.FOLDER_ID_KEY);
   }
 
   public NSTimestamp modificationDate() {
-    return (NSTimestamp) storedValueForKey("modificationDate");
+    return (NSTimestamp) storedValueForKey(_SWNewsItem.MODIFICATION_DATE_KEY);
   }
 
   public void setModificationDate(NSTimestamp value) {
     if (_SWNewsItem.LOG.isDebugEnabled()) {
     	_SWNewsItem.LOG.debug( "updating modificationDate from " + modificationDate() + " to " + value);
     }
-    takeStoredValueForKey(value, "modificationDate");
+    takeStoredValueForKey(value, _SWNewsItem.MODIFICATION_DATE_KEY);
   }
 
   public Integer modifiedByID() {
-    return (Integer) storedValueForKey("modifiedByID");
+    return (Integer) storedValueForKey(_SWNewsItem.MODIFIED_BY_ID_KEY);
   }
 
   public void setModifiedByID(Integer value) {
     if (_SWNewsItem.LOG.isDebugEnabled()) {
     	_SWNewsItem.LOG.debug( "updating modifiedByID from " + modifiedByID() + " to " + value);
     }
-    takeStoredValueForKey(value, "modifiedByID");
+    takeStoredValueForKey(value, _SWNewsItem.MODIFIED_BY_ID_KEY);
   }
 
   public String name() {
-    return (String) storedValueForKey("name");
+    return (String) storedValueForKey(_SWNewsItem.NAME_KEY);
   }
 
   public void setName(String value) {
     if (_SWNewsItem.LOG.isDebugEnabled()) {
     	_SWNewsItem.LOG.debug( "updating name from " + name() + " to " + value);
     }
-    takeStoredValueForKey(value, "name");
+    takeStoredValueForKey(value, _SWNewsItem.NAME_KEY);
   }
 
   public Integer newsItemID() {
-    return (Integer) storedValueForKey("newsItemID");
+    return (Integer) storedValueForKey(_SWNewsItem.NEWS_ITEM_ID_KEY);
   }
 
   public void setNewsItemID(Integer value) {
     if (_SWNewsItem.LOG.isDebugEnabled()) {
     	_SWNewsItem.LOG.debug( "updating newsItemID from " + newsItemID() + " to " + value);
     }
-    takeStoredValueForKey(value, "newsItemID");
+    takeStoredValueForKey(value, _SWNewsItem.NEWS_ITEM_ID_KEY);
   }
 
   public Integer pictureID() {
-    return (Integer) storedValueForKey("pictureID");
+    return (Integer) storedValueForKey(_SWNewsItem.PICTURE_ID_KEY);
   }
 
   public void setPictureID(Integer value) {
     if (_SWNewsItem.LOG.isDebugEnabled()) {
     	_SWNewsItem.LOG.debug( "updating pictureID from " + pictureID() + " to " + value);
     }
-    takeStoredValueForKey(value, "pictureID");
+    takeStoredValueForKey(value, _SWNewsItem.PICTURE_ID_KEY);
   }
 
   public Integer published() {
-    return (Integer) storedValueForKey("published");
+    return (Integer) storedValueForKey(_SWNewsItem.PUBLISHED_KEY);
   }
 
   public void setPublished(Integer value) {
     if (_SWNewsItem.LOG.isDebugEnabled()) {
     	_SWNewsItem.LOG.debug( "updating published from " + published() + " to " + value);
     }
-    takeStoredValueForKey(value, "published");
+    takeStoredValueForKey(value, _SWNewsItem.PUBLISHED_KEY);
   }
 
   public String subheading() {
-    return (String) storedValueForKey("subheading");
+    return (String) storedValueForKey(_SWNewsItem.SUBHEADING_KEY);
   }
 
   public void setSubheading(String value) {
     if (_SWNewsItem.LOG.isDebugEnabled()) {
     	_SWNewsItem.LOG.debug( "updating subheading from " + subheading() + " to " + value);
     }
-    takeStoredValueForKey(value, "subheading");
+    takeStoredValueForKey(value, _SWNewsItem.SUBHEADING_KEY);
   }
 
   public String text() {
-    return (String) storedValueForKey("text");
+    return (String) storedValueForKey(_SWNewsItem.TEXT_KEY);
   }
 
   public void setText(String value) {
     if (_SWNewsItem.LOG.isDebugEnabled()) {
     	_SWNewsItem.LOG.debug( "updating text from " + text() + " to " + value);
     }
-    takeStoredValueForKey(value, "text");
+    takeStoredValueForKey(value, _SWNewsItem.TEXT_KEY);
   }
 
   public NSTimestamp timeIn() {
-    return (NSTimestamp) storedValueForKey("timeIn");
+    return (NSTimestamp) storedValueForKey(_SWNewsItem.TIME_IN_KEY);
   }
 
   public void setTimeIn(NSTimestamp value) {
     if (_SWNewsItem.LOG.isDebugEnabled()) {
     	_SWNewsItem.LOG.debug( "updating timeIn from " + timeIn() + " to " + value);
     }
-    takeStoredValueForKey(value, "timeIn");
+    takeStoredValueForKey(value, _SWNewsItem.TIME_IN_KEY);
   }
 
   public NSTimestamp timeOut() {
-    return (NSTimestamp) storedValueForKey("timeOut");
+    return (NSTimestamp) storedValueForKey(_SWNewsItem.TIME_OUT_KEY);
   }
 
   public void setTimeOut(NSTimestamp value) {
     if (_SWNewsItem.LOG.isDebugEnabled()) {
     	_SWNewsItem.LOG.debug( "updating timeOut from " + timeOut() + " to " + value);
     }
-    takeStoredValueForKey(value, "timeOut");
+    takeStoredValueForKey(value, _SWNewsItem.TIME_OUT_KEY);
   }
 
   public Integer wikiMarkup() {
-    return (Integer) storedValueForKey("wikiMarkup");
+    return (Integer) storedValueForKey(_SWNewsItem.WIKI_MARKUP_KEY);
   }
 
   public void setWikiMarkup(Integer value) {
     if (_SWNewsItem.LOG.isDebugEnabled()) {
     	_SWNewsItem.LOG.debug( "updating wikiMarkup from " + wikiMarkup() + " to " + value);
     }
-    takeStoredValueForKey(value, "wikiMarkup");
+    takeStoredValueForKey(value, _SWNewsItem.WIKI_MARKUP_KEY);
   }
 
   public is.us.soloweb.data.SWUser createdBy() {
-    return (is.us.soloweb.data.SWUser)storedValueForKey("createdBy");
+    return (is.us.soloweb.data.SWUser)storedValueForKey(_SWNewsItem.CREATED_BY_KEY);
   }
   
   public void setCreatedBy(is.us.soloweb.data.SWUser value) {
-    takeStoredValueForKey(value, "createdBy");
+    takeStoredValueForKey(value, _SWNewsItem.CREATED_BY_KEY);
   }
 
   public void setCreatedByRelationship(is.us.soloweb.data.SWUser value) {
@@ -293,19 +293,19 @@ public abstract class _SWNewsItem extends  ERXGenericRecord {
     else if (value == null) {
     	is.us.soloweb.data.SWUser oldValue = createdBy();
     	if (oldValue != null) {
-    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, "createdBy");
+    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, _SWNewsItem.CREATED_BY_KEY);
       }
     } else {
-    	addObjectToBothSidesOfRelationshipWithKey(value, "createdBy");
+    	addObjectToBothSidesOfRelationshipWithKey(value, _SWNewsItem.CREATED_BY_KEY);
     }
   }
   
   public is.us.soloweb.data.SWDocument document() {
-    return (is.us.soloweb.data.SWDocument)storedValueForKey("document");
+    return (is.us.soloweb.data.SWDocument)storedValueForKey(_SWNewsItem.DOCUMENT_KEY);
   }
   
   public void setDocument(is.us.soloweb.data.SWDocument value) {
-    takeStoredValueForKey(value, "document");
+    takeStoredValueForKey(value, _SWNewsItem.DOCUMENT_KEY);
   }
 
   public void setDocumentRelationship(is.us.soloweb.data.SWDocument value) {
@@ -318,19 +318,19 @@ public abstract class _SWNewsItem extends  ERXGenericRecord {
     else if (value == null) {
     	is.us.soloweb.data.SWDocument oldValue = document();
     	if (oldValue != null) {
-    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, "document");
+    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, _SWNewsItem.DOCUMENT_KEY);
       }
     } else {
-    	addObjectToBothSidesOfRelationshipWithKey(value, "document");
+    	addObjectToBothSidesOfRelationshipWithKey(value, _SWNewsItem.DOCUMENT_KEY);
     }
   }
   
   public is.us.soloweb.data.SWNewsFolder folder() {
-    return (is.us.soloweb.data.SWNewsFolder)storedValueForKey("folder");
+    return (is.us.soloweb.data.SWNewsFolder)storedValueForKey(_SWNewsItem.FOLDER_KEY);
   }
   
   public void setFolder(is.us.soloweb.data.SWNewsFolder value) {
-    takeStoredValueForKey(value, "folder");
+    takeStoredValueForKey(value, _SWNewsItem.FOLDER_KEY);
   }
 
   public void setFolderRelationship(is.us.soloweb.data.SWNewsFolder value) {
@@ -343,19 +343,19 @@ public abstract class _SWNewsItem extends  ERXGenericRecord {
     else if (value == null) {
     	is.us.soloweb.data.SWNewsFolder oldValue = folder();
     	if (oldValue != null) {
-    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, "folder");
+    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, _SWNewsItem.FOLDER_KEY);
       }
     } else {
-    	addObjectToBothSidesOfRelationshipWithKey(value, "folder");
+    	addObjectToBothSidesOfRelationshipWithKey(value, _SWNewsItem.FOLDER_KEY);
     }
   }
   
   public is.us.soloweb.data.SWUser modifiedBy() {
-    return (is.us.soloweb.data.SWUser)storedValueForKey("modifiedBy");
+    return (is.us.soloweb.data.SWUser)storedValueForKey(_SWNewsItem.MODIFIED_BY_KEY);
   }
   
   public void setModifiedBy(is.us.soloweb.data.SWUser value) {
-    takeStoredValueForKey(value, "modifiedBy");
+    takeStoredValueForKey(value, _SWNewsItem.MODIFIED_BY_KEY);
   }
 
   public void setModifiedByRelationship(is.us.soloweb.data.SWUser value) {
@@ -368,15 +368,15 @@ public abstract class _SWNewsItem extends  ERXGenericRecord {
     else if (value == null) {
     	is.us.soloweb.data.SWUser oldValue = modifiedBy();
     	if (oldValue != null) {
-    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, "modifiedBy");
+    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, _SWNewsItem.MODIFIED_BY_KEY);
       }
     } else {
-    	addObjectToBothSidesOfRelationshipWithKey(value, "modifiedBy");
+    	addObjectToBothSidesOfRelationshipWithKey(value, _SWNewsItem.MODIFIED_BY_KEY);
     }
   }
   
   public NSArray<is.us.soloweb.data.SWComment> comments() {
-    return (NSArray<is.us.soloweb.data.SWComment>)storedValueForKey("comments");
+    return (NSArray<is.us.soloweb.data.SWComment>)storedValueForKey(_SWNewsItem.COMMENTS_KEY);
   }
 
   public NSArray<is.us.soloweb.data.SWComment> comments(EOQualifier qualifier) {
@@ -397,7 +397,7 @@ public abstract class _SWNewsItem extends  ERXGenericRecord {
         fullQualifier = inverseQualifier;
       }
       else {
-        NSMutableArray qualifiers = new NSMutableArray();
+        NSMutableArray<EOQualifier> qualifiers = new NSMutableArray<EOQualifier>();
         qualifiers.addObject(qualifier);
         qualifiers.addObject(inverseQualifier);
         fullQualifier = new EOAndQualifier(qualifiers);
@@ -418,11 +418,11 @@ public abstract class _SWNewsItem extends  ERXGenericRecord {
   }
   
   public void addToComments(is.us.soloweb.data.SWComment object) {
-    includeObjectIntoPropertyWithKey(object, "comments");
+    includeObjectIntoPropertyWithKey(object, _SWNewsItem.COMMENTS_KEY);
   }
 
   public void removeFromComments(is.us.soloweb.data.SWComment object) {
-    excludeObjectFromPropertyWithKey(object, "comments");
+    excludeObjectFromPropertyWithKey(object, _SWNewsItem.COMMENTS_KEY);
   }
 
   public void addToCommentsRelationship(is.us.soloweb.data.SWComment object) {
@@ -433,7 +433,7 @@ public abstract class _SWNewsItem extends  ERXGenericRecord {
     	addToComments(object);
     }
     else {
-    	addObjectToBothSidesOfRelationshipWithKey(object, "comments");
+    	addObjectToBothSidesOfRelationshipWithKey(object, _SWNewsItem.COMMENTS_KEY);
     }
   }
 
@@ -445,66 +445,66 @@ public abstract class _SWNewsItem extends  ERXGenericRecord {
     	removeFromComments(object);
     }
     else {
-    	removeObjectFromBothSidesOfRelationshipWithKey(object, "comments");
+    	removeObjectFromBothSidesOfRelationshipWithKey(object, _SWNewsItem.COMMENTS_KEY);
     }
   }
 
   public is.us.soloweb.data.SWComment createCommentsRelationship() {
-    EOClassDescription eoClassDesc = EOClassDescription.classDescriptionForEntityName("SWComment");
+    EOClassDescription eoClassDesc = EOClassDescription.classDescriptionForEntityName( is.us.soloweb.data.SWComment.ENTITY_NAME );
     EOEnterpriseObject eo = eoClassDesc.createInstanceWithEditingContext(editingContext(), null);
     editingContext().insertObject(eo);
-    addObjectToBothSidesOfRelationshipWithKey(eo, "comments");
+    addObjectToBothSidesOfRelationshipWithKey(eo, _SWNewsItem.COMMENTS_KEY);
     return (is.us.soloweb.data.SWComment) eo;
   }
 
   public void deleteCommentsRelationship(is.us.soloweb.data.SWComment object) {
-    removeObjectFromBothSidesOfRelationshipWithKey(object, "comments");
+    removeObjectFromBothSidesOfRelationshipWithKey(object, _SWNewsItem.COMMENTS_KEY);
     editingContext().deleteObject(object);
   }
 
   public void deleteAllCommentsRelationships() {
-    Enumeration objects = comments().immutableClone().objectEnumerator();
+    Enumeration<is.us.soloweb.data.SWComment> objects = comments().immutableClone().objectEnumerator();
     while (objects.hasMoreElements()) {
-      deleteCommentsRelationship((is.us.soloweb.data.SWComment)objects.nextElement());
+      deleteCommentsRelationship(objects.nextElement());
     }
   }
 
 
-  public static SWNewsItem createSWNewsItem(EOEditingContext editingContext, Integer newsItemID
+  public static is.us.soloweb.data.SWNewsItem createSWNewsItem(EOEditingContext editingContext, Integer newsItemID
 ) {
-    SWNewsItem eo = (SWNewsItem) EOUtilities.createAndInsertInstance(editingContext, _SWNewsItem.ENTITY_NAME);    
+    is.us.soloweb.data.SWNewsItem eo = (is.us.soloweb.data.SWNewsItem) EOUtilities.createAndInsertInstance(editingContext, _SWNewsItem.ENTITY_NAME);    
 		eo.setNewsItemID(newsItemID);
     return eo;
   }
 
-  public static NSArray<SWNewsItem> fetchAllSWNewsItems(EOEditingContext editingContext) {
+  public static NSArray<is.us.soloweb.data.SWNewsItem> fetchAllSWNewsItems(EOEditingContext editingContext) {
     return _SWNewsItem.fetchAllSWNewsItems(editingContext, null);
   }
 
-  public static NSArray<SWNewsItem> fetchAllSWNewsItems(EOEditingContext editingContext, NSArray<EOSortOrdering> sortOrderings) {
+  public static NSArray<is.us.soloweb.data.SWNewsItem> fetchAllSWNewsItems(EOEditingContext editingContext, NSArray<EOSortOrdering> sortOrderings) {
     return _SWNewsItem.fetchSWNewsItems(editingContext, null, sortOrderings);
   }
 
-  public static NSArray<SWNewsItem> fetchSWNewsItems(EOEditingContext editingContext, EOQualifier qualifier, NSArray<EOSortOrdering> sortOrderings) {
-    EOFetchSpecification fetchSpec = new EOFetchSpecification(_SWNewsItem.ENTITY_NAME, qualifier, sortOrderings);
+  public static NSArray<is.us.soloweb.data.SWNewsItem> fetchSWNewsItems(EOEditingContext editingContext, EOQualifier qualifier, NSArray<EOSortOrdering> sortOrderings) {
+    ERXFetchSpecification<is.us.soloweb.data.SWNewsItem> fetchSpec = new ERXFetchSpecification<is.us.soloweb.data.SWNewsItem>(_SWNewsItem.ENTITY_NAME, qualifier, sortOrderings);
     fetchSpec.setIsDeep(true);
-    NSArray<SWNewsItem> eoObjects = (NSArray<SWNewsItem>)editingContext.objectsWithFetchSpecification(fetchSpec);
+    NSArray<is.us.soloweb.data.SWNewsItem> eoObjects = fetchSpec.fetchObjects(editingContext);
     return eoObjects;
   }
 
-  public static SWNewsItem fetchSWNewsItem(EOEditingContext editingContext, String keyName, Object value) {
+  public static is.us.soloweb.data.SWNewsItem fetchSWNewsItem(EOEditingContext editingContext, String keyName, Object value) {
     return _SWNewsItem.fetchSWNewsItem(editingContext, new EOKeyValueQualifier(keyName, EOQualifier.QualifierOperatorEqual, value));
   }
 
-  public static SWNewsItem fetchSWNewsItem(EOEditingContext editingContext, EOQualifier qualifier) {
-    NSArray<SWNewsItem> eoObjects = _SWNewsItem.fetchSWNewsItems(editingContext, qualifier, null);
-    SWNewsItem eoObject;
+  public static is.us.soloweb.data.SWNewsItem fetchSWNewsItem(EOEditingContext editingContext, EOQualifier qualifier) {
+    NSArray<is.us.soloweb.data.SWNewsItem> eoObjects = _SWNewsItem.fetchSWNewsItems(editingContext, qualifier, null);
+    is.us.soloweb.data.SWNewsItem eoObject;
     int count = eoObjects.count();
     if (count == 0) {
       eoObject = null;
     }
     else if (count == 1) {
-      eoObject = (SWNewsItem)eoObjects.objectAtIndex(0);
+      eoObject = eoObjects.objectAtIndex(0);
     }
     else {
       throw new IllegalStateException("There was more than one SWNewsItem that matched the qualifier '" + qualifier + "'.");
@@ -512,20 +512,20 @@ public abstract class _SWNewsItem extends  ERXGenericRecord {
     return eoObject;
   }
 
-  public static SWNewsItem fetchRequiredSWNewsItem(EOEditingContext editingContext, String keyName, Object value) {
+  public static is.us.soloweb.data.SWNewsItem fetchRequiredSWNewsItem(EOEditingContext editingContext, String keyName, Object value) {
     return _SWNewsItem.fetchRequiredSWNewsItem(editingContext, new EOKeyValueQualifier(keyName, EOQualifier.QualifierOperatorEqual, value));
   }
 
-  public static SWNewsItem fetchRequiredSWNewsItem(EOEditingContext editingContext, EOQualifier qualifier) {
-    SWNewsItem eoObject = _SWNewsItem.fetchSWNewsItem(editingContext, qualifier);
+  public static is.us.soloweb.data.SWNewsItem fetchRequiredSWNewsItem(EOEditingContext editingContext, EOQualifier qualifier) {
+    is.us.soloweb.data.SWNewsItem eoObject = _SWNewsItem.fetchSWNewsItem(editingContext, qualifier);
     if (eoObject == null) {
       throw new NoSuchElementException("There was no SWNewsItem that matched the qualifier '" + qualifier + "'.");
     }
     return eoObject;
   }
 
-  public static SWNewsItem localInstanceIn(EOEditingContext editingContext, SWNewsItem eo) {
-    SWNewsItem localInstance = (eo == null) ? null : (SWNewsItem)EOUtilities.localInstanceOfObject(editingContext, eo);
+  public static is.us.soloweb.data.SWNewsItem localInstanceIn(EOEditingContext editingContext, is.us.soloweb.data.SWNewsItem eo) {
+    is.us.soloweb.data.SWNewsItem localInstance = (eo == null) ? null : ERXEOControlUtilities.localInstanceOfObject(editingContext, eo);
     if (localInstance == null && eo != null) {
       throw new IllegalStateException("You attempted to localInstance " + eo + ", which has not yet committed.");
     }

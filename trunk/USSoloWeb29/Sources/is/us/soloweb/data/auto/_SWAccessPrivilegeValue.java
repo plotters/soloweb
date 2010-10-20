@@ -1,5 +1,5 @@
-// $LastChangedRevision: 4733 $ DO NOT EDIT.  Make changes to SWAccessPrivilegeValue.java instead.
-package is.us.soloweb.data;
+// DO NOT EDIT.  Make changes to is.us.soloweb.data.SWAccessPrivilegeValue.java instead.
+package is.us.soloweb.data.auto;
 
 import com.webobjects.eoaccess.*;
 import com.webobjects.eocontrol.*;
@@ -33,8 +33,8 @@ public abstract class _SWAccessPrivilegeValue extends  ERXGenericRecord {
 
   private static Logger LOG = Logger.getLogger(_SWAccessPrivilegeValue.class);
 
-  public SWAccessPrivilegeValue localInstanceIn(EOEditingContext editingContext) {
-    SWAccessPrivilegeValue localInstance = (SWAccessPrivilegeValue)EOUtilities.localInstanceOfObject(editingContext, this);
+  public is.us.soloweb.data.SWAccessPrivilegeValue localInstanceIn(EOEditingContext editingContext) {
+    is.us.soloweb.data.SWAccessPrivilegeValue localInstance = (is.us.soloweb.data.SWAccessPrivilegeValue)EOUtilities.localInstanceOfObject(editingContext, this);
     if (localInstance == null) {
       throw new IllegalStateException("You attempted to localInstance " + this + ", which has not yet committed.");
     }
@@ -42,55 +42,55 @@ public abstract class _SWAccessPrivilegeValue extends  ERXGenericRecord {
   }
 
   public Integer accessPrivilegeID() {
-    return (Integer) storedValueForKey("accessPrivilegeID");
+    return (Integer) storedValueForKey(_SWAccessPrivilegeValue.ACCESS_PRIVILEGE_ID_KEY);
   }
 
   public void setAccessPrivilegeID(Integer value) {
     if (_SWAccessPrivilegeValue.LOG.isDebugEnabled()) {
     	_SWAccessPrivilegeValue.LOG.debug( "updating accessPrivilegeID from " + accessPrivilegeID() + " to " + value);
     }
-    takeStoredValueForKey(value, "accessPrivilegeID");
+    takeStoredValueForKey(value, _SWAccessPrivilegeValue.ACCESS_PRIVILEGE_ID_KEY);
   }
 
   public Integer accessPrivilegeValueID() {
-    return (Integer) storedValueForKey("accessPrivilegeValueID");
+    return (Integer) storedValueForKey(_SWAccessPrivilegeValue.ACCESS_PRIVILEGE_VALUE_ID_KEY);
   }
 
   public void setAccessPrivilegeValueID(Integer value) {
     if (_SWAccessPrivilegeValue.LOG.isDebugEnabled()) {
     	_SWAccessPrivilegeValue.LOG.debug( "updating accessPrivilegeValueID from " + accessPrivilegeValueID() + " to " + value);
     }
-    takeStoredValueForKey(value, "accessPrivilegeValueID");
+    takeStoredValueForKey(value, _SWAccessPrivilegeValue.ACCESS_PRIVILEGE_VALUE_ID_KEY);
   }
 
   public String identifier() {
-    return (String) storedValueForKey("identifier");
+    return (String) storedValueForKey(_SWAccessPrivilegeValue.IDENTIFIER_KEY);
   }
 
   public void setIdentifier(String value) {
     if (_SWAccessPrivilegeValue.LOG.isDebugEnabled()) {
     	_SWAccessPrivilegeValue.LOG.debug( "updating identifier from " + identifier() + " to " + value);
     }
-    takeStoredValueForKey(value, "identifier");
+    takeStoredValueForKey(value, _SWAccessPrivilegeValue.IDENTIFIER_KEY);
   }
 
   public Integer value() {
-    return (Integer) storedValueForKey("value");
+    return (Integer) storedValueForKey(_SWAccessPrivilegeValue.VALUE_KEY);
   }
 
   public void setValue(Integer value) {
     if (_SWAccessPrivilegeValue.LOG.isDebugEnabled()) {
     	_SWAccessPrivilegeValue.LOG.debug( "updating value from " + value() + " to " + value);
     }
-    takeStoredValueForKey(value, "value");
+    takeStoredValueForKey(value, _SWAccessPrivilegeValue.VALUE_KEY);
   }
 
   public is.us.soloweb.data.SWAccessPrivilege accessPrivilege() {
-    return (is.us.soloweb.data.SWAccessPrivilege)storedValueForKey("accessPrivilege");
+    return (is.us.soloweb.data.SWAccessPrivilege)storedValueForKey(_SWAccessPrivilegeValue.ACCESS_PRIVILEGE_KEY);
   }
   
   public void setAccessPrivilege(is.us.soloweb.data.SWAccessPrivilege value) {
-    takeStoredValueForKey(value, "accessPrivilege");
+    takeStoredValueForKey(value, _SWAccessPrivilegeValue.ACCESS_PRIVILEGE_KEY);
   }
 
   public void setAccessPrivilegeRelationship(is.us.soloweb.data.SWAccessPrivilege value) {
@@ -103,49 +103,49 @@ public abstract class _SWAccessPrivilegeValue extends  ERXGenericRecord {
     else if (value == null) {
     	is.us.soloweb.data.SWAccessPrivilege oldValue = accessPrivilege();
     	if (oldValue != null) {
-    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, "accessPrivilege");
+    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, _SWAccessPrivilegeValue.ACCESS_PRIVILEGE_KEY);
       }
     } else {
-    	addObjectToBothSidesOfRelationshipWithKey(value, "accessPrivilege");
+    	addObjectToBothSidesOfRelationshipWithKey(value, _SWAccessPrivilegeValue.ACCESS_PRIVILEGE_KEY);
     }
   }
   
 
-  public static SWAccessPrivilegeValue createSWAccessPrivilegeValue(EOEditingContext editingContext, Integer accessPrivilegeValueID
+  public static is.us.soloweb.data.SWAccessPrivilegeValue createSWAccessPrivilegeValue(EOEditingContext editingContext, Integer accessPrivilegeValueID
 ) {
-    SWAccessPrivilegeValue eo = (SWAccessPrivilegeValue) EOUtilities.createAndInsertInstance(editingContext, _SWAccessPrivilegeValue.ENTITY_NAME);    
+    is.us.soloweb.data.SWAccessPrivilegeValue eo = (is.us.soloweb.data.SWAccessPrivilegeValue) EOUtilities.createAndInsertInstance(editingContext, _SWAccessPrivilegeValue.ENTITY_NAME);    
 		eo.setAccessPrivilegeValueID(accessPrivilegeValueID);
     return eo;
   }
 
-  public static NSArray<SWAccessPrivilegeValue> fetchAllSWAccessPrivilegeValues(EOEditingContext editingContext) {
+  public static NSArray<is.us.soloweb.data.SWAccessPrivilegeValue> fetchAllSWAccessPrivilegeValues(EOEditingContext editingContext) {
     return _SWAccessPrivilegeValue.fetchAllSWAccessPrivilegeValues(editingContext, null);
   }
 
-  public static NSArray<SWAccessPrivilegeValue> fetchAllSWAccessPrivilegeValues(EOEditingContext editingContext, NSArray<EOSortOrdering> sortOrderings) {
+  public static NSArray<is.us.soloweb.data.SWAccessPrivilegeValue> fetchAllSWAccessPrivilegeValues(EOEditingContext editingContext, NSArray<EOSortOrdering> sortOrderings) {
     return _SWAccessPrivilegeValue.fetchSWAccessPrivilegeValues(editingContext, null, sortOrderings);
   }
 
-  public static NSArray<SWAccessPrivilegeValue> fetchSWAccessPrivilegeValues(EOEditingContext editingContext, EOQualifier qualifier, NSArray<EOSortOrdering> sortOrderings) {
-    EOFetchSpecification fetchSpec = new EOFetchSpecification(_SWAccessPrivilegeValue.ENTITY_NAME, qualifier, sortOrderings);
+  public static NSArray<is.us.soloweb.data.SWAccessPrivilegeValue> fetchSWAccessPrivilegeValues(EOEditingContext editingContext, EOQualifier qualifier, NSArray<EOSortOrdering> sortOrderings) {
+    ERXFetchSpecification<is.us.soloweb.data.SWAccessPrivilegeValue> fetchSpec = new ERXFetchSpecification<is.us.soloweb.data.SWAccessPrivilegeValue>(_SWAccessPrivilegeValue.ENTITY_NAME, qualifier, sortOrderings);
     fetchSpec.setIsDeep(true);
-    NSArray<SWAccessPrivilegeValue> eoObjects = (NSArray<SWAccessPrivilegeValue>)editingContext.objectsWithFetchSpecification(fetchSpec);
+    NSArray<is.us.soloweb.data.SWAccessPrivilegeValue> eoObjects = fetchSpec.fetchObjects(editingContext);
     return eoObjects;
   }
 
-  public static SWAccessPrivilegeValue fetchSWAccessPrivilegeValue(EOEditingContext editingContext, String keyName, Object value) {
+  public static is.us.soloweb.data.SWAccessPrivilegeValue fetchSWAccessPrivilegeValue(EOEditingContext editingContext, String keyName, Object value) {
     return _SWAccessPrivilegeValue.fetchSWAccessPrivilegeValue(editingContext, new EOKeyValueQualifier(keyName, EOQualifier.QualifierOperatorEqual, value));
   }
 
-  public static SWAccessPrivilegeValue fetchSWAccessPrivilegeValue(EOEditingContext editingContext, EOQualifier qualifier) {
-    NSArray<SWAccessPrivilegeValue> eoObjects = _SWAccessPrivilegeValue.fetchSWAccessPrivilegeValues(editingContext, qualifier, null);
-    SWAccessPrivilegeValue eoObject;
+  public static is.us.soloweb.data.SWAccessPrivilegeValue fetchSWAccessPrivilegeValue(EOEditingContext editingContext, EOQualifier qualifier) {
+    NSArray<is.us.soloweb.data.SWAccessPrivilegeValue> eoObjects = _SWAccessPrivilegeValue.fetchSWAccessPrivilegeValues(editingContext, qualifier, null);
+    is.us.soloweb.data.SWAccessPrivilegeValue eoObject;
     int count = eoObjects.count();
     if (count == 0) {
       eoObject = null;
     }
     else if (count == 1) {
-      eoObject = (SWAccessPrivilegeValue)eoObjects.objectAtIndex(0);
+      eoObject = eoObjects.objectAtIndex(0);
     }
     else {
       throw new IllegalStateException("There was more than one SWAccessPrivilegeValue that matched the qualifier '" + qualifier + "'.");
@@ -153,20 +153,20 @@ public abstract class _SWAccessPrivilegeValue extends  ERXGenericRecord {
     return eoObject;
   }
 
-  public static SWAccessPrivilegeValue fetchRequiredSWAccessPrivilegeValue(EOEditingContext editingContext, String keyName, Object value) {
+  public static is.us.soloweb.data.SWAccessPrivilegeValue fetchRequiredSWAccessPrivilegeValue(EOEditingContext editingContext, String keyName, Object value) {
     return _SWAccessPrivilegeValue.fetchRequiredSWAccessPrivilegeValue(editingContext, new EOKeyValueQualifier(keyName, EOQualifier.QualifierOperatorEqual, value));
   }
 
-  public static SWAccessPrivilegeValue fetchRequiredSWAccessPrivilegeValue(EOEditingContext editingContext, EOQualifier qualifier) {
-    SWAccessPrivilegeValue eoObject = _SWAccessPrivilegeValue.fetchSWAccessPrivilegeValue(editingContext, qualifier);
+  public static is.us.soloweb.data.SWAccessPrivilegeValue fetchRequiredSWAccessPrivilegeValue(EOEditingContext editingContext, EOQualifier qualifier) {
+    is.us.soloweb.data.SWAccessPrivilegeValue eoObject = _SWAccessPrivilegeValue.fetchSWAccessPrivilegeValue(editingContext, qualifier);
     if (eoObject == null) {
       throw new NoSuchElementException("There was no SWAccessPrivilegeValue that matched the qualifier '" + qualifier + "'.");
     }
     return eoObject;
   }
 
-  public static SWAccessPrivilegeValue localInstanceIn(EOEditingContext editingContext, SWAccessPrivilegeValue eo) {
-    SWAccessPrivilegeValue localInstance = (eo == null) ? null : (SWAccessPrivilegeValue)EOUtilities.localInstanceOfObject(editingContext, eo);
+  public static is.us.soloweb.data.SWAccessPrivilegeValue localInstanceIn(EOEditingContext editingContext, is.us.soloweb.data.SWAccessPrivilegeValue eo) {
+    is.us.soloweb.data.SWAccessPrivilegeValue localInstance = (eo == null) ? null : ERXEOControlUtilities.localInstanceOfObject(editingContext, eo);
     if (localInstance == null && eo != null) {
       throw new IllegalStateException("You attempted to localInstance " + eo + ", which has not yet committed.");
     }

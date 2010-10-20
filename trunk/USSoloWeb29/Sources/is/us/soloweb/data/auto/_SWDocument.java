@@ -1,5 +1,5 @@
-// $LastChangedRevision: 4733 $ DO NOT EDIT.  Make changes to SWDocument.java instead.
-package is.us.soloweb.data;
+// DO NOT EDIT.  Make changes to is.us.soloweb.data.SWDocument.java instead.
+package is.us.soloweb.data.auto;
 
 import com.webobjects.eoaccess.*;
 import com.webobjects.eocontrol.*;
@@ -41,8 +41,8 @@ public abstract class _SWDocument extends  ERXGenericRecord {
 
   private static Logger LOG = Logger.getLogger(_SWDocument.class);
 
-  public SWDocument localInstanceIn(EOEditingContext editingContext) {
-    SWDocument localInstance = (SWDocument)EOUtilities.localInstanceOfObject(editingContext, this);
+  public is.us.soloweb.data.SWDocument localInstanceIn(EOEditingContext editingContext) {
+    is.us.soloweb.data.SWDocument localInstance = (is.us.soloweb.data.SWDocument)EOUtilities.localInstanceOfObject(editingContext, this);
     if (localInstance == null) {
       throw new IllegalStateException("You attempted to localInstance " + this + ", which has not yet committed.");
     }
@@ -50,99 +50,99 @@ public abstract class _SWDocument extends  ERXGenericRecord {
   }
 
   public Integer documentID() {
-    return (Integer) storedValueForKey("documentID");
+    return (Integer) storedValueForKey(_SWDocument.DOCUMENT_ID_KEY);
   }
 
   public void setDocumentID(Integer value) {
     if (_SWDocument.LOG.isDebugEnabled()) {
     	_SWDocument.LOG.debug( "updating documentID from " + documentID() + " to " + value);
     }
-    takeStoredValueForKey(value, "documentID");
+    takeStoredValueForKey(value, _SWDocument.DOCUMENT_ID_KEY);
   }
 
   public Integer documentTypeID() {
-    return (Integer) storedValueForKey("documentTypeID");
+    return (Integer) storedValueForKey(_SWDocument.DOCUMENT_TYPE_ID_KEY);
   }
 
   public void setDocumentTypeID(Integer value) {
     if (_SWDocument.LOG.isDebugEnabled()) {
     	_SWDocument.LOG.debug( "updating documentTypeID from " + documentTypeID() + " to " + value);
     }
-    takeStoredValueForKey(value, "documentTypeID");
+    takeStoredValueForKey(value, _SWDocument.DOCUMENT_TYPE_ID_KEY);
   }
 
   public String extension() {
-    return (String) storedValueForKey("extension");
+    return (String) storedValueForKey(_SWDocument.EXTENSION_KEY);
   }
 
   public void setExtension(String value) {
     if (_SWDocument.LOG.isDebugEnabled()) {
     	_SWDocument.LOG.debug( "updating extension from " + extension() + " to " + value);
     }
-    takeStoredValueForKey(value, "extension");
+    takeStoredValueForKey(value, _SWDocument.EXTENSION_KEY);
   }
 
   public Integer folderID() {
-    return (Integer) storedValueForKey("folderID");
+    return (Integer) storedValueForKey(_SWDocument.FOLDER_ID_KEY);
   }
 
   public void setFolderID(Integer value) {
     if (_SWDocument.LOG.isDebugEnabled()) {
     	_SWDocument.LOG.debug( "updating folderID from " + folderID() + " to " + value);
     }
-    takeStoredValueForKey(value, "folderID");
+    takeStoredValueForKey(value, _SWDocument.FOLDER_ID_KEY);
   }
 
   public String mimeType() {
-    return (String) storedValueForKey("mimeType");
+    return (String) storedValueForKey(_SWDocument.MIME_TYPE_KEY);
   }
 
   public void setMimeType(String value) {
     if (_SWDocument.LOG.isDebugEnabled()) {
     	_SWDocument.LOG.debug( "updating mimeType from " + mimeType() + " to " + value);
     }
-    takeStoredValueForKey(value, "mimeType");
+    takeStoredValueForKey(value, _SWDocument.MIME_TYPE_KEY);
   }
 
   public String name() {
-    return (String) storedValueForKey("name");
+    return (String) storedValueForKey(_SWDocument.NAME_KEY);
   }
 
   public void setName(String value) {
     if (_SWDocument.LOG.isDebugEnabled()) {
     	_SWDocument.LOG.debug( "updating name from " + name() + " to " + value);
     }
-    takeStoredValueForKey(value, "name");
+    takeStoredValueForKey(value, _SWDocument.NAME_KEY);
   }
 
   public Integer pictureID() {
-    return (Integer) storedValueForKey("pictureID");
+    return (Integer) storedValueForKey(_SWDocument.PICTURE_ID_KEY);
   }
 
   public void setPictureID(Integer value) {
     if (_SWDocument.LOG.isDebugEnabled()) {
     	_SWDocument.LOG.debug( "updating pictureID from " + pictureID() + " to " + value);
     }
-    takeStoredValueForKey(value, "pictureID");
+    takeStoredValueForKey(value, _SWDocument.PICTURE_ID_KEY);
   }
 
   public String text() {
-    return (String) storedValueForKey("text");
+    return (String) storedValueForKey(_SWDocument.TEXT_KEY);
   }
 
   public void setText(String value) {
     if (_SWDocument.LOG.isDebugEnabled()) {
     	_SWDocument.LOG.debug( "updating text from " + text() + " to " + value);
     }
-    takeStoredValueForKey(value, "text");
+    takeStoredValueForKey(value, _SWDocument.TEXT_KEY);
   }
 
   public is.us.soloweb.data.SWDocumentFolder folder() {
-    return (is.us.soloweb.data.SWDocumentFolder)storedValueForKey("folder");
+    return (is.us.soloweb.data.SWDocumentFolder)storedValueForKey(_SWDocument.FOLDER_KEY);
   }
   
   public void setFolder(is.us.soloweb.data.SWDocumentFolder value) {
-    takeStoredValueForKey(value, "folder");
+    takeStoredValueForKey(value, _SWDocument.FOLDER_KEY);
   }
 
   public void setFolderRelationship(is.us.soloweb.data.SWDocumentFolder value) {
@@ -155,49 +155,49 @@ public abstract class _SWDocument extends  ERXGenericRecord {
     else if (value == null) {
     	is.us.soloweb.data.SWDocumentFolder oldValue = folder();
     	if (oldValue != null) {
-    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, "folder");
+    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, _SWDocument.FOLDER_KEY);
       }
     } else {
-    	addObjectToBothSidesOfRelationshipWithKey(value, "folder");
+    	addObjectToBothSidesOfRelationshipWithKey(value, _SWDocument.FOLDER_KEY);
     }
   }
   
 
-  public static SWDocument createSWDocument(EOEditingContext editingContext, Integer documentID
+  public static is.us.soloweb.data.SWDocument createSWDocument(EOEditingContext editingContext, Integer documentID
 ) {
-    SWDocument eo = (SWDocument) EOUtilities.createAndInsertInstance(editingContext, _SWDocument.ENTITY_NAME);    
+    is.us.soloweb.data.SWDocument eo = (is.us.soloweb.data.SWDocument) EOUtilities.createAndInsertInstance(editingContext, _SWDocument.ENTITY_NAME);    
 		eo.setDocumentID(documentID);
     return eo;
   }
 
-  public static NSArray<SWDocument> fetchAllSWDocuments(EOEditingContext editingContext) {
+  public static NSArray<is.us.soloweb.data.SWDocument> fetchAllSWDocuments(EOEditingContext editingContext) {
     return _SWDocument.fetchAllSWDocuments(editingContext, null);
   }
 
-  public static NSArray<SWDocument> fetchAllSWDocuments(EOEditingContext editingContext, NSArray<EOSortOrdering> sortOrderings) {
+  public static NSArray<is.us.soloweb.data.SWDocument> fetchAllSWDocuments(EOEditingContext editingContext, NSArray<EOSortOrdering> sortOrderings) {
     return _SWDocument.fetchSWDocuments(editingContext, null, sortOrderings);
   }
 
-  public static NSArray<SWDocument> fetchSWDocuments(EOEditingContext editingContext, EOQualifier qualifier, NSArray<EOSortOrdering> sortOrderings) {
-    EOFetchSpecification fetchSpec = new EOFetchSpecification(_SWDocument.ENTITY_NAME, qualifier, sortOrderings);
+  public static NSArray<is.us.soloweb.data.SWDocument> fetchSWDocuments(EOEditingContext editingContext, EOQualifier qualifier, NSArray<EOSortOrdering> sortOrderings) {
+    ERXFetchSpecification<is.us.soloweb.data.SWDocument> fetchSpec = new ERXFetchSpecification<is.us.soloweb.data.SWDocument>(_SWDocument.ENTITY_NAME, qualifier, sortOrderings);
     fetchSpec.setIsDeep(true);
-    NSArray<SWDocument> eoObjects = (NSArray<SWDocument>)editingContext.objectsWithFetchSpecification(fetchSpec);
+    NSArray<is.us.soloweb.data.SWDocument> eoObjects = fetchSpec.fetchObjects(editingContext);
     return eoObjects;
   }
 
-  public static SWDocument fetchSWDocument(EOEditingContext editingContext, String keyName, Object value) {
+  public static is.us.soloweb.data.SWDocument fetchSWDocument(EOEditingContext editingContext, String keyName, Object value) {
     return _SWDocument.fetchSWDocument(editingContext, new EOKeyValueQualifier(keyName, EOQualifier.QualifierOperatorEqual, value));
   }
 
-  public static SWDocument fetchSWDocument(EOEditingContext editingContext, EOQualifier qualifier) {
-    NSArray<SWDocument> eoObjects = _SWDocument.fetchSWDocuments(editingContext, qualifier, null);
-    SWDocument eoObject;
+  public static is.us.soloweb.data.SWDocument fetchSWDocument(EOEditingContext editingContext, EOQualifier qualifier) {
+    NSArray<is.us.soloweb.data.SWDocument> eoObjects = _SWDocument.fetchSWDocuments(editingContext, qualifier, null);
+    is.us.soloweb.data.SWDocument eoObject;
     int count = eoObjects.count();
     if (count == 0) {
       eoObject = null;
     }
     else if (count == 1) {
-      eoObject = (SWDocument)eoObjects.objectAtIndex(0);
+      eoObject = eoObjects.objectAtIndex(0);
     }
     else {
       throw new IllegalStateException("There was more than one SWDocument that matched the qualifier '" + qualifier + "'.");
@@ -205,20 +205,20 @@ public abstract class _SWDocument extends  ERXGenericRecord {
     return eoObject;
   }
 
-  public static SWDocument fetchRequiredSWDocument(EOEditingContext editingContext, String keyName, Object value) {
+  public static is.us.soloweb.data.SWDocument fetchRequiredSWDocument(EOEditingContext editingContext, String keyName, Object value) {
     return _SWDocument.fetchRequiredSWDocument(editingContext, new EOKeyValueQualifier(keyName, EOQualifier.QualifierOperatorEqual, value));
   }
 
-  public static SWDocument fetchRequiredSWDocument(EOEditingContext editingContext, EOQualifier qualifier) {
-    SWDocument eoObject = _SWDocument.fetchSWDocument(editingContext, qualifier);
+  public static is.us.soloweb.data.SWDocument fetchRequiredSWDocument(EOEditingContext editingContext, EOQualifier qualifier) {
+    is.us.soloweb.data.SWDocument eoObject = _SWDocument.fetchSWDocument(editingContext, qualifier);
     if (eoObject == null) {
       throw new NoSuchElementException("There was no SWDocument that matched the qualifier '" + qualifier + "'.");
     }
     return eoObject;
   }
 
-  public static SWDocument localInstanceIn(EOEditingContext editingContext, SWDocument eo) {
-    SWDocument localInstance = (eo == null) ? null : (SWDocument)EOUtilities.localInstanceOfObject(editingContext, eo);
+  public static is.us.soloweb.data.SWDocument localInstanceIn(EOEditingContext editingContext, is.us.soloweb.data.SWDocument eo) {
+    is.us.soloweb.data.SWDocument localInstance = (eo == null) ? null : ERXEOControlUtilities.localInstanceOfObject(editingContext, eo);
     if (localInstance == null && eo != null) {
       throw new IllegalStateException("You attempted to localInstance " + eo + ", which has not yet committed.");
     }

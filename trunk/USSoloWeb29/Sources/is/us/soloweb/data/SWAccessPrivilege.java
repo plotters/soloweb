@@ -1,14 +1,13 @@
 package is.us.soloweb.data;
 
 import is.us.soloweb.SoloWeb;
+import is.us.soloweb.data.auto._SWAccessPrivilege;
 import is.us.soloweb.util.SWC;
-import is.us.util.USEOUtilities;
-import is.us.util.USUtilities;
+import is.us.util.*;
 
 import java.util.Enumeration;
 
-import com.webobjects.eoaccess.EOEntity;
-import com.webobjects.eoaccess.EOUtilities;
+import com.webobjects.eoaccess.*;
 
 /**
  * An SWAccessPrivilege stores an array of access privileges for a user/group

@@ -1,5 +1,6 @@
 package is.us.soloweb.data;
 
+import is.us.soloweb.data.auto._SWComment;
 import is.us.soloweb.util.SWC;
 import is.us.util.USStringUtilities;
 

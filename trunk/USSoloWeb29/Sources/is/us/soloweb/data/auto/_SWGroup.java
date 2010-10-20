@@ -1,5 +1,5 @@
-// $LastChangedRevision: 4733 $ DO NOT EDIT.  Make changes to SWGroup.java instead.
-package is.us.soloweb.data;
+// DO NOT EDIT.  Make changes to is.us.soloweb.data.SWGroup.java instead.
+package is.us.soloweb.data.auto;
 
 import com.webobjects.eoaccess.*;
 import com.webobjects.eocontrol.*;
@@ -31,8 +31,8 @@ public abstract class _SWGroup extends  ERXGenericRecord {
 
   private static Logger LOG = Logger.getLogger(_SWGroup.class);
 
-  public SWGroup localInstanceIn(EOEditingContext editingContext) {
-    SWGroup localInstance = (SWGroup)EOUtilities.localInstanceOfObject(editingContext, this);
+  public is.us.soloweb.data.SWGroup localInstanceIn(EOEditingContext editingContext) {
+    is.us.soloweb.data.SWGroup localInstance = (is.us.soloweb.data.SWGroup)EOUtilities.localInstanceOfObject(editingContext, this);
     if (localInstance == null) {
       throw new IllegalStateException("You attempted to localInstance " + this + ", which has not yet committed.");
     }
@@ -40,29 +40,29 @@ public abstract class _SWGroup extends  ERXGenericRecord {
   }
 
   public Integer groupID() {
-    return (Integer) storedValueForKey("groupID");
+    return (Integer) storedValueForKey(_SWGroup.GROUP_ID_KEY);
   }
 
   public void setGroupID(Integer value) {
     if (_SWGroup.LOG.isDebugEnabled()) {
     	_SWGroup.LOG.debug( "updating groupID from " + groupID() + " to " + value);
     }
-    takeStoredValueForKey(value, "groupID");
+    takeStoredValueForKey(value, _SWGroup.GROUP_ID_KEY);
   }
 
   public String name() {
-    return (String) storedValueForKey("name");
+    return (String) storedValueForKey(_SWGroup.NAME_KEY);
   }
 
   public void setName(String value) {
     if (_SWGroup.LOG.isDebugEnabled()) {
     	_SWGroup.LOG.debug( "updating name from " + name() + " to " + value);
     }
-    takeStoredValueForKey(value, "name");
+    takeStoredValueForKey(value, _SWGroup.NAME_KEY);
   }
 
   public NSArray<is.us.soloweb.data.SWAccessPrivilege> accessPrivileges() {
-    return (NSArray<is.us.soloweb.data.SWAccessPrivilege>)storedValueForKey("accessPrivileges");
+    return (NSArray<is.us.soloweb.data.SWAccessPrivilege>)storedValueForKey(_SWGroup.ACCESS_PRIVILEGES_KEY);
   }
 
   public NSArray<is.us.soloweb.data.SWAccessPrivilege> accessPrivileges(EOQualifier qualifier) {
@@ -83,7 +83,7 @@ public abstract class _SWGroup extends  ERXGenericRecord {
         fullQualifier = inverseQualifier;
       }
       else {
-        NSMutableArray qualifiers = new NSMutableArray();
+        NSMutableArray<EOQualifier> qualifiers = new NSMutableArray<EOQualifier>();
         qualifiers.addObject(qualifier);
         qualifiers.addObject(inverseQualifier);
         fullQualifier = new EOAndQualifier(qualifiers);
@@ -104,11 +104,11 @@ public abstract class _SWGroup extends  ERXGenericRecord {
   }
   
   public void addToAccessPrivileges(is.us.soloweb.data.SWAccessPrivilege object) {
-    includeObjectIntoPropertyWithKey(object, "accessPrivileges");
+    includeObjectIntoPropertyWithKey(object, _SWGroup.ACCESS_PRIVILEGES_KEY);
   }
 
   public void removeFromAccessPrivileges(is.us.soloweb.data.SWAccessPrivilege object) {
-    excludeObjectFromPropertyWithKey(object, "accessPrivileges");
+    excludeObjectFromPropertyWithKey(object, _SWGroup.ACCESS_PRIVILEGES_KEY);
   }
 
   public void addToAccessPrivilegesRelationship(is.us.soloweb.data.SWAccessPrivilege object) {
@@ -119,7 +119,7 @@ public abstract class _SWGroup extends  ERXGenericRecord {
     	addToAccessPrivileges(object);
     }
     else {
-    	addObjectToBothSidesOfRelationshipWithKey(object, "accessPrivileges");
+    	addObjectToBothSidesOfRelationshipWithKey(object, _SWGroup.ACCESS_PRIVILEGES_KEY);
     }
   }
 
@@ -131,32 +131,32 @@ public abstract class _SWGroup extends  ERXGenericRecord {
     	removeFromAccessPrivileges(object);
     }
     else {
-    	removeObjectFromBothSidesOfRelationshipWithKey(object, "accessPrivileges");
+    	removeObjectFromBothSidesOfRelationshipWithKey(object, _SWGroup.ACCESS_PRIVILEGES_KEY);
     }
   }
 
   public is.us.soloweb.data.SWAccessPrivilege createAccessPrivilegesRelationship() {
-    EOClassDescription eoClassDesc = EOClassDescription.classDescriptionForEntityName("SWAccessPrivilege");
+    EOClassDescription eoClassDesc = EOClassDescription.classDescriptionForEntityName( is.us.soloweb.data.SWAccessPrivilege.ENTITY_NAME );
     EOEnterpriseObject eo = eoClassDesc.createInstanceWithEditingContext(editingContext(), null);
     editingContext().insertObject(eo);
-    addObjectToBothSidesOfRelationshipWithKey(eo, "accessPrivileges");
+    addObjectToBothSidesOfRelationshipWithKey(eo, _SWGroup.ACCESS_PRIVILEGES_KEY);
     return (is.us.soloweb.data.SWAccessPrivilege) eo;
   }
 
   public void deleteAccessPrivilegesRelationship(is.us.soloweb.data.SWAccessPrivilege object) {
-    removeObjectFromBothSidesOfRelationshipWithKey(object, "accessPrivileges");
+    removeObjectFromBothSidesOfRelationshipWithKey(object, _SWGroup.ACCESS_PRIVILEGES_KEY);
     editingContext().deleteObject(object);
   }
 
   public void deleteAllAccessPrivilegesRelationships() {
-    Enumeration objects = accessPrivileges().immutableClone().objectEnumerator();
+    Enumeration<is.us.soloweb.data.SWAccessPrivilege> objects = accessPrivileges().immutableClone().objectEnumerator();
     while (objects.hasMoreElements()) {
-      deleteAccessPrivilegesRelationship((is.us.soloweb.data.SWAccessPrivilege)objects.nextElement());
+      deleteAccessPrivilegesRelationship(objects.nextElement());
     }
   }
 
   public NSArray<is.us.soloweb.data.SWUser> users() {
-    return (NSArray<is.us.soloweb.data.SWUser>)storedValueForKey("users");
+    return (NSArray<is.us.soloweb.data.SWUser>)storedValueForKey(_SWGroup.USERS_KEY);
   }
 
   public NSArray<is.us.soloweb.data.SWUser> users(EOQualifier qualifier) {
@@ -176,11 +176,11 @@ public abstract class _SWGroup extends  ERXGenericRecord {
   }
   
   public void addToUsers(is.us.soloweb.data.SWUser object) {
-    includeObjectIntoPropertyWithKey(object, "users");
+    includeObjectIntoPropertyWithKey(object, _SWGroup.USERS_KEY);
   }
 
   public void removeFromUsers(is.us.soloweb.data.SWUser object) {
-    excludeObjectFromPropertyWithKey(object, "users");
+    excludeObjectFromPropertyWithKey(object, _SWGroup.USERS_KEY);
   }
 
   public void addToUsersRelationship(is.us.soloweb.data.SWUser object) {
@@ -191,7 +191,7 @@ public abstract class _SWGroup extends  ERXGenericRecord {
     	addToUsers(object);
     }
     else {
-    	addObjectToBothSidesOfRelationshipWithKey(object, "users");
+    	addObjectToBothSidesOfRelationshipWithKey(object, _SWGroup.USERS_KEY);
     }
   }
 
@@ -203,66 +203,66 @@ public abstract class _SWGroup extends  ERXGenericRecord {
     	removeFromUsers(object);
     }
     else {
-    	removeObjectFromBothSidesOfRelationshipWithKey(object, "users");
+    	removeObjectFromBothSidesOfRelationshipWithKey(object, _SWGroup.USERS_KEY);
     }
   }
 
   public is.us.soloweb.data.SWUser createUsersRelationship() {
-    EOClassDescription eoClassDesc = EOClassDescription.classDescriptionForEntityName("SWUser");
+    EOClassDescription eoClassDesc = EOClassDescription.classDescriptionForEntityName( is.us.soloweb.data.SWUser.ENTITY_NAME );
     EOEnterpriseObject eo = eoClassDesc.createInstanceWithEditingContext(editingContext(), null);
     editingContext().insertObject(eo);
-    addObjectToBothSidesOfRelationshipWithKey(eo, "users");
+    addObjectToBothSidesOfRelationshipWithKey(eo, _SWGroup.USERS_KEY);
     return (is.us.soloweb.data.SWUser) eo;
   }
 
   public void deleteUsersRelationship(is.us.soloweb.data.SWUser object) {
-    removeObjectFromBothSidesOfRelationshipWithKey(object, "users");
+    removeObjectFromBothSidesOfRelationshipWithKey(object, _SWGroup.USERS_KEY);
     editingContext().deleteObject(object);
   }
 
   public void deleteAllUsersRelationships() {
-    Enumeration objects = users().immutableClone().objectEnumerator();
+    Enumeration<is.us.soloweb.data.SWUser> objects = users().immutableClone().objectEnumerator();
     while (objects.hasMoreElements()) {
-      deleteUsersRelationship((is.us.soloweb.data.SWUser)objects.nextElement());
+      deleteUsersRelationship(objects.nextElement());
     }
   }
 
 
-  public static SWGroup createSWGroup(EOEditingContext editingContext, Integer groupID
+  public static is.us.soloweb.data.SWGroup createSWGroup(EOEditingContext editingContext, Integer groupID
 ) {
-    SWGroup eo = (SWGroup) EOUtilities.createAndInsertInstance(editingContext, _SWGroup.ENTITY_NAME);    
+    is.us.soloweb.data.SWGroup eo = (is.us.soloweb.data.SWGroup) EOUtilities.createAndInsertInstance(editingContext, _SWGroup.ENTITY_NAME);    
 		eo.setGroupID(groupID);
     return eo;
   }
 
-  public static NSArray<SWGroup> fetchAllSWGroups(EOEditingContext editingContext) {
+  public static NSArray<is.us.soloweb.data.SWGroup> fetchAllSWGroups(EOEditingContext editingContext) {
     return _SWGroup.fetchAllSWGroups(editingContext, null);
   }
 
-  public static NSArray<SWGroup> fetchAllSWGroups(EOEditingContext editingContext, NSArray<EOSortOrdering> sortOrderings) {
+  public static NSArray<is.us.soloweb.data.SWGroup> fetchAllSWGroups(EOEditingContext editingContext, NSArray<EOSortOrdering> sortOrderings) {
     return _SWGroup.fetchSWGroups(editingContext, null, sortOrderings);
   }
 
-  public static NSArray<SWGroup> fetchSWGroups(EOEditingContext editingContext, EOQualifier qualifier, NSArray<EOSortOrdering> sortOrderings) {
-    EOFetchSpecification fetchSpec = new EOFetchSpecification(_SWGroup.ENTITY_NAME, qualifier, sortOrderings);
+  public static NSArray<is.us.soloweb.data.SWGroup> fetchSWGroups(EOEditingContext editingContext, EOQualifier qualifier, NSArray<EOSortOrdering> sortOrderings) {
+    ERXFetchSpecification<is.us.soloweb.data.SWGroup> fetchSpec = new ERXFetchSpecification<is.us.soloweb.data.SWGroup>(_SWGroup.ENTITY_NAME, qualifier, sortOrderings);
     fetchSpec.setIsDeep(true);
-    NSArray<SWGroup> eoObjects = (NSArray<SWGroup>)editingContext.objectsWithFetchSpecification(fetchSpec);
+    NSArray<is.us.soloweb.data.SWGroup> eoObjects = fetchSpec.fetchObjects(editingContext);
     return eoObjects;
   }
 
-  public static SWGroup fetchSWGroup(EOEditingContext editingContext, String keyName, Object value) {
+  public static is.us.soloweb.data.SWGroup fetchSWGroup(EOEditingContext editingContext, String keyName, Object value) {
     return _SWGroup.fetchSWGroup(editingContext, new EOKeyValueQualifier(keyName, EOQualifier.QualifierOperatorEqual, value));
   }
 
-  public static SWGroup fetchSWGroup(EOEditingContext editingContext, EOQualifier qualifier) {
-    NSArray<SWGroup> eoObjects = _SWGroup.fetchSWGroups(editingContext, qualifier, null);
-    SWGroup eoObject;
+  public static is.us.soloweb.data.SWGroup fetchSWGroup(EOEditingContext editingContext, EOQualifier qualifier) {
+    NSArray<is.us.soloweb.data.SWGroup> eoObjects = _SWGroup.fetchSWGroups(editingContext, qualifier, null);
+    is.us.soloweb.data.SWGroup eoObject;
     int count = eoObjects.count();
     if (count == 0) {
       eoObject = null;
     }
     else if (count == 1) {
-      eoObject = (SWGroup)eoObjects.objectAtIndex(0);
+      eoObject = eoObjects.objectAtIndex(0);
     }
     else {
       throw new IllegalStateException("There was more than one SWGroup that matched the qualifier '" + qualifier + "'.");
@@ -270,20 +270,20 @@ public abstract class _SWGroup extends  ERXGenericRecord {
     return eoObject;
   }
 
-  public static SWGroup fetchRequiredSWGroup(EOEditingContext editingContext, String keyName, Object value) {
+  public static is.us.soloweb.data.SWGroup fetchRequiredSWGroup(EOEditingContext editingContext, String keyName, Object value) {
     return _SWGroup.fetchRequiredSWGroup(editingContext, new EOKeyValueQualifier(keyName, EOQualifier.QualifierOperatorEqual, value));
   }
 
-  public static SWGroup fetchRequiredSWGroup(EOEditingContext editingContext, EOQualifier qualifier) {
-    SWGroup eoObject = _SWGroup.fetchSWGroup(editingContext, qualifier);
+  public static is.us.soloweb.data.SWGroup fetchRequiredSWGroup(EOEditingContext editingContext, EOQualifier qualifier) {
+    is.us.soloweb.data.SWGroup eoObject = _SWGroup.fetchSWGroup(editingContext, qualifier);
     if (eoObject == null) {
       throw new NoSuchElementException("There was no SWGroup that matched the qualifier '" + qualifier + "'.");
     }
     return eoObject;
   }
 
-  public static SWGroup localInstanceIn(EOEditingContext editingContext, SWGroup eo) {
-    SWGroup localInstance = (eo == null) ? null : (SWGroup)EOUtilities.localInstanceOfObject(editingContext, eo);
+  public static is.us.soloweb.data.SWGroup localInstanceIn(EOEditingContext editingContext, is.us.soloweb.data.SWGroup eo) {
+    is.us.soloweb.data.SWGroup localInstance = (eo == null) ? null : ERXEOControlUtilities.localInstanceOfObject(editingContext, eo);
     if (localInstance == null && eo != null) {
       throw new IllegalStateException("You attempted to localInstance " + eo + ", which has not yet committed.");
     }

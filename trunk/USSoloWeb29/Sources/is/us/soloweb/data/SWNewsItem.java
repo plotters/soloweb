@@ -1,11 +1,9 @@
 package is.us.soloweb.data;
 
-import is.us.soloweb.interfaces.SWAsset;
-import is.us.soloweb.interfaces.SWTimedContent;
-import is.us.soloweb.interfaces.SWTransactionLogged;
+import is.us.soloweb.data.auto._SWNewsItem;
+import is.us.soloweb.interfaces.*;
 import is.us.soloweb.util.SWTimedContentUtilities;
-import is.us.util.USStringUtilities;
-import is.us.util.USUtilities;
+import is.us.util.*;
 
 import java.io.StringWriter;
 
@@ -14,12 +12,8 @@ import org.eclipse.mylyn.wikitext.core.parser.builder.HtmlDocumentBuilder;
 import org.eclipse.mylyn.wikitext.core.parser.markup.MarkupLanguage;
 import org.eclipse.mylyn.wikitext.textile.core.TextileLanguage;
 
-import com.webobjects.eocontrol.EOEditingContext;
-import com.webobjects.eocontrol.EOEnterpriseObject;
-import com.webobjects.eocontrol.EOFetchSpecification;
-import com.webobjects.eocontrol.EOQualifier;
-import com.webobjects.foundation.NSArray;
-import com.webobjects.foundation.NSTimestamp;
+import com.webobjects.eocontrol.*;
+import com.webobjects.foundation.*;
 
 /**
  * An SWNewsItem represents a newsitem in the SoloWeb system

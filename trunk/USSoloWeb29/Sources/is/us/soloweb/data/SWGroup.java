@@ -1,6 +1,7 @@
 package is.us.soloweb.data;
 
 import is.us.soloweb.SWSettings;
+import is.us.soloweb.data.auto._SWGroup;
 import is.us.soloweb.interfaces.SWInspectable;
 import is.us.util.USEOUtilities;
 

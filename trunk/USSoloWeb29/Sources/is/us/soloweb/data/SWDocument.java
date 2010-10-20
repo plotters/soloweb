@@ -1,30 +1,19 @@
 package is.us.soloweb.data;
 
 import is.us.soloweb.SWSettings;
+import is.us.soloweb.data.auto._SWDocument;
 import is.us.soloweb.interfaces.SWAsset;
-import is.us.soloweb.util.SWC;
-import is.us.soloweb.util.SWURLGeneration;
-import is.us.soloweb.util.SWZipUtilities;
-import is.us.util.USDataUtilities;
-import is.us.util.USEOUtilities;
-import is.us.util.USStringUtilities;
+import is.us.soloweb.util.*;
+import is.us.util.*;
 import is.us.wo.util.USHTTPUtilities;
 
-import java.io.File;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.slf4j.*;
 
 import com.webobjects.appserver.WOContext;
-import com.webobjects.eocontrol.EOEditingContext;
-import com.webobjects.eocontrol.EOEnterpriseObject;
-import com.webobjects.foundation.NSData;
-import com.webobjects.foundation.NSNotification;
-import com.webobjects.foundation.NSNotificationCenter;
-import com.webobjects.foundation.NSPathUtilities;
-import com.webobjects.foundation.NSSelector;
-import com.webobjects.foundation.NSTimestamp;
+import com.webobjects.eocontrol.*;
+import com.webobjects.foundation.*;
 
 /**
  * An SWDocument represents a binary document.

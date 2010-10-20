@@ -1,6 +1,7 @@
 package is.us.soloweb.data;
 
 import is.us.soloweb.SoloWeb;
+import is.us.soloweb.data.auto._SWTransaction;
 import is.us.util.USEOUtilities;
 
 import java.util.HashMap;

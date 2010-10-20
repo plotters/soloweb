@@ -1,14 +1,9 @@
 package is.us.soloweb.data;
 
-import is.us.soloweb.interfaces.SWCustomInfo;
-import is.us.soloweb.interfaces.SWInspectable;
-import is.us.soloweb.interfaces.SWTimedContent;
-import is.us.soloweb.interfaces.SWTransferable;
+import is.us.soloweb.data.auto._SWComponent;
+import is.us.soloweb.interfaces.*;
 import is.us.soloweb.util.SWTimedContentUtilities;
-import is.us.util.USSortable;
-import is.us.util.USSortableUtilities;
-import is.us.util.USStringUtilities;
-import is.us.util.USUtilities;
+import is.us.util.*;
 
 import java.io.StringWriter;
 import java.util.Enumeration;
@@ -19,8 +14,7 @@ import org.eclipse.mylyn.wikitext.core.parser.markup.MarkupLanguage;
 import org.eclipse.mylyn.wikitext.textile.core.TextileLanguage;
 
 import com.webobjects.eocontrol.EOEnterpriseObject;
-import com.webobjects.foundation.NSMutableArray;
-import com.webobjects.foundation.NSMutableDictionary;
+import com.webobjects.foundation.*;
 
 /**
  * An SWComponent represents a part of a page

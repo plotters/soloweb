@@ -1,5 +1,5 @@
-// $LastChangedRevision: 4733 $ DO NOT EDIT.  Make changes to SWPage.java instead.
-package is.us.soloweb.data;
+// DO NOT EDIT.  Make changes to is.us.soloweb.data.SWPage.java instead.
+package is.us.soloweb.data.auto;
 
 import com.webobjects.eoaccess.*;
 import com.webobjects.eocontrol.*;
@@ -79,8 +79,8 @@ public abstract class _SWPage extends  ERXGenericRecord {
 
   private static Logger LOG = Logger.getLogger(_SWPage.class);
 
-  public SWPage localInstanceIn(EOEditingContext editingContext) {
-    SWPage localInstance = (SWPage)EOUtilities.localInstanceOfObject(editingContext, this);
+  public is.us.soloweb.data.SWPage localInstanceIn(EOEditingContext editingContext) {
+    is.us.soloweb.data.SWPage localInstance = (is.us.soloweb.data.SWPage)EOUtilities.localInstanceOfObject(editingContext, this);
     if (localInstance == null) {
       throw new IllegalStateException("You attempted to localInstance " + this + ", which has not yet committed.");
     }
@@ -88,253 +88,253 @@ public abstract class _SWPage extends  ERXGenericRecord {
   }
 
   public Integer accessible() {
-    return (Integer) storedValueForKey("accessible");
+    return (Integer) storedValueForKey(_SWPage.ACCESSIBLE_KEY);
   }
 
   public void setAccessible(Integer value) {
     if (_SWPage.LOG.isDebugEnabled()) {
     	_SWPage.LOG.debug( "updating accessible from " + accessible() + " to " + value);
     }
-    takeStoredValueForKey(value, "accessible");
+    takeStoredValueForKey(value, _SWPage.ACCESSIBLE_KEY);
   }
 
   public String customInfoString() {
-    return (String) storedValueForKey("customInfoString");
+    return (String) storedValueForKey(_SWPage.CUSTOM_INFO_STRING_KEY);
   }
 
   public void setCustomInfoString(String value) {
     if (_SWPage.LOG.isDebugEnabled()) {
     	_SWPage.LOG.debug( "updating customInfoString from " + customInfoString() + " to " + value);
     }
-    takeStoredValueForKey(value, "customInfoString");
+    takeStoredValueForKey(value, _SWPage.CUSTOM_INFO_STRING_KEY);
   }
 
   public Integer documentOneID() {
-    return (Integer) storedValueForKey("documentOneID");
+    return (Integer) storedValueForKey(_SWPage.DOCUMENT_ONE_ID_KEY);
   }
 
   public void setDocumentOneID(Integer value) {
     if (_SWPage.LOG.isDebugEnabled()) {
     	_SWPage.LOG.debug( "updating documentOneID from " + documentOneID() + " to " + value);
     }
-    takeStoredValueForKey(value, "documentOneID");
+    takeStoredValueForKey(value, _SWPage.DOCUMENT_ONE_ID_KEY);
   }
 
   public Integer documentTwoID() {
-    return (Integer) storedValueForKey("documentTwoID");
+    return (Integer) storedValueForKey(_SWPage.DOCUMENT_TWO_ID_KEY);
   }
 
   public void setDocumentTwoID(Integer value) {
     if (_SWPage.LOG.isDebugEnabled()) {
     	_SWPage.LOG.debug( "updating documentTwoID from " + documentTwoID() + " to " + value);
     }
-    takeStoredValueForKey(value, "documentTwoID");
+    takeStoredValueForKey(value, _SWPage.DOCUMENT_TWO_ID_KEY);
   }
 
   public String externalURL() {
-    return (String) storedValueForKey("externalURL");
+    return (String) storedValueForKey(_SWPage.EXTERNAL_URL_KEY);
   }
 
   public void setExternalURL(String value) {
     if (_SWPage.LOG.isDebugEnabled()) {
     	_SWPage.LOG.debug( "updating externalURL from " + externalURL() + " to " + value);
     }
-    takeStoredValueForKey(value, "externalURL");
+    takeStoredValueForKey(value, _SWPage.EXTERNAL_URL_KEY);
   }
 
   public Integer inheritsPrivileges() {
-    return (Integer) storedValueForKey("inheritsPrivileges");
+    return (Integer) storedValueForKey(_SWPage.INHERITS_PRIVILEGES_KEY);
   }
 
   public void setInheritsPrivileges(Integer value) {
     if (_SWPage.LOG.isDebugEnabled()) {
     	_SWPage.LOG.debug( "updating inheritsPrivileges from " + inheritsPrivileges() + " to " + value);
     }
-    takeStoredValueForKey(value, "inheritsPrivileges");
+    takeStoredValueForKey(value, _SWPage.INHERITS_PRIVILEGES_KEY);
   }
 
   public String keywords() {
-    return (String) storedValueForKey("keywords");
+    return (String) storedValueForKey(_SWPage.KEYWORDS_KEY);
   }
 
   public void setKeywords(String value) {
     if (_SWPage.LOG.isDebugEnabled()) {
     	_SWPage.LOG.debug( "updating keywords from " + keywords() + " to " + value);
     }
-    takeStoredValueForKey(value, "keywords");
+    takeStoredValueForKey(value, _SWPage.KEYWORDS_KEY);
   }
 
   public String language() {
-    return (String) storedValueForKey("language");
+    return (String) storedValueForKey(_SWPage.LANGUAGE_KEY);
   }
 
   public void setLanguage(String value) {
     if (_SWPage.LOG.isDebugEnabled()) {
     	_SWPage.LOG.debug( "updating language from " + language() + " to " + value);
     }
-    takeStoredValueForKey(value, "language");
+    takeStoredValueForKey(value, _SWPage.LANGUAGE_KEY);
   }
 
   public String look() {
-    return (String) storedValueForKey("look");
+    return (String) storedValueForKey(_SWPage.LOOK_KEY);
   }
 
   public void setLook(String value) {
     if (_SWPage.LOG.isDebugEnabled()) {
     	_SWPage.LOG.debug( "updating look from " + look() + " to " + value);
     }
-    takeStoredValueForKey(value, "look");
+    takeStoredValueForKey(value, _SWPage.LOOK_KEY);
   }
 
   public String name() {
-    return (String) storedValueForKey("name");
+    return (String) storedValueForKey(_SWPage.NAME_KEY);
   }
 
   public void setName(String value) {
     if (_SWPage.LOG.isDebugEnabled()) {
     	_SWPage.LOG.debug( "updating name from " + name() + " to " + value);
     }
-    takeStoredValueForKey(value, "name");
+    takeStoredValueForKey(value, _SWPage.NAME_KEY);
   }
 
   public String namePrefix() {
-    return (String) storedValueForKey("namePrefix");
+    return (String) storedValueForKey(_SWPage.NAME_PREFIX_KEY);
   }
 
   public void setNamePrefix(String value) {
     if (_SWPage.LOG.isDebugEnabled()) {
     	_SWPage.LOG.debug( "updating namePrefix from " + namePrefix() + " to " + value);
     }
-    takeStoredValueForKey(value, "namePrefix");
+    takeStoredValueForKey(value, _SWPage.NAME_PREFIX_KEY);
   }
 
   public Integer pageID() {
-    return (Integer) storedValueForKey("pageID");
+    return (Integer) storedValueForKey(_SWPage.PAGE_ID_KEY);
   }
 
   public void setPageID(Integer value) {
     if (_SWPage.LOG.isDebugEnabled()) {
     	_SWPage.LOG.debug( "updating pageID from " + pageID() + " to " + value);
     }
-    takeStoredValueForKey(value, "pageID");
+    takeStoredValueForKey(value, _SWPage.PAGE_ID_KEY);
   }
 
   public Integer parentPageID() {
-    return (Integer) storedValueForKey("parentPageID");
+    return (Integer) storedValueForKey(_SWPage.PARENT_PAGE_ID_KEY);
   }
 
   public void setParentPageID(Integer value) {
     if (_SWPage.LOG.isDebugEnabled()) {
     	_SWPage.LOG.debug( "updating parentPageID from " + parentPageID() + " to " + value);
     }
-    takeStoredValueForKey(value, "parentPageID");
+    takeStoredValueForKey(value, _SWPage.PARENT_PAGE_ID_KEY);
   }
 
   public String password() {
-    return (String) storedValueForKey("password");
+    return (String) storedValueForKey(_SWPage.PASSWORD_KEY);
   }
 
   public void setPassword(String value) {
     if (_SWPage.LOG.isDebugEnabled()) {
     	_SWPage.LOG.debug( "updating password from " + password() + " to " + value);
     }
-    takeStoredValueForKey(value, "password");
+    takeStoredValueForKey(value, _SWPage.PASSWORD_KEY);
   }
 
   public Integer pictureOneID() {
-    return (Integer) storedValueForKey("pictureOneID");
+    return (Integer) storedValueForKey(_SWPage.PICTURE_ONE_ID_KEY);
   }
 
   public void setPictureOneID(Integer value) {
     if (_SWPage.LOG.isDebugEnabled()) {
     	_SWPage.LOG.debug( "updating pictureOneID from " + pictureOneID() + " to " + value);
     }
-    takeStoredValueForKey(value, "pictureOneID");
+    takeStoredValueForKey(value, _SWPage.PICTURE_ONE_ID_KEY);
   }
 
   public Integer pictureTwoID() {
-    return (Integer) storedValueForKey("pictureTwoID");
+    return (Integer) storedValueForKey(_SWPage.PICTURE_TWO_ID_KEY);
   }
 
   public void setPictureTwoID(Integer value) {
     if (_SWPage.LOG.isDebugEnabled()) {
     	_SWPage.LOG.debug( "updating pictureTwoID from " + pictureTwoID() + " to " + value);
     }
-    takeStoredValueForKey(value, "pictureTwoID");
+    takeStoredValueForKey(value, _SWPage.PICTURE_TWO_ID_KEY);
   }
 
   public Integer published() {
-    return (Integer) storedValueForKey("published");
+    return (Integer) storedValueForKey(_SWPage.PUBLISHED_KEY);
   }
 
   public void setPublished(Integer value) {
     if (_SWPage.LOG.isDebugEnabled()) {
     	_SWPage.LOG.debug( "updating published from " + published() + " to " + value);
     }
-    takeStoredValueForKey(value, "published");
+    takeStoredValueForKey(value, _SWPage.PUBLISHED_KEY);
   }
 
   public Integer sortNumber() {
-    return (Integer) storedValueForKey("sortNumber");
+    return (Integer) storedValueForKey(_SWPage.SORT_NUMBER_KEY);
   }
 
   public void setSortNumber(Integer value) {
     if (_SWPage.LOG.isDebugEnabled()) {
     	_SWPage.LOG.debug( "updating sortNumber from " + sortNumber() + " to " + value);
     }
-    takeStoredValueForKey(value, "sortNumber");
+    takeStoredValueForKey(value, _SWPage.SORT_NUMBER_KEY);
   }
 
   public String symbol() {
-    return (String) storedValueForKey("symbol");
+    return (String) storedValueForKey(_SWPage.SYMBOL_KEY);
   }
 
   public void setSymbol(String value) {
     if (_SWPage.LOG.isDebugEnabled()) {
     	_SWPage.LOG.debug( "updating symbol from " + symbol() + " to " + value);
     }
-    takeStoredValueForKey(value, "symbol");
+    takeStoredValueForKey(value, _SWPage.SYMBOL_KEY);
   }
 
   public String text() {
-    return (String) storedValueForKey("text");
+    return (String) storedValueForKey(_SWPage.TEXT_KEY);
   }
 
   public void setText(String value) {
     if (_SWPage.LOG.isDebugEnabled()) {
     	_SWPage.LOG.debug( "updating text from " + text() + " to " + value);
     }
-    takeStoredValueForKey(value, "text");
+    takeStoredValueForKey(value, _SWPage.TEXT_KEY);
   }
 
   public NSTimestamp timeIn() {
-    return (NSTimestamp) storedValueForKey("timeIn");
+    return (NSTimestamp) storedValueForKey(_SWPage.TIME_IN_KEY);
   }
 
   public void setTimeIn(NSTimestamp value) {
     if (_SWPage.LOG.isDebugEnabled()) {
     	_SWPage.LOG.debug( "updating timeIn from " + timeIn() + " to " + value);
     }
-    takeStoredValueForKey(value, "timeIn");
+    takeStoredValueForKey(value, _SWPage.TIME_IN_KEY);
   }
 
   public NSTimestamp timeOut() {
-    return (NSTimestamp) storedValueForKey("timeOut");
+    return (NSTimestamp) storedValueForKey(_SWPage.TIME_OUT_KEY);
   }
 
   public void setTimeOut(NSTimestamp value) {
     if (_SWPage.LOG.isDebugEnabled()) {
     	_SWPage.LOG.debug( "updating timeOut from " + timeOut() + " to " + value);
     }
-    takeStoredValueForKey(value, "timeOut");
+    takeStoredValueForKey(value, _SWPage.TIME_OUT_KEY);
   }
 
   public is.us.soloweb.data.SWDocument documentOne() {
-    return (is.us.soloweb.data.SWDocument)storedValueForKey("documentOne");
+    return (is.us.soloweb.data.SWDocument)storedValueForKey(_SWPage.DOCUMENT_ONE_KEY);
   }
   
   public void setDocumentOne(is.us.soloweb.data.SWDocument value) {
-    takeStoredValueForKey(value, "documentOne");
+    takeStoredValueForKey(value, _SWPage.DOCUMENT_ONE_KEY);
   }
 
   public void setDocumentOneRelationship(is.us.soloweb.data.SWDocument value) {
@@ -347,19 +347,19 @@ public abstract class _SWPage extends  ERXGenericRecord {
     else if (value == null) {
     	is.us.soloweb.data.SWDocument oldValue = documentOne();
     	if (oldValue != null) {
-    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, "documentOne");
+    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, _SWPage.DOCUMENT_ONE_KEY);
       }
     } else {
-    	addObjectToBothSidesOfRelationshipWithKey(value, "documentOne");
+    	addObjectToBothSidesOfRelationshipWithKey(value, _SWPage.DOCUMENT_ONE_KEY);
     }
   }
   
   public is.us.soloweb.data.SWDocument documentTwo() {
-    return (is.us.soloweb.data.SWDocument)storedValueForKey("documentTwo");
+    return (is.us.soloweb.data.SWDocument)storedValueForKey(_SWPage.DOCUMENT_TWO_KEY);
   }
   
   public void setDocumentTwo(is.us.soloweb.data.SWDocument value) {
-    takeStoredValueForKey(value, "documentTwo");
+    takeStoredValueForKey(value, _SWPage.DOCUMENT_TWO_KEY);
   }
 
   public void setDocumentTwoRelationship(is.us.soloweb.data.SWDocument value) {
@@ -372,19 +372,19 @@ public abstract class _SWPage extends  ERXGenericRecord {
     else if (value == null) {
     	is.us.soloweb.data.SWDocument oldValue = documentTwo();
     	if (oldValue != null) {
-    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, "documentTwo");
+    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, _SWPage.DOCUMENT_TWO_KEY);
       }
     } else {
-    	addObjectToBothSidesOfRelationshipWithKey(value, "documentTwo");
+    	addObjectToBothSidesOfRelationshipWithKey(value, _SWPage.DOCUMENT_TWO_KEY);
     }
   }
   
   public is.us.soloweb.data.SWPage parentPage() {
-    return (is.us.soloweb.data.SWPage)storedValueForKey("parentPage");
+    return (is.us.soloweb.data.SWPage)storedValueForKey(_SWPage.PARENT_PAGE_KEY);
   }
   
   public void setParentPage(is.us.soloweb.data.SWPage value) {
-    takeStoredValueForKey(value, "parentPage");
+    takeStoredValueForKey(value, _SWPage.PARENT_PAGE_KEY);
   }
 
   public void setParentPageRelationship(is.us.soloweb.data.SWPage value) {
@@ -397,15 +397,15 @@ public abstract class _SWPage extends  ERXGenericRecord {
     else if (value == null) {
     	is.us.soloweb.data.SWPage oldValue = parentPage();
     	if (oldValue != null) {
-    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, "parentPage");
+    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, _SWPage.PARENT_PAGE_KEY);
       }
     } else {
-    	addObjectToBothSidesOfRelationshipWithKey(value, "parentPage");
+    	addObjectToBothSidesOfRelationshipWithKey(value, _SWPage.PARENT_PAGE_KEY);
     }
   }
   
   public NSArray<is.us.soloweb.data.SWComponent> components() {
-    return (NSArray<is.us.soloweb.data.SWComponent>)storedValueForKey("components");
+    return (NSArray<is.us.soloweb.data.SWComponent>)storedValueForKey(_SWPage.COMPONENTS_KEY);
   }
 
   public NSArray<is.us.soloweb.data.SWComponent> components(EOQualifier qualifier) {
@@ -426,7 +426,7 @@ public abstract class _SWPage extends  ERXGenericRecord {
         fullQualifier = inverseQualifier;
       }
       else {
-        NSMutableArray qualifiers = new NSMutableArray();
+        NSMutableArray<EOQualifier> qualifiers = new NSMutableArray<EOQualifier>();
         qualifiers.addObject(qualifier);
         qualifiers.addObject(inverseQualifier);
         fullQualifier = new EOAndQualifier(qualifiers);
@@ -447,11 +447,11 @@ public abstract class _SWPage extends  ERXGenericRecord {
   }
   
   public void addToComponents(is.us.soloweb.data.SWComponent object) {
-    includeObjectIntoPropertyWithKey(object, "components");
+    includeObjectIntoPropertyWithKey(object, _SWPage.COMPONENTS_KEY);
   }
 
   public void removeFromComponents(is.us.soloweb.data.SWComponent object) {
-    excludeObjectFromPropertyWithKey(object, "components");
+    excludeObjectFromPropertyWithKey(object, _SWPage.COMPONENTS_KEY);
   }
 
   public void addToComponentsRelationship(is.us.soloweb.data.SWComponent object) {
@@ -462,7 +462,7 @@ public abstract class _SWPage extends  ERXGenericRecord {
     	addToComponents(object);
     }
     else {
-    	addObjectToBothSidesOfRelationshipWithKey(object, "components");
+    	addObjectToBothSidesOfRelationshipWithKey(object, _SWPage.COMPONENTS_KEY);
     }
   }
 
@@ -474,32 +474,32 @@ public abstract class _SWPage extends  ERXGenericRecord {
     	removeFromComponents(object);
     }
     else {
-    	removeObjectFromBothSidesOfRelationshipWithKey(object, "components");
+    	removeObjectFromBothSidesOfRelationshipWithKey(object, _SWPage.COMPONENTS_KEY);
     }
   }
 
   public is.us.soloweb.data.SWComponent createComponentsRelationship() {
-    EOClassDescription eoClassDesc = EOClassDescription.classDescriptionForEntityName("SWComponent");
+    EOClassDescription eoClassDesc = EOClassDescription.classDescriptionForEntityName( is.us.soloweb.data.SWComponent.ENTITY_NAME );
     EOEnterpriseObject eo = eoClassDesc.createInstanceWithEditingContext(editingContext(), null);
     editingContext().insertObject(eo);
-    addObjectToBothSidesOfRelationshipWithKey(eo, "components");
+    addObjectToBothSidesOfRelationshipWithKey(eo, _SWPage.COMPONENTS_KEY);
     return (is.us.soloweb.data.SWComponent) eo;
   }
 
   public void deleteComponentsRelationship(is.us.soloweb.data.SWComponent object) {
-    removeObjectFromBothSidesOfRelationshipWithKey(object, "components");
+    removeObjectFromBothSidesOfRelationshipWithKey(object, _SWPage.COMPONENTS_KEY);
     editingContext().deleteObject(object);
   }
 
   public void deleteAllComponentsRelationships() {
-    Enumeration objects = components().immutableClone().objectEnumerator();
+    Enumeration<is.us.soloweb.data.SWComponent> objects = components().immutableClone().objectEnumerator();
     while (objects.hasMoreElements()) {
-      deleteComponentsRelationship((is.us.soloweb.data.SWComponent)objects.nextElement());
+      deleteComponentsRelationship(objects.nextElement());
     }
   }
 
   public NSArray<is.us.soloweb.data.SWSite> site() {
-    return (NSArray<is.us.soloweb.data.SWSite>)storedValueForKey("site");
+    return (NSArray<is.us.soloweb.data.SWSite>)storedValueForKey(_SWPage.SITE_KEY);
   }
 
   public NSArray<is.us.soloweb.data.SWSite> site(EOQualifier qualifier) {
@@ -520,7 +520,7 @@ public abstract class _SWPage extends  ERXGenericRecord {
         fullQualifier = inverseQualifier;
       }
       else {
-        NSMutableArray qualifiers = new NSMutableArray();
+        NSMutableArray<EOQualifier> qualifiers = new NSMutableArray<EOQualifier>();
         qualifiers.addObject(qualifier);
         qualifiers.addObject(inverseQualifier);
         fullQualifier = new EOAndQualifier(qualifiers);
@@ -541,11 +541,11 @@ public abstract class _SWPage extends  ERXGenericRecord {
   }
   
   public void addToSite(is.us.soloweb.data.SWSite object) {
-    includeObjectIntoPropertyWithKey(object, "site");
+    includeObjectIntoPropertyWithKey(object, _SWPage.SITE_KEY);
   }
 
   public void removeFromSite(is.us.soloweb.data.SWSite object) {
-    excludeObjectFromPropertyWithKey(object, "site");
+    excludeObjectFromPropertyWithKey(object, _SWPage.SITE_KEY);
   }
 
   public void addToSiteRelationship(is.us.soloweb.data.SWSite object) {
@@ -556,7 +556,7 @@ public abstract class _SWPage extends  ERXGenericRecord {
     	addToSite(object);
     }
     else {
-    	addObjectToBothSidesOfRelationshipWithKey(object, "site");
+    	addObjectToBothSidesOfRelationshipWithKey(object, _SWPage.SITE_KEY);
     }
   }
 
@@ -568,32 +568,32 @@ public abstract class _SWPage extends  ERXGenericRecord {
     	removeFromSite(object);
     }
     else {
-    	removeObjectFromBothSidesOfRelationshipWithKey(object, "site");
+    	removeObjectFromBothSidesOfRelationshipWithKey(object, _SWPage.SITE_KEY);
     }
   }
 
   public is.us.soloweb.data.SWSite createSiteRelationship() {
-    EOClassDescription eoClassDesc = EOClassDescription.classDescriptionForEntityName("SWSite");
+    EOClassDescription eoClassDesc = EOClassDescription.classDescriptionForEntityName( is.us.soloweb.data.SWSite.ENTITY_NAME );
     EOEnterpriseObject eo = eoClassDesc.createInstanceWithEditingContext(editingContext(), null);
     editingContext().insertObject(eo);
-    addObjectToBothSidesOfRelationshipWithKey(eo, "site");
+    addObjectToBothSidesOfRelationshipWithKey(eo, _SWPage.SITE_KEY);
     return (is.us.soloweb.data.SWSite) eo;
   }
 
   public void deleteSiteRelationship(is.us.soloweb.data.SWSite object) {
-    removeObjectFromBothSidesOfRelationshipWithKey(object, "site");
+    removeObjectFromBothSidesOfRelationshipWithKey(object, _SWPage.SITE_KEY);
     editingContext().deleteObject(object);
   }
 
   public void deleteAllSiteRelationships() {
-    Enumeration objects = site().immutableClone().objectEnumerator();
+    Enumeration<is.us.soloweb.data.SWSite> objects = site().immutableClone().objectEnumerator();
     while (objects.hasMoreElements()) {
-      deleteSiteRelationship((is.us.soloweb.data.SWSite)objects.nextElement());
+      deleteSiteRelationship(objects.nextElement());
     }
   }
 
   public NSArray<is.us.soloweb.data.SWPage> subPages() {
-    return (NSArray<is.us.soloweb.data.SWPage>)storedValueForKey("subPages");
+    return (NSArray<is.us.soloweb.data.SWPage>)storedValueForKey(_SWPage.SUB_PAGES_KEY);
   }
 
   public NSArray<is.us.soloweb.data.SWPage> subPages(EOQualifier qualifier) {
@@ -614,7 +614,7 @@ public abstract class _SWPage extends  ERXGenericRecord {
         fullQualifier = inverseQualifier;
       }
       else {
-        NSMutableArray qualifiers = new NSMutableArray();
+        NSMutableArray<EOQualifier> qualifiers = new NSMutableArray<EOQualifier>();
         qualifiers.addObject(qualifier);
         qualifiers.addObject(inverseQualifier);
         fullQualifier = new EOAndQualifier(qualifiers);
@@ -635,11 +635,11 @@ public abstract class _SWPage extends  ERXGenericRecord {
   }
   
   public void addToSubPages(is.us.soloweb.data.SWPage object) {
-    includeObjectIntoPropertyWithKey(object, "subPages");
+    includeObjectIntoPropertyWithKey(object, _SWPage.SUB_PAGES_KEY);
   }
 
   public void removeFromSubPages(is.us.soloweb.data.SWPage object) {
-    excludeObjectFromPropertyWithKey(object, "subPages");
+    excludeObjectFromPropertyWithKey(object, _SWPage.SUB_PAGES_KEY);
   }
 
   public void addToSubPagesRelationship(is.us.soloweb.data.SWPage object) {
@@ -650,7 +650,7 @@ public abstract class _SWPage extends  ERXGenericRecord {
     	addToSubPages(object);
     }
     else {
-    	addObjectToBothSidesOfRelationshipWithKey(object, "subPages");
+    	addObjectToBothSidesOfRelationshipWithKey(object, _SWPage.SUB_PAGES_KEY);
     }
   }
 
@@ -662,66 +662,66 @@ public abstract class _SWPage extends  ERXGenericRecord {
     	removeFromSubPages(object);
     }
     else {
-    	removeObjectFromBothSidesOfRelationshipWithKey(object, "subPages");
+    	removeObjectFromBothSidesOfRelationshipWithKey(object, _SWPage.SUB_PAGES_KEY);
     }
   }
 
   public is.us.soloweb.data.SWPage createSubPagesRelationship() {
-    EOClassDescription eoClassDesc = EOClassDescription.classDescriptionForEntityName("SWPage");
+    EOClassDescription eoClassDesc = EOClassDescription.classDescriptionForEntityName( is.us.soloweb.data.SWPage.ENTITY_NAME );
     EOEnterpriseObject eo = eoClassDesc.createInstanceWithEditingContext(editingContext(), null);
     editingContext().insertObject(eo);
-    addObjectToBothSidesOfRelationshipWithKey(eo, "subPages");
+    addObjectToBothSidesOfRelationshipWithKey(eo, _SWPage.SUB_PAGES_KEY);
     return (is.us.soloweb.data.SWPage) eo;
   }
 
   public void deleteSubPagesRelationship(is.us.soloweb.data.SWPage object) {
-    removeObjectFromBothSidesOfRelationshipWithKey(object, "subPages");
+    removeObjectFromBothSidesOfRelationshipWithKey(object, _SWPage.SUB_PAGES_KEY);
     editingContext().deleteObject(object);
   }
 
   public void deleteAllSubPagesRelationships() {
-    Enumeration objects = subPages().immutableClone().objectEnumerator();
+    Enumeration<is.us.soloweb.data.SWPage> objects = subPages().immutableClone().objectEnumerator();
     while (objects.hasMoreElements()) {
-      deleteSubPagesRelationship((is.us.soloweb.data.SWPage)objects.nextElement());
+      deleteSubPagesRelationship(objects.nextElement());
     }
   }
 
 
-  public static SWPage createSWPage(EOEditingContext editingContext, Integer pageID
+  public static is.us.soloweb.data.SWPage createSWPage(EOEditingContext editingContext, Integer pageID
 ) {
-    SWPage eo = (SWPage) EOUtilities.createAndInsertInstance(editingContext, _SWPage.ENTITY_NAME);    
+    is.us.soloweb.data.SWPage eo = (is.us.soloweb.data.SWPage) EOUtilities.createAndInsertInstance(editingContext, _SWPage.ENTITY_NAME);    
 		eo.setPageID(pageID);
     return eo;
   }
 
-  public static NSArray<SWPage> fetchAllSWPages(EOEditingContext editingContext) {
+  public static NSArray<is.us.soloweb.data.SWPage> fetchAllSWPages(EOEditingContext editingContext) {
     return _SWPage.fetchAllSWPages(editingContext, null);
   }
 
-  public static NSArray<SWPage> fetchAllSWPages(EOEditingContext editingContext, NSArray<EOSortOrdering> sortOrderings) {
+  public static NSArray<is.us.soloweb.data.SWPage> fetchAllSWPages(EOEditingContext editingContext, NSArray<EOSortOrdering> sortOrderings) {
     return _SWPage.fetchSWPages(editingContext, null, sortOrderings);
   }
 
-  public static NSArray<SWPage> fetchSWPages(EOEditingContext editingContext, EOQualifier qualifier, NSArray<EOSortOrdering> sortOrderings) {
-    EOFetchSpecification fetchSpec = new EOFetchSpecification(_SWPage.ENTITY_NAME, qualifier, sortOrderings);
+  public static NSArray<is.us.soloweb.data.SWPage> fetchSWPages(EOEditingContext editingContext, EOQualifier qualifier, NSArray<EOSortOrdering> sortOrderings) {
+    ERXFetchSpecification<is.us.soloweb.data.SWPage> fetchSpec = new ERXFetchSpecification<is.us.soloweb.data.SWPage>(_SWPage.ENTITY_NAME, qualifier, sortOrderings);
     fetchSpec.setIsDeep(true);
-    NSArray<SWPage> eoObjects = (NSArray<SWPage>)editingContext.objectsWithFetchSpecification(fetchSpec);
+    NSArray<is.us.soloweb.data.SWPage> eoObjects = fetchSpec.fetchObjects(editingContext);
     return eoObjects;
   }
 
-  public static SWPage fetchSWPage(EOEditingContext editingContext, String keyName, Object value) {
+  public static is.us.soloweb.data.SWPage fetchSWPage(EOEditingContext editingContext, String keyName, Object value) {
     return _SWPage.fetchSWPage(editingContext, new EOKeyValueQualifier(keyName, EOQualifier.QualifierOperatorEqual, value));
   }
 
-  public static SWPage fetchSWPage(EOEditingContext editingContext, EOQualifier qualifier) {
-    NSArray<SWPage> eoObjects = _SWPage.fetchSWPages(editingContext, qualifier, null);
-    SWPage eoObject;
+  public static is.us.soloweb.data.SWPage fetchSWPage(EOEditingContext editingContext, EOQualifier qualifier) {
+    NSArray<is.us.soloweb.data.SWPage> eoObjects = _SWPage.fetchSWPages(editingContext, qualifier, null);
+    is.us.soloweb.data.SWPage eoObject;
     int count = eoObjects.count();
     if (count == 0) {
       eoObject = null;
     }
     else if (count == 1) {
-      eoObject = (SWPage)eoObjects.objectAtIndex(0);
+      eoObject = eoObjects.objectAtIndex(0);
     }
     else {
       throw new IllegalStateException("There was more than one SWPage that matched the qualifier '" + qualifier + "'.");
@@ -729,20 +729,20 @@ public abstract class _SWPage extends  ERXGenericRecord {
     return eoObject;
   }
 
-  public static SWPage fetchRequiredSWPage(EOEditingContext editingContext, String keyName, Object value) {
+  public static is.us.soloweb.data.SWPage fetchRequiredSWPage(EOEditingContext editingContext, String keyName, Object value) {
     return _SWPage.fetchRequiredSWPage(editingContext, new EOKeyValueQualifier(keyName, EOQualifier.QualifierOperatorEqual, value));
   }
 
-  public static SWPage fetchRequiredSWPage(EOEditingContext editingContext, EOQualifier qualifier) {
-    SWPage eoObject = _SWPage.fetchSWPage(editingContext, qualifier);
+  public static is.us.soloweb.data.SWPage fetchRequiredSWPage(EOEditingContext editingContext, EOQualifier qualifier) {
+    is.us.soloweb.data.SWPage eoObject = _SWPage.fetchSWPage(editingContext, qualifier);
     if (eoObject == null) {
       throw new NoSuchElementException("There was no SWPage that matched the qualifier '" + qualifier + "'.");
     }
     return eoObject;
   }
 
-  public static SWPage localInstanceIn(EOEditingContext editingContext, SWPage eo) {
-    SWPage localInstance = (eo == null) ? null : (SWPage)EOUtilities.localInstanceOfObject(editingContext, eo);
+  public static is.us.soloweb.data.SWPage localInstanceIn(EOEditingContext editingContext, is.us.soloweb.data.SWPage eo) {
+    is.us.soloweb.data.SWPage localInstance = (eo == null) ? null : ERXEOControlUtilities.localInstanceOfObject(editingContext, eo);
     if (localInstance == null && eo != null) {
       throw new IllegalStateException("You attempted to localInstance " + eo + ", which has not yet committed.");
     }
