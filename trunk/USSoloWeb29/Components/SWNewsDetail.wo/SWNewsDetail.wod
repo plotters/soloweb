@@ -72,7 +72,7 @@ COMMENT_LINK: WOGenericContainer {
 }
 
 COMMENT_REPETITION: WORepetition {
-	list = selectedNewsItem.comments;
+	list = selectedNewsItem.comments.@sortAsc.date;
 	item = currentComment;
 }
 

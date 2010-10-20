@@ -14,6 +14,8 @@ import com.webobjects.appserver.*;
 import com.webobjects.foundation.*;
 
 import er.extensions.appserver.ERXMessageEncoding;
+import er.extensions.eof.ERXEC;
+import er.extensions.foundation.ERXThreadStorage;
 
 /**
  * A singleton class to contain the setup of a SoloWeb system
@@ -24,6 +26,8 @@ import er.extensions.appserver.ERXMessageEncoding;
 public class SoloWeb {
 
 	private static final Logger logger = LoggerFactory.getLogger( SoloWeb.class );
+
+	private static final String REQUEST_LOCAL_EC_KEY = "soloweb.requestLocalEditingContext";
 
 	private NSMutableArray<String> _pluginModels = new NSMutableArray<String>( new String[] { SWC.SOLOWEB_EOMODEL_NAME } );
 	private NSTimestamp _startupTime;
@@ -324,5 +328,28 @@ public class SoloWeb {
 
 	public void incrementNumberOfServedBytesSinceStartup( int bytes ) {
 		_numberOfServedBytesSinceStartup += bytes;
+	}
+
+	/**
+	 * @return A Thread local editing context.
+	 */
+	public static ERXEC requestLocalEditingContext() {
+		ERXEC ec = (ERXEC)ERXThreadStorage.valueForKey( REQUEST_LOCAL_EC_KEY );
+
+		if( ec == null ) {
+			ec = (ERXEC)ERXEC.newEditingContext();
+			ERXThreadStorage.takeValueForKey( ec, REQUEST_LOCAL_EC_KEY );
+			/*
+						try {
+							throw new RuntimeException();
+						}
+						catch( Exception e ) {
+							System.out.println( Thread.currentThread().getName() );
+							e.printStackTrace();
+						}
+			 */
+		}
+
+		return ec;
 	}
 }

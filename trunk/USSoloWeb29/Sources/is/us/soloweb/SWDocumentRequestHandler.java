@@ -5,8 +5,6 @@ import is.us.wo.util.USHTTPUtilities;
 
 import com.webobjects.appserver.*;
 
-import er.extensions.eof.ERXEC;
-
 /**
  * Handles requests for documents
  *
@@ -22,13 +20,14 @@ public class SWDocumentRequestHandler extends WORequestHandler {
 	/**
 	 * Handles the request and returns a corresponding document.
 	 */
+	@Override
 	public WOResponse handleRequest( WORequest request ) {
 
 		WOResponse response = null;
 
 		String s = request.requestHandlerPath();
 		s = s.substring( 0, s.indexOf( "/" ) );
-		SWDocument document = SWDocument.documentWithID( ERXEC.newEditingContext(), new Integer( s ) );
+		SWDocument document = SWDocument.documentWithID( SWApplication.swapplication().sw().requestLocalEditingContext(), new Integer( s ) );
 
 		if( document == null ) {
 			return USHTTPUtilities.response404();

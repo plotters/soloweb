@@ -13,7 +13,7 @@ import org.eclipse.mylyn.wikitext.core.parser.markup.MarkupLanguage;
 import org.eclipse.mylyn.wikitext.textile.core.TextileLanguage;
 
 import com.webobjects.eocontrol.*;
-import com.webobjects.foundation.*;
+import com.webobjects.foundation.NSTimestamp;
 
 /**
  * An SWNewsItem represents a newsitem in the SoloWeb system
@@ -57,6 +57,7 @@ public class SWNewsItem extends _SWNewsItem implements SWTimedContent, SWAsset<S
 	/**
 	 * Implementation of SWTransferable
 	 */
+	@Override
 	public void transferOwnership( EOEnterpriseObject newOwner ) {
 		this.removeObjectFromBothSidesOfRelationshipWithKey( folder(), FOLDER_KEY );
 		this.addObjectToBothSidesOfRelationshipWithKey( newOwner, FOLDER_KEY );
@@ -65,27 +66,32 @@ public class SWNewsItem extends _SWNewsItem implements SWTimedContent, SWAsset<S
 	/**
 	 * Indicates if this object's display time has come and has not expired
 	 */
+	@Override
 	public boolean isTimeValid() {
 		return SWTimedContentUtilities.validateDisplayTime( this );
 	}
 
 	/**
 	 * @return All comments for the selected newsitem.
-	 */
+	 *
 	public NSArray<SWComment> comments() {
 		EOQualifier q = SWComment.NEWS_ITEM_ID.eq( newsItemID() );
 		EOFetchSpecification fs = new EOFetchSpecification( SWComment.ENTITY_NAME, q, SWComment.DATE.ascs() );
 		return editingContext().objectsWithFetchSpecification( fs );
 	}
+	*/
 
+	@Override
 	public Number assetID() {
 		return newsItemID();
 	}
 
+	@Override
 	public void deleteAsset() {
 		editingContext().deleteObject( this );
 	}
 
+	@Override
 	public void awakeFromInsertion( EOEditingContext anEC ) {
 		super.awakeFromInsertion( anEC );
 		setDate( new NSTimestamp() );
@@ -94,6 +100,7 @@ public class SWNewsItem extends _SWNewsItem implements SWTimedContent, SWAsset<S
 	/**
 	 * @return The asset's size in bytes.
 	 */
+	@Override
 	public long size() {
 		if( text() == null ) {
 			return 0;
@@ -105,6 +112,7 @@ public class SWNewsItem extends _SWNewsItem implements SWTimedContent, SWAsset<S
 	/**
 	 * @return The asset's size in kilobytes.
 	 */
+	@Override
 	public double sizeKB() {
 		return size() / 1000d;
 	}

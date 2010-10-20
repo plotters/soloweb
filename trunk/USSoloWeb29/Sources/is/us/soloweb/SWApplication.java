@@ -30,6 +30,7 @@ public abstract class SWApplication extends ERXApplication {
 		return (SWApplication)application();
 	}
 
+	@Override
 	public WOResponse dispatchRequest( WORequest request ) {
 
 		String uri = request.uri();
