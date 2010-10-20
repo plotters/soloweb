@@ -1,5 +1,5 @@
-// $LastChangedRevision: 4733 $ DO NOT EDIT.  Make changes to SWComponent.java instead.
-package is.us.soloweb.data;
+// DO NOT EDIT.  Make changes to is.us.soloweb.data.SWComponent.java instead.
+package is.us.soloweb.data.auto;
 
 import com.webobjects.eoaccess.*;
 import com.webobjects.eocontrol.*;
@@ -55,8 +55,8 @@ public abstract class _SWComponent extends  ERXGenericRecord {
 
   private static Logger LOG = Logger.getLogger(_SWComponent.class);
 
-  public SWComponent localInstanceIn(EOEditingContext editingContext) {
-    SWComponent localInstance = (SWComponent)EOUtilities.localInstanceOfObject(editingContext, this);
+  public is.us.soloweb.data.SWComponent localInstanceIn(EOEditingContext editingContext) {
+    is.us.soloweb.data.SWComponent localInstance = (is.us.soloweb.data.SWComponent)EOUtilities.localInstanceOfObject(editingContext, this);
     if (localInstance == null) {
       throw new IllegalStateException("You attempted to localInstance " + this + ", which has not yet committed.");
     }
@@ -64,165 +64,165 @@ public abstract class _SWComponent extends  ERXGenericRecord {
   }
 
   public Integer componentID() {
-    return (Integer) storedValueForKey("componentID");
+    return (Integer) storedValueForKey(_SWComponent.COMPONENT_ID_KEY);
   }
 
   public void setComponentID(Integer value) {
     if (_SWComponent.LOG.isDebugEnabled()) {
     	_SWComponent.LOG.debug( "updating componentID from " + componentID() + " to " + value);
     }
-    takeStoredValueForKey(value, "componentID");
+    takeStoredValueForKey(value, _SWComponent.COMPONENT_ID_KEY);
   }
 
   public String customInfoString() {
-    return (String) storedValueForKey("customInfoString");
+    return (String) storedValueForKey(_SWComponent.CUSTOM_INFO_STRING_KEY);
   }
 
   public void setCustomInfoString(String value) {
     if (_SWComponent.LOG.isDebugEnabled()) {
     	_SWComponent.LOG.debug( "updating customInfoString from " + customInfoString() + " to " + value);
     }
-    takeStoredValueForKey(value, "customInfoString");
+    takeStoredValueForKey(value, _SWComponent.CUSTOM_INFO_STRING_KEY);
   }
 
   public Integer documentID() {
-    return (Integer) storedValueForKey("documentID");
+    return (Integer) storedValueForKey(_SWComponent.DOCUMENT_ID_KEY);
   }
 
   public void setDocumentID(Integer value) {
     if (_SWComponent.LOG.isDebugEnabled()) {
     	_SWComponent.LOG.debug( "updating documentID from " + documentID() + " to " + value);
     }
-    takeStoredValueForKey(value, "documentID");
+    takeStoredValueForKey(value, _SWComponent.DOCUMENT_ID_KEY);
   }
 
   public Integer encodeBreaks() {
-    return (Integer) storedValueForKey("encodeBreaks");
+    return (Integer) storedValueForKey(_SWComponent.ENCODE_BREAKS_KEY);
   }
 
   public void setEncodeBreaks(Integer value) {
     if (_SWComponent.LOG.isDebugEnabled()) {
     	_SWComponent.LOG.debug( "updating encodeBreaks from " + encodeBreaks() + " to " + value);
     }
-    takeStoredValueForKey(value, "encodeBreaks");
+    takeStoredValueForKey(value, _SWComponent.ENCODE_BREAKS_KEY);
   }
 
   public Integer pageID() {
-    return (Integer) storedValueForKey("pageID");
+    return (Integer) storedValueForKey(_SWComponent.PAGE_ID_KEY);
   }
 
   public void setPageID(Integer value) {
     if (_SWComponent.LOG.isDebugEnabled()) {
     	_SWComponent.LOG.debug( "updating pageID from " + pageID() + " to " + value);
     }
-    takeStoredValueForKey(value, "pageID");
+    takeStoredValueForKey(value, _SWComponent.PAGE_ID_KEY);
   }
 
   public Integer pictureID() {
-    return (Integer) storedValueForKey("pictureID");
+    return (Integer) storedValueForKey(_SWComponent.PICTURE_ID_KEY);
   }
 
   public void setPictureID(Integer value) {
     if (_SWComponent.LOG.isDebugEnabled()) {
     	_SWComponent.LOG.debug( "updating pictureID from " + pictureID() + " to " + value);
     }
-    takeStoredValueForKey(value, "pictureID");
+    takeStoredValueForKey(value, _SWComponent.PICTURE_ID_KEY);
   }
 
   public Integer published() {
-    return (Integer) storedValueForKey("published");
+    return (Integer) storedValueForKey(_SWComponent.PUBLISHED_KEY);
   }
 
   public void setPublished(Integer value) {
     if (_SWComponent.LOG.isDebugEnabled()) {
     	_SWComponent.LOG.debug( "updating published from " + published() + " to " + value);
     }
-    takeStoredValueForKey(value, "published");
+    takeStoredValueForKey(value, _SWComponent.PUBLISHED_KEY);
   }
 
   public Integer sortNumber() {
-    return (Integer) storedValueForKey("sortNumber");
+    return (Integer) storedValueForKey(_SWComponent.SORT_NUMBER_KEY);
   }
 
   public void setSortNumber(Integer value) {
     if (_SWComponent.LOG.isDebugEnabled()) {
     	_SWComponent.LOG.debug( "updating sortNumber from " + sortNumber() + " to " + value);
     }
-    takeStoredValueForKey(value, "sortNumber");
+    takeStoredValueForKey(value, _SWComponent.SORT_NUMBER_KEY);
   }
 
   public String templateName() {
-    return (String) storedValueForKey("templateName");
+    return (String) storedValueForKey(_SWComponent.TEMPLATE_NAME_KEY);
   }
 
   public void setTemplateName(String value) {
     if (_SWComponent.LOG.isDebugEnabled()) {
     	_SWComponent.LOG.debug( "updating templateName from " + templateName() + " to " + value);
     }
-    takeStoredValueForKey(value, "templateName");
+    takeStoredValueForKey(value, _SWComponent.TEMPLATE_NAME_KEY);
   }
 
   public String textOne() {
-    return (String) storedValueForKey("textOne");
+    return (String) storedValueForKey(_SWComponent.TEXT_ONE_KEY);
   }
 
   public void setTextOne(String value) {
     if (_SWComponent.LOG.isDebugEnabled()) {
     	_SWComponent.LOG.debug( "updating textOne from " + textOne() + " to " + value);
     }
-    takeStoredValueForKey(value, "textOne");
+    takeStoredValueForKey(value, _SWComponent.TEXT_ONE_KEY);
   }
 
   public String textTwo() {
-    return (String) storedValueForKey("textTwo");
+    return (String) storedValueForKey(_SWComponent.TEXT_TWO_KEY);
   }
 
   public void setTextTwo(String value) {
     if (_SWComponent.LOG.isDebugEnabled()) {
     	_SWComponent.LOG.debug( "updating textTwo from " + textTwo() + " to " + value);
     }
-    takeStoredValueForKey(value, "textTwo");
+    takeStoredValueForKey(value, _SWComponent.TEXT_TWO_KEY);
   }
 
   public NSTimestamp timeIn() {
-    return (NSTimestamp) storedValueForKey("timeIn");
+    return (NSTimestamp) storedValueForKey(_SWComponent.TIME_IN_KEY);
   }
 
   public void setTimeIn(NSTimestamp value) {
     if (_SWComponent.LOG.isDebugEnabled()) {
     	_SWComponent.LOG.debug( "updating timeIn from " + timeIn() + " to " + value);
     }
-    takeStoredValueForKey(value, "timeIn");
+    takeStoredValueForKey(value, _SWComponent.TIME_IN_KEY);
   }
 
   public NSTimestamp timeOut() {
-    return (NSTimestamp) storedValueForKey("timeOut");
+    return (NSTimestamp) storedValueForKey(_SWComponent.TIME_OUT_KEY);
   }
 
   public void setTimeOut(NSTimestamp value) {
     if (_SWComponent.LOG.isDebugEnabled()) {
     	_SWComponent.LOG.debug( "updating timeOut from " + timeOut() + " to " + value);
     }
-    takeStoredValueForKey(value, "timeOut");
+    takeStoredValueForKey(value, _SWComponent.TIME_OUT_KEY);
   }
 
   public Integer wikiMarkup() {
-    return (Integer) storedValueForKey("wikiMarkup");
+    return (Integer) storedValueForKey(_SWComponent.WIKI_MARKUP_KEY);
   }
 
   public void setWikiMarkup(Integer value) {
     if (_SWComponent.LOG.isDebugEnabled()) {
     	_SWComponent.LOG.debug( "updating wikiMarkup from " + wikiMarkup() + " to " + value);
     }
-    takeStoredValueForKey(value, "wikiMarkup");
+    takeStoredValueForKey(value, _SWComponent.WIKI_MARKUP_KEY);
   }
 
   public is.us.soloweb.data.SWDocument document() {
-    return (is.us.soloweb.data.SWDocument)storedValueForKey("document");
+    return (is.us.soloweb.data.SWDocument)storedValueForKey(_SWComponent.DOCUMENT_KEY);
   }
   
   public void setDocument(is.us.soloweb.data.SWDocument value) {
-    takeStoredValueForKey(value, "document");
+    takeStoredValueForKey(value, _SWComponent.DOCUMENT_KEY);
   }
 
   public void setDocumentRelationship(is.us.soloweb.data.SWDocument value) {
@@ -235,19 +235,19 @@ public abstract class _SWComponent extends  ERXGenericRecord {
     else if (value == null) {
     	is.us.soloweb.data.SWDocument oldValue = document();
     	if (oldValue != null) {
-    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, "document");
+    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, _SWComponent.DOCUMENT_KEY);
       }
     } else {
-    	addObjectToBothSidesOfRelationshipWithKey(value, "document");
+    	addObjectToBothSidesOfRelationshipWithKey(value, _SWComponent.DOCUMENT_KEY);
     }
   }
   
   public is.us.soloweb.data.SWPage page() {
-    return (is.us.soloweb.data.SWPage)storedValueForKey("page");
+    return (is.us.soloweb.data.SWPage)storedValueForKey(_SWComponent.PAGE_KEY);
   }
   
   public void setPage(is.us.soloweb.data.SWPage value) {
-    takeStoredValueForKey(value, "page");
+    takeStoredValueForKey(value, _SWComponent.PAGE_KEY);
   }
 
   public void setPageRelationship(is.us.soloweb.data.SWPage value) {
@@ -260,49 +260,49 @@ public abstract class _SWComponent extends  ERXGenericRecord {
     else if (value == null) {
     	is.us.soloweb.data.SWPage oldValue = page();
     	if (oldValue != null) {
-    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, "page");
+    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, _SWComponent.PAGE_KEY);
       }
     } else {
-    	addObjectToBothSidesOfRelationshipWithKey(value, "page");
+    	addObjectToBothSidesOfRelationshipWithKey(value, _SWComponent.PAGE_KEY);
     }
   }
   
 
-  public static SWComponent createSWComponent(EOEditingContext editingContext, Integer componentID
+  public static is.us.soloweb.data.SWComponent createSWComponent(EOEditingContext editingContext, Integer componentID
 ) {
-    SWComponent eo = (SWComponent) EOUtilities.createAndInsertInstance(editingContext, _SWComponent.ENTITY_NAME);    
+    is.us.soloweb.data.SWComponent eo = (is.us.soloweb.data.SWComponent) EOUtilities.createAndInsertInstance(editingContext, _SWComponent.ENTITY_NAME);    
 		eo.setComponentID(componentID);
     return eo;
   }
 
-  public static NSArray<SWComponent> fetchAllSWComponents(EOEditingContext editingContext) {
+  public static NSArray<is.us.soloweb.data.SWComponent> fetchAllSWComponents(EOEditingContext editingContext) {
     return _SWComponent.fetchAllSWComponents(editingContext, null);
   }
 
-  public static NSArray<SWComponent> fetchAllSWComponents(EOEditingContext editingContext, NSArray<EOSortOrdering> sortOrderings) {
+  public static NSArray<is.us.soloweb.data.SWComponent> fetchAllSWComponents(EOEditingContext editingContext, NSArray<EOSortOrdering> sortOrderings) {
     return _SWComponent.fetchSWComponents(editingContext, null, sortOrderings);
   }
 
-  public static NSArray<SWComponent> fetchSWComponents(EOEditingContext editingContext, EOQualifier qualifier, NSArray<EOSortOrdering> sortOrderings) {
-    EOFetchSpecification fetchSpec = new EOFetchSpecification(_SWComponent.ENTITY_NAME, qualifier, sortOrderings);
+  public static NSArray<is.us.soloweb.data.SWComponent> fetchSWComponents(EOEditingContext editingContext, EOQualifier qualifier, NSArray<EOSortOrdering> sortOrderings) {
+    ERXFetchSpecification<is.us.soloweb.data.SWComponent> fetchSpec = new ERXFetchSpecification<is.us.soloweb.data.SWComponent>(_SWComponent.ENTITY_NAME, qualifier, sortOrderings);
     fetchSpec.setIsDeep(true);
-    NSArray<SWComponent> eoObjects = (NSArray<SWComponent>)editingContext.objectsWithFetchSpecification(fetchSpec);
+    NSArray<is.us.soloweb.data.SWComponent> eoObjects = fetchSpec.fetchObjects(editingContext);
     return eoObjects;
   }
 
-  public static SWComponent fetchSWComponent(EOEditingContext editingContext, String keyName, Object value) {
+  public static is.us.soloweb.data.SWComponent fetchSWComponent(EOEditingContext editingContext, String keyName, Object value) {
     return _SWComponent.fetchSWComponent(editingContext, new EOKeyValueQualifier(keyName, EOQualifier.QualifierOperatorEqual, value));
   }
 
-  public static SWComponent fetchSWComponent(EOEditingContext editingContext, EOQualifier qualifier) {
-    NSArray<SWComponent> eoObjects = _SWComponent.fetchSWComponents(editingContext, qualifier, null);
-    SWComponent eoObject;
+  public static is.us.soloweb.data.SWComponent fetchSWComponent(EOEditingContext editingContext, EOQualifier qualifier) {
+    NSArray<is.us.soloweb.data.SWComponent> eoObjects = _SWComponent.fetchSWComponents(editingContext, qualifier, null);
+    is.us.soloweb.data.SWComponent eoObject;
     int count = eoObjects.count();
     if (count == 0) {
       eoObject = null;
     }
     else if (count == 1) {
-      eoObject = (SWComponent)eoObjects.objectAtIndex(0);
+      eoObject = eoObjects.objectAtIndex(0);
     }
     else {
       throw new IllegalStateException("There was more than one SWComponent that matched the qualifier '" + qualifier + "'.");
@@ -310,20 +310,20 @@ public abstract class _SWComponent extends  ERXGenericRecord {
     return eoObject;
   }
 
-  public static SWComponent fetchRequiredSWComponent(EOEditingContext editingContext, String keyName, Object value) {
+  public static is.us.soloweb.data.SWComponent fetchRequiredSWComponent(EOEditingContext editingContext, String keyName, Object value) {
     return _SWComponent.fetchRequiredSWComponent(editingContext, new EOKeyValueQualifier(keyName, EOQualifier.QualifierOperatorEqual, value));
   }
 
-  public static SWComponent fetchRequiredSWComponent(EOEditingContext editingContext, EOQualifier qualifier) {
-    SWComponent eoObject = _SWComponent.fetchSWComponent(editingContext, qualifier);
+  public static is.us.soloweb.data.SWComponent fetchRequiredSWComponent(EOEditingContext editingContext, EOQualifier qualifier) {
+    is.us.soloweb.data.SWComponent eoObject = _SWComponent.fetchSWComponent(editingContext, qualifier);
     if (eoObject == null) {
       throw new NoSuchElementException("There was no SWComponent that matched the qualifier '" + qualifier + "'.");
     }
     return eoObject;
   }
 
-  public static SWComponent localInstanceIn(EOEditingContext editingContext, SWComponent eo) {
-    SWComponent localInstance = (eo == null) ? null : (SWComponent)EOUtilities.localInstanceOfObject(editingContext, eo);
+  public static is.us.soloweb.data.SWComponent localInstanceIn(EOEditingContext editingContext, is.us.soloweb.data.SWComponent eo) {
+    is.us.soloweb.data.SWComponent localInstance = (eo == null) ? null : ERXEOControlUtilities.localInstanceOfObject(editingContext, eo);
     if (localInstance == null && eo != null) {
       throw new IllegalStateException("You attempted to localInstance " + eo + ", which has not yet committed.");
     }

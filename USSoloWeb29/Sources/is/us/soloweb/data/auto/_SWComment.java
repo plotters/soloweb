@@ -1,5 +1,5 @@
-// $LastChangedRevision: 4733 $ DO NOT EDIT.  Make changes to SWComment.java instead.
-package is.us.soloweb.data;
+// DO NOT EDIT.  Make changes to is.us.soloweb.data.SWComment.java instead.
+package is.us.soloweb.data.auto;
 
 import com.webobjects.eoaccess.*;
 import com.webobjects.eocontrol.*;
@@ -51,8 +51,8 @@ public abstract class _SWComment extends  ERXGenericRecord {
 
   private static Logger LOG = Logger.getLogger(_SWComment.class);
 
-  public SWComment localInstanceIn(EOEditingContext editingContext) {
-    SWComment localInstance = (SWComment)EOUtilities.localInstanceOfObject(editingContext, this);
+  public is.us.soloweb.data.SWComment localInstanceIn(EOEditingContext editingContext) {
+    is.us.soloweb.data.SWComment localInstance = (is.us.soloweb.data.SWComment)EOUtilities.localInstanceOfObject(editingContext, this);
     if (localInstance == null) {
       throw new IllegalStateException("You attempted to localInstance " + this + ", which has not yet committed.");
     }
@@ -60,143 +60,143 @@ public abstract class _SWComment extends  ERXGenericRecord {
   }
 
   public Integer commentID() {
-    return (Integer) storedValueForKey("commentID");
+    return (Integer) storedValueForKey(_SWComment.COMMENT_ID_KEY);
   }
 
   public void setCommentID(Integer value) {
     if (_SWComment.LOG.isDebugEnabled()) {
     	_SWComment.LOG.debug( "updating commentID from " + commentID() + " to " + value);
     }
-    takeStoredValueForKey(value, "commentID");
+    takeStoredValueForKey(value, _SWComment.COMMENT_ID_KEY);
   }
 
   public NSTimestamp date() {
-    return (NSTimestamp) storedValueForKey("date");
+    return (NSTimestamp) storedValueForKey(_SWComment.DATE_KEY);
   }
 
   public void setDate(NSTimestamp value) {
     if (_SWComment.LOG.isDebugEnabled()) {
     	_SWComment.LOG.debug( "updating date from " + date() + " to " + value);
     }
-    takeStoredValueForKey(value, "date");
+    takeStoredValueForKey(value, _SWComment.DATE_KEY);
   }
 
   public String emailAddress() {
-    return (String) storedValueForKey("emailAddress");
+    return (String) storedValueForKey(_SWComment.EMAIL_ADDRESS_KEY);
   }
 
   public void setEmailAddress(String value) {
     if (_SWComment.LOG.isDebugEnabled()) {
     	_SWComment.LOG.debug( "updating emailAddress from " + emailAddress() + " to " + value);
     }
-    takeStoredValueForKey(value, "emailAddress");
+    takeStoredValueForKey(value, _SWComment.EMAIL_ADDRESS_KEY);
   }
 
   public String ipAddress() {
-    return (String) storedValueForKey("ipAddress");
+    return (String) storedValueForKey(_SWComment.IP_ADDRESS_KEY);
   }
 
   public void setIpAddress(String value) {
     if (_SWComment.LOG.isDebugEnabled()) {
     	_SWComment.LOG.debug( "updating ipAddress from " + ipAddress() + " to " + value);
     }
-    takeStoredValueForKey(value, "ipAddress");
+    takeStoredValueForKey(value, _SWComment.IP_ADDRESS_KEY);
   }
 
   public String name() {
-    return (String) storedValueForKey("name");
+    return (String) storedValueForKey(_SWComment.NAME_KEY);
   }
 
   public void setName(String value) {
     if (_SWComment.LOG.isDebugEnabled()) {
     	_SWComment.LOG.debug( "updating name from " + name() + " to " + value);
     }
-    takeStoredValueForKey(value, "name");
+    takeStoredValueForKey(value, _SWComment.NAME_KEY);
   }
 
   public Integer newsItemID() {
-    return (Integer) storedValueForKey("newsItemID");
+    return (Integer) storedValueForKey(_SWComment.NEWS_ITEM_ID_KEY);
   }
 
   public void setNewsItemID(Integer value) {
     if (_SWComment.LOG.isDebugEnabled()) {
     	_SWComment.LOG.debug( "updating newsItemID from " + newsItemID() + " to " + value);
     }
-    takeStoredValueForKey(value, "newsItemID");
+    takeStoredValueForKey(value, _SWComment.NEWS_ITEM_ID_KEY);
   }
 
   public Integer notifyOnNewComments() {
-    return (Integer) storedValueForKey("notifyOnNewComments");
+    return (Integer) storedValueForKey(_SWComment.NOTIFY_ON_NEW_COMMENTS_KEY);
   }
 
   public void setNotifyOnNewComments(Integer value) {
     if (_SWComment.LOG.isDebugEnabled()) {
     	_SWComment.LOG.debug( "updating notifyOnNewComments from " + notifyOnNewComments() + " to " + value);
     }
-    takeStoredValueForKey(value, "notifyOnNewComments");
+    takeStoredValueForKey(value, _SWComment.NOTIFY_ON_NEW_COMMENTS_KEY);
   }
 
   public String text() {
-    return (String) storedValueForKey("text");
+    return (String) storedValueForKey(_SWComment.TEXT_KEY);
   }
 
   public void setText(String value) {
     if (_SWComment.LOG.isDebugEnabled()) {
     	_SWComment.LOG.debug( "updating text from " + text() + " to " + value);
     }
-    takeStoredValueForKey(value, "text");
+    takeStoredValueForKey(value, _SWComment.TEXT_KEY);
   }
 
   public String url() {
-    return (String) storedValueForKey("url");
+    return (String) storedValueForKey(_SWComment.URL_KEY);
   }
 
   public void setUrl(String value) {
     if (_SWComment.LOG.isDebugEnabled()) {
     	_SWComment.LOG.debug( "updating url from " + url() + " to " + value);
     }
-    takeStoredValueForKey(value, "url");
+    takeStoredValueForKey(value, _SWComment.URL_KEY);
   }
 
   public String userAgent() {
-    return (String) storedValueForKey("userAgent");
+    return (String) storedValueForKey(_SWComment.USER_AGENT_KEY);
   }
 
   public void setUserAgent(String value) {
     if (_SWComment.LOG.isDebugEnabled()) {
     	_SWComment.LOG.debug( "updating userAgent from " + userAgent() + " to " + value);
     }
-    takeStoredValueForKey(value, "userAgent");
+    takeStoredValueForKey(value, _SWComment.USER_AGENT_KEY);
   }
 
   public Integer userID() {
-    return (Integer) storedValueForKey("userID");
+    return (Integer) storedValueForKey(_SWComment.USER_ID_KEY);
   }
 
   public void setUserID(Integer value) {
     if (_SWComment.LOG.isDebugEnabled()) {
     	_SWComment.LOG.debug( "updating userID from " + userID() + " to " + value);
     }
-    takeStoredValueForKey(value, "userID");
+    takeStoredValueForKey(value, _SWComment.USER_ID_KEY);
   }
 
   public NSData userPicture() {
-    return (NSData) storedValueForKey("userPicture");
+    return (NSData) storedValueForKey(_SWComment.USER_PICTURE_KEY);
   }
 
   public void setUserPicture(NSData value) {
     if (_SWComment.LOG.isDebugEnabled()) {
     	_SWComment.LOG.debug( "updating userPicture from " + userPicture() + " to " + value);
     }
-    takeStoredValueForKey(value, "userPicture");
+    takeStoredValueForKey(value, _SWComment.USER_PICTURE_KEY);
   }
 
   public is.us.soloweb.data.SWNewsItem newsitem() {
-    return (is.us.soloweb.data.SWNewsItem)storedValueForKey("newsitem");
+    return (is.us.soloweb.data.SWNewsItem)storedValueForKey(_SWComment.NEWSITEM_KEY);
   }
   
   public void setNewsitem(is.us.soloweb.data.SWNewsItem value) {
-    takeStoredValueForKey(value, "newsitem");
+    takeStoredValueForKey(value, _SWComment.NEWSITEM_KEY);
   }
 
   public void setNewsitemRelationship(is.us.soloweb.data.SWNewsItem value) {
@@ -209,19 +209,19 @@ public abstract class _SWComment extends  ERXGenericRecord {
     else if (value == null) {
     	is.us.soloweb.data.SWNewsItem oldValue = newsitem();
     	if (oldValue != null) {
-    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, "newsitem");
+    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, _SWComment.NEWSITEM_KEY);
       }
     } else {
-    	addObjectToBothSidesOfRelationshipWithKey(value, "newsitem");
+    	addObjectToBothSidesOfRelationshipWithKey(value, _SWComment.NEWSITEM_KEY);
     }
   }
   
   public is.us.soloweb.data.SWExternalUser user() {
-    return (is.us.soloweb.data.SWExternalUser)storedValueForKey("user");
+    return (is.us.soloweb.data.SWExternalUser)storedValueForKey(_SWComment.USER_KEY);
   }
   
   public void setUser(is.us.soloweb.data.SWExternalUser value) {
-    takeStoredValueForKey(value, "user");
+    takeStoredValueForKey(value, _SWComment.USER_KEY);
   }
 
   public void setUserRelationship(is.us.soloweb.data.SWExternalUser value) {
@@ -234,49 +234,49 @@ public abstract class _SWComment extends  ERXGenericRecord {
     else if (value == null) {
     	is.us.soloweb.data.SWExternalUser oldValue = user();
     	if (oldValue != null) {
-    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, "user");
+    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, _SWComment.USER_KEY);
       }
     } else {
-    	addObjectToBothSidesOfRelationshipWithKey(value, "user");
+    	addObjectToBothSidesOfRelationshipWithKey(value, _SWComment.USER_KEY);
     }
   }
   
 
-  public static SWComment createSWComment(EOEditingContext editingContext, Integer commentID
+  public static is.us.soloweb.data.SWComment createSWComment(EOEditingContext editingContext, Integer commentID
 ) {
-    SWComment eo = (SWComment) EOUtilities.createAndInsertInstance(editingContext, _SWComment.ENTITY_NAME);    
+    is.us.soloweb.data.SWComment eo = (is.us.soloweb.data.SWComment) EOUtilities.createAndInsertInstance(editingContext, _SWComment.ENTITY_NAME);    
 		eo.setCommentID(commentID);
     return eo;
   }
 
-  public static NSArray<SWComment> fetchAllSWComments(EOEditingContext editingContext) {
+  public static NSArray<is.us.soloweb.data.SWComment> fetchAllSWComments(EOEditingContext editingContext) {
     return _SWComment.fetchAllSWComments(editingContext, null);
   }
 
-  public static NSArray<SWComment> fetchAllSWComments(EOEditingContext editingContext, NSArray<EOSortOrdering> sortOrderings) {
+  public static NSArray<is.us.soloweb.data.SWComment> fetchAllSWComments(EOEditingContext editingContext, NSArray<EOSortOrdering> sortOrderings) {
     return _SWComment.fetchSWComments(editingContext, null, sortOrderings);
   }
 
-  public static NSArray<SWComment> fetchSWComments(EOEditingContext editingContext, EOQualifier qualifier, NSArray<EOSortOrdering> sortOrderings) {
-    EOFetchSpecification fetchSpec = new EOFetchSpecification(_SWComment.ENTITY_NAME, qualifier, sortOrderings);
+  public static NSArray<is.us.soloweb.data.SWComment> fetchSWComments(EOEditingContext editingContext, EOQualifier qualifier, NSArray<EOSortOrdering> sortOrderings) {
+    ERXFetchSpecification<is.us.soloweb.data.SWComment> fetchSpec = new ERXFetchSpecification<is.us.soloweb.data.SWComment>(_SWComment.ENTITY_NAME, qualifier, sortOrderings);
     fetchSpec.setIsDeep(true);
-    NSArray<SWComment> eoObjects = (NSArray<SWComment>)editingContext.objectsWithFetchSpecification(fetchSpec);
+    NSArray<is.us.soloweb.data.SWComment> eoObjects = fetchSpec.fetchObjects(editingContext);
     return eoObjects;
   }
 
-  public static SWComment fetchSWComment(EOEditingContext editingContext, String keyName, Object value) {
+  public static is.us.soloweb.data.SWComment fetchSWComment(EOEditingContext editingContext, String keyName, Object value) {
     return _SWComment.fetchSWComment(editingContext, new EOKeyValueQualifier(keyName, EOQualifier.QualifierOperatorEqual, value));
   }
 
-  public static SWComment fetchSWComment(EOEditingContext editingContext, EOQualifier qualifier) {
-    NSArray<SWComment> eoObjects = _SWComment.fetchSWComments(editingContext, qualifier, null);
-    SWComment eoObject;
+  public static is.us.soloweb.data.SWComment fetchSWComment(EOEditingContext editingContext, EOQualifier qualifier) {
+    NSArray<is.us.soloweb.data.SWComment> eoObjects = _SWComment.fetchSWComments(editingContext, qualifier, null);
+    is.us.soloweb.data.SWComment eoObject;
     int count = eoObjects.count();
     if (count == 0) {
       eoObject = null;
     }
     else if (count == 1) {
-      eoObject = (SWComment)eoObjects.objectAtIndex(0);
+      eoObject = eoObjects.objectAtIndex(0);
     }
     else {
       throw new IllegalStateException("There was more than one SWComment that matched the qualifier '" + qualifier + "'.");
@@ -284,20 +284,20 @@ public abstract class _SWComment extends  ERXGenericRecord {
     return eoObject;
   }
 
-  public static SWComment fetchRequiredSWComment(EOEditingContext editingContext, String keyName, Object value) {
+  public static is.us.soloweb.data.SWComment fetchRequiredSWComment(EOEditingContext editingContext, String keyName, Object value) {
     return _SWComment.fetchRequiredSWComment(editingContext, new EOKeyValueQualifier(keyName, EOQualifier.QualifierOperatorEqual, value));
   }
 
-  public static SWComment fetchRequiredSWComment(EOEditingContext editingContext, EOQualifier qualifier) {
-    SWComment eoObject = _SWComment.fetchSWComment(editingContext, qualifier);
+  public static is.us.soloweb.data.SWComment fetchRequiredSWComment(EOEditingContext editingContext, EOQualifier qualifier) {
+    is.us.soloweb.data.SWComment eoObject = _SWComment.fetchSWComment(editingContext, qualifier);
     if (eoObject == null) {
       throw new NoSuchElementException("There was no SWComment that matched the qualifier '" + qualifier + "'.");
     }
     return eoObject;
   }
 
-  public static SWComment localInstanceIn(EOEditingContext editingContext, SWComment eo) {
-    SWComment localInstance = (eo == null) ? null : (SWComment)EOUtilities.localInstanceOfObject(editingContext, eo);
+  public static is.us.soloweb.data.SWComment localInstanceIn(EOEditingContext editingContext, is.us.soloweb.data.SWComment eo) {
+    is.us.soloweb.data.SWComment localInstance = (eo == null) ? null : ERXEOControlUtilities.localInstanceOfObject(editingContext, eo);
     if (localInstance == null && eo != null) {
       throw new IllegalStateException("You attempted to localInstance " + eo + ", which has not yet committed.");
     }

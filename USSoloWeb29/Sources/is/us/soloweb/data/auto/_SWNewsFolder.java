@@ -1,5 +1,5 @@
-// $LastChangedRevision: 4733 $ DO NOT EDIT.  Make changes to SWNewsFolder.java instead.
-package is.us.soloweb.data;
+// DO NOT EDIT.  Make changes to is.us.soloweb.data.SWNewsFolder.java instead.
+package is.us.soloweb.data.auto;
 
 import com.webobjects.eoaccess.*;
 import com.webobjects.eocontrol.*;
@@ -37,8 +37,8 @@ public abstract class _SWNewsFolder extends  ERXGenericRecord {
 
   private static Logger LOG = Logger.getLogger(_SWNewsFolder.class);
 
-  public SWNewsFolder localInstanceIn(EOEditingContext editingContext) {
-    SWNewsFolder localInstance = (SWNewsFolder)EOUtilities.localInstanceOfObject(editingContext, this);
+  public is.us.soloweb.data.SWNewsFolder localInstanceIn(EOEditingContext editingContext) {
+    is.us.soloweb.data.SWNewsFolder localInstance = (is.us.soloweb.data.SWNewsFolder)EOUtilities.localInstanceOfObject(editingContext, this);
     if (localInstance == null) {
       throw new IllegalStateException("You attempted to localInstance " + this + ", which has not yet committed.");
     }
@@ -46,55 +46,55 @@ public abstract class _SWNewsFolder extends  ERXGenericRecord {
   }
 
   public Integer folderID() {
-    return (Integer) storedValueForKey("folderID");
+    return (Integer) storedValueForKey(_SWNewsFolder.FOLDER_ID_KEY);
   }
 
   public void setFolderID(Integer value) {
     if (_SWNewsFolder.LOG.isDebugEnabled()) {
     	_SWNewsFolder.LOG.debug( "updating folderID from " + folderID() + " to " + value);
     }
-    takeStoredValueForKey(value, "folderID");
+    takeStoredValueForKey(value, _SWNewsFolder.FOLDER_ID_KEY);
   }
 
   public Integer inheritsPrivileges() {
-    return (Integer) storedValueForKey("inheritsPrivileges");
+    return (Integer) storedValueForKey(_SWNewsFolder.INHERITS_PRIVILEGES_KEY);
   }
 
   public void setInheritsPrivileges(Integer value) {
     if (_SWNewsFolder.LOG.isDebugEnabled()) {
     	_SWNewsFolder.LOG.debug( "updating inheritsPrivileges from " + inheritsPrivileges() + " to " + value);
     }
-    takeStoredValueForKey(value, "inheritsPrivileges");
+    takeStoredValueForKey(value, _SWNewsFolder.INHERITS_PRIVILEGES_KEY);
   }
 
   public String name() {
-    return (String) storedValueForKey("name");
+    return (String) storedValueForKey(_SWNewsFolder.NAME_KEY);
   }
 
   public void setName(String value) {
     if (_SWNewsFolder.LOG.isDebugEnabled()) {
     	_SWNewsFolder.LOG.debug( "updating name from " + name() + " to " + value);
     }
-    takeStoredValueForKey(value, "name");
+    takeStoredValueForKey(value, _SWNewsFolder.NAME_KEY);
   }
 
   public Integer parentFolderID() {
-    return (Integer) storedValueForKey("parentFolderID");
+    return (Integer) storedValueForKey(_SWNewsFolder.PARENT_FOLDER_ID_KEY);
   }
 
   public void setParentFolderID(Integer value) {
     if (_SWNewsFolder.LOG.isDebugEnabled()) {
     	_SWNewsFolder.LOG.debug( "updating parentFolderID from " + parentFolderID() + " to " + value);
     }
-    takeStoredValueForKey(value, "parentFolderID");
+    takeStoredValueForKey(value, _SWNewsFolder.PARENT_FOLDER_ID_KEY);
   }
 
   public is.us.soloweb.data.SWNewsFolder parent() {
-    return (is.us.soloweb.data.SWNewsFolder)storedValueForKey("parent");
+    return (is.us.soloweb.data.SWNewsFolder)storedValueForKey(_SWNewsFolder.PARENT_KEY);
   }
   
   public void setParent(is.us.soloweb.data.SWNewsFolder value) {
-    takeStoredValueForKey(value, "parent");
+    takeStoredValueForKey(value, _SWNewsFolder.PARENT_KEY);
   }
 
   public void setParentRelationship(is.us.soloweb.data.SWNewsFolder value) {
@@ -107,15 +107,15 @@ public abstract class _SWNewsFolder extends  ERXGenericRecord {
     else if (value == null) {
     	is.us.soloweb.data.SWNewsFolder oldValue = parent();
     	if (oldValue != null) {
-    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, "parent");
+    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, _SWNewsFolder.PARENT_KEY);
       }
     } else {
-    	addObjectToBothSidesOfRelationshipWithKey(value, "parent");
+    	addObjectToBothSidesOfRelationshipWithKey(value, _SWNewsFolder.PARENT_KEY);
     }
   }
   
   public NSArray<is.us.soloweb.data.SWNewsFolder> children() {
-    return (NSArray<is.us.soloweb.data.SWNewsFolder>)storedValueForKey("children");
+    return (NSArray<is.us.soloweb.data.SWNewsFolder>)storedValueForKey(_SWNewsFolder.CHILDREN_KEY);
   }
 
   public NSArray<is.us.soloweb.data.SWNewsFolder> children(EOQualifier qualifier) {
@@ -136,7 +136,7 @@ public abstract class _SWNewsFolder extends  ERXGenericRecord {
         fullQualifier = inverseQualifier;
       }
       else {
-        NSMutableArray qualifiers = new NSMutableArray();
+        NSMutableArray<EOQualifier> qualifiers = new NSMutableArray<EOQualifier>();
         qualifiers.addObject(qualifier);
         qualifiers.addObject(inverseQualifier);
         fullQualifier = new EOAndQualifier(qualifiers);
@@ -157,11 +157,11 @@ public abstract class _SWNewsFolder extends  ERXGenericRecord {
   }
   
   public void addToChildren(is.us.soloweb.data.SWNewsFolder object) {
-    includeObjectIntoPropertyWithKey(object, "children");
+    includeObjectIntoPropertyWithKey(object, _SWNewsFolder.CHILDREN_KEY);
   }
 
   public void removeFromChildren(is.us.soloweb.data.SWNewsFolder object) {
-    excludeObjectFromPropertyWithKey(object, "children");
+    excludeObjectFromPropertyWithKey(object, _SWNewsFolder.CHILDREN_KEY);
   }
 
   public void addToChildrenRelationship(is.us.soloweb.data.SWNewsFolder object) {
@@ -172,7 +172,7 @@ public abstract class _SWNewsFolder extends  ERXGenericRecord {
     	addToChildren(object);
     }
     else {
-    	addObjectToBothSidesOfRelationshipWithKey(object, "children");
+    	addObjectToBothSidesOfRelationshipWithKey(object, _SWNewsFolder.CHILDREN_KEY);
     }
   }
 
@@ -184,32 +184,32 @@ public abstract class _SWNewsFolder extends  ERXGenericRecord {
     	removeFromChildren(object);
     }
     else {
-    	removeObjectFromBothSidesOfRelationshipWithKey(object, "children");
+    	removeObjectFromBothSidesOfRelationshipWithKey(object, _SWNewsFolder.CHILDREN_KEY);
     }
   }
 
   public is.us.soloweb.data.SWNewsFolder createChildrenRelationship() {
-    EOClassDescription eoClassDesc = EOClassDescription.classDescriptionForEntityName("SWNewsFolder");
+    EOClassDescription eoClassDesc = EOClassDescription.classDescriptionForEntityName( is.us.soloweb.data.SWNewsFolder.ENTITY_NAME );
     EOEnterpriseObject eo = eoClassDesc.createInstanceWithEditingContext(editingContext(), null);
     editingContext().insertObject(eo);
-    addObjectToBothSidesOfRelationshipWithKey(eo, "children");
+    addObjectToBothSidesOfRelationshipWithKey(eo, _SWNewsFolder.CHILDREN_KEY);
     return (is.us.soloweb.data.SWNewsFolder) eo;
   }
 
   public void deleteChildrenRelationship(is.us.soloweb.data.SWNewsFolder object) {
-    removeObjectFromBothSidesOfRelationshipWithKey(object, "children");
+    removeObjectFromBothSidesOfRelationshipWithKey(object, _SWNewsFolder.CHILDREN_KEY);
     editingContext().deleteObject(object);
   }
 
   public void deleteAllChildrenRelationships() {
-    Enumeration objects = children().immutableClone().objectEnumerator();
+    Enumeration<is.us.soloweb.data.SWNewsFolder> objects = children().immutableClone().objectEnumerator();
     while (objects.hasMoreElements()) {
-      deleteChildrenRelationship((is.us.soloweb.data.SWNewsFolder)objects.nextElement());
+      deleteChildrenRelationship(objects.nextElement());
     }
   }
 
   public NSArray<is.us.soloweb.data.SWNewsItem> documents() {
-    return (NSArray<is.us.soloweb.data.SWNewsItem>)storedValueForKey("documents");
+    return (NSArray<is.us.soloweb.data.SWNewsItem>)storedValueForKey(_SWNewsFolder.DOCUMENTS_KEY);
   }
 
   public NSArray<is.us.soloweb.data.SWNewsItem> documents(EOQualifier qualifier) {
@@ -230,7 +230,7 @@ public abstract class _SWNewsFolder extends  ERXGenericRecord {
         fullQualifier = inverseQualifier;
       }
       else {
-        NSMutableArray qualifiers = new NSMutableArray();
+        NSMutableArray<EOQualifier> qualifiers = new NSMutableArray<EOQualifier>();
         qualifiers.addObject(qualifier);
         qualifiers.addObject(inverseQualifier);
         fullQualifier = new EOAndQualifier(qualifiers);
@@ -251,11 +251,11 @@ public abstract class _SWNewsFolder extends  ERXGenericRecord {
   }
   
   public void addToDocuments(is.us.soloweb.data.SWNewsItem object) {
-    includeObjectIntoPropertyWithKey(object, "documents");
+    includeObjectIntoPropertyWithKey(object, _SWNewsFolder.DOCUMENTS_KEY);
   }
 
   public void removeFromDocuments(is.us.soloweb.data.SWNewsItem object) {
-    excludeObjectFromPropertyWithKey(object, "documents");
+    excludeObjectFromPropertyWithKey(object, _SWNewsFolder.DOCUMENTS_KEY);
   }
 
   public void addToDocumentsRelationship(is.us.soloweb.data.SWNewsItem object) {
@@ -266,7 +266,7 @@ public abstract class _SWNewsFolder extends  ERXGenericRecord {
     	addToDocuments(object);
     }
     else {
-    	addObjectToBothSidesOfRelationshipWithKey(object, "documents");
+    	addObjectToBothSidesOfRelationshipWithKey(object, _SWNewsFolder.DOCUMENTS_KEY);
     }
   }
 
@@ -278,66 +278,66 @@ public abstract class _SWNewsFolder extends  ERXGenericRecord {
     	removeFromDocuments(object);
     }
     else {
-    	removeObjectFromBothSidesOfRelationshipWithKey(object, "documents");
+    	removeObjectFromBothSidesOfRelationshipWithKey(object, _SWNewsFolder.DOCUMENTS_KEY);
     }
   }
 
   public is.us.soloweb.data.SWNewsItem createDocumentsRelationship() {
-    EOClassDescription eoClassDesc = EOClassDescription.classDescriptionForEntityName("SWNewsItem");
+    EOClassDescription eoClassDesc = EOClassDescription.classDescriptionForEntityName( is.us.soloweb.data.SWNewsItem.ENTITY_NAME );
     EOEnterpriseObject eo = eoClassDesc.createInstanceWithEditingContext(editingContext(), null);
     editingContext().insertObject(eo);
-    addObjectToBothSidesOfRelationshipWithKey(eo, "documents");
+    addObjectToBothSidesOfRelationshipWithKey(eo, _SWNewsFolder.DOCUMENTS_KEY);
     return (is.us.soloweb.data.SWNewsItem) eo;
   }
 
   public void deleteDocumentsRelationship(is.us.soloweb.data.SWNewsItem object) {
-    removeObjectFromBothSidesOfRelationshipWithKey(object, "documents");
+    removeObjectFromBothSidesOfRelationshipWithKey(object, _SWNewsFolder.DOCUMENTS_KEY);
     editingContext().deleteObject(object);
   }
 
   public void deleteAllDocumentsRelationships() {
-    Enumeration objects = documents().immutableClone().objectEnumerator();
+    Enumeration<is.us.soloweb.data.SWNewsItem> objects = documents().immutableClone().objectEnumerator();
     while (objects.hasMoreElements()) {
-      deleteDocumentsRelationship((is.us.soloweb.data.SWNewsItem)objects.nextElement());
+      deleteDocumentsRelationship(objects.nextElement());
     }
   }
 
 
-  public static SWNewsFolder createSWNewsFolder(EOEditingContext editingContext, Integer folderID
+  public static is.us.soloweb.data.SWNewsFolder createSWNewsFolder(EOEditingContext editingContext, Integer folderID
 ) {
-    SWNewsFolder eo = (SWNewsFolder) EOUtilities.createAndInsertInstance(editingContext, _SWNewsFolder.ENTITY_NAME);    
+    is.us.soloweb.data.SWNewsFolder eo = (is.us.soloweb.data.SWNewsFolder) EOUtilities.createAndInsertInstance(editingContext, _SWNewsFolder.ENTITY_NAME);    
 		eo.setFolderID(folderID);
     return eo;
   }
 
-  public static NSArray<SWNewsFolder> fetchAllSWNewsFolders(EOEditingContext editingContext) {
+  public static NSArray<is.us.soloweb.data.SWNewsFolder> fetchAllSWNewsFolders(EOEditingContext editingContext) {
     return _SWNewsFolder.fetchAllSWNewsFolders(editingContext, null);
   }
 
-  public static NSArray<SWNewsFolder> fetchAllSWNewsFolders(EOEditingContext editingContext, NSArray<EOSortOrdering> sortOrderings) {
+  public static NSArray<is.us.soloweb.data.SWNewsFolder> fetchAllSWNewsFolders(EOEditingContext editingContext, NSArray<EOSortOrdering> sortOrderings) {
     return _SWNewsFolder.fetchSWNewsFolders(editingContext, null, sortOrderings);
   }
 
-  public static NSArray<SWNewsFolder> fetchSWNewsFolders(EOEditingContext editingContext, EOQualifier qualifier, NSArray<EOSortOrdering> sortOrderings) {
-    EOFetchSpecification fetchSpec = new EOFetchSpecification(_SWNewsFolder.ENTITY_NAME, qualifier, sortOrderings);
+  public static NSArray<is.us.soloweb.data.SWNewsFolder> fetchSWNewsFolders(EOEditingContext editingContext, EOQualifier qualifier, NSArray<EOSortOrdering> sortOrderings) {
+    ERXFetchSpecification<is.us.soloweb.data.SWNewsFolder> fetchSpec = new ERXFetchSpecification<is.us.soloweb.data.SWNewsFolder>(_SWNewsFolder.ENTITY_NAME, qualifier, sortOrderings);
     fetchSpec.setIsDeep(true);
-    NSArray<SWNewsFolder> eoObjects = (NSArray<SWNewsFolder>)editingContext.objectsWithFetchSpecification(fetchSpec);
+    NSArray<is.us.soloweb.data.SWNewsFolder> eoObjects = fetchSpec.fetchObjects(editingContext);
     return eoObjects;
   }
 
-  public static SWNewsFolder fetchSWNewsFolder(EOEditingContext editingContext, String keyName, Object value) {
+  public static is.us.soloweb.data.SWNewsFolder fetchSWNewsFolder(EOEditingContext editingContext, String keyName, Object value) {
     return _SWNewsFolder.fetchSWNewsFolder(editingContext, new EOKeyValueQualifier(keyName, EOQualifier.QualifierOperatorEqual, value));
   }
 
-  public static SWNewsFolder fetchSWNewsFolder(EOEditingContext editingContext, EOQualifier qualifier) {
-    NSArray<SWNewsFolder> eoObjects = _SWNewsFolder.fetchSWNewsFolders(editingContext, qualifier, null);
-    SWNewsFolder eoObject;
+  public static is.us.soloweb.data.SWNewsFolder fetchSWNewsFolder(EOEditingContext editingContext, EOQualifier qualifier) {
+    NSArray<is.us.soloweb.data.SWNewsFolder> eoObjects = _SWNewsFolder.fetchSWNewsFolders(editingContext, qualifier, null);
+    is.us.soloweb.data.SWNewsFolder eoObject;
     int count = eoObjects.count();
     if (count == 0) {
       eoObject = null;
     }
     else if (count == 1) {
-      eoObject = (SWNewsFolder)eoObjects.objectAtIndex(0);
+      eoObject = eoObjects.objectAtIndex(0);
     }
     else {
       throw new IllegalStateException("There was more than one SWNewsFolder that matched the qualifier '" + qualifier + "'.");
@@ -345,20 +345,20 @@ public abstract class _SWNewsFolder extends  ERXGenericRecord {
     return eoObject;
   }
 
-  public static SWNewsFolder fetchRequiredSWNewsFolder(EOEditingContext editingContext, String keyName, Object value) {
+  public static is.us.soloweb.data.SWNewsFolder fetchRequiredSWNewsFolder(EOEditingContext editingContext, String keyName, Object value) {
     return _SWNewsFolder.fetchRequiredSWNewsFolder(editingContext, new EOKeyValueQualifier(keyName, EOQualifier.QualifierOperatorEqual, value));
   }
 
-  public static SWNewsFolder fetchRequiredSWNewsFolder(EOEditingContext editingContext, EOQualifier qualifier) {
-    SWNewsFolder eoObject = _SWNewsFolder.fetchSWNewsFolder(editingContext, qualifier);
+  public static is.us.soloweb.data.SWNewsFolder fetchRequiredSWNewsFolder(EOEditingContext editingContext, EOQualifier qualifier) {
+    is.us.soloweb.data.SWNewsFolder eoObject = _SWNewsFolder.fetchSWNewsFolder(editingContext, qualifier);
     if (eoObject == null) {
       throw new NoSuchElementException("There was no SWNewsFolder that matched the qualifier '" + qualifier + "'.");
     }
     return eoObject;
   }
 
-  public static SWNewsFolder localInstanceIn(EOEditingContext editingContext, SWNewsFolder eo) {
-    SWNewsFolder localInstance = (eo == null) ? null : (SWNewsFolder)EOUtilities.localInstanceOfObject(editingContext, eo);
+  public static is.us.soloweb.data.SWNewsFolder localInstanceIn(EOEditingContext editingContext, is.us.soloweb.data.SWNewsFolder eo) {
+    is.us.soloweb.data.SWNewsFolder localInstance = (eo == null) ? null : ERXEOControlUtilities.localInstanceOfObject(editingContext, eo);
     if (localInstance == null && eo != null) {
       throw new IllegalStateException("You attempted to localInstance " + eo + ", which has not yet committed.");
     }

@@ -1,6 +1,7 @@
 package is.us.soloweb.data;
 
 import is.us.soloweb.client.ButurTemplate002;
+import is.us.soloweb.data.auto._SWPage;
 import is.us.soloweb.interfaces.*;
 import is.us.soloweb.util.*;
 import is.us.util.*;

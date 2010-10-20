@@ -1,12 +1,11 @@
 package is.us.soloweb.data;
 
-import is.us.soloweb.interfaces.SWFolder;
-import is.us.soloweb.interfaces.SWInheritsPrivileges;
+import is.us.soloweb.data.auto._SWDocumentFolder;
+import is.us.soloweb.interfaces.*;
 import is.us.soloweb.util.SWFolderUtilities;
 import is.us.util.USArrayUtilities;
 
-import com.webobjects.eocontrol.EOEditingContext;
-import com.webobjects.eocontrol.EOEnterpriseObject;
+import com.webobjects.eocontrol.*;
 import com.webobjects.foundation.NSArray;
 
 /**

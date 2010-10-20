@@ -1,5 +1,5 @@
-// $LastChangedRevision: 4733 $ DO NOT EDIT.  Make changes to SWDocumentFolder.java instead.
-package is.us.soloweb.data;
+// DO NOT EDIT.  Make changes to is.us.soloweb.data.SWDocumentFolder.java instead.
+package is.us.soloweb.data.auto;
 
 import com.webobjects.eoaccess.*;
 import com.webobjects.eocontrol.*;
@@ -37,8 +37,8 @@ public abstract class _SWDocumentFolder extends  ERXGenericRecord {
 
   private static Logger LOG = Logger.getLogger(_SWDocumentFolder.class);
 
-  public SWDocumentFolder localInstanceIn(EOEditingContext editingContext) {
-    SWDocumentFolder localInstance = (SWDocumentFolder)EOUtilities.localInstanceOfObject(editingContext, this);
+  public is.us.soloweb.data.SWDocumentFolder localInstanceIn(EOEditingContext editingContext) {
+    is.us.soloweb.data.SWDocumentFolder localInstance = (is.us.soloweb.data.SWDocumentFolder)EOUtilities.localInstanceOfObject(editingContext, this);
     if (localInstance == null) {
       throw new IllegalStateException("You attempted to localInstance " + this + ", which has not yet committed.");
     }
@@ -46,55 +46,55 @@ public abstract class _SWDocumentFolder extends  ERXGenericRecord {
   }
 
   public Integer folderID() {
-    return (Integer) storedValueForKey("folderID");
+    return (Integer) storedValueForKey(_SWDocumentFolder.FOLDER_ID_KEY);
   }
 
   public void setFolderID(Integer value) {
     if (_SWDocumentFolder.LOG.isDebugEnabled()) {
     	_SWDocumentFolder.LOG.debug( "updating folderID from " + folderID() + " to " + value);
     }
-    takeStoredValueForKey(value, "folderID");
+    takeStoredValueForKey(value, _SWDocumentFolder.FOLDER_ID_KEY);
   }
 
   public Integer inheritsPrivileges() {
-    return (Integer) storedValueForKey("inheritsPrivileges");
+    return (Integer) storedValueForKey(_SWDocumentFolder.INHERITS_PRIVILEGES_KEY);
   }
 
   public void setInheritsPrivileges(Integer value) {
     if (_SWDocumentFolder.LOG.isDebugEnabled()) {
     	_SWDocumentFolder.LOG.debug( "updating inheritsPrivileges from " + inheritsPrivileges() + " to " + value);
     }
-    takeStoredValueForKey(value, "inheritsPrivileges");
+    takeStoredValueForKey(value, _SWDocumentFolder.INHERITS_PRIVILEGES_KEY);
   }
 
   public String name() {
-    return (String) storedValueForKey("name");
+    return (String) storedValueForKey(_SWDocumentFolder.NAME_KEY);
   }
 
   public void setName(String value) {
     if (_SWDocumentFolder.LOG.isDebugEnabled()) {
     	_SWDocumentFolder.LOG.debug( "updating name from " + name() + " to " + value);
     }
-    takeStoredValueForKey(value, "name");
+    takeStoredValueForKey(value, _SWDocumentFolder.NAME_KEY);
   }
 
   public Integer parentFolderID() {
-    return (Integer) storedValueForKey("parentFolderID");
+    return (Integer) storedValueForKey(_SWDocumentFolder.PARENT_FOLDER_ID_KEY);
   }
 
   public void setParentFolderID(Integer value) {
     if (_SWDocumentFolder.LOG.isDebugEnabled()) {
     	_SWDocumentFolder.LOG.debug( "updating parentFolderID from " + parentFolderID() + " to " + value);
     }
-    takeStoredValueForKey(value, "parentFolderID");
+    takeStoredValueForKey(value, _SWDocumentFolder.PARENT_FOLDER_ID_KEY);
   }
 
   public is.us.soloweb.data.SWDocumentFolder parent() {
-    return (is.us.soloweb.data.SWDocumentFolder)storedValueForKey("parent");
+    return (is.us.soloweb.data.SWDocumentFolder)storedValueForKey(_SWDocumentFolder.PARENT_KEY);
   }
   
   public void setParent(is.us.soloweb.data.SWDocumentFolder value) {
-    takeStoredValueForKey(value, "parent");
+    takeStoredValueForKey(value, _SWDocumentFolder.PARENT_KEY);
   }
 
   public void setParentRelationship(is.us.soloweb.data.SWDocumentFolder value) {
@@ -107,15 +107,15 @@ public abstract class _SWDocumentFolder extends  ERXGenericRecord {
     else if (value == null) {
     	is.us.soloweb.data.SWDocumentFolder oldValue = parent();
     	if (oldValue != null) {
-    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, "parent");
+    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, _SWDocumentFolder.PARENT_KEY);
       }
     } else {
-    	addObjectToBothSidesOfRelationshipWithKey(value, "parent");
+    	addObjectToBothSidesOfRelationshipWithKey(value, _SWDocumentFolder.PARENT_KEY);
     }
   }
   
   public NSArray<is.us.soloweb.data.SWDocumentFolder> children() {
-    return (NSArray<is.us.soloweb.data.SWDocumentFolder>)storedValueForKey("children");
+    return (NSArray<is.us.soloweb.data.SWDocumentFolder>)storedValueForKey(_SWDocumentFolder.CHILDREN_KEY);
   }
 
   public NSArray<is.us.soloweb.data.SWDocumentFolder> children(EOQualifier qualifier) {
@@ -136,7 +136,7 @@ public abstract class _SWDocumentFolder extends  ERXGenericRecord {
         fullQualifier = inverseQualifier;
       }
       else {
-        NSMutableArray qualifiers = new NSMutableArray();
+        NSMutableArray<EOQualifier> qualifiers = new NSMutableArray<EOQualifier>();
         qualifiers.addObject(qualifier);
         qualifiers.addObject(inverseQualifier);
         fullQualifier = new EOAndQualifier(qualifiers);
@@ -157,11 +157,11 @@ public abstract class _SWDocumentFolder extends  ERXGenericRecord {
   }
   
   public void addToChildren(is.us.soloweb.data.SWDocumentFolder object) {
-    includeObjectIntoPropertyWithKey(object, "children");
+    includeObjectIntoPropertyWithKey(object, _SWDocumentFolder.CHILDREN_KEY);
   }
 
   public void removeFromChildren(is.us.soloweb.data.SWDocumentFolder object) {
-    excludeObjectFromPropertyWithKey(object, "children");
+    excludeObjectFromPropertyWithKey(object, _SWDocumentFolder.CHILDREN_KEY);
   }
 
   public void addToChildrenRelationship(is.us.soloweb.data.SWDocumentFolder object) {
@@ -172,7 +172,7 @@ public abstract class _SWDocumentFolder extends  ERXGenericRecord {
     	addToChildren(object);
     }
     else {
-    	addObjectToBothSidesOfRelationshipWithKey(object, "children");
+    	addObjectToBothSidesOfRelationshipWithKey(object, _SWDocumentFolder.CHILDREN_KEY);
     }
   }
 
@@ -184,32 +184,32 @@ public abstract class _SWDocumentFolder extends  ERXGenericRecord {
     	removeFromChildren(object);
     }
     else {
-    	removeObjectFromBothSidesOfRelationshipWithKey(object, "children");
+    	removeObjectFromBothSidesOfRelationshipWithKey(object, _SWDocumentFolder.CHILDREN_KEY);
     }
   }
 
   public is.us.soloweb.data.SWDocumentFolder createChildrenRelationship() {
-    EOClassDescription eoClassDesc = EOClassDescription.classDescriptionForEntityName("SWDocumentFolder");
+    EOClassDescription eoClassDesc = EOClassDescription.classDescriptionForEntityName( is.us.soloweb.data.SWDocumentFolder.ENTITY_NAME );
     EOEnterpriseObject eo = eoClassDesc.createInstanceWithEditingContext(editingContext(), null);
     editingContext().insertObject(eo);
-    addObjectToBothSidesOfRelationshipWithKey(eo, "children");
+    addObjectToBothSidesOfRelationshipWithKey(eo, _SWDocumentFolder.CHILDREN_KEY);
     return (is.us.soloweb.data.SWDocumentFolder) eo;
   }
 
   public void deleteChildrenRelationship(is.us.soloweb.data.SWDocumentFolder object) {
-    removeObjectFromBothSidesOfRelationshipWithKey(object, "children");
+    removeObjectFromBothSidesOfRelationshipWithKey(object, _SWDocumentFolder.CHILDREN_KEY);
     editingContext().deleteObject(object);
   }
 
   public void deleteAllChildrenRelationships() {
-    Enumeration objects = children().immutableClone().objectEnumerator();
+    Enumeration<is.us.soloweb.data.SWDocumentFolder> objects = children().immutableClone().objectEnumerator();
     while (objects.hasMoreElements()) {
-      deleteChildrenRelationship((is.us.soloweb.data.SWDocumentFolder)objects.nextElement());
+      deleteChildrenRelationship(objects.nextElement());
     }
   }
 
   public NSArray<is.us.soloweb.data.SWDocument> documents() {
-    return (NSArray<is.us.soloweb.data.SWDocument>)storedValueForKey("documents");
+    return (NSArray<is.us.soloweb.data.SWDocument>)storedValueForKey(_SWDocumentFolder.DOCUMENTS_KEY);
   }
 
   public NSArray<is.us.soloweb.data.SWDocument> documents(EOQualifier qualifier) {
@@ -230,7 +230,7 @@ public abstract class _SWDocumentFolder extends  ERXGenericRecord {
         fullQualifier = inverseQualifier;
       }
       else {
-        NSMutableArray qualifiers = new NSMutableArray();
+        NSMutableArray<EOQualifier> qualifiers = new NSMutableArray<EOQualifier>();
         qualifiers.addObject(qualifier);
         qualifiers.addObject(inverseQualifier);
         fullQualifier = new EOAndQualifier(qualifiers);
@@ -251,11 +251,11 @@ public abstract class _SWDocumentFolder extends  ERXGenericRecord {
   }
   
   public void addToDocuments(is.us.soloweb.data.SWDocument object) {
-    includeObjectIntoPropertyWithKey(object, "documents");
+    includeObjectIntoPropertyWithKey(object, _SWDocumentFolder.DOCUMENTS_KEY);
   }
 
   public void removeFromDocuments(is.us.soloweb.data.SWDocument object) {
-    excludeObjectFromPropertyWithKey(object, "documents");
+    excludeObjectFromPropertyWithKey(object, _SWDocumentFolder.DOCUMENTS_KEY);
   }
 
   public void addToDocumentsRelationship(is.us.soloweb.data.SWDocument object) {
@@ -266,7 +266,7 @@ public abstract class _SWDocumentFolder extends  ERXGenericRecord {
     	addToDocuments(object);
     }
     else {
-    	addObjectToBothSidesOfRelationshipWithKey(object, "documents");
+    	addObjectToBothSidesOfRelationshipWithKey(object, _SWDocumentFolder.DOCUMENTS_KEY);
     }
   }
 
@@ -278,66 +278,66 @@ public abstract class _SWDocumentFolder extends  ERXGenericRecord {
     	removeFromDocuments(object);
     }
     else {
-    	removeObjectFromBothSidesOfRelationshipWithKey(object, "documents");
+    	removeObjectFromBothSidesOfRelationshipWithKey(object, _SWDocumentFolder.DOCUMENTS_KEY);
     }
   }
 
   public is.us.soloweb.data.SWDocument createDocumentsRelationship() {
-    EOClassDescription eoClassDesc = EOClassDescription.classDescriptionForEntityName("SWDocument");
+    EOClassDescription eoClassDesc = EOClassDescription.classDescriptionForEntityName( is.us.soloweb.data.SWDocument.ENTITY_NAME );
     EOEnterpriseObject eo = eoClassDesc.createInstanceWithEditingContext(editingContext(), null);
     editingContext().insertObject(eo);
-    addObjectToBothSidesOfRelationshipWithKey(eo, "documents");
+    addObjectToBothSidesOfRelationshipWithKey(eo, _SWDocumentFolder.DOCUMENTS_KEY);
     return (is.us.soloweb.data.SWDocument) eo;
   }
 
   public void deleteDocumentsRelationship(is.us.soloweb.data.SWDocument object) {
-    removeObjectFromBothSidesOfRelationshipWithKey(object, "documents");
+    removeObjectFromBothSidesOfRelationshipWithKey(object, _SWDocumentFolder.DOCUMENTS_KEY);
     editingContext().deleteObject(object);
   }
 
   public void deleteAllDocumentsRelationships() {
-    Enumeration objects = documents().immutableClone().objectEnumerator();
+    Enumeration<is.us.soloweb.data.SWDocument> objects = documents().immutableClone().objectEnumerator();
     while (objects.hasMoreElements()) {
-      deleteDocumentsRelationship((is.us.soloweb.data.SWDocument)objects.nextElement());
+      deleteDocumentsRelationship(objects.nextElement());
     }
   }
 
 
-  public static SWDocumentFolder createSWDocumentFolder(EOEditingContext editingContext, Integer folderID
+  public static is.us.soloweb.data.SWDocumentFolder createSWDocumentFolder(EOEditingContext editingContext, Integer folderID
 ) {
-    SWDocumentFolder eo = (SWDocumentFolder) EOUtilities.createAndInsertInstance(editingContext, _SWDocumentFolder.ENTITY_NAME);    
+    is.us.soloweb.data.SWDocumentFolder eo = (is.us.soloweb.data.SWDocumentFolder) EOUtilities.createAndInsertInstance(editingContext, _SWDocumentFolder.ENTITY_NAME);    
 		eo.setFolderID(folderID);
     return eo;
   }
 
-  public static NSArray<SWDocumentFolder> fetchAllSWDocumentFolders(EOEditingContext editingContext) {
+  public static NSArray<is.us.soloweb.data.SWDocumentFolder> fetchAllSWDocumentFolders(EOEditingContext editingContext) {
     return _SWDocumentFolder.fetchAllSWDocumentFolders(editingContext, null);
   }
 
-  public static NSArray<SWDocumentFolder> fetchAllSWDocumentFolders(EOEditingContext editingContext, NSArray<EOSortOrdering> sortOrderings) {
+  public static NSArray<is.us.soloweb.data.SWDocumentFolder> fetchAllSWDocumentFolders(EOEditingContext editingContext, NSArray<EOSortOrdering> sortOrderings) {
     return _SWDocumentFolder.fetchSWDocumentFolders(editingContext, null, sortOrderings);
   }
 
-  public static NSArray<SWDocumentFolder> fetchSWDocumentFolders(EOEditingContext editingContext, EOQualifier qualifier, NSArray<EOSortOrdering> sortOrderings) {
-    EOFetchSpecification fetchSpec = new EOFetchSpecification(_SWDocumentFolder.ENTITY_NAME, qualifier, sortOrderings);
+  public static NSArray<is.us.soloweb.data.SWDocumentFolder> fetchSWDocumentFolders(EOEditingContext editingContext, EOQualifier qualifier, NSArray<EOSortOrdering> sortOrderings) {
+    ERXFetchSpecification<is.us.soloweb.data.SWDocumentFolder> fetchSpec = new ERXFetchSpecification<is.us.soloweb.data.SWDocumentFolder>(_SWDocumentFolder.ENTITY_NAME, qualifier, sortOrderings);
     fetchSpec.setIsDeep(true);
-    NSArray<SWDocumentFolder> eoObjects = (NSArray<SWDocumentFolder>)editingContext.objectsWithFetchSpecification(fetchSpec);
+    NSArray<is.us.soloweb.data.SWDocumentFolder> eoObjects = fetchSpec.fetchObjects(editingContext);
     return eoObjects;
   }
 
-  public static SWDocumentFolder fetchSWDocumentFolder(EOEditingContext editingContext, String keyName, Object value) {
+  public static is.us.soloweb.data.SWDocumentFolder fetchSWDocumentFolder(EOEditingContext editingContext, String keyName, Object value) {
     return _SWDocumentFolder.fetchSWDocumentFolder(editingContext, new EOKeyValueQualifier(keyName, EOQualifier.QualifierOperatorEqual, value));
   }
 
-  public static SWDocumentFolder fetchSWDocumentFolder(EOEditingContext editingContext, EOQualifier qualifier) {
-    NSArray<SWDocumentFolder> eoObjects = _SWDocumentFolder.fetchSWDocumentFolders(editingContext, qualifier, null);
-    SWDocumentFolder eoObject;
+  public static is.us.soloweb.data.SWDocumentFolder fetchSWDocumentFolder(EOEditingContext editingContext, EOQualifier qualifier) {
+    NSArray<is.us.soloweb.data.SWDocumentFolder> eoObjects = _SWDocumentFolder.fetchSWDocumentFolders(editingContext, qualifier, null);
+    is.us.soloweb.data.SWDocumentFolder eoObject;
     int count = eoObjects.count();
     if (count == 0) {
       eoObject = null;
     }
     else if (count == 1) {
-      eoObject = (SWDocumentFolder)eoObjects.objectAtIndex(0);
+      eoObject = eoObjects.objectAtIndex(0);
     }
     else {
       throw new IllegalStateException("There was more than one SWDocumentFolder that matched the qualifier '" + qualifier + "'.");
@@ -345,20 +345,20 @@ public abstract class _SWDocumentFolder extends  ERXGenericRecord {
     return eoObject;
   }
 
-  public static SWDocumentFolder fetchRequiredSWDocumentFolder(EOEditingContext editingContext, String keyName, Object value) {
+  public static is.us.soloweb.data.SWDocumentFolder fetchRequiredSWDocumentFolder(EOEditingContext editingContext, String keyName, Object value) {
     return _SWDocumentFolder.fetchRequiredSWDocumentFolder(editingContext, new EOKeyValueQualifier(keyName, EOQualifier.QualifierOperatorEqual, value));
   }
 
-  public static SWDocumentFolder fetchRequiredSWDocumentFolder(EOEditingContext editingContext, EOQualifier qualifier) {
-    SWDocumentFolder eoObject = _SWDocumentFolder.fetchSWDocumentFolder(editingContext, qualifier);
+  public static is.us.soloweb.data.SWDocumentFolder fetchRequiredSWDocumentFolder(EOEditingContext editingContext, EOQualifier qualifier) {
+    is.us.soloweb.data.SWDocumentFolder eoObject = _SWDocumentFolder.fetchSWDocumentFolder(editingContext, qualifier);
     if (eoObject == null) {
       throw new NoSuchElementException("There was no SWDocumentFolder that matched the qualifier '" + qualifier + "'.");
     }
     return eoObject;
   }
 
-  public static SWDocumentFolder localInstanceIn(EOEditingContext editingContext, SWDocumentFolder eo) {
-    SWDocumentFolder localInstance = (eo == null) ? null : (SWDocumentFolder)EOUtilities.localInstanceOfObject(editingContext, eo);
+  public static is.us.soloweb.data.SWDocumentFolder localInstanceIn(EOEditingContext editingContext, is.us.soloweb.data.SWDocumentFolder eo) {
+    is.us.soloweb.data.SWDocumentFolder localInstance = (eo == null) ? null : ERXEOControlUtilities.localInstanceOfObject(editingContext, eo);
     if (localInstance == null && eo != null) {
       throw new IllegalStateException("You attempted to localInstance " + eo + ", which has not yet committed.");
     }

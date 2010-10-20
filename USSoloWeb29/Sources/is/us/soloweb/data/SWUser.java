@@ -1,5 +1,6 @@
 package is.us.soloweb.data;
 
+import is.us.soloweb.data.auto._SWUser;
 import is.us.soloweb.interfaces.SWInspectable;
 import is.us.soloweb.util.*;
 

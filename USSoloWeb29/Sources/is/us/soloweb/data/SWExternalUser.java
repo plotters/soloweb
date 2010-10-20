@@ -1,5 +1,7 @@
 package is.us.soloweb.data;
 
+import is.us.soloweb.data.auto._SWExternalUser;
+
 /**
  * A visitor to a SoloWeb system.
  * 

@@ -1,5 +1,5 @@
-// $LastChangedRevision: 4733 $ DO NOT EDIT.  Make changes to SWExternalUser.java instead.
-package is.us.soloweb.data;
+// DO NOT EDIT.  Make changes to is.us.soloweb.data.SWExternalUser.java instead.
+package is.us.soloweb.data.auto;
 
 import com.webobjects.eoaccess.*;
 import com.webobjects.eocontrol.*;
@@ -41,8 +41,8 @@ public abstract class _SWExternalUser extends  ERXGenericRecord {
 
   private static Logger LOG = Logger.getLogger(_SWExternalUser.class);
 
-  public SWExternalUser localInstanceIn(EOEditingContext editingContext) {
-    SWExternalUser localInstance = (SWExternalUser)EOUtilities.localInstanceOfObject(editingContext, this);
+  public is.us.soloweb.data.SWExternalUser localInstanceIn(EOEditingContext editingContext) {
+    is.us.soloweb.data.SWExternalUser localInstance = (is.us.soloweb.data.SWExternalUser)EOUtilities.localInstanceOfObject(editingContext, this);
     if (localInstance == null) {
       throw new IllegalStateException("You attempted to localInstance " + this + ", which has not yet committed.");
     }
@@ -50,95 +50,95 @@ public abstract class _SWExternalUser extends  ERXGenericRecord {
   }
 
   public String emailAddress() {
-    return (String) storedValueForKey("emailAddress");
+    return (String) storedValueForKey(_SWExternalUser.EMAIL_ADDRESS_KEY);
   }
 
   public void setEmailAddress(String value) {
     if (_SWExternalUser.LOG.isDebugEnabled()) {
     	_SWExternalUser.LOG.debug( "updating emailAddress from " + emailAddress() + " to " + value);
     }
-    takeStoredValueForKey(value, "emailAddress");
+    takeStoredValueForKey(value, _SWExternalUser.EMAIL_ADDRESS_KEY);
   }
 
   public Integer notifyOnNewComments() {
-    return (Integer) storedValueForKey("notifyOnNewComments");
+    return (Integer) storedValueForKey(_SWExternalUser.NOTIFY_ON_NEW_COMMENTS_KEY);
   }
 
   public void setNotifyOnNewComments(Integer value) {
     if (_SWExternalUser.LOG.isDebugEnabled()) {
     	_SWExternalUser.LOG.debug( "updating notifyOnNewComments from " + notifyOnNewComments() + " to " + value);
     }
-    takeStoredValueForKey(value, "notifyOnNewComments");
+    takeStoredValueForKey(value, _SWExternalUser.NOTIFY_ON_NEW_COMMENTS_KEY);
   }
 
   public String twitterUsername() {
-    return (String) storedValueForKey("twitterUsername");
+    return (String) storedValueForKey(_SWExternalUser.TWITTER_USERNAME_KEY);
   }
 
   public void setTwitterUsername(String value) {
     if (_SWExternalUser.LOG.isDebugEnabled()) {
     	_SWExternalUser.LOG.debug( "updating twitterUsername from " + twitterUsername() + " to " + value);
     }
-    takeStoredValueForKey(value, "twitterUsername");
+    takeStoredValueForKey(value, _SWExternalUser.TWITTER_USERNAME_KEY);
   }
 
   public String url() {
-    return (String) storedValueForKey("url");
+    return (String) storedValueForKey(_SWExternalUser.URL_KEY);
   }
 
   public void setUrl(String value) {
     if (_SWExternalUser.LOG.isDebugEnabled()) {
     	_SWExternalUser.LOG.debug( "updating url from " + url() + " to " + value);
     }
-    takeStoredValueForKey(value, "url");
+    takeStoredValueForKey(value, _SWExternalUser.URL_KEY);
   }
 
   public Integer userID() {
-    return (Integer) storedValueForKey("userID");
+    return (Integer) storedValueForKey(_SWExternalUser.USER_ID_KEY);
   }
 
   public void setUserID(Integer value) {
     if (_SWExternalUser.LOG.isDebugEnabled()) {
     	_SWExternalUser.LOG.debug( "updating userID from " + userID() + " to " + value);
     }
-    takeStoredValueForKey(value, "userID");
+    takeStoredValueForKey(value, _SWExternalUser.USER_ID_KEY);
   }
 
   public String username() {
-    return (String) storedValueForKey("username");
+    return (String) storedValueForKey(_SWExternalUser.USERNAME_KEY);
   }
 
   public void setUsername(String value) {
     if (_SWExternalUser.LOG.isDebugEnabled()) {
     	_SWExternalUser.LOG.debug( "updating username from " + username() + " to " + value);
     }
-    takeStoredValueForKey(value, "username");
+    takeStoredValueForKey(value, _SWExternalUser.USERNAME_KEY);
   }
 
   public NSData userPicture() {
-    return (NSData) storedValueForKey("userPicture");
+    return (NSData) storedValueForKey(_SWExternalUser.USER_PICTURE_KEY);
   }
 
   public void setUserPicture(NSData value) {
     if (_SWExternalUser.LOG.isDebugEnabled()) {
     	_SWExternalUser.LOG.debug( "updating userPicture from " + userPicture() + " to " + value);
     }
-    takeStoredValueForKey(value, "userPicture");
+    takeStoredValueForKey(value, _SWExternalUser.USER_PICTURE_KEY);
   }
 
   public String uuid() {
-    return (String) storedValueForKey("uuid");
+    return (String) storedValueForKey(_SWExternalUser.UUID_KEY);
   }
 
   public void setUuid(String value) {
     if (_SWExternalUser.LOG.isDebugEnabled()) {
     	_SWExternalUser.LOG.debug( "updating uuid from " + uuid() + " to " + value);
     }
-    takeStoredValueForKey(value, "uuid");
+    takeStoredValueForKey(value, _SWExternalUser.UUID_KEY);
   }
 
   public NSArray<is.us.soloweb.data.SWComment> comments() {
-    return (NSArray<is.us.soloweb.data.SWComment>)storedValueForKey("comments");
+    return (NSArray<is.us.soloweb.data.SWComment>)storedValueForKey(_SWExternalUser.COMMENTS_KEY);
   }
 
   public NSArray<is.us.soloweb.data.SWComment> comments(EOQualifier qualifier) {
@@ -159,7 +159,7 @@ public abstract class _SWExternalUser extends  ERXGenericRecord {
         fullQualifier = inverseQualifier;
       }
       else {
-        NSMutableArray qualifiers = new NSMutableArray();
+        NSMutableArray<EOQualifier> qualifiers = new NSMutableArray<EOQualifier>();
         qualifiers.addObject(qualifier);
         qualifiers.addObject(inverseQualifier);
         fullQualifier = new EOAndQualifier(qualifiers);
@@ -180,11 +180,11 @@ public abstract class _SWExternalUser extends  ERXGenericRecord {
   }
   
   public void addToComments(is.us.soloweb.data.SWComment object) {
-    includeObjectIntoPropertyWithKey(object, "comments");
+    includeObjectIntoPropertyWithKey(object, _SWExternalUser.COMMENTS_KEY);
   }
 
   public void removeFromComments(is.us.soloweb.data.SWComment object) {
-    excludeObjectFromPropertyWithKey(object, "comments");
+    excludeObjectFromPropertyWithKey(object, _SWExternalUser.COMMENTS_KEY);
   }
 
   public void addToCommentsRelationship(is.us.soloweb.data.SWComment object) {
@@ -195,7 +195,7 @@ public abstract class _SWExternalUser extends  ERXGenericRecord {
     	addToComments(object);
     }
     else {
-    	addObjectToBothSidesOfRelationshipWithKey(object, "comments");
+    	addObjectToBothSidesOfRelationshipWithKey(object, _SWExternalUser.COMMENTS_KEY);
     }
   }
 
@@ -207,66 +207,66 @@ public abstract class _SWExternalUser extends  ERXGenericRecord {
     	removeFromComments(object);
     }
     else {
-    	removeObjectFromBothSidesOfRelationshipWithKey(object, "comments");
+    	removeObjectFromBothSidesOfRelationshipWithKey(object, _SWExternalUser.COMMENTS_KEY);
     }
   }
 
   public is.us.soloweb.data.SWComment createCommentsRelationship() {
-    EOClassDescription eoClassDesc = EOClassDescription.classDescriptionForEntityName("SWComment");
+    EOClassDescription eoClassDesc = EOClassDescription.classDescriptionForEntityName( is.us.soloweb.data.SWComment.ENTITY_NAME );
     EOEnterpriseObject eo = eoClassDesc.createInstanceWithEditingContext(editingContext(), null);
     editingContext().insertObject(eo);
-    addObjectToBothSidesOfRelationshipWithKey(eo, "comments");
+    addObjectToBothSidesOfRelationshipWithKey(eo, _SWExternalUser.COMMENTS_KEY);
     return (is.us.soloweb.data.SWComment) eo;
   }
 
   public void deleteCommentsRelationship(is.us.soloweb.data.SWComment object) {
-    removeObjectFromBothSidesOfRelationshipWithKey(object, "comments");
+    removeObjectFromBothSidesOfRelationshipWithKey(object, _SWExternalUser.COMMENTS_KEY);
     editingContext().deleteObject(object);
   }
 
   public void deleteAllCommentsRelationships() {
-    Enumeration objects = comments().immutableClone().objectEnumerator();
+    Enumeration<is.us.soloweb.data.SWComment> objects = comments().immutableClone().objectEnumerator();
     while (objects.hasMoreElements()) {
-      deleteCommentsRelationship((is.us.soloweb.data.SWComment)objects.nextElement());
+      deleteCommentsRelationship(objects.nextElement());
     }
   }
 
 
-  public static SWExternalUser createSWExternalUser(EOEditingContext editingContext, Integer userID
+  public static is.us.soloweb.data.SWExternalUser createSWExternalUser(EOEditingContext editingContext, Integer userID
 ) {
-    SWExternalUser eo = (SWExternalUser) EOUtilities.createAndInsertInstance(editingContext, _SWExternalUser.ENTITY_NAME);    
+    is.us.soloweb.data.SWExternalUser eo = (is.us.soloweb.data.SWExternalUser) EOUtilities.createAndInsertInstance(editingContext, _SWExternalUser.ENTITY_NAME);    
 		eo.setUserID(userID);
     return eo;
   }
 
-  public static NSArray<SWExternalUser> fetchAllSWExternalUsers(EOEditingContext editingContext) {
+  public static NSArray<is.us.soloweb.data.SWExternalUser> fetchAllSWExternalUsers(EOEditingContext editingContext) {
     return _SWExternalUser.fetchAllSWExternalUsers(editingContext, null);
   }
 
-  public static NSArray<SWExternalUser> fetchAllSWExternalUsers(EOEditingContext editingContext, NSArray<EOSortOrdering> sortOrderings) {
+  public static NSArray<is.us.soloweb.data.SWExternalUser> fetchAllSWExternalUsers(EOEditingContext editingContext, NSArray<EOSortOrdering> sortOrderings) {
     return _SWExternalUser.fetchSWExternalUsers(editingContext, null, sortOrderings);
   }
 
-  public static NSArray<SWExternalUser> fetchSWExternalUsers(EOEditingContext editingContext, EOQualifier qualifier, NSArray<EOSortOrdering> sortOrderings) {
-    EOFetchSpecification fetchSpec = new EOFetchSpecification(_SWExternalUser.ENTITY_NAME, qualifier, sortOrderings);
+  public static NSArray<is.us.soloweb.data.SWExternalUser> fetchSWExternalUsers(EOEditingContext editingContext, EOQualifier qualifier, NSArray<EOSortOrdering> sortOrderings) {
+    ERXFetchSpecification<is.us.soloweb.data.SWExternalUser> fetchSpec = new ERXFetchSpecification<is.us.soloweb.data.SWExternalUser>(_SWExternalUser.ENTITY_NAME, qualifier, sortOrderings);
     fetchSpec.setIsDeep(true);
-    NSArray<SWExternalUser> eoObjects = (NSArray<SWExternalUser>)editingContext.objectsWithFetchSpecification(fetchSpec);
+    NSArray<is.us.soloweb.data.SWExternalUser> eoObjects = fetchSpec.fetchObjects(editingContext);
     return eoObjects;
   }
 
-  public static SWExternalUser fetchSWExternalUser(EOEditingContext editingContext, String keyName, Object value) {
+  public static is.us.soloweb.data.SWExternalUser fetchSWExternalUser(EOEditingContext editingContext, String keyName, Object value) {
     return _SWExternalUser.fetchSWExternalUser(editingContext, new EOKeyValueQualifier(keyName, EOQualifier.QualifierOperatorEqual, value));
   }
 
-  public static SWExternalUser fetchSWExternalUser(EOEditingContext editingContext, EOQualifier qualifier) {
-    NSArray<SWExternalUser> eoObjects = _SWExternalUser.fetchSWExternalUsers(editingContext, qualifier, null);
-    SWExternalUser eoObject;
+  public static is.us.soloweb.data.SWExternalUser fetchSWExternalUser(EOEditingContext editingContext, EOQualifier qualifier) {
+    NSArray<is.us.soloweb.data.SWExternalUser> eoObjects = _SWExternalUser.fetchSWExternalUsers(editingContext, qualifier, null);
+    is.us.soloweb.data.SWExternalUser eoObject;
     int count = eoObjects.count();
     if (count == 0) {
       eoObject = null;
     }
     else if (count == 1) {
-      eoObject = (SWExternalUser)eoObjects.objectAtIndex(0);
+      eoObject = eoObjects.objectAtIndex(0);
     }
     else {
       throw new IllegalStateException("There was more than one SWExternalUser that matched the qualifier '" + qualifier + "'.");
@@ -274,20 +274,20 @@ public abstract class _SWExternalUser extends  ERXGenericRecord {
     return eoObject;
   }
 
-  public static SWExternalUser fetchRequiredSWExternalUser(EOEditingContext editingContext, String keyName, Object value) {
+  public static is.us.soloweb.data.SWExternalUser fetchRequiredSWExternalUser(EOEditingContext editingContext, String keyName, Object value) {
     return _SWExternalUser.fetchRequiredSWExternalUser(editingContext, new EOKeyValueQualifier(keyName, EOQualifier.QualifierOperatorEqual, value));
   }
 
-  public static SWExternalUser fetchRequiredSWExternalUser(EOEditingContext editingContext, EOQualifier qualifier) {
-    SWExternalUser eoObject = _SWExternalUser.fetchSWExternalUser(editingContext, qualifier);
+  public static is.us.soloweb.data.SWExternalUser fetchRequiredSWExternalUser(EOEditingContext editingContext, EOQualifier qualifier) {
+    is.us.soloweb.data.SWExternalUser eoObject = _SWExternalUser.fetchSWExternalUser(editingContext, qualifier);
     if (eoObject == null) {
       throw new NoSuchElementException("There was no SWExternalUser that matched the qualifier '" + qualifier + "'.");
     }
     return eoObject;
   }
 
-  public static SWExternalUser localInstanceIn(EOEditingContext editingContext, SWExternalUser eo) {
-    SWExternalUser localInstance = (eo == null) ? null : (SWExternalUser)EOUtilities.localInstanceOfObject(editingContext, eo);
+  public static is.us.soloweb.data.SWExternalUser localInstanceIn(EOEditingContext editingContext, is.us.soloweb.data.SWExternalUser eo) {
+    is.us.soloweb.data.SWExternalUser localInstance = (eo == null) ? null : ERXEOControlUtilities.localInstanceOfObject(editingContext, eo);
     if (localInstance == null && eo != null) {
       throw new IllegalStateException("You attempted to localInstance " + eo + ", which has not yet committed.");
     }
