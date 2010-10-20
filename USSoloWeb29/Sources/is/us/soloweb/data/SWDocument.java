@@ -103,6 +103,7 @@ public class SWDocument extends _SWDocument implements SWAsset<SWDocumentFolder>
 	/**
 	 * @return The asset's size in bytes.
 	 */
+	@Override
 	public long size() {
 		File f = file();
 
@@ -118,6 +119,7 @@ public class SWDocument extends _SWDocument implements SWAsset<SWDocumentFolder>
 	/**
 	 * @return The asset's size in kibibytes.
 	 */
+	@Override
 	public double sizeKB() {
 		return size() / 1000d;
 	}
@@ -142,6 +144,7 @@ public class SWDocument extends _SWDocument implements SWAsset<SWDocumentFolder>
 	/**
 	 * Deletes this document from the DB and it's data from the disk
 	 */
+	@Override
 	public void deleteAsset() {
 
 		if( file() != null ) {
@@ -155,6 +158,7 @@ public class SWDocument extends _SWDocument implements SWAsset<SWDocumentFolder>
 	/**
 	 * Implementation of SWTransferable
 	 */
+	@Override
 	public void transferOwnership( EOEnterpriseObject newOwner ) {
 		removeObjectFromBothSidesOfRelationshipWithKey( folder(), FOLDER_KEY );
 		addObjectToBothSidesOfRelationshipWithKey( newOwner, FOLDER_KEY );
@@ -167,6 +171,7 @@ public class SWDocument extends _SWDocument implements SWAsset<SWDocumentFolder>
 		return SWURLGeneration.urlForObjectInContext( this, context );
 	}
 
+	@Override
 	public Number assetID() {
 		return documentID();
 	}
@@ -194,6 +199,7 @@ public class SWDocument extends _SWDocument implements SWAsset<SWDocumentFolder>
 	/**
 	 * FIXME: Implement in the database.
 	 */
+	@Override
 	public NSTimestamp date() {
 		return null;
 	}
@@ -201,6 +207,7 @@ public class SWDocument extends _SWDocument implements SWAsset<SWDocumentFolder>
 	/**
 	 * FIXME: Implement in the database.
 	 */
+	@Override
 	public void setDate( NSTimestamp date ) {
 		;
 	}

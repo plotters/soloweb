@@ -14,7 +14,6 @@ import com.webobjects.eocontrol.EOEditingContext;
 import com.webobjects.foundation.NSArray;
 
 import er.extensions.appserver.ERXDirectAction;
-import er.extensions.eof.ERXEC;
 import er.extensions.localization.ERXLocalizer;
 
 /**
@@ -46,7 +45,7 @@ public abstract class SWDirectAction extends ERXDirectAction {
 	 */
 	protected EOEditingContext ec() {
 		if( _ec == null ) {
-			_ec = ERXEC.newEditingContext();
+			_ec = SWApplication.swapplication().sw().requestLocalEditingContext();
 		}
 
 		return _ec;
@@ -56,6 +55,7 @@ public abstract class SWDirectAction extends ERXDirectAction {
 	 * The default action is executed when the SoloWeb application is entered.
 	 * Checks the request for what site was requested, and returns that page.
 	 */
+	@Override
 	public WOActionResults defaultAction() {
 		SWSite requestedSite = requestedSite();
 
