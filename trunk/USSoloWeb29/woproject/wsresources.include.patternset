@@ -1,1 +1,7 @@
 WebServerResources/**/*
+**/*.png
+**/*.js
+**/*.css
+**/*.gif
+**/*.jpg
+**/*.jpeg
