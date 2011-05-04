@@ -61,7 +61,7 @@ public class SWRSSComponent extends ERXComponent {
 	}
 
 	/**
-	 * @return The URL for the channel. 
+	 * @return The URL for the channel.
 	 */
 	public String channelLink() {
 		return urlPrefix();
@@ -101,8 +101,12 @@ public class SWRSSComponent extends ERXComponent {
 		return _detailPageName;
 	}
 
+	public String mainLink() {
+		return urlPrefix();
+	}
+
 	/**
-	 * The prefix of the newsitem URLs. 
+	 * The prefix of the newsitem URLs.
 	 */
 	private String urlPrefix() {
 		return "http://" + USHTTPUtilities.host( context().request() );
